@@ -9,8 +9,8 @@
 <body>
  제발제발
  	<form>
- 	<label id="id"></label><input type="text" id="id">
- 	<label id="password"></label><input type="text" id="password">
+ 	<label for="id">아이디:</label><input type="text" name="id">
+ 	<label for="password">비밀번호:</label><input type="text" name="password">
  	<input type="submit" value="가입">
  	</form>
 </body>
