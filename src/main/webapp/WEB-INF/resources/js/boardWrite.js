@@ -18,9 +18,9 @@ class Post {
 //확인버튼 동작
 function submitPost() {
     let titleInput = document.getElementById('titleInput');
-    let contentTextarea = document.getElementById('contentTextarea');
+    let postTextarea = document.getElementById('contentTextarea');
     let title = titleInput.value;
-    let content = contentTextarea.value;
+    let content = postTextarea.value;
     let newPost = new Post(title, content);
     console.log("저장되었습니다");
     // JSON 만들어서 보냄

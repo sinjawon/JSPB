@@ -14,7 +14,7 @@
 
 
 <body>
-    <script src="boardWrite.js"></script>
+    <script src="../WEB-INF/resources/boardWrite.js"></script>
     <h1>글쓰기</h1>
     <form id="writeForm">
         <input type="text" id="titleInput" placeholder="글 제목">
