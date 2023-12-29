@@ -6,20 +6,20 @@ import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
 
 @Mapper
-public interface UserDAO {
+public interface UserDao {
 
 	@Select( "select userid from User")
-	public List<UserDTO> getuserid();
+	public List<User> getuserid();
 	
 	@Select( "select usernickname from User")
-	public List<UserDTO> getuseNickname();
+	public List<User> getuseNickname();
 	
-	@Insert("insert into User value()")
-	public void joinuser(
-			@Param("name") String name
-			,@Param("nickname")  String nickname
-			,@Param("userid")  String userid
-			,@Param("password")  String password);
+	@Insert("insert into User values(seqbd.nextval, #{name}, #{nickname},#{nickname},#{userid},#{password})")
+	public void joinmember(
+			@Param("name") String name,
+			@Param("nickname")  String nickname,
+			@Param("userid")  String userid,
+			@Param("password")  String password);
 	 
 }
 
