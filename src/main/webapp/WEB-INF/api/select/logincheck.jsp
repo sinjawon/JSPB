@@ -12,10 +12,14 @@
 		
 		String usernumber =request.getParameter("userNum");
 		String userid = request.getParameter("userid"); 
-		String nopassword = request.getParameter("password"); 
+		String nopassword = request.getParameter("password");
+		
 	    String realpassword=map.getuserinfo(userid).toString();
+	    
 	    if(nopassword.equals(realpassword)){
+	    	
 	    	session.setAttribute(usernumber,usernumber);
+	    	session.setMaxInactiveInterval(60 * 30);	    	
 	    request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request, response);
 	    	
 	    }else{

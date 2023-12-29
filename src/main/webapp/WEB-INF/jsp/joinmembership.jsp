@@ -8,7 +8,7 @@
 </head>
 <body>
  
- 	<form action="../api/joninmenmber">
+ 	<form action="../api/insert/joinmember.jsp">
  	<label for="name">이름:</label><input type="text" name="name">
  	<label for="nickname">닉네임:</label><input type="text" name="nickname"><button>중복체크</button>
  	<label for="id">아이디:</label><input type="text" name="id"><button>중복체크</button>
