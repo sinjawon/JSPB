@@ -72,7 +72,6 @@
         		<input type="text" id="search" name="search">
         		<button type="submit">검색</button>
     			<a href="/writeBoard">글쓰기</a>
-		 
    		</form>
 	</div>
 
