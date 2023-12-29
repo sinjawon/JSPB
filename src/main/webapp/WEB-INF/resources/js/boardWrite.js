@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+// 데이터 전송 포장용
 class Post {
     constructor(title, content) {
         this.title = title;
@@ -17,13 +18,13 @@ class Post {
 }
 //확인버튼 동작
 function submitPost() {
+    console.log("저장되었습니다"); //확인용 메세지
     let titleInput = document.getElementById('titleInput');
-    let postTextarea = document.getElementById('contentTextarea');
+    let postTextarea = document.getElementById('postTextarea');
     let title = titleInput.value;
     let content = postTextarea.value;
     let newPost = new Post(title, content);
-    console.log("저장되었습니다");
-    // JSON 만들어서 보냄
+    // JSON 만들어서 보냄 api  받을 예정
     ajax('/api/savePostData', {
         method: 'POST',
         headers: {
@@ -37,11 +38,12 @@ function submitPost() {
     });
 }
 function cancelPost() {
-    // 작성된 내용 초기화
+    // 작성된 내용 초기화 
+    console.log("삭제되었습니다"); //확인용 메세지
     let titleInput = document.getElementById('titleInput');
-    let contentTextarea = document.getElementById('contentTextarea');
-    titleInput.value = '';
-    contentTextarea.value = '';
+    let postTextarea = document.getElementById('postTextarea');
+    titleInput.value = "";
+    postTextarea.value = "";
 }
 //임시 ajax
 function ajax(url, option) {

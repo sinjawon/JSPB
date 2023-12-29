@@ -10,18 +10,15 @@
 </head>
 <body>
 
-
-
-
-<body>
-    <script src="../WEB-INF/resources/boardWrite.js"></script>
+    <script  defer src="/resources/boardWrite.js"></script>
     <h1>글쓰기</h1>
+    
     <form id="writeForm">
         <input type="text" id="titleInput" placeholder="글 제목">
         <br>
           <br>
             <br>
-        <textarea id="contentTextarea" placeholder="글 내용"></textarea>
+        <textarea id="postTextarea" placeholder="글 내용"></textarea>
         <br>
           <br>
             <br>
@@ -31,3 +28,6 @@
 
 </body>
 </html>
+
+
+

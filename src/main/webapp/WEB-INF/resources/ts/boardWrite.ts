@@ -1,6 +1,7 @@
 
 //  변경점
 
+// 데이터 전송 포장용
 class Post {
     constructor(public title: string, public content: string) {}
 }
@@ -8,16 +9,18 @@ class Post {
 
 //확인버튼 동작
 function submitPost() {
+    console.log("저장되었습니다");//확인용 메세지
     let titleInput = document.getElementById('titleInput') as HTMLInputElement;
-    let postTextarea = document.getElementById('contentTextarea') as HTMLTextAreaElement;
+    let postTextarea = document.getElementById('postTextarea') as HTMLTextAreaElement;
 
     let title = titleInput.value;
     let content = postTextarea.value;
 
     let newPost = new Post(title, content);
-    console.log("저장되었습니다")
-    
-    // JSON 만들어서 보냄
+   
+
+
+    // JSON 만들어서 보냄 api  받을 예정
     ajax('/api/savePostData', {
         method: 'POST',
         headers: {
@@ -34,12 +37,15 @@ function submitPost() {
 }
 
 function cancelPost() {
-    // 작성된 내용 초기화
-    let titleInput = document.getElementById('titleInput') as HTMLInputElement;
-    let contentTextarea = document.getElementById('contentTextarea') as HTMLTextAreaElement;
     
-    titleInput.value = '';
-    contentTextarea.value = '';
+    // 작성된 내용 초기화 
+    console.log("삭제되었습니다");//확인용 메세지
+
+    let titleInput = document.getElementById('titleInput') as HTMLInputElement;
+    let postTextarea = document.getElementById('postTextarea') as HTMLTextAreaElement;
+    
+    titleInput.value = "";
+    postTextarea.value = "";
 }
 
 
