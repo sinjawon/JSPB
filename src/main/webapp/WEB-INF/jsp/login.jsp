@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
- 
- 	<form action="../api/joninmenmber">
- 	<label for="name">이름:</label><input type="text" name="name">
- 	<label for="nickname">닉네임:</label><input type="text" name="nickname"><button>중복체크</button>
+	<form>	
  	<label for="id">아이디:</label><input type="text" name="id"><button>중복체크</button>
  	<label for="password">비밀번호:</label><input type="text" name="password">
- 	<input type="submit" value="가입">
+ 	<input type="submit" value="로그인">
  	</form>
+ 	<a href="http://localhost:9888/app/joinmembership.jsp">회원가입</a>
 </body>
 </html>
