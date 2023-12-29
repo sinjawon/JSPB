@@ -6,6 +6,10 @@ public class UserDTO {
 	private String usernickname;
 	private String userid;
 	private String password;
+	
+	
+	
+	
 	public int getUsernumber() {
 		return usernumber;
 	}
