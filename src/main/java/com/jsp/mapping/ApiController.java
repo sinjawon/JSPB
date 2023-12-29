@@ -16,7 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 
 import com.jsp.system.DBConnector;
-import com.jsp.test.*;
+
 
 @WebServlet(urlPatterns = {
 		"/api/*"
