@@ -17,7 +17,8 @@ function submitPost() {
     let content = postTextarea.value;
 
     let newPost = new Post(title, content);
-   
+   //여기에 작성자와 작성시간, 추천 등등 이것저것 보내서 붙일 예정
+   //
 
 
     // JSON 만들어서 보냄 api  받을 예정
