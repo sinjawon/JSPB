@@ -16,8 +16,9 @@ public interface BoardDao {
 	@Select("select * from board where userNickName = #{userNickName}")
 	public List<Board> getBoardByUserNickName(@Param("userNickName") String userNickName);
 	
-	@Select("select * from board")
-	public List<Board> getBoardAll();
+	@Select("select * from board where title = #{title}")
+	public List<Board> getBoardByTitle(@Param("title") String title);
+	
 	
 	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
 	@Select("select * from user where userNum = #{userNum} and password = #{userPw}")
@@ -34,6 +35,24 @@ public interface BoardDao {
 	// board 에 글 수정할때 boardListNum 인 글에서 title 과 contents 를 수정한다
 	@Update("update board set title = #{title}, contents = #{contents} where boardListNum =#{boardListNum}")
 	public void updateBoard(@Param("title") String title, @Param("contents") String contents, @Param("boardListNum") String boardListNum);
+
+
+	@Results( id = "Board",value = {
+			@Result(property="title", column="title"),
+			@Result(property="contents", column="contents"),
+			@Result(property="user", column="userNickName", one=@One(select="getUserByUserNickName"))
+		})
+	@Select("select * from boardlist order by id desc")
+	public List<Board> getBoardAll();
+
+	@Select("select x.id, x.title, x.author_id from (select ROWNUM as num, result.* from (select * from boardlist order by id desc) result) x where num <= #{limit}")
+	public List<Board> getBoardLimit(@Param("limit") int limit);
+		
+	@Select("select x.id, x.title, x.author_id from (select ROWNUM as num, result.* from (select * from boardlist order by id desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
+	public List<Board> getBoardPage(@Param("limit") int limit, @Param("page")  int page);
+
+
+
 }
 
 // board 랑 user 둘다 pk 로 자동으로 1씩 증가하는 number를 만들때
