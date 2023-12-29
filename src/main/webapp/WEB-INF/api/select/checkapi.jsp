@@ -7,9 +7,9 @@
    
 <%
 try(DBConnector con = new DBConnector();){
-		UserDao map = con.OpenMap(request, UserDao.class);
+	UserDao map = con.OpenMap(request, UserDao.class);
 		List<User> userid = map.getuserid();		
-		List<User> usernickname =map.getuseNickname();
+		List<User> usernickname =map.getuserNickname();
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("userid", userid);
