@@ -21,6 +21,7 @@ public interface BoardDao {
 	public List<BoardInfo> getBoardInfoByTitle(@Param("title") String title);
 	
 	
+	
 	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
 	@Select("select * from userInfo where userNum = #{userNum} and password = #{userPw}")
 	public UserInfo getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
@@ -39,17 +40,19 @@ public interface BoardDao {
 
 
 	@Results( id = "BoardInfo",value = {
+			@Result(property="boardListNum", column="boardListNum"),
 			@Result(property="title", column="title"),
-			@Result(property="mainContents", column="mainContents"),
-			@Result(property="userInfo", column="userNickName", one=@One(select="getUserByUserNickName"))
+			@Result(property="userNickName", column="userNickName", one=@One(select="getUserByUserNickName")),
+			@Result(property="hitCount", column="hitCount"),
+			@Result(property="regDate", column="regDate")
 		})
-	@Select("select * from boardInfo order by id desc")
+	@Select("select boardListNum, title, userNickName, hitCount, regDate from boardInfo order by boardListNum desc")
 	public List<BoardInfo> getBoardInfoAll();
 
-	@Select("select x.boardListNum, x.title, x.userNickName from (select ROWNUM as num, result.* from (select * from boardInfo order by id desc) result) x where num <= #{limit}")
+	@Select("select x.boardListNum, x.title, x.userNickName,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num <= #{limit}")
 	public List<BoardInfo> getBoardInfoLimit(@Param("limit") int limit);
 		
-	@Select("select x.boardListNum, x.title, x.userNickName from (select ROWNUM as num, result.* from (select * from boardInfo order by id desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
+	@Select("select x.boardListNum, x.title, x.userNickName,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
 	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 
 

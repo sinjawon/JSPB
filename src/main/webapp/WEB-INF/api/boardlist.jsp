@@ -4,17 +4,17 @@
 <%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
 
 <%
-try(DBConnector con = new DBConnector();){
+	try(DBConnector con = new DBConnector();){
 		BoardDao map = con.OpenMap(request, BoardDao.class);
 		List<BoardInfo> exec = null;
 		
- 		if(request.getParameter("searchtype") == null || 
-		request.getParameter("searchtype").equalsIgnoreCase("all"))
-	exec = map.getBoardAll();
-		else if(request.getParameter("searchtype").equalsIgnoreCase("userNickName"))
-	exec = map.getBoardByUserNickName(request.getParameter("userNickName"));
-		else if(request.getParameter("searchtype").equalsIgnoreCase("title"))
-	exec = map.getBoardByTitle(request.getParameter("title"));
+ 	if(request.getParameter("searchtype") == null || 
+			request.getParameter("searchtype").equalsIgnoreCase("all"))
+		exec = map.getBoardInfoAll();
+	else if(request.getParameter("searchtype").equalsIgnoreCase("userNickName"))
+		exec = map.getBoardInfoByUserNickName(request.getParameter("userNickName"));
+	else if(request.getParameter("searchtype").equalsIgnoreCase("title"))
+		exec = map.getBoardInfoByTitle(request.getParameter("title"));
  		
  		
 		Map<String, Object> result = new HashMap<String, Object>();

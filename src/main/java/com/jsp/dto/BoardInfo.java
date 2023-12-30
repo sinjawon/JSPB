@@ -21,7 +21,7 @@ public class BoardInfo {
 		return mainContents;
 	}
 	public UserInfo getUser() {
-		return user;
+		return userInfo;
 	}
 	public int getHitCount() {
 		return hitCount;
@@ -39,7 +39,7 @@ public class BoardInfo {
 		this.mainContents = mainContents;
 	}
 	public void setUser(UserInfo user) {
-		this.user = user;
+		this.userInfo = userInfo;
 	}
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
