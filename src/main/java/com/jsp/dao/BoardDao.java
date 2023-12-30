@@ -9,47 +9,48 @@ import com.jsp.dto.*;
 public interface BoardDao {
 
 	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
-	@Select("select * from user where userNickName = #{userNickName}")
-	public User getUserByUserNickName(@Param("userNickName") String userNickName);
+	@Select("select * from userInfo where userNickName = #{userNickName}")
+	public UserInfo getUserInfoByUserNickName(@Param("userNickName") String userNickName);
 	
 	// board 에서 userNickName 으로 검색
-	@Select("select * from board where userNickName = #{userNickName}")
-	public List<Board> getBoardByUserNickName(@Param("userNickName") String userNickName);
+	@Select("select * from boardInfo where userNickName = #{userNickName}")
+	public List<BoardInfo> getBoardInfoByUserNickName(@Param("userNickName") String userNickName);
 	
-	@Select("select * from board where title = #{title}")
-	public List<Board> getBoardByTitle(@Param("title") String title);
+	// board 에서 title 로 검색
+	@Select("select * from boardInfo where title = #{title}")
+	public List<BoardInfo> getBoardInfoByTitle(@Param("title") String title);
 	
 	
 	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
-	@Select("select * from user where userNum = #{userNum} and password = #{userPw}")
-	public User getUserCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
+	@Select("select * from userInfo where userNum = #{userNum} and password = #{userPw}")
+	public UserInfo getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
 
-	// board 에 글 쓸때 자동으로 seqboard번호가 증가 title, contents
-	@Insert("insert into board values(seqboard.nextval, #{boardListNum}, #{title}, #{contents})")
-	public void insertBoard(@Param("boardListNum") String boardListNum, @Param("title") String title, @Param("contents") String contents);
+	// board 에 글 쓸때 자동으로 seqBoardListNum 번호가 증가 title, mainContents
+	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{boardListNum}, #{title}, #{mainContents})")
+	public void insertBoardInfo(@Param("boardListNum") String boardListNum, @Param("title") String title, @Param("mainContents") String mainContents);
 	
 	// board 에 글 지울때 boardListNum 인 글을 지운다?
-	@Delete("delete from board where boardListNum = #{boardListNum}")
-	public void deleteBoard(@Param("boardListNum") int boardListNum);
+	@Delete("delete from boardInfo where boardListNum = #{boardListNum}")
+	public void deleteBoardInfo(@Param("boardListNum") int boardListNum);
 	
-	// board 에 글 수정할때 boardListNum 인 글에서 title 과 contents 를 수정한다
-	@Update("update board set title = #{title}, contents = #{contents} where boardListNum =#{boardListNum}")
-	public void updateBoard(@Param("title") String title, @Param("contents") String contents, @Param("boardListNum") String boardListNum);
+	// board 에 글 수정할때 boardListNum 인 글에서 title 과 mainContents 를 수정한다
+	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardListNum =#{boardListNum}")
+	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardListNum") String boardListNum);
 
 
-	@Results( id = "Board",value = {
+	@Results( id = "BoardInfo",value = {
 			@Result(property="title", column="title"),
-			@Result(property="contents", column="contents"),
-			@Result(property="user", column="userNickName", one=@One(select="getUserByUserNickName"))
+			@Result(property="mainContents", column="mainContents"),
+			@Result(property="userInfo", column="userNickName", one=@One(select="getUserByUserNickName"))
 		})
-	@Select("select * from boardlist order by id desc")
-	public List<Board> getBoardAll();
+	@Select("select * from boardInfo order by id desc")
+	public List<BoardInfo> getBoardInfoAll();
 
-	@Select("select x.id, x.title, x.author_id from (select ROWNUM as num, result.* from (select * from boardlist order by id desc) result) x where num <= #{limit}")
-	public List<Board> getBoardLimit(@Param("limit") int limit);
+	@Select("select x.boardListNum, x.title, x.userNickName from (select ROWNUM as num, result.* from (select * from boardInfo order by id desc) result) x where num <= #{limit}")
+	public List<BoardInfo> getBoardInfoLimit(@Param("limit") int limit);
 		
-	@Select("select x.id, x.title, x.author_id from (select ROWNUM as num, result.* from (select * from boardlist order by id desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
-	public List<Board> getBoardPage(@Param("limit") int limit, @Param("page")  int page);
+	@Select("select x.boardListNum, x.title, x.userNickName from (select ROWNUM as num, result.* from (select * from boardInfo order by id desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
+	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 
 
 
