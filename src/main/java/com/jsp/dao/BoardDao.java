@@ -9,26 +9,25 @@ import com.jsp.dto.*;
 public interface BoardDao {
 
 	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
-	@Select("select * from userInfo where userNickName = #{userNickName}")
-	public UserInfo getUserInfoByUserNickName(@Param("userNickName") String userNickName);
+	@Select("select * from userDto where usernickname = #{usernickname}")
+	public UserDTO getUserInfoByUserNickName(@Param("usernickname") String usernickname);
 	
 	// board 에서 userNickName 으로 검색
-	@Select("select * from boardInfo where userNickName = #{userNickName}")
-	public List<BoardInfo> getBoardInfoByUserNickName(@Param("userNickName") String userNickName);
+	@Select("select boardListNum, title, usernickname, hitCount, regDate from boardInfo where usernickname = #{usernickname}")
+	public List<BoardInfo> getBoardInfoByUserNickName(@Param("usernickname") String usernickname);
+
 	
 	// board 에서 title 로 검색
-	@Select("select * from boardInfo where title = #{title}")
+	@Select("select boardListNum, title, usernickname, hitCount, regDate from boardInfo where title = #{title}")
 	public List<BoardInfo> getBoardInfoByTitle(@Param("title") String title);
-	
-	
-	
+
 	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
 	@Select("select * from userInfo where userNum = #{userNum} and password = #{userPw}")
-	public UserInfo getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
+	public UserDTO getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
 
 	// board 에 글 쓸때 자동으로 seqBoardListNum 번호가 증가 title, mainContents
 	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{boardListNum}, #{title}, #{mainContents})")
-	public void insertBoardInfo(@Param("boardListNum") String boardListNum, @Param("title") String title, @Param("mainContents") String mainContents);
+	public void insertBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents);
 	
 	// board 에 글 지울때 boardListNum 인 글을 지운다?
 	@Delete("delete from boardInfo where boardListNum = #{boardListNum}")
@@ -42,17 +41,17 @@ public interface BoardDao {
 	@Results( id = "BoardInfo",value = {
 			@Result(property="boardListNum", column="boardListNum"),
 			@Result(property="title", column="title"),
-			@Result(property="userNickName", column="userNickName", one=@One(select="getUserByUserNickName")),
+			@Result(property="usernickname", column="usernickname", one=@One(select="getUserByUserNickName")),
 			@Result(property="hitCount", column="hitCount"),
 			@Result(property="regDate", column="regDate")
 		})
-	@Select("select boardListNum, title, userNickName, hitCount, regDate from boardInfo order by boardListNum desc")
+	@Select("select boardListNum, title, usernickname, hitCount, regDate from boardInfo order by boardListNum desc")
 	public List<BoardInfo> getBoardInfoAll();
 
-	@Select("select x.boardListNum, x.title, x.userNickName,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num <= #{limit}")
+	@Select("select x.boardListNum, x.title, x.usernickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num <= #{limit}")
 	public List<BoardInfo> getBoardInfoLimit(@Param("limit") int limit);
 		
-	@Select("select x.boardListNum, x.title, x.userNickName,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
+	@Select("select x.boardListNum, x.title, x.usernickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
 	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 
 

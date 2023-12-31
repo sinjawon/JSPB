@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, org.json.*"%>
@@ -11,11 +12,10 @@
  	if(request.getParameter("searchtype") == null || 
 			request.getParameter("searchtype").equalsIgnoreCase("all"))
 		exec = map.getBoardInfoAll();
-	else if(request.getParameter("searchtype").equalsIgnoreCase("userNickName"))
-		exec = map.getBoardInfoByUserNickName(request.getParameter("userNickName"));
+	else if(request.getParameter("searchtype").equalsIgnoreCase("usernickname"))
+		exec = map.getBoardInfoByUserNickName(request.getParameter("usernickname"));
 	else if(request.getParameter("searchtype").equalsIgnoreCase("title"))
-		exec = map.getBoardInfoByTitle(request.getParameter("title"));
- 		
+		exec = map.getBoardInfoByTitle(request.getParameter("title"));		
  		
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("data", exec);
