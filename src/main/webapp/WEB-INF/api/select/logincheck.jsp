@@ -11,7 +11,7 @@
 		UserDao map = con.OpenMap(request, UserDao.class);
 				
 		String userid = request.getParameter("userid"); 
-		String realpassword=map.getuserinfo(userid).toStringPW();		
+		String realpassword=map.getuserpw(userid).toStringPW();		
 		String nopassword = request.getParameter("password");
 		
 	    

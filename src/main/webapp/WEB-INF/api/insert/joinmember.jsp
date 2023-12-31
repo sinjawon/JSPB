@@ -11,7 +11,7 @@ try(DBConnector con = new DBConnector();){
 		String nickname= request.getParameter("nickname");
 		String userid= request.getParameter("userid");
 		String password= request.getParameter("password");
-
+	
 		map.joinmember(name, nickname, userid, password);
 		
 	    request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request,response);
@@ -20,4 +20,4 @@ try(DBConnector con = new DBConnector();){
 		e.printStackTrace();
 	}
 %>
-dsad
+

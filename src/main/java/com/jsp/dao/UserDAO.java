@@ -33,7 +33,7 @@ public interface UserDao {
 		
 	//유저비밀번호찾기 이건 api안뿌리게 
 	@Select("select userPw from Member3 where userid=#{userid}")
-	public User getuserinfo(@Param("userid") String userid);
+	public User getuserpw(@Param("userid") String userid);
 	
 	
 	

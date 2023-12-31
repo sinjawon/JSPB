@@ -11,12 +11,13 @@
  일단 집이야 일단와야해
   <!-- 사용자가 로그인되어 있는 경우에만 로그아웃 버튼 표시 -->
     <% if (session.getAttribute("UserNum") != null) { %>
-        <p>Welcome, <%= session.getAttribute("UserNum") %>!</p>
+        <p>Welcome,로그인했구나 <%= session.getAttribute("UserNum") %>번회원!</p>
         <form action="../select/logout.jsp">
             <input type="hidden" name="logoutAction" value="true">
             <input type="submit" value="로그아웃">
         </form>
     <% } else { %>
+    	<a href="http://localhost:8080/app/login.jsp">로그인하기</a>
         <p>로그인이 필요합니다.</p>
         <!-- 로그인 폼 등을 표시하는 부분 -->
     <% } %>

@@ -10,7 +10,7 @@
 	UserDao map = con.OpenMap(request, UserDao.class);
 	
 		 
-		 User realpassword=map.getuserinfo("qlqlql");		
+		 User realpassword=map.getuserpw("qlqlql");		
 		
 		
 		Map<String, Object> result = new HashMap<String, Object>();

@@ -12,8 +12,8 @@ try(DBConnector con = new DBConnector();){
 		List<User> usernickname =map.getuserNicknameAll();
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("userid", userid);
-		result.put("usenickname", usernickname);
+		result.put("userids", userid);
+		result.put("userNicknames", usernickname);
 		response.getWriter().write(new JSONObject(result).toString());
 	}
 	catch(Exception e) {
