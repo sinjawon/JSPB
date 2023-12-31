@@ -6,17 +6,19 @@
 
    
 <%
-try(DBConnector con = new DBConnector();){
+  try(DBConnector con = new DBConnector();){
 	UserDao map = con.OpenMap(request, UserDao.class);
-		List<User> userid = map.getuseridAll();		
-		List<User> usernickname =map.getuserNicknameAll();
+	
+		 
+		 User realpassword=map.getuserinfo("qlqlql");		
+		
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("userid", userid);
-		result.put("usenickname", usernickname);
+		result.put("testapi", realpassword);
+		
 		response.getWriter().write(new JSONObject(result).toString());
 	}
 	catch(Exception e) {
-		
+		response.getWriter().write("오류다힝");
 	}
 %>

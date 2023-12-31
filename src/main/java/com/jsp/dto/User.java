@@ -1,7 +1,7 @@
 package com.jsp.dto;
 
 public class User {
-    private int userNum; //Primary Key 가입순서대로 1씩 증가    
+    private String userNum; //Primary Key 가입순서대로 1씩 증가    
     private String userNickName; // 게시글 작성자 아이디 안보여주려고 가입때 닉네임 설정
     private String userName;
     private String userPw;
@@ -14,10 +14,10 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getUserNum() {
+	public String getUserNum() {
 		return userNum;
 	}
-	public void setUserNum(int userNum) {
+	public void setUserNum(String userNum) {
 		this.userNum = userNum;
 	}
 	public String getUserId() {
@@ -40,5 +40,12 @@ public class User {
 	}
     
 	
+	public String toStringPW() {
+		return this.userPw;
+	}
+	
+	public String toStringNum() {
+		return this.userNum;
+	}
 
 }

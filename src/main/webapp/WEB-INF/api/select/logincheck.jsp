@@ -5,33 +5,36 @@
 
 
 
-<%
-	try(DBConnector con = new DBConnector();){
-		if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();
+<%            
+	  try(DBConnector con = new DBConnector();){
+		if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();		
 		UserDao map = con.OpenMap(request, UserDao.class);
-		
-		String usernumber =request.getParameter("userNum");
+				
 		String userid = request.getParameter("userid"); 
+		String realpassword=map.getuserinfo(userid).toStringPW();		
 		String nopassword = request.getParameter("password");
 		
-	    String realpassword=map.getuserinfo(userid).toString();
+	    
 	    
 	    if(nopassword.equals(realpassword)){
 	    	
-	    	session.setAttribute(usernumber,usernumber);
-	    	session.setMaxInactiveInterval(60 * 30);	    	
-	    request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request, response);
+	    	String UserNum=map.getuserNum(userid).toStringNum();
 	    	
-	    }else{
-	   request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+	    	session.setAttribute("UserNum",UserNum);
+	    	
+	    	session.setMaxInactiveInterval(60 * 30);
+	    	
+         request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request, response);
+	    	
+	    }else{	        	
+	    	
+	    	/* response.sendRedirect("/app/login.jsp"); */
 	    }
-		
-		
-		
-		
-		
+	    
+
 	}
 	catch(Exception e) {
-		response.getWriter().write("GET방식이니");
+		session.setMaxInactiveInterval(0);
+		response.sendRedirect("/app/home.jsp");
 	}
 %>
