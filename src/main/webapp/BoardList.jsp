@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.time.LocalDate" %>
+<%@ page import="com.jsp.system.Ajax, org.json.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,21 +8,17 @@
 <title>Board List</title>
 <style>
 		<%-- 임시로 보기 좋으라고 --%>
-        table {
-            border-collapse: collapse;
-            width: 80%;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color:gray;
-        }
+   	div{
+		display: inline-block;
+	}
+	div.boardListNum, div.usernickname,div.hitCount,div.regDate{
+		width:100px;
+	}
+	div.title{
+		width:600px;
+	}
     </style>
+<script src="/resources/boardlist.js"></script>
 </head>
 <body>
 
@@ -36,35 +32,15 @@
 		다른 페이지로 이동하는 번호는 몇개씩 보여주지? 
 		사진은 리스트에 보여줄건가 아님 텍스트만 보여줄건가?
 		사진이 없는 글은 디폴트 이미지를 넣어주나?  --%>
-        <table class="listArea">
-           <thead>
-            <tr>
-                <th>글번호</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>조회수</th>
-                <th>작성일</th>
-            </tr>
-           </thead>
-           <tbody>
-    		<tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-            </tr>
-           </tbody>
-           <tfoot>
-           	<tr>
-           		<td></td>
-           		<td></td>
-           		<td>임시 1,2,3,4,5 페이지 번호</td>
-           		<td></td>
-           		<td></td>
-           	</tr>
-           </tfoot>
-        </table>
+	<div id="boards">
+		<template>
+			<div class="boardListNum">0</div>
+			<div class="title">제목</div>
+			<div class="userNickname">작성자</div>
+			<div class="hitCount">작성자</div>
+			<div class="regDate">작성자</div>
+		</template>
+	</div>
         
 	<div class="searchBar">
    		<form action="</boardList" method="GET">

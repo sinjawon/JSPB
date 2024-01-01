@@ -9,16 +9,16 @@ import com.jsp.dto.*;
 public interface BoardDao {
 
 	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
-	@Select("select * from userDto where usernickname = #{usernickname}")
-	public UserDTO getUserInfoByUserNickName(@Param("usernickname") String usernickname);
+	@Select("select * from userDto where userNickname = #{userNickname}")
+	public UserDTO getUserInfoByUserNickName(@Param("userNickname") String usernickname);
 	
 	// board 에서 userNickName 으로 검색
-	@Select("select boardListNum, title, usernickname, hitCount, regDate from boardInfo where usernickname = #{usernickname}")
-	public List<BoardInfo> getBoardInfoByUserNickName(@Param("usernickname") String usernickname);
+	@Select("select boardListNum, title, userNickname, hitCount, regDate from boardInfo where userNickname = #{userNickname}")
+	public List<BoardInfo> getBoardInfoByUserNickName(@Param("userNickname") String userNickname);
 
 	
 	// board 에서 title 로 검색
-	@Select("select boardListNum, title, usernickname, hitCount, regDate from boardInfo where title = #{title}")
+	@Select("select boardListNum, title, userNickname, hitCount, regDate from boardInfo where title = #{title}")
 	public List<BoardInfo> getBoardInfoByTitle(@Param("title") String title);
 
 	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
@@ -37,21 +37,25 @@ public interface BoardDao {
 	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardListNum =#{boardListNum}")
 	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardListNum") String boardListNum);
 
-
+/*
 	@Results( id = "BoardInfo",value = {
 			@Result(property="boardListNum", column="boardListNum"),
 			@Result(property="title", column="title"),
 			@Result(property="usernickname", column="usernickname", one=@One(select="getUserByUserNickName")),
 			@Result(property="hitCount", column="hitCount"),
 			@Result(property="regDate", column="regDate")
-		})
-	@Select("select boardListNum, title, usernickname, hitCount, regDate from boardInfo order by boardListNum desc")
+		})*/
+	@Select("select count(*) as cnt from boardInfo order by boardListNum desc")
+	public int getBoardInfoAllCnt();
+
+	@Select("select * from boardInfo order by boardListNum desc")
 	public List<BoardInfo> getBoardInfoAll();
 
-	@Select("select x.boardListNum, x.title, x.usernickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num <= #{limit}")
+	
+	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num <= #{limit}")
 	public List<BoardInfo> getBoardInfoLimit(@Param("limit") int limit);
 		
-	@Select("select x.boardListNum, x.title, x.usernickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
+	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
 	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 
 

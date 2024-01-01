@@ -7,7 +7,7 @@ public class BoardInfo {
     private int boardListNum; // Primary Key 글쓴 순서대로 1씩 증가
     private String title; // 제목
     private String mainContents; // 본문
-    private UserDTO user;  // User DTO
+    private String userNickname;
     private int hitCount; // 조회수
     private Date regDate;  // 게시글 등록일
     
@@ -21,11 +21,12 @@ public class BoardInfo {
 		return mainContents;
 	}
 
-	public UserDTO getUserDTO() {
-		return user;
+	public String getUserNickname() {
+		return userNickname;
 	}
-	public void setUserDTO(UserDTO user) {
-		this.user = user;
+
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
 	}
 
 	public int getHitCount() {
