@@ -28,7 +28,7 @@
 	    	
 	    }else{	        	
 	    	
-	    	/* response.sendRedirect("/app/login.jsp"); */
+	      response.sendRedirect("/app/login.jsp");
 	    }
 	    
 
