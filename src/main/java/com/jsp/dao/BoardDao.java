@@ -34,8 +34,8 @@ public interface BoardDao {
 	public void deleteBoardInfo(@Param("boardListNum") int boardListNum);
 	
 	// board 에 글 수정할때 boardListNum 인 글에서 title 과 mainContents 를 수정한다
-	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardListNum =#{boardListNum}")
-	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardListNum") String boardListNum);
+	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")
+	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardlistNum") String boardlistNum);
 
 /*
 	@Results( id = "BoardInfo",value = {
@@ -52,10 +52,11 @@ public interface BoardDao {
 	public List<BoardInfo> getBoardInfoAll();
 
 	
-	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num <= #{limit}")
+	
+	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardlistNum desc) result) x where num <= #{limit}")
 	public List<BoardInfo> getBoardInfoLimit(@Param("limit") int limit);
 		
-	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardListNum desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
+	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardlistNum desc) result) x where num between #{limit} * #{page} + 1 and #{limit} * (#{page} + 1)")
 	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 
 

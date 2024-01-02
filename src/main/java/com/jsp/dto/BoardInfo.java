@@ -1,6 +1,5 @@
 package com.jsp.dto;
 
-import java.util.Date;
 
 public class BoardInfo {
 	// seqBoard
@@ -9,10 +8,10 @@ public class BoardInfo {
     private String mainContents; // 본문
     private String userNickname;
     private int hitCount; // 조회수
-    private Date regDate;  // 게시글 등록일
+    private String regDate;  // 게시글 등록일
     
 	public int getBoardListNum() {
-		return boardListNum;
+		return boardListNum ;
 	}
 	public String getTitle() {
 		return title;
@@ -32,11 +31,11 @@ public class BoardInfo {
 	public int getHitCount() {
 		return hitCount;
 	}
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 	public void setBoardListNum(int boardListNum) {
-		this.boardListNum = boardListNum;
+		this.boardListNum  = boardListNum ;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -44,7 +43,7 @@ public class BoardInfo {
 	public void setMainContents(String mainContents) {
 		this.mainContents = mainContents;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 	public void setHitCount(int hitCount) {
