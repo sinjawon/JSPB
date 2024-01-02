@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
 
 @Mapper
-public interface UserDAO {
+public interface UserDao {
 	
 
 	//회원가입 시 등록 할 (이름,닉네임,아이디,비번) usernum은 시퀀스로 

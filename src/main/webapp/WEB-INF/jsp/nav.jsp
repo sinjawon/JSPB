@@ -19,7 +19,7 @@
  <header>
       <nav>
         <h1>
-          <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" /></a>
+         <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" style="width:100%" /></a>
         </h1>
         <div class="menu">
           <div class="search">
@@ -39,7 +39,7 @@
             </div>
             <div class="login">
               <div><a href="login.jsp">로그인</a></div>
-              <div><a href="">회원가입</a></div>
+              <div><a href="joinmembership.jsp">회원가입</a></div>
             </div>
           </div>
         </div>

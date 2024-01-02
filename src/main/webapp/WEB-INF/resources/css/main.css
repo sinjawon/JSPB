@@ -138,3 +138,12 @@ img {
   margin: auto;
   margin-top: 3vh;
 }
+
+.swiper-button-next::after,
+.swiper-button-prev::after{
+  color:#fa5
+}
+
+.swiper-pagination-bullet-active{
+  background-color:#fa5;
+}

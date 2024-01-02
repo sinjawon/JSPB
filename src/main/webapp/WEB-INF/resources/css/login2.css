@@ -3,9 +3,11 @@
 
 .login-box {
   width: 30vw;
-  height: 60vh;
+  height: 70vh;
   border-radius: 15px;
   margin: auto;
+  margin-top: 12rem;
+  margin-bottom: 12rem;
 }
 
 .login-title {
@@ -58,7 +60,7 @@
   width: 100%;
 }
 
-.img {
+.loginimg {
   width: 15vw;
   margin: auto;
 }
