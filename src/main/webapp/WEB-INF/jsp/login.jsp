@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="../jsp/nav.jsp"%>
  <div class="login-box">
       <div class="img">
         <img src="/resources/logindog.jpg" alt="이미지" class="login-img" />
-      </div>
+  	    </div>
       <div class="login-title">로그인</div>
       <div class="login-box2">
         <form class="login-form">
@@ -32,13 +33,19 @@
           />
           <input type="submit" value="로그인" class="loginbtn" />
         </form>
+        <!-- 로그인 실패 시 에러 메시지가 있으면 표시 -->
+        <% String loginError = (String)request.getAttribute("loginError"); %>
+        <% if (loginError != null) { %>
+            <p style="color: red;"><%= loginError %></p>
+        <% } %>
         <div class="gojoin">
-          <a href="http://localhost:9888/app/joinmembership.jsp">회원가입</a>
+          <a href="http://localhost:4545/app/joinmembership.jsp">회원가입</a>
         </div>
       </div>
     </div>
     
     
+<%@include file="../jsp/footer.jsp"%>
 	<%-- <form action="../api/select/logincheck.jsp">	
  	<label for="userid">아이디:</label><input type="text" name="userid">
  	<label for="password">비밀번호:</label><input type="text" name="password">
