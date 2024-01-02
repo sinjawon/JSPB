@@ -33,12 +33,13 @@ public class BoardPostSave extends HttpServlet {
             sb.append(line);
         }
         String postData = sb.toString();
-        
+        System.out.println("됐냐?");
+
         // 받은 JSON 데이터 parse
         JSONObject jsonObject = new JSONObject(postData);
         String title = jsonObject.getString("title");
-        String content = jsonObject.getString("content");
-        String author = jsonObject.getString("author");
+        String content = jsonObject.getString("mainContents");
+        String userNickname = jsonObject.getString("userNickname");
         String createDate = jsonObject.getString("createDate");
         int recommended = jsonObject.getInt("recommended");
         
@@ -47,13 +48,14 @@ public class BoardPostSave extends HttpServlet {
        
         try {
             // DB 연결 
-            Connection conn = DriverManager.getConnection("@@@@ DB주소 @@@@@", "username", "pwd");
-            
-            String query = "되나?";
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.2.101:1521:xe", "roh", "1234");
+            String query = "INSERT INTO BoardInfo (title, content, author, create_date, recommended) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(query);
             pst.setString(1, title);
             pst.setString(2, content);
-            pst.setString(3, author);
+            pst.setString(3, userNickname);
+            pst.setString(4, createDate);
+            pst.setInt(5, recommended);
             
             //DB는 제목, 내용, 작성자, 작성시간, 
             

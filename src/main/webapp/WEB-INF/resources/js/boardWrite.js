@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-let authorId; //
+let boardListNum; //
 let title;
-let content;
-let author;
+let mainContents;
+let userNickname;
 let createDate;
 let recommended;
 //확인버튼 동작
@@ -20,16 +20,16 @@ function submitPost() {
     console.log("저장되었습니다"); //확인용 메세지
     let titleInput = document.getElementById("titleInput");
     let postTextarea = document.getElementById("postTextarea");
-    let authorArea = document.getElementById("author");
+    let userNicknameArea = document.getElementById("userNickname");
     title = titleInput.value;
-    content = postTextarea.value;
-    author = authorArea.value;
+    mainContents = postTextarea.value;
+    userNickname = userNicknameArea.value;
     createDate = new Date();
     recommended = 0;
     let post = {
         "title": title, //제목
-        "content": content, //내용
-        "author": author, //작성자
+        "mainContents": mainContents, //내용
+        "userNickname": userNickname, //작성자
         "createDate": createDate, //작성일
         "recommended": recommended, //추천수
     };
@@ -67,12 +67,12 @@ function updatePost() {
         let newPost = {
             "newTitle": updatedTitle,
             "newContent": updatedContent,
-            "author": author,
+            "userNickname": userNickname,
             "createDate": createDate,
             "recommended": recommended, //수정하면 추천 날아가게 해야하나?
         };
         // 수정 API
-        ajax(`/api/updatePost/${authorId}`, {
+        ajax(`/api/updatePost/${boardListNum}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -98,8 +98,10 @@ function cancelPost() {
     console.log("삭제되었습니다"); //확인용 메세지
     let titleInput = document.getElementById("titleInput");
     let postTextarea = document.getElementById("postTextarea");
+    let userNicknameArea = document.getElementById("userNickname");
     titleInput.value = "";
     postTextarea.value = "";
+    userNicknameArea.value = "";
 }
 //임시 ajax
 function ajax(url, option) {

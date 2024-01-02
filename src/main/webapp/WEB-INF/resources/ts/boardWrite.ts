@@ -1,10 +1,10 @@
 
 // 데이터 전송 JSON 포장용
 
-let authorId:number;//
+let boardListNum:number;//
 let title:String;
-let content:String;
-let author:String;
+let mainContents:String;
+let userNickname:String;
 let createDate:Date;
 let recommended:number;
 
@@ -17,21 +17,21 @@ function submitPost() {
     console.log("저장되었습니다");//확인용 메세지
     let titleInput = document.getElementById("titleInput") as HTMLInputElement;
     let postTextarea = document.getElementById("postTextarea") as HTMLTextAreaElement;
-    let authorArea = document.getElementById("author") as HTMLInputElement;
+    let userNicknameArea = document.getElementById("userNickname") as HTMLInputElement;
  
   
   
     title = titleInput.value;
-    content = postTextarea.value;
-    author = authorArea.value;
+    mainContents = postTextarea.value;
+    userNickname = userNicknameArea.value;
     createDate = new Date();
     recommended = 0;
     
 
 let post = {
     "title" : title,                     //제목
-    "content" : content,                 //내용
-    "author" : author,                   //작성자
+    "mainContents" : mainContents,       //내용
+    "userNickname" : userNickname,       //작성자
     "createDate" : createDate,           //작성일
     "recommended" : recommended,         //추천수
 }
@@ -82,13 +82,13 @@ function updatePost() {
             let newPost = {
                 "newTitle" : updatedTitle,
                 "newContent" : updatedContent,
-                "author" : author,
+                "userNickname" : userNickname,
                 "createDate" : createDate,
                 "recommended" : recommended,//수정하면 추천 날아가게 해야하나?
             }
 
             // 수정 API
-            ajax(`/api/updatePost/${authorId}`, {
+            ajax(`/api/updatePost/${boardListNum}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -122,9 +122,12 @@ function cancelPost() {
 
     let titleInput = document.getElementById("titleInput") as HTMLInputElement;
     let postTextarea = document.getElementById("postTextarea") as HTMLTextAreaElement;
+    let userNicknameArea = document.getElementById("userNickname") as HTMLInputElement;
+
     
     titleInput.value = "";
     postTextarea.value = "";
+    userNicknameArea.value = "";
 }
 
 

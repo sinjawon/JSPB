@@ -4,12 +4,12 @@
 <%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
 
 <%
-    try (DBConnector con = new DBConnector();) {
+try (DBConnector con = new DBConnector();) {
         if (!request.getMethod().equalsIgnoreCase("POST")) {
             throw new Exception();
         }
 
-        BoardDAO map = con.OpenMap(request, BoardDAO.class);
+        BoardDao map = con.OpenMap(request, BoardDao.class);
         BoardUser user = map.getBoardUserCheck(request.getParameter("id"), request.getParameter("password"));
 
         if (user == null) {

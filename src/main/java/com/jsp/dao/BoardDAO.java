@@ -6,19 +6,19 @@ import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
 
 @Mapper
-public interface BoardDAO {
+public interface BoardDao {
 
 	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
 	@Select("select * from userDto where userNickname = #{userNickname}")
 	public UserDTO getUserInfoByUserNickName(@Param("userNickname") String usernickname);
 	
 	// board 에서 userNickName 으로 검색
-	@Select("select boardListNum, title, userNickname, hitCount, regDate from boardInfo where userNickname = #{userNickname}")
+	@Select("select * from boardInfo where userNickname = #{userNickname}")
 	public List<BoardInfo> getBoardInfoByUserNickName(@Param("userNickname") String userNickname);
 
 	
 	// board 에서 title 로 검색
-	@Select("select boardListNum, title, userNickname, hitCount, regDate from boardInfo where title = #{title}")
+	@Select("select * from boardInfo where title = #{title}")
 	public List<BoardInfo> getBoardInfoByTitle(@Param("title") String title);
 
 	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
@@ -26,7 +26,7 @@ public interface BoardDAO {
 	public UserDTO getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
 
 	// board 에 글 쓸때 자동으로 seqBoardListNum 번호가 증가 title, mainContents
-	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{boardListNum}, #{title}, #{mainContents})")
+	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{title}, #{mainContents})")
 	public void insertBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents);
 	
 	// board 에 글 지울때 boardListNum 인 글을 지운다?

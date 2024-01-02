@@ -17,7 +17,7 @@
     <h1>글쓰기</h1>
     
     <form id="writeForm">
-    	<input type="text" id="author" placeholder="작성자">
+    	<input type="text" id="userNickname" placeholder="작성자">
     	
     	<br>
         <input type="text" id="titleInput" placeholder="글 제목">
