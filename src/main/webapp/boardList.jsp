@@ -54,8 +54,9 @@
         		<button type="submit">검색</button>
    		</form>
    		<form action="/insert" method="post">
-   			<button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>
-   		</form>  		
+   			<button type="button" class="navyBtn" onClick="location.href='/JSPB/insert.jsp'">글쓰기</button>
+   		</form>  
+   				
 	</div>
 
 

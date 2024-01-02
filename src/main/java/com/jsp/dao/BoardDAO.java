@@ -6,8 +6,22 @@ import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
 
 @Mapper
-public interface BoardDAO {
+public interface BoardDao {
 
+	
+	//@@지수-새로운 글을 추가하는 메서드. 0은 추천수입니다.
+	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
+	public void insertNewBoard(@Param("title") String title, @Param("mainContents") String mainContents, @Param("userNickname") String userNickname);
+	
+	// 맨 밑에 있던 걸 올리기만 했습니다
+	// board 에 글 수정할때 boardListNum 인 글에서 title 과 mainContents 를 수정한다
+	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")
+	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardlistNum") String boardlistNum);
+	
+	
+	
+	
+	
 	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
 	@Select("select * from userDto where userNickname = #{userNickname}")
 	public UserDTO getUserInfoByUserNickName(@Param("userNickname") String usernickname);
@@ -32,11 +46,8 @@ public interface BoardDAO {
 	// board 에 글 지울때 boardListNum 인 글을 지운다?
 	@Delete("delete from boardInfo where boardListNum = #{boardListNum}")
 	public void deleteBoardInfo(@Param("boardListNum") int boardListNum);
-	
-	// board 에 글 수정할때 boardListNum 인 글에서 title 과 mainContents 를 수정한다
-	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")
-	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardlistNum") String boardlistNum);
 
+	
 /*
 	@Results( id = "BoardInfo",value = {
 			@Result(property="boardListNum", column="boardListNum"),
@@ -60,6 +71,10 @@ public interface BoardDAO {
 	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 
 
+	
+	
+	
+	
 
 }
 
