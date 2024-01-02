@@ -43,8 +43,13 @@
 	</div>
         
 	<div class="searchBar">
-   		<form action="</boardList" method="GET">
+   		<form action="/api/searchboard" method="post">
         	<label for="search">Search</label>
+        	<select id="searchtype" name="searchtype">
+				<option value="All">All</option>
+				<option value="title">제목</option>
+				<option value="userNickname">작성자</option>
+			</select> 
         		<input type="text" id="search" name="search">
         		<button type="submit">검색</button>
     			<a href="/writeBoard">글쓰기</a>
