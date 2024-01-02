@@ -4,7 +4,7 @@
 <%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
 
 <%
-    try(DBConnector con = new DBConnector();) {
+try(DBConnector con = new DBConnector();) {
         if(!request.getMethod().equalsIgnoreCase("delete")) throw new Exception();
         BoardDAO map = con.OpenMap(request, BoardDAO.class);
         BoardUser user = map.getBoardUserCheck(request.getParameter("id"), request.getParameter("password"));

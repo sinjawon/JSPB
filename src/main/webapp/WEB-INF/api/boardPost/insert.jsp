@@ -9,7 +9,7 @@
 	try(DBConnector con = new DBConnector();){
 		if( ! request.getMethod().equalsIgnoreCase("POST")) throw new Exception();
 		BoardDAO map = con.OpenMap(request, BoardDAO.class);
-		BoardUser user = 
+		UserInfo user = 
 				map.getBoardUserCheck(request.getParameter("id"), request.getParameter("password"));
 		if(user == null) throw new Exception();
 		

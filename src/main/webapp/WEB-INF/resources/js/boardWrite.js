@@ -58,7 +58,7 @@ function deletePost(postId) {
 }
 // 게시글 수정
 function updatePost() {
-    // 수정 코드 작성 (로그인 상태 확인 후 수정)
+    // 로그인 상태 확인
     if (isLoggedIn()) {
         let titleInput = document.getElementById("titleInput");
         let postTextarea = document.getElementById("postTextarea");
@@ -93,26 +93,6 @@ function isLoggedIn() {
     //로그인 확인용 함수자리임
     return true;
 }
-// 현재 글 수정용
-// function editPost(postId: number) {
-//     authorId = postId;
-//     // postId로 DB에서 정보 불러오기
-//     (postId)
-//         .then((post) => {
-//             if (post) {
-//                 // 글 정보를 불러와서 UI에 표시하는 로직 작성
-//                 let titleInput = document.getElementById('titleInput') as HTMLInputElement;
-//                 let postTextarea = document.getElementById('postTextarea') as HTMLTextAreaElement;
-//                 titleInput.value = post.title;
-//                 postTextarea.value = post.content;
-//             } else {
-//                 console.log('해당 postId에 해당하는 글을 찾을 수 없습니다.');
-//             }
-//         })
-//         .catch((error) => {
-//             console.error('데이터베이스에서 글을 불러오는 중 오류가 발생했습니다:', error);
-//         });
-// }
 function cancelPost() {
     // 글쓰기 창에서 작성된 내용 초기화 
     console.log("삭제되었습니다"); //확인용 메세지
