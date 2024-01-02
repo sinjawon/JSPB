@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/login.css"> 
 </head>
 <body>
+
   <div id="formWrap">
  	<form id="signupForm" action="../api/insert/joinmember.jsp">
  	<label for="name">이름:</label><input type="text" placeholder="*" id="name" name="name">

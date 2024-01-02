@@ -48,5 +48,8 @@ public class User {
 	public String toStringNum() {
 		return this.userNum;
 	}
+	public String toStringNick() {
+		return this.userNickName;
+	}
 
 }

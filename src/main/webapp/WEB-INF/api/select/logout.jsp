@@ -7,6 +7,7 @@
 <%  if(request.getParameter("logoutAction").equals("true")) {
 	
 	session.removeAttribute("UserNum");
+	session.removeAttribute("UserNickName");
 	session.setMaxInactiveInterval(0);
 	
    response.sendRedirect("/app/home.jsp");

@@ -18,29 +18,21 @@
 	        if(nopassword.equals(realpassword)){
 	    	
 	    	String UserNum=map.getuserNum(userid).toStringNum();
-	    	
+	    	String UserNickName=map.getuserNickName(userid).toStringNick();
+	    	//세션에 유저 번호,닉네임 저장
 	    	session.setAttribute("UserNum",UserNum);
-	    	
+	    	session.setAttribute("UserNickName",UserNickName);	    	
 	    	session.setMaxInactiveInterval(60 * 30);
-	    	
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
-	    	HttpServletRequest newRequest = new HttpServletRequestWrapper(request);
-	    	dispatcher.forward(newRequest, response);
-
-	    	
+	    		    		
+	    	 response.sendRedirect("/app/home.jsp");   	
 	    }else{	        	
-	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("/app/login.jsp");
-		     HttpServletRequest newRequest = new HttpServletRequestWrapper(request);
-		     newRequest.setAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다1.");
-		     dispatcher.forward(newRequest, response);
+	    	session.setAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다2.");		    
 		     response.sendRedirect("/app/login.jsp");
 	    }
 	   
 	   }else{			  
-		     RequestDispatcher dispatcher = request.getRequestDispatcher("/app/login.jsp");
-		     HttpServletRequest newRequest = new HttpServletRequestWrapper(request);
-		     newRequest.setAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다2.");
-		     dispatcher.forward(newRequest, response);
+		
+		     session.setAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다2.");		    
 		     response.sendRedirect("/app/login.jsp");
 	   }
 	  }		

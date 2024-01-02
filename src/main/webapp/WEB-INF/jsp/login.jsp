@@ -13,7 +13,10 @@
  	<input type="submit" value="로그인">
  	</form>
  	 <%-- 로그인 실패 시 에러 메시지가 있으면 표시 --%>
-        <% String loginError = (String)request.getAttribute("loginError"); %>
+ 	     <%
+ 	     String loginsuccess = (String)session.getAttribute("UserNum");	     
+ 	     %>
+        <% String loginError = (String)session.getAttribute("loginError");%>
         <% if (loginError != null) { %>
             <p style="color: red;"><%= loginError %></p>
         <% } %>
