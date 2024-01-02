@@ -10,10 +10,15 @@
         BoardUser user = map.getBoardUserCheck(request.getParameter("id"), request.getParameter("pw"));
         if(user == null) throw new Exception();
 
-        map.deleteBoard(Integer.parseInt(request.getParameter("postId")));
+        int postId = Integer.parseInt(request.getParameter("postId"));
+        String newTitle = request.getParameter("newTitle");
+        // 수정할 내용에 따라 필요한 파라미터들을 받아옴
+        // ...
 
-        response.getWriter().write("게시글이 삭제되었습니다.");
+        map.updateBoard(newTitle, postId); // 수정할 내용을 이용하여 게시글을 업데이트함
+
+        response.getWriter().write("게시글이 수정되었습니다.");
     } catch(Exception e) {
-        response.getWriter().write("게시글 삭제 중 오류가 발생했습니다.");
+        response.getWriter().write("게시글 수정 중 오류가 발생했습니다.");
     }
 %>

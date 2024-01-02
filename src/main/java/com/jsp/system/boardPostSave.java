@@ -8,33 +8,64 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 
 @WebServlet("/api/savePostData")
-public class boardPostSave extends HttpServlet {
+public class BoardPostSave extends HttpServlet {
 
+	
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // JSON 데이터 받아옴
         BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
         StringBuilder sb = new StringBuilder();
-        //한줄씩 읽을거
         String line;
         while ((line = reader.readLine()) != null) {
             sb.append(line);
         }
         String postData = sb.toString();
-
         
-        System.out.println("전송된 데이터: " + postData);
+        // 받은 JSON 데이터 파싱
+        JSONObject jsonObject = new JSONObject(postData);
+        String title = jsonObject.getString("title");
+        String content = jsonObject.getString("content");
+        String author = jsonObject.getString("author");
+        // 필요한 데이터는 추가로 파싱
+        
+       
+        try {
+            // DB 연결 
+            Connection conn = DriverManager.getConnection("@@@@ DB주소 @@@@@", "username", "pwd");
+            
+            String query = "되나?";
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, title);
+            pst.setString(2, content);
+            pst.setString(3, author);
+            
+            
+            pst.executeUpdate();
+            
+            // DB 작업 성공 시 클라이언트에 성공 응답 전송
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            out.println("{ \"message\": \"데이터가 성공적으로 저장되었습니다.\" }");
 
-        // JSON 형식으로 보냄
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        out.println("{ \"message\": \"데이터가 성공적으로 저장되었습니다.\" }");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+            System.out.println("DB 작업 중 오류가 발생했습니다.");
+        }
     }
 }
+   
