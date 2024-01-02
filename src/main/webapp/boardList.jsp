@@ -53,7 +53,7 @@
         		<input type="text" id="search" name="search">
         		<button type="submit">검색</button>
    		</form>
-   		   		<form action="/insert" method="post">
+   		<form action="/insert" method="post">
    			<button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>
    		</form>  		
 	</div>

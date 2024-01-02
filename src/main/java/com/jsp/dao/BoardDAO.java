@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
 
 @Mapper
-public interface BoardDao {
+public interface BoardDAO {
 
 	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
 	@Select("select * from userDto where userNickname = #{userNickname}")
