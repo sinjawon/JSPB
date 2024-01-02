@@ -12,6 +12,11 @@
  	<label for="password">비밀번호:</label><input type="text" name="password">
  	<input type="submit" value="로그인">
  	</form>
+ 	 <%-- 로그인 실패 시 에러 메시지가 있으면 표시 --%>
+        <% String loginError = (String)request.getAttribute("loginError"); %>
+        <% if (loginError != null) { %>
+            <p style="color: red;"><%= loginError %></p>
+        <% } %>
  	<a href="http://localhost:8080/app/joinmembership.jsp">회원가입</a>
 </body>
 </html>
