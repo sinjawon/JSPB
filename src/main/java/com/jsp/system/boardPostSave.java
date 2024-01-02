@@ -34,11 +34,14 @@ public class BoardPostSave extends HttpServlet {
         }
         String postData = sb.toString();
         
-        // 받은 JSON 데이터 파싱
+        // 받은 JSON 데이터 parse
         JSONObject jsonObject = new JSONObject(postData);
         String title = jsonObject.getString("title");
         String content = jsonObject.getString("content");
         String author = jsonObject.getString("author");
+        String createDate = jsonObject.getString("createDate");
+        int recommended = jsonObject.getInt("recommended");
+        
         // 필요한 데이터는 추가로 파싱
         
        
@@ -51,6 +54,8 @@ public class BoardPostSave extends HttpServlet {
             pst.setString(1, title);
             pst.setString(2, content);
             pst.setString(3, author);
+            
+            //DB는 제목, 내용, 작성자, 작성시간, 
             
             
             pst.executeUpdate();

@@ -5,9 +5,9 @@
 
 <%
     try(DBConnector con = new DBConnector();) {
-        if(!request.getMethod().equalsIgnoreCase("GET")) throw new Exception();
+        if(!request.getMethod().equalsIgnoreCase("delete")) throw new Exception();
         BoardDAO map = con.OpenMap(request, BoardDAO.class);
-        BoardUser user = map.getBoardUserCheck(request.getParameter("id"), request.getParameter("pw"));
+        BoardUser user = map.getBoardUserCheck(request.getParameter("id"), request.getParameter("password"));
         if(user == null) throw new Exception();
 
         map.deleteBoard(Integer.parseInt(request.getParameter("postId")));

@@ -4,21 +4,27 @@
 <%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
 
 <%
-    try(DBConnector con = new DBConnector();) {
-        if(!request.getMethod().equalsIgnoreCase("GET")) throw new Exception();
+    try (DBConnector con = new DBConnector();) {
+        if (!request.getMethod().equalsIgnoreCase("POST")) {
+            throw new Exception();
+        }
+
         BoardDAO map = con.OpenMap(request, BoardDAO.class);
-        BoardUser user = map.getBoardUserCheck(request.getParameter("id"), request.getParameter("pw"));
-        if(user == null) throw new Exception();
+        BoardUser user = map.getBoardUserCheck(request.getParameter("id"), request.getParameter("password"));
 
-        int postId = Integer.parseInt(request.getParameter("postId"));
-        String newTitle = request.getParameter("newTitle");
-        // 수정할 내용에 따라 필요한 파라미터들을 받아옴
-        // ...
+        if (user == null) {
+            throw new Exception();
+        }
 
-        map.updateBoard(newTitle, postId); // 수정할 내용을 이용하여 게시글을 업데이트함
+ 
+        int postId = Integer.parseInt(request.getParameter("postId"));	// 수정할 글의 ID
+        String newTitle = request.getParameter("newTitle"); 			// 수정할 제목
+        String newContent = request.getParameter("newContent"); 		// 수정할 내용
 
-        response.getWriter().write("게시글이 수정되었습니다.");
-    } catch(Exception e) {
-        response.getWriter().write("게시글 수정 중 오류가 발생했습니다.");
+        map.updateBoard(request.getParameter("newTitle"), request.getParameter("newContent"), postId);
+
+        response.getWriter().write("Succeed!");
+    } catch (Exception e) {
+        response.getWriter().write("잘못된 접속이거나 정보를 전달하였습니다.");
     }
 %>

@@ -7,10 +7,10 @@
 
 <%
 	try(DBConnector con = new DBConnector();){
-		if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();
+		if( ! request.getMethod().equalsIgnoreCase("POST")) throw new Exception();
 		BoardDAO map = con.OpenMap(request, BoardDAO.class);
 		BoardUser user = 
-				map.getBoardUserCheck(request.getParameter("id"), request.getParameter("pw"));
+				map.getBoardUserCheck(request.getParameter("id"), request.getParameter("password"));
 		if(user == null) throw new Exception();
 		
 		map.insertBoard(request.getParameter("title"), user.getId());
