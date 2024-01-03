@@ -27,12 +27,12 @@
             placeholder="닉네임"
             class="ipbox"
           />
-          <button class="ckbox">중복체크</button>
+          <button class="ckbox" type="button"  onclick="logincheckName()">중복체크</button>
         </div>
         <!-- <label for="id">아이디:</label> -->
         <div class="id-box">
           <input type="text" name="id" class="ipbox" placeholder="아이디" />
-          <button class="ckbox">중복체크</button>
+          <button class="ckbox" type="button"  onclick="logincheckID()">중복체크</button>
         </div>
         <!-- <label for="password">비밀번호:</label> -->
         <input
