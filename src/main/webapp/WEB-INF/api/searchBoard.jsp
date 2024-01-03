@@ -6,11 +6,11 @@
 
 <%
 
-	System.out.println("api board data start");
-	Map<String, Object> result = new HashMap<String, Object>();
-	Map<String, Object> pagingMap = new HashMap<String, Object>();
-	List<BoardInfo> exec = new ArrayList<BoardInfo>();
-	result.put("data", exec);
+System.out.println("api board data start");
+Map<String, Object> result = new HashMap<String, Object>();
+Map<String, Object> pagingMap = new HashMap<String, Object>();
+List<BoardInfo> exec = new ArrayList<BoardInfo>();
+result.put("data", exec);
 
 int pageSize	= 10;
 int totalPage	= 0;

@@ -7,7 +7,7 @@
     <title>글쓰기 페이지</title>
 </head>
 <body>
-    <script defer src="/resources/boardWrite.js"></script>
+    <script defer src="/resources/postings.js"></script>
     <h1>글쓰기</h1>
     
     <form id="writeForm" action="/api/newPost" method="post">
@@ -22,5 +22,4 @@
     </form>
 </body>
 </html>
-
 
