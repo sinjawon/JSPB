@@ -145,7 +145,7 @@
   color:#fa5
 }
 
-.swiper-pagination-bullet-active{
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color:#fa5;
 }
 

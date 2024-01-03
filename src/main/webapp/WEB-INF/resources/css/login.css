@@ -3,18 +3,18 @@
   text-align: center;
   font-size: 25px;
   font-weight: bold;
-  margin-top:13vw;
 }
 
 .join-box {
   width: 30vw;
-  height: 30vh;
+  height: 50vh;
   border-radius: 15px;
   margin: auto;
   margin-bottom: 20vw;
 }
 .join-labelbox {
   width: 50%;
+  height:100%;
   display: flex;
   flex-direction: column;
   margin: 10px auto;
@@ -43,7 +43,7 @@
   border-radius: 20px;
   border: none;
   background-color: #fa5;
-  margin-top: 5vh;
+  margin-top: 2vh;
   cursor: pointer;
   font-weight: bold;
 }
@@ -57,13 +57,14 @@
   display: flex;
 }
 
-/* .join-img {
+.joinpic{
   width: 100%;
 }
 
-.img {
-  width: 13vw;
-  margin: 20vw auto;
-} */
+.join-img {
+  width: 10vw;
+  margin: auto;
+  margin-top:11rem;
+} 
 
 
