@@ -7,6 +7,7 @@
 <title>Insert title here</title>
  <script src="/resources/login.js" defer></script>
 <link rel="stylesheet" type="text/css" href="/resources/login.css"> 
+<script type="text/javascript" src="/resources/login.js"></script>
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
