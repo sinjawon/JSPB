@@ -11,9 +11,9 @@
 <body>
 <%@include file="../jsp/nav.jsp"%>
 <form action="../api/joninmenmber" class="join-box">
-      <!-- <div class="img"> -->
-      <!--   <img src="/resources/joincat2.png" alt="이미지" class="join-img" />
-      </div> -->
+      <div class="join-img"> 
+       <img src="/resources/joincat2.png" alt="이미지" class="joinpic" />
+      </div> 
       
       <div class="join-title">회원가입</div>
       <div class="join-labelbox">

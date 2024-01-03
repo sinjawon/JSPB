@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="/resources/mainbanner05_sub.jpg" alt="기타 "  />
+          <img class="image" src="/resources/mainbanner05_sub.jpg" alt="기타 "  />
         </div>
       </div>
       <div class="swiper-button-next next1"></div>
