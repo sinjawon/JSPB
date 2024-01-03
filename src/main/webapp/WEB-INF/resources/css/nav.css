@@ -25,12 +25,11 @@ nav {
   z-index: 99;
   border-bottom: 3px solid #fa5;
 }
-nav h1 {
+nav > h1 {
   width: 23%;
+  border: 2px solid black; 
 }
-nav h1 > img {
-  width: 100%;
-}
+
 nav .menu {
   width: 100%;
 }

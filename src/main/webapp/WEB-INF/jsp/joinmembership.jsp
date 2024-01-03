@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/login.css"> 
 </head>
 <body>
-<%@include file="../jsp/nav.jsp"%>
+<%-- <%@include file="../jsp/nav.jsp"%>
 <form action="../api/joninmenmber" class="join-box">
       <!-- <div class="img"> -->
       <!--   <img src="/resources/joincat2.png" alt="이미지" class="join-img" />
@@ -54,8 +54,8 @@
       <!-- 동의버튼 넣을건지? -->
     </form>
     
-<%@include file="../jsp/footer.jsp"%>
-  <!-- <div id="formWrap">
+<%@include file="../jsp/footer.jsp"%> --%>
+  <div id="formWrap">
  	<form id="signupForm" action="../api/insert/joinmember.jsp">
  	<label for="name">이름:</label><input type="text" placeholder="*" id="name" name="name">
  	<label for="nickname">닉네임:</label><input type="text" placeholder="*" id="nickname" name="nickname"><button type="button"  onclick="logincheckName()">닉네임 중복체크</button>
@@ -65,6 +65,6 @@
  	<div id="passwordMatchStatus"></div>
  	<input id="signupButton" type="submit" value="회원 가입">
  	</form>
- 	</div> -->
+ 	</div>
 </body>
 </html>

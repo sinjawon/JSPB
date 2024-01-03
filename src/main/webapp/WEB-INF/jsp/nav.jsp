@@ -16,12 +16,12 @@
 <title>Insert title here</title>
 </head>
 <body>
- <header>
+ <header> 
       <nav>
         <h1>
-         <a href="main.jsp"><img src="/resources/logo.png" alt="Logo"  /></a>
+         <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" style="width:350px" /></a>
         </h1>
-        <div class="menu">
+        <div class="menu"> 
           <div class="search">
             <input type="search" />
             <button type="submit">
