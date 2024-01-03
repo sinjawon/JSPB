@@ -14,12 +14,9 @@
         <input type="text" id="userNickname" name="userNickname" placeholder="작성자">
         <br>
         <input type="text" id="titleInput" name="title" placeholder="글 제목">
-        <br>
-        <br>
+        <br><br>
         <textarea id="postTextarea" name="mainContents" placeholder="글 내용"></textarea>
-        <br>
-        <br>
-        <br>
+        <br><br><br>
         <button type="button" onclick="submitPost()">확인</button>
         <button type="button" onclick="cancelPost()">취소</button>
     </form>

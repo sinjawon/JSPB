@@ -9,10 +9,10 @@ import com.jsp.dto.*;
 public interface BoardDao {
 
 	
-	//@@지수-새로운 글을 추가하는 메서드. 0은 추천수입니다.
+	//@@지수-새로운 글을 추가하는 메서드. 
 	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
 	public void insertNewBoard(@Param("title") String title, @Param("mainContents") String mainContents, @Param("userNickname") String userNickname);
-	
+	 
 	// 맨 밑에 있던 걸 올리기만 했습니다
 	// board 에 글 수정할때 boardListNum 인 글에서 title 과 mainContents 를 수정한다
 	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
 <!DOCTYPE html>
 <html>
@@ -16,10 +16,10 @@
 			String password = "1234";
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url, user, password); // url, user, password¸¦ º¯¼ö·Î Ã³¸®ÇØµµµÊ
-			out.print("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°áÀÌ ¼º°øÇß½À´Ï´Ù.");
+			conn = DriverManager.getConnection(url, user, password); // url, user, passwordë¥¼ ë³€ìˆ˜ë¡œ ì²˜ë¦¬í•´ë„ë¨
+			out.print("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ì´ ì„±ê³µí–ˆìŠµë‹ˆë‹¤.");
 		} catch(SQLException ex) {
-			out.print("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°áÀÌ ½ÇÆĞÇß½À´Ï´Ù.");
+			out.print("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ì´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 			out.print("SQLException : " + ex.getMessage());
 		}finally{
 			if(conn != null) {

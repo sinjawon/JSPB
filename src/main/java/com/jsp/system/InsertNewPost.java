@@ -23,7 +23,7 @@ public class InsertNewPost extends HttpServlet {
             BoardDao map = con.OpenMap(request, BoardDao.class);
             map.insertNewBoard(title, mainContents, userNickname);
         } catch(Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("오류");
         }
         response.sendRedirect("/boardList.jsp");
     }
