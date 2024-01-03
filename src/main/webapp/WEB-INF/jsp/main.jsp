@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="/resources/mainbanner05_sub.jpg" alt="기타 " />
+          <img src="/resources/mainbanner05_sub.jpg" alt="기타 "  />
         </div>
       </div>
       <div class="swiper-button-next next1"></div>
@@ -66,7 +66,7 @@
         <div class="mainshopbox">
           <a class="brag-a" href="#home">
             <div class="mainshopimg">
-              <img src="/resources/dog1.jpg" />
+              <img src="/resources/dog1.jpg" class="main-img2" />
             </div>
             <div class="shoptitle">제목</div>
             <div class="mainprice">가격</div>
@@ -111,7 +111,7 @@
         <div class="main-img">
           <a class="brag-a" href="#home">
             <div class="brag-img">
-              <img src="/resources/dog1.jpg" />
+              <img src="/resources/dog1.jpg" class="main-img3" />
             </div>
             <div>제목</div>
           </a>

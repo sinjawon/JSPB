@@ -42,7 +42,7 @@
           placeholder="비밀번호"
         />
         <input
-          type="text"
+          type="password"
           placeholder="비밀번호 확인"
           id="passwordcheck"
           name="passwordcheck"

@@ -26,6 +26,8 @@ body {
 .footerlogo {
   width: 150px;
   margin: 30px 0;
+  border-radius: 10px;
+  
 }
 
 .footer-box,
