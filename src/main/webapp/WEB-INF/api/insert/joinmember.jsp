@@ -14,7 +14,7 @@ try(DBConnector con = new DBConnector();){
 	
 		map.joinmember(name, nickname, userid, password);
 		
-	    request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request,response);
+		response.sendRedirect("/app/home.jsp");
 	}
 	catch(Exception e) {
 		e.printStackTrace();

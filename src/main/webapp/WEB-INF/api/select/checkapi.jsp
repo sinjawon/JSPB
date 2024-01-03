@@ -7,8 +7,7 @@
    
 <%
 	try(DBConnector con = new DBConnector();){		
-		UserDao map = con.OpenMap(request, UserDao.class);
-		
+		UserDao map = con.OpenMap(request, UserDao.class);		
 		//null값처리
 		List<User> userid = new ArrayList<>();
 		for (User id : map.getuseridAll()) {

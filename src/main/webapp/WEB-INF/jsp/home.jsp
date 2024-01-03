@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그아웃기능 수록</title>
+<title>여긴 홈이다 여긴 홈이야</title>
 </head>
 <body>
 
