@@ -48,7 +48,7 @@
         <input type="submit" value="회원가입" class="submitbtn" id="signupButton" />
       </div>
       <!-- 동의버튼 넣을건지? -->
-    </form>
+    </form>s
   
 <%@include file="../jsp/footer.jsp"%>
   <!--  <div id="formWrap">
