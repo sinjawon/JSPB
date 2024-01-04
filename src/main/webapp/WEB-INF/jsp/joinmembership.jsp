@@ -49,7 +49,7 @@
       </div>
       <!-- 동의버튼 넣을건지? -->
     </form>
-  
+      
 <%@include file="../jsp/footer.jsp"%>
   <!--  <div id="formWrap">
  	<form id="signupForm" action="../api/insert/joinmember.jsp">
