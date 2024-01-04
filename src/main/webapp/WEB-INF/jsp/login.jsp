@@ -19,7 +19,7 @@
           <!-- <label for="id">아이디:</label> -->
           <input
             type="text"
-            name="id"
+            name="userid"
             class="login-ipbox"
             placeholder="아이디"
           />

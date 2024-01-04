@@ -37,6 +37,8 @@
                 <li><a href="#">애완용품거래</a></li>
               </ul>
             </div>
+            
+            <p><%=session.getAttribute("UserNickName") %> 님</p> <!-- 로그인하면 이름 뜨게 -->
             <div class="login">
               <div><a href="login.jsp">로그인</a></div>
               <div><a href="joinmembership.jsp">회원가입</a></div>

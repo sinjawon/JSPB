@@ -29,7 +29,7 @@ if(userid != null){
 			    	session.setAttribute("UserNum",UserNum);
 			    	session.setAttribute("UserNickName",UserNickName);	    	
 			    	session.setMaxInactiveInterval(60 * 30);	    		
-			    	response.sendRedirect("/app/home.jsp");   	
+			    	response.sendRedirect("/app/main.jsp");   	
 			  }else{	        	
 				   session.setAttribute("loginError", "매치하는 비밀번호x");		    
 					response.sendRedirect("/app/login.jsp");
