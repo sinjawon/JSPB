@@ -8,7 +8,7 @@ package com.jsp.dto;
 	    private String userId;//유저 아이디
 	    private String userPw;//유저페스워드
 	    private String userEmail;//유저 이메일
-	    private String userImage;//유저 이미지
+	    private String userProfile;//유저 이미지
 	    
 		public String getUserNum() {
 			return userNum;
@@ -47,10 +47,10 @@ package com.jsp.dto;
 			this.userEmail = userEmail;
 		}
 		public String getUserImage() {
-			return userImage;
+			return userProfile;
 		}
 		public void setUserImage(String userImage) {
-			this.userImage = userImage;
+			this.userProfile = userImage;
 		}
 	    
 	public String toStringNum() {
@@ -64,5 +64,12 @@ package com.jsp.dto;
 	  public String toStringNick() {
 		  return this.userNickName;
 	  }
+    public String toStringEmail() {
+    	return this.userEmail;
+    }
     
+    public String toStringProfile() {
+    	return this.userProfile;
+    }
+	  
 }

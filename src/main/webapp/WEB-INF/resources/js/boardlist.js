@@ -40,6 +40,6 @@ ajax("/api/boardlist", {
 });
 function submitSearch() {
     console.log("전송되었습니다");
-    var form = document.getElementById("searchtype");
+    let form = document.getElementById("searchtype");
     form.submit();
 }

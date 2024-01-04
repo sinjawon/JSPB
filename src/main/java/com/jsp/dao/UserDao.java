@@ -10,7 +10,7 @@ public interface UserDao {
 	
 
 	//회원가입 시 등록 할 (이름,닉네임,아이디,비번) usernum은 시퀀스로 
-	@Insert("INSERT INTO Member3 VALUES(seqbd.NEXTVAL, #{name}, #{nickname}, #{userid}, #{password})")
+	@Insert("INSERT INTO Member3(userNum,userName,userNickName,userId,userPw) VALUES(seqbd.NEXTVAL, #{name}, #{nickname}, #{userid}, #{password})")
 	public void joinmember(
 	        @Param("name") String name,
 	        @Param("nickname") String nickname,
@@ -25,7 +25,14 @@ public interface UserDao {
 		@Select( "select userNickName from Member3 where userid=#{userid}")
 		public User getuserNickName(@Param("userid") String userid);
 		
+	//아이디로 이메일 찾기	
+			@Select( "select userEmail from Member3 where userid=#{userid}")
+				public User getuserEmail(@Param("userid") String userid);
 	
+	//아이디로 이미지 찾기	
+			@Select( "select userProfile from Member3 where userid=#{userid}")
+				public User getuserProfile(@Param("userid") String userid);		
+			
 
 	//모든 유저닉네임찾기 
 	@Select( "select userNickName from Member3")
@@ -41,12 +48,7 @@ public interface UserDao {
 	@Select("select userPw from Member3 where userid=#{userid}")
 	public User getuserpw(@Param("userid") String userid);
 	
-	
-	
-	
-	
-	
-	
+
 	}
 
 
