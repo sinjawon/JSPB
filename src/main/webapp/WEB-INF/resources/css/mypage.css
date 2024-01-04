@@ -72,29 +72,27 @@
     
 }
 
-.info_menu > *:hover{
-    color: #fa5;
-}
-.info_menu > *{
+
+.info_menu > .Modifybtn{
     display: block;
     margin: auto;
     border-radius: 20px;
-    margin-top: 1rem;
-    width: 10%;
-    height: 40px;
-    background-color: white;
-    border: 1px solid #999;
-    font-size: 1.3rem;
-    font-weight: bold;
-    
+   	width: 14vw;
+ 	height: 5vh;
+  	background-color: #fa5;    
+  	font-weight: bold;
+    border: none;
 }
 
-.info_menu > form > button{
-	border: none;
-	background-color: white;
-	font-size: 1.3rem;
-	font-weight: bold;
-	padding-top: 0.2rem;
+.info_menu > form > .logoutbtn{
+  width: 14vw;
+  height: 5vh;
+  border-radius: 20px;
+  border: none;
+  background-color: #fa5;
+  cursor: pointer;
+  margin: 1.5vh auto;
+  font-weight: bold;
 }
 
 .info_wrap .info_image{

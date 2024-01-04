@@ -50,8 +50,8 @@
             </div>
         </div>
         <div class="info_menu">
-            <button ><a href="#">정보 수정</a></button>
-            <form action="../api/select/logout.jsp"><button type="submit" value="로그아웃">로그아웃</button><input type="hidden" name="logoutAction" value="true"/></form>
+            <button class='Modifybtn' ><a href="#">정보 수정</a></button>
+            <form action="../api/select/logout.jsp"><button type="submit" value="로그아웃" class='logoutbtn'>로그아웃</button><input type="hidden" name="logoutAction" value="true"/></form>
         </div>
         <div class="withdraw"><a href="">회원탈퇴</a></div>
     </div>
