@@ -10,7 +10,7 @@ public interface UserDao {
 	
 
 	//회원가입 시 등록 할 (이름,닉네임,아이디,비번) usernum은 시퀀스로 
-	@Insert("INSERT INTO Member3 VALUES(seqbd.NEXTVAL, #{name}, #{nickname}, #{userid}, #{password})")
+	@Insert("INSERT INTO Member3(userNum,userName,userNickName,userId,userPw) VALUES(seqbd.NEXTVAL, #{name}, #{nickname}, #{userid}, #{password})")
 	public void joinmember(
 	        @Param("name") String name,
 	        @Param("nickname") String nickname,

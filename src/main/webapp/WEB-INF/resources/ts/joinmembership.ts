@@ -14,6 +14,7 @@ async function loginajax(url: string, option?: any) {
   } 
 
 //아이디 중복확인
+
 async function logincheckID(){
    loginajax("http://localhost:8080/api/select/checkapi.jsp",{  
      method: "POST",

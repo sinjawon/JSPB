@@ -28,7 +28,7 @@ async function ajax(url: string, option?: any) {
       }
     }
   }
-});
+);
 
 function submitSearch(){
   console.log("전송되었습니다")
