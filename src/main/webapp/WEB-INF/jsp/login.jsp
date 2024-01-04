@@ -15,7 +15,7 @@
   	    </div>
       <div class="login-title">로그인</div>
       <div class="login-box2">
-        <form class="login-form">
+        <form class="login-form" action="../api/select/logincheck.jsp">
           <!-- <label for="id">아이디:</label> -->
           <input
             type="text"
