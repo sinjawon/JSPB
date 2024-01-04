@@ -83,7 +83,7 @@ nav .box .login {
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.5);
   position: relative;
-}
+}  
 nav .box .login > div:hover {
   font-weight: bold;
   color: #333;
