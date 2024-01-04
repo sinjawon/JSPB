@@ -24,7 +24,7 @@ public interface BoardDao {
 	
 	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
 	@Select("select * from userDto where userNickname = #{userNickname}")
-	public UserDTO getUserInfoByUserNickName(@Param("userNickname") String usernickname);
+	public User getUserInfoByUserNickName(@Param("userNickname") String usernickname);
 	
 	// board 에서 userNickName 으로 검색
 	@Select("select * from boardInfo where userNickname = #{userNickname}")
@@ -37,7 +37,7 @@ public interface BoardDao {
 
 	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
 	@Select("select * from userInfo where userNum = #{userNum} and password = #{userPw}")
-	public UserDTO getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
+	public User getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
 
 	// board 에 글 쓸때 자동으로 seqBoardListNum 번호가 증가 title, mainContents
 	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{title}, #{mainContents})")
