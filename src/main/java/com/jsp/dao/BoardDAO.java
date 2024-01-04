@@ -8,6 +8,9 @@ import com.jsp.dto.*;
 @Mapper
 public interface BoardDao {
 
+	@Select("SELECT * FROM boardInfo WHERE boardListNum = #{boardListNum}")
+	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
+
 	
 	//@@지수-새로운 글을 추가하는 메서드. 
 	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
