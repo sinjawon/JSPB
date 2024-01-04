@@ -42,7 +42,7 @@
               <div><a href="joinmembership.jsp">회원가입</a></div>
             </div>
           </div>    
-        </div>
+        </div>     
       </nav>
     </header>
 </body>
