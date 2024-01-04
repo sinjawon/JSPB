@@ -30,7 +30,7 @@
                     <div></div>
                 </div>
             </div>
-          <%=session.getAttribute("UserProfile")%> 
+         
             
             <%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
@@ -38,7 +38,7 @@
         		 
         		 
         		 %>
-     		 <%=map.getAnimalProfile(usernum).getAnimalProfile()%>
+     		
         		  <div class="pet_info">
                   <span>반려동물</span>
                   <div class="info_image"><img src="<%=map.getAnimalProfile(usernum).getAnimalProfile()%>"  alt=""></div>
