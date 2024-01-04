@@ -9,43 +9,43 @@
 	  try(DBConnector con = new DBConnector();){
 		if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();		
 		UserDao map = con.OpenMap(request, UserDao.class);
-				
-		String userid = request.getParameter("userid"); 		
-		String realpassword=map.getuserpw(userid).toStringPW();		
+		
+		String userid = request.getParameter("userid"); 								
 		String nopassword = request.getParameter("password");
 		
-		if(userid != null && realpassword != null){				    
-	        if(nopassword.equals(realpassword)){
-	    	
-	    	String UserNum=map.getuserNum(userid).toStringNum();
-	    	
-	    	session.setAttribute("UserNum",UserNum);
-	    	
-	    	session.setMaxInactiveInterval(60 * 30);
-	    	
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
-	    	HttpServletRequest newRequest = new HttpServletRequestWrapper(request);
-	    	dispatcher.forward(newRequest, response);
-
-	    	
-	    }else{	        	
-	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("/app/login.jsp");
-		     HttpServletRequest newRequest = new HttpServletRequestWrapper(request);
-		     newRequest.setAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다1.");
-		     dispatcher.forward(newRequest, response);
-		     response.sendRedirect("/app/login.jsp");
-	    }
-	   
-	   }else{			  
-		     RequestDispatcher dispatcher = request.getRequestDispatcher("/app/login.jsp");
-		     HttpServletRequest newRequest = new HttpServletRequestWrapper(request);
-		     newRequest.setAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다2.");
-		     dispatcher.forward(newRequest, response);
-		     response.sendRedirect("/app/login.jsp");
-	   }
-	  }		
+if(userid != null){	
+	
+		if(map.getuserpw(userid)!=null){			
+				String realpassword=map.getuserpw(userid).toStringPW();		
+			 if(nopassword.equals(realpassword)){
+				 //로그인성공
+				 String loginError = (String) session.getAttribute("loginError");
+				 if(loginError !=null){
+				 session.removeAttribute("loginError");
+				 }
+			    	String UserNum=map.getuserNum(userid).toStringNum();
+			    	String UserNickName=map.getuserNickName(userid).toStringNick();
+			    	//세션에 유저 번호,닉네임 저장
+			    	session.setAttribute("UserNum",UserNum);
+			    	session.setAttribute("UserNickName",UserNickName);	    	
+			    	session.setMaxInactiveInterval(60 * 30);	    		
+			    	response.sendRedirect("/app/home.jsp");   	
+			  }else{	        	
+				   session.setAttribute("loginError", "매치하는 비밀번호x");		    
+					response.sendRedirect("/app/login.jsp");
+				   }	   
+		}else{
+			session.setAttribute("loginError", "비밀번호에 맞는 아이디 x");		    
+			response.sendRedirect("/app/login.jsp");
+		}
+}else{
+session.setAttribute("loginError", "아이디를 잘못입력");		    
+response.sendRedirect("/app/login.jsp");
+		  }	
+		  } 
 	catch(Exception e) {
 		response.getWriter().write("오류오류0");
+		
 		/* session.setMaxInactiveInterval(0);
 		response.sendRedirect("/app/home.jsp"); */
 	}

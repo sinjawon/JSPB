@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그아웃기능 수록</title>
+<title>여긴 홈이다 여긴 홈이야</title>
 </head>
 <body>
 
@@ -12,7 +12,8 @@
   <!-- 사용자가 로그인되어 있는 경우에만 로그아웃 버튼 표시 -->
     <% if (session.getAttribute("UserNum") != null) { %>
         <p>Welcome,로그인했구나 <%= session.getAttribute("UserNum") %>번회원!</p>
-        <form action="../select/logout.jsp">
+        <p>너의 닉네임 <%= session.getAttribute("UserNickName") %></p>
+        <form action="../api/select/logout.jsp">
             <input type="hidden" name="logoutAction" value="true">
             <input type="submit" value="로그아웃">
         </form>
