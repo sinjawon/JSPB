@@ -8,7 +8,8 @@
   font-weight: normal;
   font-style: normal;
 }
-body {
+body
+ {
   font-family: "NanumSquareNeo-Variable";
 }
 
@@ -84,7 +85,8 @@ nav .box .login {
   color: rgba(0, 0, 0, 0.5);
   position: relative;
 }  
-nav .box .login > div:hover {
+nav .box .login > div:hover,
+.login input:hover {
   font-weight: bold;
   color: #333;
 }
@@ -100,4 +102,15 @@ nav .box .login::before {
   height: 500px;
   background-color: #444;
 }
+
+.login input{
+	border: none;
+	background-color: white;
+	font-size: 0.8rem;
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: bold;
+	font-family: "NanumSquareNeo-Variable";
+
+}
+
 
