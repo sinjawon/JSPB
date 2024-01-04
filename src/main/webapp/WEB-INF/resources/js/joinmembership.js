@@ -27,7 +27,10 @@ function logincheckID() {
             method: "POST",
             body: form,
         }).then((json) => {
+            console.log(json);
             let userIdsArray = json.userids.map(data => data.userId);
+        
+          
             let inputForUserId = document.querySelector("input[name='userid']").value;
             let checkID = userIdsArray.find(lang => lang === inputForUserId);
             if (checkID !== undefined) {
@@ -48,10 +51,12 @@ function logincheckName() {
             method: "POST",
             body: form,
         }).then((json) => {
-            let userNicknamesArray = json.userNicknames.map(data => data.userNickName);
+			console.log(json);
+            let userNicknamesArray = json.userNicknames.map(datas => datas.userNickName);
+           
             let inputForUserNickname = document.querySelector("input[name='nickname']").value;
-            let checkID = userNicknamesArray.find(lang => lang === inputForUserNickname);
-            if (checkID !== undefined) {
+            let checkName = userNicknamesArray.find(lang => lang === inputForUserNickname);
+            if (checkName !== undefined) {
                 namecheck = false;
                 alert("동일한 닉네임이  있습니다");
             }

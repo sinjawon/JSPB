@@ -15,13 +15,13 @@ async function loginajax(url: string, option?: any) {
 
 //아이디 중복확인
 async function logincheckID(){
-  await loginajax("http://localhost:8080/api/select/checkapi.jsp",{  
+   loginajax("http://localhost:8080/api/select/checkapi.jsp",{  
      method: "POST",
      body: form,
    }).then((json) => {    
-     let userIdsArray = json.userids.map(data => data.userId);
+     let userIds = json.userids.map(data => data.userId);
      let inputForUserId = document.querySelector("input[name='userid']").value;
-     let checkID =  userIdsArray.find(lang=>lang === inputForUserId);
+     let checkID =  userIds.find(lang=>lang === inputForUserId);
         if(checkID !== undefined){
            idcheck= false;        
             alert("동일한 아이디가 있습니다");
@@ -35,14 +35,14 @@ async function logincheckID(){
   }
 //닉네임중복 확인
   async function logincheckName(){
-      await loginajax("http://localhost:8080/api/select/checkapi.jsp",{  
+       loginajax("http://localhost:8080/api/select/checkapi.jsp",{  
        method: "POST",
        body: form,
      }).then((json) => {   
-       let userNicknamesArray = json.userNicknames.map(data => data.userNickName); 
+       let userNicknames = json.userNicknames.map(datas => datas.userNickname); 
        let inputForUserNickname = document.querySelector("input[name='nickname']").value;
-       let checkID =   userNicknamesArray.find(lang=>lang === inputForUserNickname);
-          if(checkID !== undefined){
+       let checkNmae =   userNicknames.find(lang=>lang === inputForUserNickname);
+          if(checkNmae !== undefined){
             namecheck= false;
               alert("동일한 닉네임이  있습니다");
           }else{

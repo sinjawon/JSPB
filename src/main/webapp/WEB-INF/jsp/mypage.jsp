@@ -47,6 +47,7 @@
                     <span>몸무게</span>
                     <div> </div>
                 </div>
+                
             </div>
         </div>
         <div class="info_menu">
