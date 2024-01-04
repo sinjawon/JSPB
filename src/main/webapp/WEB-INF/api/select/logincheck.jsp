@@ -27,7 +27,7 @@ if(userid != null){
 			    	String UserNickName=map.getuserNickName(userid).toStringNick();
 			    	//세션에 유저 번호,닉네임 저장
 			    	session.setAttribute("UserNum",UserNum);
-			    	session.setAttribute("UserNickName",UserNickName);	    	
+			    	session.setAttribute("UserNickName",UserNickName);
 			    	session.setMaxInactiveInterval(60 * 30);	    		
 			    	response.sendRedirect("/app/main.jsp");   	
 			  }else{	        	

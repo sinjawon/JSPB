@@ -9,6 +9,8 @@ public class BoardInfo {
     private String userNickname;
     private int hitCount; // 조회수
     private String regDate;  // 게시글 등록일
+	private int limit;
+    private int page;
     
 	public int getBoardListNum() {
 		return boardListNum ;
@@ -22,6 +24,12 @@ public class BoardInfo {
 
 	public String getUserNickname() {
 		return userNickname;
+	}
+	public int getLimit() {
+		return limit;
+	}
+	public int getPage() {
+		return page;
 	}
 
 	public void setUserNickname(String userNickname) {
@@ -48,6 +56,12 @@ public class BoardInfo {
 	}
 	public void setHitCount(int hitCount) {
 		this.hitCount = hitCount;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 }
