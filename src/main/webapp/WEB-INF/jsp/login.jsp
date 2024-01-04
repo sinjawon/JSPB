@@ -53,6 +53,6 @@
  	</form>
  	 <%-- 로그인 실패 시 에러 메시지가 있으면 표시 --%>
  	  
- 	<a href="http://localhost:8080/app/joinmembership.jsp">회원가입</a>
+ 	<a href="http://localhost:4545/app/joinmembership.jsp">회원가입</a>
 </body>
 </html>
