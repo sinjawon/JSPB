@@ -10,6 +10,6 @@
 	session.removeAttribute("UserNickName");
 	session.setMaxInactiveInterval(0);
 	
-   response.sendRedirect("/app/home.jsp");
+   response.sendRedirect("/app/main.jsp");
 }        	 
 %>
