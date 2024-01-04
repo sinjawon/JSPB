@@ -23,7 +23,7 @@ function loginajax(url, option) {
 //아이디 중복확인
 function logincheckID() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield loginajax("http://localhost:8080/api/select/checkapi.jsp", {
+        yield loginajax("http://localhost:4545/api/select/checkapi.jsp", {
             method: "POST",
             body: form,
         }).then((json) => {
@@ -47,7 +47,7 @@ function logincheckID() {
 //닉네임중복 확인
 function logincheckName() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield loginajax("http://localhost:8080/api/select/checkapi.jsp", {
+        yield loginajax("http://localhost:4545/api/select/checkapi.jsp", {
             method: "POST",
             body: form,
         }).then((json) => {
