@@ -15,11 +15,11 @@
   	    </div>
       <div class="login-title">로그인</div>
       <div class="login-box2">
-        <form class="login-form">
+        <form action="../api/select/logincheck.jsp" class="login-form">
           <!-- <label for="id">아이디:</label> -->
           <input
             type="text"
-            name="id"
+            name="userid"
             class="login-ipbox"
             placeholder="아이디"
           />
@@ -39,7 +39,7 @@
             <p style="color: red;"><%= loginError %></p>
         <% } %>
         <div class="gojoin">
-          <a href="http://localhost:4545/app/joinmembership.jsp">회원가입</a>
+          
         </div>
       </div>
     </div>
@@ -53,6 +53,6 @@
  	</form>
  	 <%-- 로그인 실패 시 에러 메시지가 있으면 표시 --%>
  	  
- 	<a href="http://localhost:8080/app/joinmembership.jsp">회원가입</a>
+ 	
 </body>
 </html>
