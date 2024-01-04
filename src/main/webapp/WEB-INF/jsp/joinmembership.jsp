@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/resources/login.js" defer></script>
-<link rel="stylesheet" type="text/css" href="/resources/login.css"> 
+<script src="/resources/joinmembership.js" defer></script>
+<link rel="stylesheet" type="text/css" href="/resources/joinmembership.css"> 
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
@@ -48,8 +48,8 @@
         <input type="submit" value="회원가입" class="submitbtn" id="signupButton" />
       </div>
       <!-- 동의버튼 넣을건지? -->
-    </form>s
-  
+    </form>
+      
 <%@include file="../jsp/footer.jsp"%>
   <!--  <div id="formWrap">
  	<form id="signupForm" action="../api/insert/joinmember.jsp">

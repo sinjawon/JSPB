@@ -52,21 +52,21 @@ public class ResourceMapping extends HttpServlet {
 		else if(token.equalsIgnoreCase("jpeg") || token.equalsIgnoreCase("jpg")) {
 			resp.setContentType("image/jpeg");
 			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "image/original" + info);){
+					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
 				out.write(in.readAllBytes());
 			}catch(Exception e) {}
 		}
 		else if(token.equalsIgnoreCase("png")) {
 			resp.setContentType("image/png");
 			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "image/original" + info);){
+					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
 				out.write(in.readAllBytes());
 			}catch(Exception e) {}	
 		}
 		else if(token.equalsIgnoreCase("gif")) {
 			resp.setContentType("image/gif");
 			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "image/original" + info);){
+					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
 				out.write(in.readAllBytes());
 			}catch(Exception e) {}	
 		}

@@ -25,11 +25,12 @@ nav {
   z-index: 99;
   border-bottom: 3px solid #fa5;
 }
-nav > h1 {
+nav h1 {
   width: 23%;
-  border: 2px solid black; 
 }
-
+nav h1 > img {
+  width: 100%;
+}
 nav .menu {
   width: 100%;
 }
@@ -82,7 +83,7 @@ nav .box .login {
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.5);
   position: relative;
-}
+}  
 nav .box .login > div:hover {
   font-weight: bold;
   color: #333;
