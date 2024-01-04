@@ -1,8 +1,10 @@
 
 
+
 //채울래
 function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) {
     let userNickname = document.getElementById('userNickname');
+    console.log(userNickname);
     let viewTitle = document.getElementById('viewTitle');
     let viewTextarea = document.getElementById('viewTextarea');
 
@@ -13,13 +15,14 @@ function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) 
         viewTextarea.innerText = `글 내용: ${contentInfo}`;
     }
 }
+//@ts-ignore
+let clickedPostId = valueId;// 클릭한 게시글의 ID
 
-//가져오는 기능 누가 좀 만들어 줘
 function PostInfo() {
-    const clickedPostId = -1; // 클릭한 게시글의 ID (실제로는 클릭한 게시글의 정보를 가져와야 합니다.)
-
-    fetch(`/api/showPost?boardListNum=${clickedPostId}`)
-        .then(response => response.json())
+    fetch(`/api/showPost?boardListNum=${clickedPostId}`,{
+    method: "GET"  
+})
+    .then(response => response.json())
         .then(data => {
             fillPostData(data.userNickname, data.title, data.mainContents);
         })

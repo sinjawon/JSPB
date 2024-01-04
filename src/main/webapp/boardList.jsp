@@ -8,13 +8,13 @@
 <title>Board List</title>
 <style>
 		<%-- 임시로 보기 좋으라고 --%>
-   	div{
+   	a{
 		display: inline-block;
 	}
-	div.boardListNum, div.usernickname,div.hitCount,div.regDate{
+	a.boardListNum, div.usernickname,div.hitCount,div.regDate{
 		width:100px;
 	}
-	div.title{
+	a.title{
 		width:600px;
 	}
     </style>
@@ -26,16 +26,16 @@
 	
 	<div id="boards">
 		<template>
-			<div class="boardListNum">0</div>
-			<div class="title">제목</div>
-			<div class="userNickname">작성자</div>
-			<div class="hitCount">작성자</div>
-			<div class="regDate">작성자</div>
+			<a href="/postView.jsp?id=0" class="boardListNum">0</a>
+			<a class="title">글 제목</a>
+			<a class="userNickname">작성자</a>
+			<a class="hitCount">조회수</a>
+			<a class="regDate">등록일</a>
 		</template>
 	</div>
         
         
-        <%--검색 기능 미구현 --%>
+    <%--검색 기능 미구현 --%>
 	<div class="searchBar">
    		<form action="/api/searchboard" method="post">
         	<label for="search">Search</label>
