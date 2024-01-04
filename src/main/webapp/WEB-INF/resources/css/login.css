@@ -1,70 +1,66 @@
+@charset "UTF-8";
 
-.join-title {
+
+.login-box {
+  width: 30vw;
+  height: 70vh;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 12rem;
+  margin-bottom: 12rem;
+}
+
+.login-title {
   text-align: center;
   font-size: 25px;
   font-weight: bold;
+  margin-bottom: 10vh;
 }
 
-.join-box {
-  width: 30vw;
-  height: 50vh;
-  border-radius: 15px;
-  margin: auto;
-  margin-bottom: 20vw;
-}
-.join-labelbox {
-  width: 50%;
-  height:100%;
+.login-form {
   display: flex;
   flex-direction: column;
-  margin: 10px auto;
-  gap: 4vh;
+  gap: 3vh;
 }
-
-.ipbox {
+.login-ipbox {
   width: 13vw;
-  height: 4vh;
+  height: 6vh;
   border: none;
   border-bottom: 1px solid #bbb;
+  margin: auto;
 }
 
-.ckbox {
-  width: 4.5vw;
-  height: 3.5vh;
-  font-size: 0.6vw;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
+.login-box2 {
+  width: 50%;
+  margin: 20px auto;
 }
 
-.submitbtn {
+.loginbtn {
   width: 14vw;
   height: 5vh;
   border-radius: 20px;
   border: none;
   background-color: #fa5;
-  margin-top: 2vh;
   cursor: pointer;
+  margin: 5vh auto;
   font-weight: bold;
 }
 
-.submitbtn:hover {
-  background-color: #fa6;
-}
-  
-.nick-box,
-.id-box {
-  display: flex;
+.gojoin {
+  font-size: 13px;
+  text-align: right;
 }
 
-.joinpic{
+.gojoin > a {
+  text-decoration: none;
+  color: black;
+}
+
+.login-img {
   width: 100%;
 }
-
-.join-img {
-  width: 10vw;
+  
+.loginimg {
+  width: 15vw;
   margin: auto;
-  margin-top:11rem;
-} 
-
-
+}

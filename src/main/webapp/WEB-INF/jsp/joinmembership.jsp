@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/resources/login.js" defer></script>
-<link rel="stylesheet" type="text/css" href="/resources/login.css"> 
+<script src="/resources/joinmembership.js" defer></script>
+<link rel="stylesheet" type="text/css" href="/resources/joinmembership.css"> 
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
@@ -62,6 +62,7 @@
  	<div id="passwordMatchStatus"></div>
  	<input id="signupButton" type="submit" value="회원 가입">
  	</form>
- 	</div> -->
+ 	</div>
 </body>
 </html>
+ -->

@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="/resources/login2.css"> 
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/resources/login.css"> 
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
@@ -51,11 +51,8 @@
  	<label for="password">비밀번호:</label><input type="text" name="password">
  	<input type="submit" value="로그인">
  	</form>
- 	 로그인 실패 시 에러 메시지가 있으면 표시
-        <% String loginError = (String)request.getAttribute("loginError"); %>
-        <% if (loginError != null) { %>
-            <p style="color: red;"><%= loginError %></p>
-        <% } %>
- 	<a href="http://localhost:8080/app/joinmembership.jsp">회원가입</a> --%>
+ 	 <%-- 로그인 실패 시 에러 메시지가 있으면 표시 --%>
+ 	  
+ 	<a href="http://localhost:8080/app/joinmembership.jsp">회원가입</a>
 </body>
 </html>
