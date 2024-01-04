@@ -50,7 +50,7 @@
             <p><%=session.getAttribute("UserNickName") %> 님</p> <!-- 로그인하면 이름 뜨게 -->
 	            <div class="login">
 	              <div><form action="../api/select/logout.jsp"><input type="submit" value="로그아웃" /><input type="hidden" name="logoutAction" value="true"/></form></div>
-	              <div><a href="joinmembership.jsp">마이페이지</a></div>
+	              <div><a href="mypage.jsp">마이페이지</a></div>
             	</div>
             </c:if>
           </div>    
