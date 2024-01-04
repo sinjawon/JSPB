@@ -1,3 +1,4 @@
+
 package com.jsp.dao;
 
 import java.io.*;
@@ -8,22 +9,31 @@ import com.jsp.dto.*;
 @Mapper
 public interface BoardDao {
 
-	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
-	@Select("select * from userDto where userNickname = #{userNickname}")
-	public UserDTO getUserInfoByUserNickName(@Param("userNickname") String usernickname);
 	
+	@Select("SELECT * FROM boardInfo WHERE boardListNum = #{boardListNum}")
+	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
+	
+	//@@지수-새로운 글을 추가하는 메서드. 
+	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
+	public void insertNewBoard(@Param("title") String title, @Param("mainContents") String mainContents, @Param("userNickname") String userNickname);
+	
+	
+//	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
+//	@Select("select * from userDto where userNickname = #{userNickname}")
+//	public UserDTO getUserInfoByUserNickName(@Param("userNickname") String usernickname);
+//	
 	// board 에서 userNickName 으로 검색
-	@Select("select * from boardInfo where userNickname = #{userNickname}")
-	public List<BoardInfo> getBoardInfoByUserNickName(@Param("userNickname") String userNickname);
+	@Select("select * from boardInfo where userNickname like #{userNickname}")
+	public List<BoardInfo> searchByUserNickname(@Param("userNickname") String userNickname);
 
 	
 	// board 에서 title 로 검색
-	@Select("select * from boardInfo where title = #{title}")
-	public List<BoardInfo> getBoardInfoByTitle(@Param("title") String title);
+	@Select("select * from boardInfo where title like #{title}")
+	public List<BoardInfo> searchByTitle(@Param("title") String title);
 
-	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
-	@Select("select * from userInfo where userNum = #{userNum} and password = #{userPw}")
-	public UserDTO getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
+//	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인
+//	@Select("select * from userInfo where userNum = #{userNum} and password = #{userPw}")
+//	public UserDTO getUserInfoCheck(@Param("userNum") String userNum, @Param("userPw") String userPw);
 
 	// board 에 글 쓸때 자동으로 seqBoardListNum 번호가 증가 title, mainContents
 	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{title}, #{mainContents})")
@@ -62,7 +72,3 @@ public interface BoardDao {
 
 
 }
-
-// board 랑 user 둘다 pk 로 자동으로 1씩 증가하는 number를 만들때
-// 시퀀스명 seqBoard, seqUser 로 만들고
-// db 의 테이블 명을 board 로 자바의 클래스명도 Board 로 통일

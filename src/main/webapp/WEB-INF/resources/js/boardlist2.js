@@ -68,8 +68,45 @@ ajax("/api/boardlist", {
         }
     }
 });
+// 검색 폼 제출 시 호출되는 함수
 function submitSearch() {
     console.log("전송되었습니다");
+    // 검색 폼 가져오기
     var form = document.getElementById("searchtype");
-    form.submit();
+    if (form) {
+        // FormData 객체 생성
+        var formData = new FormData(form);
+        // AJAX를 통해 서버로 검색 요청 보내기
+        ajax("/api/searchBoard", {
+            method: "POST",
+            body: formData,
+        }).then(function (json) {
+            console.log(json);
+            // 검색 결과를 가지고 동적으로 화면 업데이트 등의 동작 수행
+            // 예를 들어, 검색 결과를 화면에 표시하는 등의 작업 수행
+            updateSearchResults(json);
+        });
+    }
+}
+// 검색 결과를 화면에 표시하는 함수
+function updateSearchResults(json) {
+    var boards = document.querySelector("#boards");
+    var template = document.querySelector("#boards template");
+    // 기존의 게시글 목록을 지우고 새로운 검색 결과를 표시
+    if (boards && template) {
+        boards.innerHTML = ""; // 기존 목록 비우기
+        for (var _i = 0, _a = json.data; _i < _a.length; _i++) {
+            var data = _a[_i];
+            template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
+            template.content.querySelector(".title").innerHTML = data.title;
+            template.content.querySelector(".userNickname").innerHTML = data.userNickname;
+            template.content.querySelector(".hitCount").innerHTML = data.hitCount;
+            template.content.querySelector(".regDate").innerHTML = data.regDate;
+            var div = document.createElement("div");
+            div.innerHTML = template.innerHTML;
+            if (boards) {
+                boards.appendChild(div);
+            }
+        }
+    }
 }

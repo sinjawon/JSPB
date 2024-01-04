@@ -28,3 +28,9 @@ ajax("/api/boardlist", {
     }
   }
 });
+
+function submitSearch(){
+  console.log("전송되었습니다")
+  let form: HTMLFormElement = document.getElementById("searchtype") as HTMLFormElement;
+  form.submit();
+}
