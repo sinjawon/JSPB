@@ -19,8 +19,8 @@
         </div>
         <div class="userPet_info">
             <div class="user_info">
-                <span>회원</span>
-                <div class="info_image"><img src="<%=session.getAttribute("UserProfile")%>" alt=""></div>
+                <span>회원</span>  <%-- <%=session.getAttribute("UserProfile")%> --%>
+                <div class="info_image"><img src="" alt=""></div>
                 <div class="info_box">
                     <span><%=session.getAttribute("UserNickName") %></span>
                     <div></div>
@@ -30,7 +30,7 @@
                     <div></div>
                 </div>
             </div>
-          <%=session.getAttribute("UserProfile")%> 
+        
             
             <%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
@@ -38,7 +38,8 @@
         		 
         		 
         		 %>
-     		 <%=map.getAnimalProfile(usernum).getAnimalProfile()%>
+        		 
+     		
         		  <div class="pet_info">
                   <span>반려동물</span>
                   <div class="info_image"><img src="<%=map.getAnimalProfile(usernum).getAnimalProfile()%>"  alt=""></div>
