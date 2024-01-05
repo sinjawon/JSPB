@@ -52,7 +52,11 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img class="image" src="/resources/mainbanner05_sub.jpg" alt="기타 "  />
+          <a href="joinmembership.jsp"
+            ><img class="image" src="/resources/mainbanner05_sub.jpg" alt="기타 "  />
+            <div class="subTitle"></a>
+            <h2>회원가입 하러가기</h2>
+          </div>
         </div>
       </div>
       <div class="swiper-button-next next1"></div>
