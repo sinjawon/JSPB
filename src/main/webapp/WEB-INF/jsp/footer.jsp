@@ -13,8 +13,8 @@
         <img src="/resources/logo.png" class="footerlogo" />
         <div class="footer-box">
           <a class="footer-a" href="#home">회사소개</a>
-          <a class="footer-a" href="#home">개인정보처리방침</a>
-          <a class="footer-a" href="./rules.html">이용약관</a>
+          <a class="footer-a" href="privacy.jsp">개인정보처리방침</a>
+          <a class="footer-a" href="rules.jsp">이용약관</a>
         </div>
 
         <div class="footer-box2">

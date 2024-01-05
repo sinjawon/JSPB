@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.searchresult {
+  margin: 12rem 0;
+}
+.searchresult-box {
+  width: 80%;
+  margin: auto;
+}
+
+.searchresult-title {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.searchresult-box > ul > li {
+  margin-bottom: 1rem;
+}
+.content-title {
+  width: 20%;
+  text-align: center;
+  height: 100%;
+  line-height: 150px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.searchresult-box .content {
+  width: 80%;
+  height: 10rem;
+  border-top: 5px solid #fa5;
+}
+
+.searchresult-box > ul > li {
+  display: flex;
+}

@@ -2,15 +2,17 @@
 
 
 @font-face {
-  font-family: "NanumSquareNeo-Variable";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+  font-family: "SejonghospitalBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2")
     format("woff2");
-  font-weight: normal;
+  font-weight: 700;
   font-style: normal;
 }
-body
- {
-  font-family: "NanumSquareNeo-Variable";
+
+
+
+body {
+  font-family: "SejonghospitalBold";
 }
 
 nav {
