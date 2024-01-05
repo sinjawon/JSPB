@@ -20,7 +20,7 @@
         <div class="userPet_info">
             <div class="user_info">
                 <span>회원</span>
-                <div class="info_image"><img src="<%=session.getAttribute("UserProfile")%>" alt=""></div>
+                <div class="info_image"><img src="<%=session.getAttribute("UserProfile")%>" alt=""> </div>
                 <div class="info_box">
                     <span><%=session.getAttribute("UserNickName") %></span>
                     <div></div>
@@ -61,7 +61,6 @@
                   
               </div>
           </div>
-        		
         	<%
         	}
         	catch(Exception e) {
