@@ -9,9 +9,6 @@ import com.jsp.dto.*;
 @Mapper
 public interface BoardDao {
 
-	@Select("SELECT * FROM boardInfo WHERE boardListNum = #{boardListNum}")
-	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
-
 	
 	@Select("SELECT * FROM boardInfo WHERE boardListNum = #{boardListNum}")
 	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
@@ -20,10 +17,6 @@ public interface BoardDao {
 	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
 	public void insertNewBoard(@Param("title") String title, @Param("mainContents") String mainContents, @Param("userNickname") String userNickname);
 	
-	// 이것도 끌올
-	// board 에 글 지울때 boardListNum 인 글을 지운다?
-	@Delete("delete from boardInfo where boardListNum = #{boardListNum}")
-	public void deleteBoardInfo(@Param("boardListNum") int boardListNum);
 	
 //	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
 //	@Select("select * from userDto where userNickname = #{userNickname}")
@@ -46,6 +39,9 @@ public interface BoardDao {
 	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{title}, #{mainContents})")
 	public void insertBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents);
 	
+	// board 에 글 지울때 boardListNum 인 글을 지운다?
+	@Delete("delete from boardInfo where boardListNum = #{boardListNum}")
+	public void deleteBoardInfo(@Param("boardListNum") int boardListNum);
 
 	
 /*

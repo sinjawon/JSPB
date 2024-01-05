@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.jsp.system.Ajax, org.json.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,7 @@
    	a{
 		display: inline-block;
 	}
-	a.boardListNum, a.usernickname,a.hitCount,a.regDate{
+	a.boardListNum, div.usernickname,div.hitCount,div.regDate{
 		width:100px;
 	}
 	a.title{
@@ -23,22 +25,29 @@
 <body>
 
 <h1>Board List</h1>
-		
-		
+	
 	<div id="boards">
 		<template>
 			<a href="/postView.jsp?id=0" class="boardListNum">0</a>
-			<a class="title">제목</a>
+			<a class="title">글 제목</a>
 			<a class="userNickname">작성자</a>
-			<a class="hitCount">작성자</a>
-			<a class="regDate">작성자</a>
+			<a class="hitCount">조회수</a>
+			<a class="regDate">등록일</a>
+			<c:if test="${data.userNickname eq sessionScope.userNickname}">
+			<%-- 이러면 작성자만 보이나? --%>
+				<button onclick="editPost(${data.boardListNum})">수정</button>
+                <button onclick="deletePost(${data.boardListNum})">삭제</button>
+            </c:if>
 		</template>
 	</div>
         
-	
-   		<form id="searchtype" action="/api/boardlist" method="post" onsubmit="return false">
-        	<select id="searches" name="searchtype">
-				<option value="All">선택</option>
+        
+    <%--검색 기능 미구현 --%>
+	<div class="searchBar">
+   		<form action="/api/searchboard" method="post">
+        	<label for="search">Search</label>
+        	<select id="searchtype" name="searchtype">
+				<option value="All">All</option>
 				<option value="title">제목</option>
 				<option value="userNickname">작성자</option>
 			</select> 
