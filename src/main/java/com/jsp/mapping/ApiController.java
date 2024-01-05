@@ -17,7 +17,6 @@ import org.json.JSONObject;
 
 import com.jsp.system.DBConnector;
 
-
 @WebServlet(urlPatterns = {
 		"/api/*"
 })

@@ -46,3 +46,4 @@ config/*.xml
 # reset -> history 명령어 -> 해당하는 위치로 이동
 # revert -> history 명령어 -> 해당하는 위치로 이동한 후에 새로운 branch를 만들어라
 # pull request -> 허용한 작업자가 아닌 허용되지 않은 작업자가 작업을 가져갈 수 있다 -> fork
+/bin/
