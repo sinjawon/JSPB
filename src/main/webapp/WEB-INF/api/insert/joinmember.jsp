@@ -17,7 +17,7 @@ try(DBConnector con = new DBConnector();){
 		map2.meberanimal();
 		
 		
-		response.sendRedirect("/app/home.jsp");
+		response.sendRedirect("/app/main.jsp");
 	}
 	catch(Exception e) {
 		e.printStackTrace();

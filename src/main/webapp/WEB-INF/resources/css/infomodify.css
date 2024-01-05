@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+.modify{
+    padding: 15rem 4rem 0 ;
+    
+}
+.modify > h2{
+    text-align: center;
+    padding: 0 2rem;
+    font-size: 2rem;
+    padding-bottom: 2rem;
+
+}
+
+.modify .info_modi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+
+.modify .info_modi>div{
+    width: 50%;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.user_modi > span,
+.pet_modi > span{
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+    color:#777;
+}
+
+.modi_image{
+    border-radius: 50%;
+    width:130px;
+    height: 130px;
+    background-color: #999;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.modiWrap{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.modiWrap > input{
+    width:30%;
+}
+
+.radioBoxWrap{
+    display: flex;
+    justify-content: flex-start;
+
+    
+}
+
+.info_modi input{
+    border: none;
+    border-bottom: 1px solid #777;
+    padding: 0.5rem 0;
+}
+
+.file{
+    border: none;
+}

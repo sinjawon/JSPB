@@ -104,7 +104,9 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-
+.info_image > img{
+	width: 300px;
+}
 .info_box{
     border-bottom: 2px solid #fa5;
 }
