@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, org.json.*"%>
+<%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,37 +20,56 @@
         <div class="userPet_info">
             <div class="user_info">
                 <span>회원</span>
-                <div class="info_image"><img src="" alt=""></div>
+                <div class="info_image"><img src="<%=session.getAttribute("UserProfile")%>" alt=""></div>
                 <div class="info_box">
-                    <span>닉네임</span>
+                    <span><%=session.getAttribute("UserNickName") %></span>
                     <div></div>
                 </div>
                 <div class="info_box">
-                    <span>이메일</span>
+                    <span><%=session.getAttribute("UserEmail") %></span>
                     <div></div>
                 </div>
             </div>
-            <div class="pet_info">
-                <span>반려동물</span>
-                <div class="info_image"><img src="" alt=""></div>
-                <div class="info_box" >
-                    <span>이름</span>
-                    <div> </div>
-                </div>
-                <div class="info_box">
-                    <span>생일</span>
-                    <div> </div>
-                </div>
-                <div class="info_box">
-                    <span>성별</span>
-                    <div> </div>
-                </div>
-                <div class="info_box">
-                    <span>몸무게</span>
-                    <div> </div>
-                </div>
-            </div>
-        </div>
+         
+            
+            <%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum");
+        		 
+        		 
+        		 %>
+     		
+        		  <div class="pet_info">
+                  <span>반려동물</span>
+                  <div class="info_image"><img src="<%=map.getAnimalProfile(usernum).getAnimalProfile()%>"  alt=""></div>
+                  <div class="info_box" >
+                      <span><%= map.getAnimalName(usernum).toStringPatName()%></span>
+                      <div> </div>
+                  </div>
+                  <div class="info_box">
+                      <span><%= map.getAnimalBirth(usernum).toStringPatBirth()%></span>
+                      <div> </div>
+                  </div>
+                  <div class="info_box">
+                      <span><%= map.getAnimalGender(usernum).toStringPatGender()%></span>
+                      <div> </div>
+                  </div>
+                  <div class="info_box">
+                      <span><%= map.getAnimalWeight(usernum).toStringPatWeight()%></span>
+                      <div> </div>
+                  </div>
+                  
+              </div>
+          </div>
+        		
+        	<%
+        	}
+        	catch(Exception e) {
+        		e.printStackTrace();
+        	} %>
+            
+            
+          
         <div class="info_menu">
             <button class='Modifybtn' ><a href="#">정보 수정</a></button>
             <form action="../api/select/logout.jsp"><button type="submit" value="로그아웃" class='logoutbtn'>로그아웃</button><input type="hidden" name="logoutAction" value="true"/></form>

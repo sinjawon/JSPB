@@ -15,13 +15,13 @@ import com.jsp.dao.BoardDao;
 @WebServlet("/api/newPost")
 public class InsertNewPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String userNickname = request.getParameter("userNickname");
         String title = request.getParameter("title");
         String mainContents = request.getParameter("mainContents");
-        String userNickname = request.getParameter("userNickname");
 
         try(DBConnector con = new DBConnector()){
             BoardDao map = con.OpenMap(request, BoardDao.class);
-            map.insertNewBoard(title, mainContents, userNickname);
+            map.insertNewBoard(userNickname ,title, mainContents );
         } catch(Exception e) {
             System.out.println("오류");
         }
