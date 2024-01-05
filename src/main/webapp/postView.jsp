@@ -19,7 +19,7 @@
         <button onclick="editPost(${data.boardListNum})">수정</button>
     </c:if>
     
-    <form action="/boardList" method="post">
+    <form action="/boardList.jsp" method="post">
         <button type="submit">뒤로가기</button>
     </form>
 </body>
