@@ -1,0 +1,33 @@
+#formWrap {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+}
+input::placeholder {
+    color: rgb(231, 16, 16);
+}
+
+button {
+    width: 150px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#passwordMatchStatus {
+    margin-top: 10px;
+    color: red;
+}

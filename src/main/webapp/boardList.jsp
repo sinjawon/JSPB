@@ -20,7 +20,7 @@
 		width:600px;
 	}
     </style>
-<script src="/resources/boardlist.js"></script>
+<script src="/resources/boardlist3.js"></script>
 </head>
 <body>
 
@@ -52,13 +52,16 @@
 				<option value="userNickname">작성자</option>
 			</select> 
         		<input type="text" id="search" name="search">
-        		<button type="submit">검색</button>
+        		<button type="button" onclick="submitSearch()">검색</button>
    		</form>
+   		
+   		<form action="/api/boardlist" method="post">
+   			<button type="button" class="back" onClick="location.href='/BoardList.jsp'">목록으로 돌아가기</button>
+   		</form>  		
    		<form action="/insert" method="post">
    			<button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>
-   		</form>  
-   				
-	</div>
+   		</form>  		
+
 
 
 

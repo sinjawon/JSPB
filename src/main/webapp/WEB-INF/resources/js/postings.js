@@ -2,6 +2,7 @@
 //채울래
 function fillPostData(userInfo, titleInfo, contentInfo) {
     let userNickname = document.getElementById('userNickname');
+    console.log(userNickname);
     let viewTitle = document.getElementById('viewTitle');
     let viewTextarea = document.getElementById('viewTextarea');
     //바꿔 없으면 기존 거 출력됨

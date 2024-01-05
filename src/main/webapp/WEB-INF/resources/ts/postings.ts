@@ -4,6 +4,7 @@
 //채울래
 function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) {
     let userNickname = document.getElementById('userNickname');
+    console.log(userNickname);
     let viewTitle = document.getElementById('viewTitle');
     let viewTextarea = document.getElementById('viewTextarea');
 
@@ -14,9 +15,6 @@ function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) 
         viewTextarea.innerText = `글 내용: ${contentInfo}`;
     }
 }
-
-
-
 //@ts-ignore
 let clickedPostId = valueId;// 클릭한 게시글의 ID
 
