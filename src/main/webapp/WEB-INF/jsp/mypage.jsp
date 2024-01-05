@@ -17,18 +17,49 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
         <div class="mydocument">
           <a href="mydocument.jsp">내가 작성한 글</a>
         </div>
-      </div>
-      <div class="userPet_info">
-        <div class="user_info">
-          <span>회원</span>
-          <div class="info_image"><img src="" alt="" /></div>
-          <div class="info_box">
-            <span><%=session.getAttribute("UserNickName") %></span>
-            <div></div>
-          </div>
-          <div class="info_box">
-            <span><%=session.getAttribute("UserEmail") %></span>
-            <div></div>
+        <div class="userPet_info">
+            <div class="user_info">
+                <span class=user>회원</span>
+                <div class="info_image"><img src="" alt=""></div>
+                <div class="info_box">
+                    <span class=write>닉네임</span>
+                    <span class=content><%=session.getAttribute("UserNickName") %></span>
+                </div>
+                <div class="info_box">
+                    <span class=write>이메일</span>
+                    <span class=content><%=session.getAttribute("UserEmail") %></span>
+                </div>
+            </div>
+         
+            
+            <%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum");
+        		 
+        		 
+        		 %>
+     		
+        		  <div class="pet_info">
+                  <span class=pet>반려동물</span>
+                  <div class="info_image"><img src=""  alt=""></div>
+                  <div class="info_box" >
+                      <span class=write>이름</span>
+                      <span class=content><%= map.getAnimalName(usernum).toStringPatName()%> </span>
+                  </div>
+                  <div class="info_box">
+                      <span class=write>생일</span>
+                      <span class=content><%= map.getAnimalBirth(usernum).toStringPatBirth()%></span>
+                  </div>
+                  <div class="info_box">
+                      <span class=write>성별</span>
+                      <span class=content><%= map.getAnimalGender(usernum).toStringPatGender()%></span>
+                  </div>
+                  <div class="info_box">
+                      <span class=write>몸무게</span>
+                      <span class=content> <%= map.getAnimalWeight(usernum).toStringPatWeight()%></span>
+                  </div>
+                  
+              </div>
           </div>
         </div>
 

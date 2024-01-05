@@ -33,6 +33,12 @@
     position: relative;
 }
 
+.userPet_info .user,
+.pet_info .pet{
+	font-size: 1.3rem;
+	margin-right: 0.5rem;
+	}
+
 .userPet_info::before{
     content: '';
 
@@ -109,14 +115,21 @@
 }
 .info_box{
     border-bottom: 2px solid #fa5;
+    padding: 0 2rem;
+
 }
-.info_box > span{
-    width:20%;
+.info_box > .write{
+    width:25%;
     font-size:1.1rem;
+    color:#777 ;
+    padding: 0.5rem 0 0;
 }
-.info_box > div{
-    margin-left: 1rem;
-    padding-bottom: 0.5rem;
+.info_box > .content{
+    margin-left: 2rem;
+    padding: 0.5rem 0 0;
+    color:black;
+    
+
 }
 
 .withdraw{
@@ -132,8 +145,8 @@
     color:red;
 }
 
-.user_info > span,
-.pet_info > span{
+.user_info > .write,
+.pet_info > .write{
     font-size: 1.4rem;
     font-weight: bold;
     padding-bottom: 0.5rem;
