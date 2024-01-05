@@ -19,15 +19,15 @@
         </div>
         <div class="userPet_info">
             <div class="user_info">
-                <span>회원</span>
+                <span class=user>회원</span>
                 <div class="info_image"><img src="" alt=""></div>
                 <div class="info_box">
-                    <span><%=session.getAttribute("UserNickName") %></span>
-                    <div></div>
+                    <span class=write>닉네임</span>
+                    <span class=content><%=session.getAttribute("UserNickName") %></span>
                 </div>
                 <div class="info_box">
-                    <span><%=session.getAttribute("UserEmail") %></span>
-                    <div></div>
+                    <span class=write>이메일</span>
+                    <span class=content><%=session.getAttribute("UserEmail") %></span>
                 </div>
             </div>
          
@@ -40,23 +40,23 @@
         		 %>
      		
         		  <div class="pet_info">
-                  <span>반려동물</span>
+                  <span class=pet>반려동물</span>
                   <div class="info_image"><img src=""  alt=""></div>
                   <div class="info_box" >
-                      <span></span>
-                      <span><%= map.getAnimalName(usernum).toStringPatName()%> </span>
+                      <span class=write>이름</span>
+                      <span class=content><%= map.getAnimalName(usernum).toStringPatName()%> </span>
                   </div>
                   <div class="info_box">
-                      <span></span>
-                      <span><%= map.getAnimalBirth(usernum).toStringPatBirth()%></span>
+                      <span class=write>생일</span>
+                      <span class=content><%= map.getAnimalBirth(usernum).toStringPatBirth()%></span>
                   </div>
                   <div class="info_box">
-                      <span></span>
-                      <span><%= map.getAnimalGender(usernum).toStringPatGender()%></span>
+                      <span class=write>성별</span>
+                      <span class=content><%= map.getAnimalGender(usernum).toStringPatGender()%></span>
                   </div>
                   <div class="info_box">
-                      <span></span>
-                      <span> <%= map.getAnimalWeight(usernum).toStringPatWeight()%></span>
+                      <span class=write>몸무게</span>
+                      <span class=content> <%= map.getAnimalWeight(usernum).toStringPatWeight()%></span>
                   </div>
                   
               </div>
