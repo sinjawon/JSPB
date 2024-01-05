@@ -33,6 +33,25 @@ async function ajax(url: string, option?: any) {
   });
 
 
+  function deletePost(boardListNum: number) {
+    fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
+        method: "POST"
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("게시글 삭제 성공");
+                // 게시글 삭제 성공 시 필요한 작업 수행 (예: UI 업데이트 등)
+            } else {
+                console.error("게시글 삭제 실패:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error('게시글 삭제 중 오류 발생:', error);
+        });
+}
+
+
 //   //게시글 클릭 가능 이벤트 추가 이거 그냥 html쪽에 둘까요?
 //   function showPostView(board: any) {
 //     let form = document.createElement("form");

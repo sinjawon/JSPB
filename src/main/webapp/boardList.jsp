@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.jsp.system.Ajax, org.json.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +33,11 @@
 			<a class="userNickname">작성자</a>
 			<a class="hitCount">조회수</a>
 			<a class="regDate">등록일</a>
+			<c:if test="${data.userNickname eq sessionScope.userNickname}">
+			<%-- 이러면 작성자만 보이나? --%>
+				<button onclick="editPost(${data.boardListNum})">수정</button>
+                <button onclick="deletePost(${data.boardListNum})">삭제</button>
+            </c:if>
 		</template>
 	</div>
         

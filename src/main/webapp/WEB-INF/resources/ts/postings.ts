@@ -4,7 +4,6 @@
 //채울래
 function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) {
     let userNickname = document.getElementById('userNickname');
-    console.log(userNickname);
     let viewTitle = document.getElementById('viewTitle');
     let viewTextarea = document.getElementById('viewTextarea');
 
@@ -15,6 +14,9 @@ function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) 
         viewTextarea.innerText = `글 내용: ${contentInfo}`;
     }
 }
+
+
+
 //@ts-ignore
 let clickedPostId = valueId;// 클릭한 게시글의 ID
 
@@ -34,3 +36,41 @@ function PostInfo() {
 window.onload = function() {
     PostInfo();
 };
+
+
+function editPost(boardListNum:number) {
+    
+    window.location.href = `/editPost.jsp?boardListNum=${boardListNum}`;
+    
+fetch(`/api/editPost?boardListNum=${boardListNum}`, {
+        method: "GET"
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("게시글 수정 성공");
+            } else {
+                console.error("게시글 수정 실패:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error('게시글 수정 중 오류 발생:', error);
+        });
+}
+
+// function deletePost(boardListNum: number) {
+//     fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
+//         method: "POST"
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 console.log("게시글 삭제 성공");
+//             } else {
+//                 console.error("게시글 삭제 실패:", data.message);
+//             }
+//         })
+//         .catch(error => {
+//             console.error('게시글 삭제 중 오류 발생:', error);
+//         });
+// }
