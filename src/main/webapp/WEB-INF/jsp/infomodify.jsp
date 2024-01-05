@@ -14,7 +14,7 @@
         <h2>정보수정</h2>
         <div class="info_modi">
             <div class="user_modi">
-                <span>회원</span>
+                <span class='user'>회원</span>
                 <div class="modi_image"><img src="" alt=""></div>
                 <input type="file" class="file">
                     <div class="modiWrap">
@@ -23,7 +23,7 @@
                     </div>
             </div>
             <div class="pet_modi">
-                <span>반려동물</span>
+                <span class='pet'>반려동물</span>
                 <div class="modi_image"><img src="" alt=""></div>
                 <input type="file" class="file">
                 <div class="modiWrap">

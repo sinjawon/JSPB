@@ -3,12 +3,12 @@
 .modify{
     margin: auto;
     text-align: center;
-    margin-top: 14rem;
+    margin-top: 12rem;
 }
 .modify > h2{
     text-align: center;
     padding: 0 2rem;
-    font-size: 2rem;
+    font-size: 1.3rem;
     padding-bottom: 2rem;
 
 }
@@ -41,13 +41,11 @@
     padding: 1rem 0 ;
 }
 
-.user_modi > span,
-.pet_modi > span{
-    font-size: 1.4rem;
-    font-weight: bold;
-    padding-bottom: 0.5rem;
-    color:#777;
-}
+.user_modi .user,
+.pet_modi .pet{
+	font-size: 1.3rem;
+	margin-right: 0.5rem;
+	}
 
 .modi_image{
     border-radius: 50%;
@@ -101,7 +99,7 @@
   	background-color: #fa5;    
   	font-weight: bold;
     border: none;
-    margin-bottom:5rem;
+    margin-bottom:7.5rem;
 }
 
 .withdraw{
