@@ -2,14 +2,15 @@
 
 
 @font-face {
-  font-family: "NanumSquareNeo-Variable";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+  font-family: "SUITE-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
     format("woff2");
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
 }
-body {
-  font-family: "NanumSquareNeo-Variable";
+body
+ {
+  font-family: "SUITE-Regular";
 }
 
 nav {
@@ -80,11 +81,14 @@ nav .box .login {
   display: flex;
   gap: 2rem;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 15px;
   color: rgba(0, 0, 0, 0.5);
   position: relative;
+  cursor: pointer;
 }  
-nav .box .login > div:hover {
+nav .box .login > div:hover,
+.login input:hover {
+
   font-weight: bold;
   color: #333;
 }
@@ -100,4 +104,16 @@ nav .box .login::before {
   height: 500px;
   background-color: #444;
 }
+
+.login input{
+	border: none;
+	background-color: white;
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.5);
+	font-weight: 1000;
+  font-family: "SUITE-Regular";
+  cursor: pointer;
+
+}
+
 

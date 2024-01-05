@@ -19,7 +19,7 @@
         </div>
         <div class="userPet_info">
             <div class="user_info">
-                <span>회원</span>  <%-- <%=session.getAttribute("UserProfile")%> --%>
+                <span>회원</span>
                 <div class="info_image"><img src="" alt=""></div>
                 <div class="info_box">
                     <span><%=session.getAttribute("UserNickName") %></span>
@@ -30,7 +30,7 @@
                     <div></div>
                 </div>
             </div>
-        
+         
             
             <%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
@@ -38,26 +38,25 @@
         		 
         		 
         		 %>
-        		 
      		
         		  <div class="pet_info">
                   <span>반려동물</span>
-                  <div class="info_image"><img src="<%=map.getAnimalProfile(usernum).getAnimalProfile()%>"  alt=""></div>
+                  <div class="info_image"><img src=""  alt=""></div>
                   <div class="info_box" >
-                      <span><%= map.getAnimalName(usernum).toStringPatName()%></span>
-                      <div> </div>
+                      <span></span>
+                      <span><%= map.getAnimalName(usernum).toStringPatName()%> </span>
                   </div>
                   <div class="info_box">
+                      <span></span>
                       <span><%= map.getAnimalBirth(usernum).toStringPatBirth()%></span>
-                      <div> </div>
                   </div>
                   <div class="info_box">
+                      <span></span>
                       <span><%= map.getAnimalGender(usernum).toStringPatGender()%></span>
-                      <div> </div>
                   </div>
                   <div class="info_box">
-                      <span><%= map.getAnimalWeight(usernum).toStringPatWeight()%></span>
-                      <div> </div>
+                      <span></span>
+                      <span> <%= map.getAnimalWeight(usernum).toStringPatWeight()%></span>
                   </div>
                   
               </div>
@@ -72,8 +71,8 @@
             
           
         <div class="info_menu">
-            <button ><a href="#">정보 수정</a></button>
-            <button>로그아웃</button>
+            <button class='Modifybtn' ><a href="infomodify.jsp">정보 수정</a></button>
+            <form action="../api/select/logout.jsp"><button type="submit" value="로그아웃" class='logoutbtn'>로그아웃</button><input type="hidden" name="logoutAction" value="true"/></form>
         </div>
         <div class="withdraw"><a href="">회원탈퇴</a></div>
     </div>
