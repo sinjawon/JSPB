@@ -18,7 +18,7 @@
         </div>
 
         <div class="footer-box2">
-          <span>대표자</span><span class="footer-span"> ddd</span>
+          <span>대표자</span><span class="footer-span">신제원</span>
           <span>사업자등록번호</span>
           <span class="footer-span"> 123-45-6789</span>
           <span>주소</span>
@@ -27,7 +27,7 @@
 
         <div class="footer-box3">
           <span>개인정보보호책임자</span>
-          <span class="footer-span"> ddd</span>
+          <span class="footer-span">신제원</span>
           <br />
           <span>Tel 1234-5678</span>
           <span>Email petpeople@petpeople.com</span>
