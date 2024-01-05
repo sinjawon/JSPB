@@ -34,3 +34,4 @@ function submitSearch(){
   let form: HTMLFormElement = document.getElementById("searchtype") as HTMLFormElement;
   form.submit();
 }
+

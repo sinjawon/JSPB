@@ -31,6 +31,7 @@ async function ajax(url: string, option?: any) {
   });
   
 
+  
   // 검색 폼 제출 시 호출되는 함수
   function submitSearch() {
     console.log("전송되었습니다");
