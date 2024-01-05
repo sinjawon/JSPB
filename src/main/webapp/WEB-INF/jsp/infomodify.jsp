@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
+<%@ page import="java.util.*, org.json.*"%>
+<%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/resources/infomodify.css"> 
-
+<script src="/resources/infomodify.js" defer></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -17,19 +19,38 @@
                 <span>회원</span>
                 <div class="modi_image"><img src="" alt=""></div>
                 <input type="file">
-                    <div class="modiWrap">
-                        <input type="text" name="nickname" class="modiBox" placeholder="닉네임">
-                        <input type="email" name="email" class="modiBox" placeholder="이메일">
-                    </div>
-            </div>
+       <div class="modiWrap">
+                    
+         <!-- 이름 -->
+	     <label for="name"><%=session.getAttribute("UserNickName")%></label>
+	     <input id="name" style="display:none" type="text" name="nickname" class="modiBox" placeholder="닉네임" value="<%=session.getAttribute("UserNickName")%>">
+	     
+         <!-- 이메일 -->
+        <label for="email"><%=session.getAttribute("UserEmail")%></label>              
+        <input id="email" style="display:none" type="email" name="email" class="modiBox" placeholder="이메일" value="<%=session.getAttribute("UserEmail")%>">
+        
+       </div>
+            </div>                   
+            	<%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum");
+        		 %>            
             <div class="pet_modi">
                 <span>반려동물</span>
                 <div class="modi_image"><img src="" alt=""></div>
                 <input type="file" class="file">
                 <div class="modiWrap">
-                        <input type="text" name="petName" class="modiBox" placeholder="이름">
-                        <input type="date" name="birth" class="modiBox">
-                        <div class="radioBoxWrap">
+                
+                <!-- 동물 이름 -->
+                <label for="aniname"><%= map.getAnimalName(usernum).toStringPatName()%></label>
+                <input id="aniname" style="display:none" type="text" name="petName" class="modiBox" placeholder="이름">
+                        
+                <!-- 동물생일 -->
+                <label for="date"><%= map.getAnimalBirth(usernum).toStringPatBirth()%></label>      
+                <input id="date" style="display:none" type="date" name="birth" class="modiBox" value="<%= map.getAnimalBirth(usernum).toStringPatBirth()%>">
+                        
+                <label for="gender"><%= map.getAnimalGender(usernum).toStringPatGender()%></label>     
+                        <div class="radioBoxWrap" style="display:none">                    
                             <div class="radioBox">
                                 <input type="radio" name="sex" id="man">
                                 <label for="man">수컷</label>
@@ -43,11 +64,19 @@
                                 <label for="neu">중성</label>
                             </div>
                         </div>
-                        <input type="text" name="weight" class="modiBox" placeholder="몸무게">
+                   <!--  몸무게  -->   
+                   <label for="weight"><%=map.getAnimalWeight(usernum).toStringPatWeight()%></label> 
+                   <input id="weight" style="display:none" type="text" name="weight" class="modiBox" placeholder="몸무게">
                 </div>
             </div>
         </div>
     </div>
+    	<%
+        	}
+        	catch(Exception e) {
+        		e.printStackTrace();
+        	} %>
+            
     
 <%@include file="../jsp/footer.jsp"%>
 </body>

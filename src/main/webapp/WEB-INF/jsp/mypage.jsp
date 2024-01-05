@@ -22,7 +22,7 @@
                 <span>회원</span>
                 <div class="info_image"><img src="" alt=""></div>
                 <div class="info_box">
-                    <span><%=session.getAttribute("UserNickName") %></span>
+                    <span><%=session.getAttribute("UserNickName")%></span>
                     <div></div>
                 </div>
                 <div class="info_box">
