@@ -17,6 +17,14 @@ public interface BoardDao {
 	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
 	public void insertNewBoard(@Param("title") String title, @Param("mainContents") String mainContents, @Param("userNickname") String userNickname);
 	
+//	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")
+//	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, int boardListNum);
+	
+	// board 에 글 수정할때 boardListNum 인 글에서 title 과 mainContents 를 수정한다
+    @Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")
+	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardlistNum") int boardlistNum);
+	
+	
 	
 //	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
 //	@Select("select * from userDto where userNickname = #{userNickname}")

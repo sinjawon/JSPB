@@ -21,6 +21,10 @@ async function ajax(url: string, option?: any) {
         template.content.querySelector(".userNickname").innerHTML = data.userNickname;
         template.content.querySelector(".hitCount").innerHTML = data.hitCount;
         template.content.querySelector(".regDate").innerHTML = data.regDate;
+
+        template.content.querySelector(".editPost").innerHTML = "수정";
+        template.content.querySelector(".editPost")?.setAttribute("href", `/editPost.jsp?id=${data.boardListNum}`);
+
         let a: HTMLElement | null = document.createElement("a");
         a.innerHTML = template.innerHTML;
         if (boards) {
@@ -30,6 +34,29 @@ async function ajax(url: string, option?: any) {
     }
   });
   
+
+  
+
+
+  function deletePost(boardListNum: number) {
+    fetch(`/api/deletePost?boardListNum=${valueId}`, {
+        method: "POST"
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("게시글 삭제 성공");
+            } else {
+                console.error("게시글 삭제 실패:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error('게시글 삭제 중 오류 발생:', error);
+        });
+}
+
+
+
 
   // 검색 폼 제출 시 호출되는 함수
   function submitSearch() {

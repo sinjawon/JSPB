@@ -18,7 +18,7 @@
             <input type="submit" value="로그아웃">
         </form>
     <% } else { %>
-    	<a href="http://localhost:4545/app/login.jsp">로그인하기</a>
+    	<a href="http://localhost:4885/app/login.jsp">로그인하기</a>
         <p>로그인이 필요합니다.</p>
         <!-- 로그인 폼 등을 표시하는 부분 -->
     <% } %>

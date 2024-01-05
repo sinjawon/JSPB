@@ -1,4 +1,3 @@
-
 package com.jsp.system;
 
 import java.io.IOException;
@@ -20,11 +19,10 @@ public class showPost extends HttpServlet {
     	
     	JSONObject result = new JSONObject();
     	
-    	try (DBConnector dbConnector = new DBConnector();) {
+    	try (DBConnector con = new DBConnector();) {
     		int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
-    		BoardDao map = dbConnector.OpenMap(request, BoardDao.class);
+    		BoardDao map = con.OpenMap(request, BoardDao.class);
 
-    		System.out.println(request.getParameter("boardListNum"));
     		
     		// 게시물 ID에 해당하는 정보를 DB에서 가져옴 , 메서드는 따로 추가했음
     		BoardInfo post = map.getBoardInfoById(boardListNum);

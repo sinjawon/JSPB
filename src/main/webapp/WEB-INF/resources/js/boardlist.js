@@ -79,8 +79,3 @@ function deletePost(boardListNum) {
 //     document.body.appendChild(form);
 //     form.submit();
 // }
-function submitSearch() {
-    console.log("전송되었습니다");
-    let form = document.getElementById("searchtype");
-    form.submit();
-}

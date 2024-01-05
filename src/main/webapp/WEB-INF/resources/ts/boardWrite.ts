@@ -1,7 +1,9 @@
 function submitPost(){
     console.log("전송되었습니다")
+
     let form: HTMLFormElement = document.getElementById("writeForm") as HTMLFormElement;
     form.submit();
+
 }
 
 function cancelPost() {

@@ -1,7 +1,7 @@
 
 <%-- 이거 작동안함 ㅠㅠ --%>
 
-<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%-- <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, org.json.*"%>
@@ -31,3 +31,7 @@
 
     response.getWriter().write(result.toString());
 %>
+
+ --%>
+
+

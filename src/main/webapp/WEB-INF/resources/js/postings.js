@@ -1,4 +1,5 @@
 "use strict";
+//@ts-nocheck
 //채울래
 function fillPostData(userInfo, titleInfo, contentInfo) {
     let userNickname = document.getElementById('userNickname');
@@ -7,9 +8,9 @@ function fillPostData(userInfo, titleInfo, contentInfo) {
     let viewTextarea = document.getElementById('viewTextarea');
     //바꿔 없으면 기존 거 출력됨
     if (userNickname && viewTitle && viewTextarea) {
-        userNickname.innerText = `작성자: ${userInfo}`;
-        viewTitle.innerText = `글 제목: ${titleInfo}`;
-        viewTextarea.innerText = `글 내용: ${contentInfo}`;
+        userNickname.innerText = userInfo;
+        viewTitle.innerText = titleInfo;
+        viewTextarea.innerText = contentInfo;
     }
 }
 //@ts-ignore
@@ -29,38 +30,31 @@ function PostInfo() {
 window.onload = function () {
     PostInfo();
 };
-function editPost(boardListNum) {
-    window.location.href = `/editPost.jsp?boardListNum=${boardListNum}`;
-    fetch(`/api/editPost?boardListNum=${boardListNum}`, {
-        method: "GET"
-    })
-        .then(response => response.json())
-        .then(data => {
-        if (data.success) {
-            console.log("게시글 수정 성공");
-        }
-        else {
-            console.error("게시글 수정 실패:", data.message);
-        }
-    })
-        .catch(error => {
-        console.error('게시글 수정 중 오류 발생:', error);
-    });
+function editPost() {
+    console.log("수정되었습니다");
+    const form = document.getElementById("editForm");
+    const boardListNumInput = document.createElement("input");
+    if (form) {
+        boardListNumInput.type = "hidden";
+        boardListNumInput.name = "boardListNum";
+        boardListNumInput.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열로 변환하여 할당
+        form.appendChild(boardListNumInput);
+        form.submit();
+    }
 }
-function deletePost(boardListNum) {
-    fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
-        method: "POST"
-    })
-        .then(response => response.json())
-        .then(data => {
-        if (data.success) {
-            console.log("게시글 삭제 성공");
-        }
-        else {
-            console.error("게시글 삭제 실패:", data.message);
-        }
-    })
-        .catch(error => {
-        console.error('게시글 삭제 중 오류 발생:', error);
-    });
-}
+// function deletePost(boardListNum: number) {
+//     fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
+//         method: "POST"
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 console.log("게시글 삭제 성공");
+//             } else {
+//                 console.error("게시글 삭제 실패:", data.message);
+//             }
+//         })
+//         .catch(error => {
+//             console.error('게시글 삭제 중 오류 발생:', error);
+//         });
+// }
