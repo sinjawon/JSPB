@@ -49,7 +49,7 @@
         </div>
     </div>
     <button class='Modi_btn' ><a href="infomodify.jsp">정보 수정</a></button>
-    <div class="withdraw"><a href="">회원탈퇴</a></div>
+    <div class="withdraw"><a href="deletemember.jsp">회원탈퇴</a></div>
     
 <%@include file="../jsp/footer.jsp"%>
 </body>
