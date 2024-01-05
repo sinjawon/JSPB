@@ -16,7 +16,7 @@
             <div class="user_modi">
                 <span>회원</span>
                 <div class="modi_image"><img src="" alt=""></div>
-                <input type="file">
+                <input type="file" class="file">
                     <div class="modiWrap">
                         <input type="text" name="nickname" class="modiBox" placeholder="닉네임">
                         <input type="email" name="email" class="modiBox" placeholder="이메일">
@@ -48,6 +48,8 @@
             </div>
         </div>
     </div>
+    <button class='Modi_btn' ><a href="infomodify.jsp">정보 수정</a></button>
+    <div class="withdraw"><a href="">회원탈퇴</a></div>
     
 <%@include file="../jsp/footer.jsp"%>
 </body>

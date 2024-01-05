@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 .modify{
-    padding: 15rem 4rem 0 ;
-    
+    margin: auto;
+    text-align: center;
+    margin-top: 14rem;
 }
 .modify > h2{
     text-align: center;
@@ -13,16 +14,31 @@
 }
 
 .modify .info_modi{
+    margin: 3rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5rem;
+    position: relative;
 }
 
-.modify .info_modi>div{
-    width: 50%;
+.info_modi::before{
+    content: '';
+    height: 100%;
+    position: absolute;
+    border: 0.5px solid #999;
+    background-color: #999;
+}
+.info_modi .user_modi,
+.info_modi .pet_modi{
+    width: 35%;
+    height: 450px;
+    border-radius: 20px;
     text-align: center;
-    padding-bottom: 3rem;
+}
+.info_modi .user_modi > div,
+.info_modi .pet_modi> div{
+    padding: 1rem 0 ;
 }
 
 .user_modi > span,
@@ -46,8 +62,11 @@
 .modiWrap{
     display: flex;
     flex-direction: column;
-
     align-items: center;
+
+}
+.modiWrap > *{
+    margin: 0.5rem 0;
 }
 
 .modiWrap > input{
@@ -56,17 +75,44 @@
 
 .radioBoxWrap{
     display: flex;
-    justify-content: flex-start;
+    gap: 1.4rem;
+
 
     
 }
 
 .info_modi input{
     border: none;
-    border-bottom: 1px solid #777;
+    border-bottom: 2px solid #fa5;
     padding: 0.5rem 0;
 }
 
-.file{
+.modify .info_modi input.file{
     border: none;
+    margin-left: 5rem;
+}
+
+.Modi_btn{
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+   	width: 14vw;
+ 	height: 5vh;
+  	background-color: #fa5;    
+  	font-weight: bold;
+    border: none;
+    margin-bottom:5rem;
+}
+
+.withdraw{
+    position: absolute;
+    right: 3rem;
+    bottom:1rem;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    color:#777    
+}
+
+.withdraw:hover{
+    color:red;
 }
