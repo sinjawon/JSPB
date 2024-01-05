@@ -8,6 +8,8 @@
 	
 	session.removeAttribute("UserNum");
 	session.removeAttribute("UserNickName");
+	session.removeAttribute("UserEmail");
+	session.removeAttribute("UserProfile");
 	session.setMaxInactiveInterval(0);
 	
    response.sendRedirect("/app/main.jsp");

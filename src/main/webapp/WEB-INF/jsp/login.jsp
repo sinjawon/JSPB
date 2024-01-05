@@ -15,16 +15,15 @@
   	    </div>
       <div class="login-title">로그인</div>
       <div class="login-box2">
-        <form action="../api/select/logincheck.jsp" class="login-form">
-          <!-- <label for="id">아이디:</label> -->
+        <form class="login-form" action="../api/select/logincheck.jsp">
+        
           <input
             type="text"
             name="userid"
             class="login-ipbox"
             placeholder="아이디"
           />
-          <!-- <button>중복체크</button> -->
-          <!-- <label for="password">비밀번호:</label> -->
+        
           <input
             type="password"
             name="password"
@@ -53,6 +52,6 @@
  	</form>
  	 <%-- 로그인 실패 시 에러 메시지가 있으면 표시 --%>
  	  
- 	
+ 	<a href="http://localhost:4545/app/joinmembership.jsp">회원가입</a>
 </body>
 </html>
