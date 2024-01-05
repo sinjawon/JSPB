@@ -41,7 +41,6 @@
 
 .userPet_info::before{
     content: '';
-
     height: 100%;
     position: absolute;
     border: 0.5px solid #999;
@@ -102,16 +101,18 @@
 }
 
 .info_wrap .info_image{
-    border-radius: 50%;
     width:130px;
     height: 130px;
     background-color: #999;
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    overflow: hidden;
+	object-fit: contain;
 }
-.info_image > img{
-	width: 300px;
+.info_image > .profile_img{
+	width: 100%;
+
 }
 .info_box{
     border-bottom: 2px solid #fa5;

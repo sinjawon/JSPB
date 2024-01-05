@@ -20,7 +20,7 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
         <div class="userPet_info">
             <div class="user_info">
                 <span class=user>회원</span>
-                <div class="info_image"><img src="" alt=""></div>
+                <div class="info_image"><img class='profile_img' src="<%=session.getAttribute("UserProfile")%>" alt="user_image"></div>
                 <div class="info_box">
                     <span class=write>닉네임</span>
                     <span class=content><%=session.getAttribute("UserNickName") %></span>
@@ -34,10 +34,7 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
             
             <%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
-        		 String usernum = (String)session.getAttribute("UserNum");
-        		 
-        		 
-        		 %>
+        		 String usernum = (String)session.getAttribute("UserNum");%>
      		
         		  <div class="pet_info">
                   <span class=pet>반려동물</span>
