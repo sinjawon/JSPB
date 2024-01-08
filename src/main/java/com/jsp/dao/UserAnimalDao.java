@@ -33,17 +33,25 @@ public interface UserAnimalDao {
 			@Select( "select animalProfile from memberAnimal where userNum=#{userNum}")
 			public UserAnimal getAnimalProfile(@Param("userNum") String userNum);
 		
-		   //유저넘버로 유저 닉네임 업데이트
-		   @Select("UPDATE Member3 SET userNickName = #{nickname} WHERE userNum = #{usernum};")
-			public User udtNickname(@Param("usernum") String userid,@Param("nickname") String nickname);
+		   //유저넘버로 동물 이름 업데이트
+		   @Select("UPDATE animalProfile SET animalname = #{animalname} WHERE userNum = #{usernum};")
+			public User aniname(@Param("usernum") String usernum,@Param("animalname") String animalname);
 			
-			//넘버로 유저 이메일 업데이트
-			@Select("UPDATE Member3 SET userEmail = #{userEmail} WHERE userNum = #{usernum};")
-			public User udtemail(@Param("usernum") String userid,@Param("userEmail") String userEmail);
+			//넘버로 동물 생일 업데이트
+			@Select("UPDATE animalProfile SET animalBirth = #{animalBirth} WHERE userNum = #{usernum};")
+			public User anibirth(@Param("usernum") String usernum,@Param("animalBirth") String animalBirth);
 			
-			//넘버로 유저 프로파일 주소 업데이트
-			@Select("UPDATE Member3 SET userProfile = #{userProfile} WHERE userNum = #{usernum};")
-			public User udtprofile(@Param("usernum") String userid,@Param("userProfile") String userProfile);	
+			//넘버로 동물 성별 업데이트
+			@Select("UPDATE animalProfile SET animalgender = #{animalgender} WHERE userNum = #{usernum};")
+			public User anigender(@Param("usernum") String usernum,@Param("animalgender") String animalgender);	
+			
+			//넘버로 동물 무게 업데이트
+			@Select("UPDATE animalProfile SET animalweight = #{animalweight} WHERE userNum = #{usernum};")
+			public User aniweight(@Param("usernum") String usernum,@Param("animalweight") String animalweight);
+			
+			//넘버로 동물 프로파일 업데이트
+			@Select("UPDATE animalProfile SET animalProfile = #{animalProfile} WHERE userNum = #{usernum};")
+			public User aniprofile(@Param("usernum") String usernum,@Param("animalProfile") String animalProfile);
 	
 	
 	

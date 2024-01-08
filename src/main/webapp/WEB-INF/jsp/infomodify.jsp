@@ -19,7 +19,7 @@
             <div class="user_modi">
                 <span>회원</span>
                 <div class="modi_image"><img src="" alt=""></div>
-                <input type="file">
+                <input type="file" name="image">
        <div class="modiWrap">
                    
          <!-- 이름 -->
@@ -41,7 +41,7 @@
                 <span>반려동물</span>
                 <div class="modi_image"><img src="" alt=""></div>
              
-                <input type="file" class="file">
+                <input type="file" class="file" name="petimage">
                 <div class="modiWrap">
                 
                 <!-- 동물 이름 -->
