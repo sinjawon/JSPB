@@ -32,13 +32,13 @@ window.onload = function () {
 };
 function editPost() {
     console.log("수정되었습니다");
-    const form = document.getElementById("editForm");
-    const boardListNumInput = document.createElement("input");
+    let form = document.getElementById("editForm");
+    let boardListNum = document.createElement("input");
     if (form) {
-        boardListNumInput.type = "hidden";
-        boardListNumInput.name = "boardListNum";
-        boardListNumInput.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열로 변환하여 할당
-        form.appendChild(boardListNumInput);
+        boardListNum.type = "hidden";
+        boardListNum.name = "boardListNum";
+        boardListNum.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열
+        form.appendChild(boardListNum);
         form.submit();
     }
 }

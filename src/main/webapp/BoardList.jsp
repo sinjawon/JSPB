@@ -34,10 +34,11 @@
 			<a class="hitCount">조회수</a>
 			<a class="regDate">등록일</a>
 			
-			<a href="/editPost.jsp?id=0" class="editPost">edit</a>
+			<a href="/editPost.jsp?id=0" class="editPost">수정</a>
 			<%--<c:if test="${data.userNickname eq sessionScope.userNickname}">
 			 세션 확인용 이러면 작성자만 보이나? --%>
-                <button onclick="deletePost()">삭제</button>
+             <button onclick="deletePost(${post.boardListNum})">삭제</button>
+                
             <%-- </c:if> --%>
 		</template>
 	</div>

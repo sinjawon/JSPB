@@ -25,6 +25,9 @@ async function ajax(url: string, option?: any) {
         template.content.querySelector(".editPost").innerHTML = "수정";
         template.content.querySelector(".editPost")?.setAttribute("href", `/editPost.jsp?id=${data.boardListNum}`);
 
+        template.content.querySelector(".deletePost").innerHTML = "삭제";
+        template.content.querySelector(".deletePost")?.setAttribute("href", `/deletePost.jsp?id=${data.boardListNum}`);
+
         let a: HTMLElement | null = document.createElement("a");
         a.innerHTML = template.innerHTML;
         if (boards) {
@@ -39,12 +42,13 @@ async function ajax(url: string, option?: any) {
 
 
   function deletePost(boardListNum: number) {
-    fetch(`/api/deletePost?boardListNum=${valueId}`, {
+    fetch(`/api/deletePost?boardListNum=${data.boardListNum}`, {
         method: "POST"
     })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+              console.log(data.boardListNum);
                 console.log("게시글 삭제 성공");
             } else {
                 console.error("게시글 삭제 실패:", data.message);

@@ -20,7 +20,7 @@ ajax("/api/boardlist", {
     method: "POST",
     body: form,
 }).then((json) => {
-    var _a, _b;
+    var _a, _b, _c;
     console.log(json);
     let boards = document.querySelector("#boards");
     let template = document.querySelector("#boards template");
@@ -34,6 +34,8 @@ ajax("/api/boardlist", {
             template.content.querySelector(".regDate").innerHTML = data.regDate;
             template.content.querySelector(".editPost").innerHTML = "수정";
             (_b = template.content.querySelector(".editPost")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/editPost.jsp?id=${data.boardListNum}`);
+            template.content.querySelector(".deletePost").innerHTML = "삭제";
+            (_c = template.content.querySelector(".deletePost")) === null || _c === void 0 ? void 0 : _c.setAttribute("href", `/deletePost.jsp?id=${data.boardListNum}`);
             let a = document.createElement("a");
             a.innerHTML = template.innerHTML;
             if (boards) {
@@ -43,12 +45,13 @@ ajax("/api/boardlist", {
     }
 });
 function deletePost(boardListNum) {
-    fetch(`/api/deletePost?boardListNum=${valueId}`, {
+    fetch(`/api/deletePost?boardListNum=${data.boardListNum}`, {
         method: "POST"
     })
         .then(response => response.json())
         .then(data => {
         if (data.success) {
+            console.log(data.boardListNum);
             console.log("게시글 삭제 성공");
         }
         else {

@@ -24,6 +24,10 @@ public interface BoardDao {
     @Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")
 	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, @Param("boardlistNum") int boardlistNum);
 	
+	// board 에 글 지울때 boardListNum 인 글을 지운다?
+	@Delete("delete from boardInfo where boardListNum = #{boardListNum}")
+	public void deleteBoardInfo(@Param("boardListNum") int boardListNum);
+    
 	
 	
 //	// db에서 user 테이블에서 userNickName 으로 user 정보를 찾는다
@@ -47,9 +51,7 @@ public interface BoardDao {
 	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{title}, #{mainContents})")
 	public void insertBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents);
 	
-	// board 에 글 지울때 boardListNum 인 글을 지운다?
-	@Delete("delete from boardInfo where boardListNum = #{boardListNum}")
-	public void deleteBoardInfo(@Param("boardListNum") int boardListNum);
+
 
 	
 /*

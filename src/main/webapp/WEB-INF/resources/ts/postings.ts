@@ -38,15 +38,15 @@ window.onload = function() {
 
 function editPost() {
     console.log("수정되었습니다");
-    const form: HTMLFormElement | null = document.getElementById("editForm") as HTMLFormElement | null;
-    const boardListNumInput: HTMLInputElement | null = document.createElement("input") as HTMLInputElement | null;
+    let form: HTMLFormElement | null = document.getElementById("editForm") as HTMLFormElement | null;
+    let boardListNum: HTMLInputElement | null = document.createElement("input") as HTMLInputElement | null;
 
     if (form) {
-        boardListNumInput.type = "hidden";
-        boardListNumInput.name = "boardListNum";
-        boardListNumInput.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열로 변환하여 할당
+        boardListNum.type = "hidden";
+        boardListNum.name = "boardListNum";
+        boardListNum.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열
 
-        form.appendChild(boardListNumInput);
+        form.appendChild(boardListNum);
         form.submit();
     }
 }
