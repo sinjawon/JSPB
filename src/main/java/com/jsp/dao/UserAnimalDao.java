@@ -29,11 +29,21 @@ public interface UserAnimalDao {
 		@Select( "select animalweight from memberAnimal where userNum=#{userNum}")
 		public UserAnimal getAnimalWeight(@Param("userNum") String userNum);
 
-		//유저넘버로 동물 프로필
+		  //유저넘버로 동물 프로필
 			@Select( "select animalProfile from memberAnimal where userNum=#{userNum}")
 			public UserAnimal getAnimalProfile(@Param("userNum") String userNum);
 		
-		
+		   //유저넘버로 유저 닉네임 업데이트
+		   @Select("UPDATE Member3 SET userNickName = #{nickname} WHERE userNum = #{usernum};")
+			public User udtNickname(@Param("usernum") String userid,@Param("nickname") String nickname);
+			
+			//넘버로 유저 이메일 업데이트
+			@Select("UPDATE Member3 SET userEmail = #{userEmail} WHERE userNum = #{usernum};")
+			public User udtemail(@Param("usernum") String userid,@Param("userEmail") String userEmail);
+			
+			//넘버로 유저 프로파일 주소 업데이트
+			@Select("UPDATE Member3 SET userProfile = #{userProfile} WHERE userNum = #{usernum};")
+			public User udtprofile(@Param("usernum") String userid,@Param("userProfile") String userProfile);	
 	
 	
 	

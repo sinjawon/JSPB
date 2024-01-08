@@ -5,21 +5,43 @@
 
 
 
-<%            
-		
+<%      
+if(request.getParameter("image") !=null){
+	
 	  try(DBConnector con = new DBConnector();){
-		if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();		
-		UserDao map = con.OpenMap(request, UserDao.class);
-		UserAnimal map2 =con.OpenMap(request, UserAnimal.class);
-		request.getParameter("");
-	     String usernum = (String)session.getAttribute("usernum");
+			if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();		
+			UserDao map = con.OpenMap(request, UserDao.class);
+			UserAnimal map2 =con.OpenMap(request, UserAnimal.class);
+			request.getParameter("");
+		     String usernum = (String)session.getAttribute("usernum");
+		
+			  } 
+		catch(Exception e) {
+			response.getWriter().write("오류오류0");
+
+			  request.setAttribute("userprofile", "");		  
+		        // 다른 서블릿으로 포워딩
+		        RequestDispatcher dispatcher = request.getRequestDispatcher("/upload");
+		        dispatcher.forward(request, response);
+		}
+	
+	
+}else{
+	
+	  try(DBConnector con = new DBConnector();){
+			if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();		
+			UserDao map = con.OpenMap(request, UserDao.class);
+			UserAnimal map2 =con.OpenMap(request, UserAnimal.class);
+			request.getParameter("");
+		     String usernum = (String)session.getAttribute("usernum");
+		
+			  } 
+		catch(Exception e) {
+			response.getWriter().write("오류오류0");
+			
+		}
+
+}     
 		
 	
-		  } 
-	catch(Exception e) {
-		response.getWriter().write("오류오류0");
-		
-		/* session.setMaxInactiveInterval(0);
-		response.sendRedirect("/app/home.jsp"); */
-	}
 %>

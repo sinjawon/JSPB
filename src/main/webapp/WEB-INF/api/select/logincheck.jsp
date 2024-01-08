@@ -33,7 +33,7 @@ if(userid != null){
 			    	session.setAttribute("UserEmail",UserEmail);
 			    	session.setAttribute("UserProfile",UserProfile);
 			    	session.setMaxInactiveInterval(60 * 30);	    		
-			    	response.sendRedirect("/app/main.jsp");   	
+			    	response.sendRedirect("/app/main.jsp");
 			  }else{	        	
 				   session.setAttribute("loginError", "매치하는 비밀번호x");		    
 					response.sendRedirect("/app/login.jsp");

@@ -37,12 +37,9 @@ public class Upload extends HttpServlet{
 	    	//utf8로 읽을꺼야
 	    	response.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/html;charset=UTF-8");
-
-	        // 
-			/*
-			 *
-			 //이걸로 통일하되 
-			 */
+	        
+	        request.setAttribute("keyName", "storedValue");
+	    
 			/* getServletContext().getRealPath("/") */
 	        String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img\\userprofile";
 	        
@@ -69,6 +66,18 @@ public class Upload extends HttpServlet{
 	            response.getWriter().println("이미지 업로드 실패: " + e.getMessage());
 	        }
 	    }
+	   
+		/*
+		 * private String saveFileToServer(String uploadPath, Part filePart) throws
+		 * IOException { // 파일을 서버 폴더에 저장하는 로직을 구현 String fileName =
+		 * getFileName(filePart); String filePath = uploadPath + File.separator +
+		 * fileName;
+		 * 
+		 * try (InputStream in = filePart.getInputStream()) { Files.copy(in, new
+		 * File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING); }
+		 * 
+		 * return "/images/" + fileName; }
+		 */
 
 	    private String getFileName(Part part) {
 	        for (String content : part.getHeader("content-disposition").split(";")) {

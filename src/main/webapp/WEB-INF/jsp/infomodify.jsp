@@ -14,13 +14,14 @@
 <%@include file="../jsp/nav.jsp"%>
 	<div class="modify">
         <h2>정보수정</h2>
+<form action="../api/update/infomodify.jsp"> 
         <div class="info_modi">
             <div class="user_modi">
                 <span>회원</span>
                 <div class="modi_image"><img src="" alt=""></div>
                 <input type="file">
        <div class="modiWrap">
-                    
+                   
          <!-- 이름 -->
 	     <label for="name"><%=session.getAttribute("UserNickName")%></label>
 	     <input id="name" style="display:none" type="text" name="nickname" class="modiBox" placeholder="닉네임" value="<%=session.getAttribute("UserNickName")%>">
@@ -39,13 +40,13 @@
             <div class="pet_modi">
                 <span>반려동물</span>
                 <div class="modi_image"><img src="" alt=""></div>
-               <form> 
+             
                 <input type="file" class="file">
                 <div class="modiWrap">
                 
                 <!-- 동물 이름 -->
                 <label for="aniname"><%= map.getAnimalName(usernum).toStringPatName()%></label>
-                <input id="aniname" style="display:none" type="text" name="petName" class="modiBox" placeholder="이름">
+                <input id="aniname" style="display:none" type="text" name="petName" class="modiBox" placeholder="이름" value="<%= map.getAnimalName(usernum).toStringPatName()%>">
                         
                 <!-- 동물생일 -->
                 <label for="date"><%= map.getAnimalBirth(usernum).toStringPatBirth()%></label>      
@@ -54,25 +55,26 @@
                 <label for="gender"><%= map.getAnimalGender(usernum).toStringPatGender()%></label>     
                         <div class="radioBoxWrap" style="display:none">                    
                             <div class="radioBox">
-                                <input type="radio" name="sex" id="man">
+                                <input type="radio" name="gender" id="man">
                                 <label for="man">수컷</label>
                             </div>
                             <div class="radioBox">
-                                <input type="radio" name="sex" id="woman">
+                                <input type="radio" name="gender" id="woman">
                                 <label for="woman">암컷</label>
                             </div>
                             <div class="radioBox">
-                                <input type="radio" name="sex" id="neu">
+                                <input type="radio" name="gender" id="neu">
                                 <label for="neu">중성</label>
                             </div>
                         </div>
                    <!--  몸무게  -->   
                    <label for="weight"><%=map.getAnimalWeight(usernum).toStringPatWeight()%></label> 
-                   <input id="weight" style="display:none" type="text" name="weight" class="modiBox" placeholder="몸무게">
-                </div>
-                </form>
+                   <input id="weight" style="display:none" type="text" name="weight" class="modiBox" placeholder="몸무게" value="<%=map.getAnimalWeight(usernum).toStringPatWeight()%>">
+                </div>   
             </div>
         </div>
+        <input type="submit" value="제출">
+         </form>
     </div>
     	<%
         	}
