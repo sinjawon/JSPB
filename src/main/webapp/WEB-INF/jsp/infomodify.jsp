@@ -14,7 +14,7 @@
 <%@include file="../jsp/nav.jsp"%>
 	<div class="modify">
         <h2>정보수정</h2>
-<form action="../api/update/infomodify.jsp"> 
+<form action="../api/update/infomodify.jsp" method="POST" enctype="multipart/form-data"> 
         <div class="info_modi">
             <div class="user_modi">
                 <span>회원</span>
