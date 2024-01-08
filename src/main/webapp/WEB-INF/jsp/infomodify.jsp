@@ -34,10 +34,12 @@
             	<%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
         		 String usernum = (String)session.getAttribute("UserNum");
-        		 %>            
+        		 %>  
+        		           
             <div class="pet_modi">
                 <span>반려동물</span>
                 <div class="modi_image"><img src="" alt=""></div>
+               <form> 
                 <input type="file" class="file">
                 <div class="modiWrap">
                 
@@ -68,6 +70,7 @@
                    <label for="weight"><%=map.getAnimalWeight(usernum).toStringPatWeight()%></label> 
                    <input id="weight" style="display:none" type="text" name="weight" class="modiBox" placeholder="몸무게">
                 </div>
+                </form>
             </div>
         </div>
     </div>

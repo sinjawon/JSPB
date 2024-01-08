@@ -34,12 +34,17 @@ public class Upload extends HttpServlet{
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
 	    	
-	    	
+	    	//utf8로 읽을꺼야
 	    	response.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/html;charset=UTF-8");
 
-	        // 업로드된 파일을 저장할 디렉토리 경로 이건 내가 집에서 한건데 서버에서 들어온 친구로 하고싶거든
-	        String uploadPath = "C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img\\userprofile";
+	        // 
+			/*
+			 *
+			 //이걸로 통일하되 
+			 */
+			/* getServletContext().getRealPath("/") */
+	        String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img\\userprofile";
 	        
 	     
 	        try {
