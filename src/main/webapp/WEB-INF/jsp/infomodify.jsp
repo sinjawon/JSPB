@@ -36,6 +36,7 @@
             	<%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
         		 String usernum = (String)session.getAttribute("UserNum");
+        		   String gender = map.getAnimalGender(usernum).toStringPatGender();
         		 %>  
         		           
             <div class="pet_modi">
@@ -56,15 +57,15 @@
                 <label for="gender"><%= map.getAnimalGender(usernum).toStringPatGender()%></label>     
                         <div class="radioBoxWrap" style="display:none">                    
                             <div class="radioBox">
-                                <input type="radio" name="gender" id="man" value="수컷">
+                                <input type="radio" name="gender" id="man" value="수컷" <%= "수컷".equals(gender)? "checked": "" %>>
                                 <label for="man">수컷</label>
                             </div>
                             <div class="radioBox">
-                                <input type="radio" name="gender" id="woman" value="암컷">
+                                <input type="radio" name="gender" id="woman" value="암컷" <%= "암컷".equals(gender)? "checked": "" %>>
                                 <label for="woman">암컷</label>
                             </div>
                             <div class="radioBox">
-                                <input type="radio" name="gender" id="neu" value="중성">
+                                <input type="radio" name="gender" id="neu" value="중성" <%= "중성".equals(gender)? "checked": "" %>>
                                 <label for="neu">중성</label>
                             </div>
                         </div>
