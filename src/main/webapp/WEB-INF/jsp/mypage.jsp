@@ -12,6 +12,13 @@
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
+
+  <%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum");
+        		 
+        		 
+        		 %>
     <div class="info_wrap">
         <div class="info">
             <div class=profile><a href="mypage.jsp">프로필</a></div>
@@ -32,12 +39,7 @@
             </div>
          
             
-            <%try(DBConnector con = new DBConnector();){
-        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
-        		 String usernum = (String)session.getAttribute("UserNum");
-        		 
-        		 
-        		 %>
+          
      		
         		  <div class="pet_info">
                   <span>반려동물</span>

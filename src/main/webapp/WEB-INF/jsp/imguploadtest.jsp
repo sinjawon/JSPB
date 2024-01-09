@@ -12,7 +12,7 @@
 </head>
 <body>
    
-    <form action="/upload" method="post" enctype="multipart/form-data">
+    <form action="/info" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
         <input type="submit" value="파일 업로드">
     </form>

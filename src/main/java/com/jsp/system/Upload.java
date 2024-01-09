@@ -38,7 +38,7 @@ public class Upload extends HttpServlet{
 	    	response.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/html;charset=UTF-8");
 	        
-	        request.setAttribute("keyName", "storedValue");
+	      
 	    
 			/* getServletContext().getRealPath("/") */
 	        String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img\\userprofile";

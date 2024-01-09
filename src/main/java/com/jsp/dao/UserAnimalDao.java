@@ -35,23 +35,23 @@ public interface UserAnimalDao {
 		
 		   //유저넘버로 동물 이름 업데이트
 		   @Update("UPDATE memberAnimal SET animalname = #{animalname} WHERE userNum = #{usernum}")
-			public UserAnimal aniname(@Param("usernum") String usernum,@Param("animalname") String animalname);
+			public int aniname(@Param("usernum") String usernum,@Param("animalname") String animalname);
 			
 			//넘버로 동물 생일 업데이트
 			@Update("UPDATE memberAnimal SET animalBirth = #{animalBirth} WHERE userNum = #{usernum}")
-			public UserAnimal anibirth(@Param("usernum") String usernum,@Param("animalBirth") String animalBirth);
+			public int anibirth(@Param("usernum") String usernum,@Param("animalBirth") String animalBirth);
 			
 			//넘버로 동물 성별 업데이트
 			@Update("UPDATE memberAnimal SET animalgender = #{animalgender} WHERE userNum = #{usernum}")
-			public UserAnimal anigender(@Param("usernum") String usernum,@Param("animalgender") String animalgender);	
+			public int anigender(@Param("usernum") String usernum,@Param("animalgender") String animalgender);	
 			
 			//넘버로 동물 무게 업데이트
 			@Update("UPDATE memberAnimal SET animalweight = #{animalweight} WHERE userNum = #{usernum}")
-			public UserAnimal aniweight(@Param("usernum") String usernum,@Param("animalweight") String animalweight);
+			public int aniweight(@Param("usernum") String usernum,@Param("animalweight") String animalweight);
 			
 			//넘버로 동물 프로파일 업데이트
 			@Update("UPDATE memberAnimal SET animalProfile = #{animalProfile} WHERE userNum = #{usernum}")
-			public UserAnimal aniprofile(@Param("usernum") String usernum,@Param("animalProfile") String animalProfile);
+			public int aniprofile(@Param("usernum") String usernum,@Param("animalProfile") String animalProfile);
 	
 	
 	

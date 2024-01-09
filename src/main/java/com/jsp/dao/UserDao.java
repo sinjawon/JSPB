@@ -48,15 +48,15 @@ public interface UserDao {
 	
 	//유저넘버로 유저 닉네임 업데이트
 	@Update("UPDATE Member3 SET userNickName = #{nickname} WHERE userNum = #{usernum}")
-	public User udtNickname(@Param("usernum") String usernum,@Param("nickname") String nickname);
+	public int udtNickname(@Param("usernum") String usernum,@Param("nickname") String nickname);
 	
 	//넘버로 유저 이메일 업데이트
 	@Update("UPDATE Member3 SET userEmail = #{userEmail} WHERE userNum = #{usernum}")
-	public User udtemail(@Param("usernum") String usernum,@Param("userEmail") String userEmail);
+	public int udtemail(@Param("usernum") String usernum,@Param("userEmail") String userEmail);
 	
 	//넘버로 유저 프로파일 주소 업데이트
 	@Update("UPDATE Member3 SET userProfile = #{userProfile} WHERE userNum = #{usernum}")
-	public User udtprofile(@Param("usernum") String usernum,@Param("userProfile") String userProfile);
+	public int udtprofile(@Param("usernum") String usernum,@Param("userProfile") String userProfile);
 	
 
 	

@@ -14,7 +14,8 @@
 <%@include file="../jsp/nav.jsp"%>
 	<div class="modify">
         <h2>정보수정</h2>
-<form action="../api/update/infomodify.jsp" method="POST" enctype="multipart/form-data"> 
+        <!-- ../api/update/infomodify.jsp -->
+  <form action="/infomodify" method="post" enctype="multipart/form-data"> 
         <div class="info_modi">
             <div class="user_modi">
                 <span>회원</span>
@@ -55,15 +56,15 @@
                 <label for="gender"><%= map.getAnimalGender(usernum).toStringPatGender()%></label>     
                         <div class="radioBoxWrap" style="display:none">                    
                             <div class="radioBox">
-                                <input type="radio" name="gender" id="man">
+                                <input type="radio" name="gender" id="man" value="수컷">
                                 <label for="man">수컷</label>
                             </div>
                             <div class="radioBox">
-                                <input type="radio" name="gender" id="woman">
+                                <input type="radio" name="gender" id="woman" value="암컷">
                                 <label for="woman">암컷</label>
                             </div>
                             <div class="radioBox">
-                                <input type="radio" name="gender" id="neu">
+                                <input type="radio" name="gender" id="neu" value="중성">
                                 <label for="neu">중성</label>
                             </div>
                         </div>
