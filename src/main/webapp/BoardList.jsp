@@ -38,12 +38,11 @@
 		</template>
 	</div>
 	<div id="pages">
-		<div>
+		<div> <!-- 원래 template 으로 해서 자동으로 적용해야 하는데 못해서 임시로 넘어갑니다. 이걸 건드리면 검색이랑 리스트랑 다 엉켜서요. -->
 			<span onclick="pageChange(this.innerText)">1</span>
 			<span onclick="pageChange(this.innerText)">2</span>
 			<span onclick="pageChange(this.innerText)">3</span>
-			<span onclick="pageChange(this.innerText)">4</span>
-		
+			<span onclick="pageChange(this.innerText)">4</span>		
 		</div>
 	</div>
         
