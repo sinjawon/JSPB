@@ -1,33 +1,32 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 //@ts-nocheck
 function ajax(url, option) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("ajax loading~~~~~");
+        console.log("ajax 로딩 중~~~~~");
         return fetch(url, option).then((res) => res.json());
     });
 }
-let form = new FormData();
+function validateSearchForm() {
+    // 사용자 정의 유효성 검사를 수행합니다.
+    let searchInput = document.getElementById("search");
+    if (!searchInput || searchInput.value.length < 3 || searchInput.value.length > 10) {
+        alert("검색어는 3자 이상 10자 이하이어야 합니다.");
+        return false; // 폼 제출 방지
+    }
+    // 유효성 검사를 통과하면 submitSearch 함수를 호출합니다.
+    submitSearch(); // submitSearch 함수 호출
+    return false; // 기본 폼 제출 방지
+}
 ajax("/api/boardlist", {
     method: "POST",
-    body: form,
+    body: new FormData(document.getElementById("searchtype")),
 }).then((json) => {
-    var _a;
     console.log(json);
     let boards = document.querySelector("#boards");
     let template = document.querySelector("#boards template");
     if (template) {
         for (let data of json.data) {
             template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-            (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
             template.content.querySelector(".title").innerHTML = data.title;
             template.content.querySelector(".userNickname").innerHTML = data.userNickname;
             template.content.querySelector(".hitCount").innerHTML = data.hitCount;
@@ -51,7 +50,6 @@ function submitSearch() {
             method: "POST",
             body: formData,
         }).then((json) => {
-            var _a;
             console.log(json);
             let boards = document.querySelector("#boards");
             let template = document.querySelector("#boards template");
@@ -67,7 +65,6 @@ function submitSearch() {
                     a.appendChild(clone);
                     // 동적으로 생성된 div에 데이터 추가
                     a.querySelector(".boardListNum").innerHTML = data.boardListNum;
-                    (_a = a.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
                     a.querySelector(".title").innerHTML = data.title;
                     a.querySelector(".userNickname").innerHTML = data.userNickname;
                     a.querySelector(".hitCount").innerHTML = data.hitCount;
@@ -79,4 +76,8 @@ function submitSearch() {
             }
         });
     }
+}
+function pageChange(page) {
+    document.querySelector("#searchtype #page").value = page;
+    submitSearch();
 }

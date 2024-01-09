@@ -19,6 +19,10 @@
         <br><br><br>
         <button type="button" onclick="submitPost()">확인</button>
         <button type="button" onclick="cancelPost()">취소</button>
+        
+        <form action="/boardList" method="post">
+   			<button type="button" onclick="location.href='/boardList.jsp'">뒤로가기</button>
+   		</form>  
     </form>
 </body>
 </html>
