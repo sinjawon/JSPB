@@ -13,7 +13,7 @@
    	a{
 		display: inline-block;
 	}
-	a.boardListNum, div.usernickname,div.hitCount,div.regDate{
+	a.boardListNum, a.usernickname,a.hitCount,a.regDate{
 		width:100px;
 	}
 	a.title{
@@ -35,12 +35,14 @@
 			<a class="regDate">등록일</a>
 			
 			<a href="/editPost.jsp?id=0" class="editPost">수정</a>
+			
+			<a href="javascript:void(0)" class ="deletePost" onclick="deletePost(0)">삭제</a>
 			<%--<c:if test="${data.userNickname eq sessionScope.userNickname}">
 			 세션 확인용 이러면 작성자만 보이나? --%>
-             <button onclick="deletePost(${post.boardListNum})">삭제</button>
-                
+             
             <%-- </c:if> --%>
 		</template>
+		
 	</div>
         
         
@@ -57,7 +59,7 @@
    		</form>
    		
    		<form action="/api/boardlist" method="post">
-   			<button type="button" class="back" onClick="location.href='/BoardList.jsp'">목록으로 돌아가기</button>
+   			<button type="button" class="back" onClick="location.href='/boardList.jsp'">목록으로 돌아가기</button>
    		</form>  		
    		<form action="/insert" method="post">
    			<button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>

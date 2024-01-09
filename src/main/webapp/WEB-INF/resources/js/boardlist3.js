@@ -26,18 +26,22 @@ ajax("/api/boardlist", {
     let template = document.querySelector("#boards template");
     if (template) {
         for (let data of json.data) {
+            let a = document.createElement("a");
             template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
             (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
             template.content.querySelector(".title").innerHTML = data.title;
             template.content.querySelector(".userNickname").innerHTML = data.userNickname;
             template.content.querySelector(".hitCount").innerHTML = data.hitCount;
             template.content.querySelector(".regDate").innerHTML = data.regDate;
+            //수정 버튼 클릭하면 쿼리문에 글 id 가져와서 이동함
             template.content.querySelector(".editPost").innerHTML = "수정";
             (_b = template.content.querySelector(".editPost")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/editPost.jsp?id=${data.boardListNum}`);
+            //삭제 버튼 
             template.content.querySelector(".deletePost").innerHTML = "삭제";
-            (_c = template.content.querySelector(".deletePost")) === null || _c === void 0 ? void 0 : _c.setAttribute("href", `/deletePost.jsp?id=${data.boardListNum}`);
-            let a = document.createElement("a");
+            (_c = template.content.querySelector(".deletePost")) === null || _c === void 0 ? void 0 : _c.setAttribute("onclick", `deletePost(${data.boardListNum})`);
             a.innerHTML = template.innerHTML;
+            //이건 나중에 css 호출용
+            // a.classList.add("boardItem"); 
             if (boards) {
                 boards.appendChild(a);
             }
@@ -45,14 +49,14 @@ ajax("/api/boardlist", {
     }
 });
 function deletePost(boardListNum) {
-    fetch(`/api/deletePost?boardListNum=${data.boardListNum}`, {
+    fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
         method: "POST"
     })
         .then(response => response.json())
         .then(data => {
         if (data.success) {
-            console.log(data.boardListNum);
             console.log("게시글 삭제 성공");
+            // 삭제 성공 시 필요한 작업 수행
         }
         else {
             console.error("게시글 삭제 실패:", data.message);

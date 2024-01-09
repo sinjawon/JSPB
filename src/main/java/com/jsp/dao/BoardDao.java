@@ -14,8 +14,8 @@ public interface BoardDao {
 	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
 	
 	//@@지수-새로운 글을 추가하는 메서드. 
-	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
-	public void insertNewBoard(@Param("title") String title, @Param("mainContents") String mainContents, @Param("userNickname") String userNickname);
+	@Insert("insert into boardInfo (boardListNum, userNickname, title, mainContents,  hitCount, regDate) values (seqBoardListNum.nextval, #{userNickname}, #{title}, #{mainContents}, 0, sysdate)")
+	public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title, @Param("mainContents") String mainContents);
 	
 //	@Update("update boardInfo set title = #{title}, mainContents = #{mainContents} where boardlistNum =#{boardlistNum}")
 //	public void updateBoardInfo(@Param("title") String title, @Param("mainContents") String mainContents, int boardListNum);

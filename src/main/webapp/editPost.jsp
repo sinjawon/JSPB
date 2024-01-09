@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.jsp.system.Ajax, org.json.*" %>
 
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
     
     
     
-    <form id="editForm" action="/api/editPost" method="post">
+    <%-- <form id="editForm" action="/api/editPost" method="post">
     	<div id= boardListNum>${valueId} </div>
     	<textarea id="userNickname" name="userNickname" placeholder="작성자"></textarea>
     	<br>
@@ -47,6 +48,6 @@
         <form action="/boardList" method="post">
             <button type="submit">뒤로가기</button>
         </form>
-    </form>
+    </form> --%>
 </body>
 </html>

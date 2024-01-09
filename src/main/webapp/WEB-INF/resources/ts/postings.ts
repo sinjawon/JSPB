@@ -44,7 +44,7 @@ function editPost() {
     if (form) {
         boardListNum.type = "hidden";
         boardListNum.name = "boardListNum";
-        boardListNum.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열
+        boardListNum.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열로
 
         form.appendChild(boardListNum);
         form.submit();
