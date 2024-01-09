@@ -78,8 +78,9 @@ public class Infomodify extends HttpServlet{
 					   map2.aniweight(usernum, weight);
 					   response.getWriter().write("5");
 						//이미지가 있으면
-    if(request.getPart("image").getSize() > 0 && request.getPart("petimage").getSize() > 0 ) {
-						   
+    if(request.getPart("image").getSize() > 0 || request.getPart("petimage").getSize() > 0 ) {
+    	       response.getWriter().write("6");
+    	         System.out.println("우저이미지");
 						if(request.getPart("image") != null && request.getPart("image").getSize() > 0){
 						
 							Part imagePart = request.getPart("image"); // 유저 profile
@@ -94,12 +95,13 @@ public class Infomodify extends HttpServlet{
 							//랜덤이름 생성
 							String random4 =RandomStringGenerator.generateRandomString(4);  
 							//저장할 랜덤이름.확장자 리퀘스트 저장
-							request.setAttribute("userprofile",random4+"."+fileExtension);
+							request.setAttribute("userprofile","userprofile/"+random4+"."+fileExtension);
 							//유저 먼저 경로를 db에 저장
-							map.udtprofile(usernum , "/resources/userprofile/"+random4 +"."+fileExtension); 
+							map.udtprofile(usernum ,"/resources/userprofile/"+random4 +"."+fileExtension);
 						}
 						
 						if(request.getPart("petimage") != null && request.getPart("petimage").getSize() > 0){
+	
 							Part petimage = request.getPart("petimage");// 유저의 동물 profiles
 							//사용자가 업로드한 이미지 이름 담고 
 							   String fileName = Paths.get(petimage.getSubmittedFileName()).getFileName().toString(); 
@@ -111,19 +113,21 @@ public class Infomodify extends HttpServlet{
 							    }
 							
 							String random4 =RandomStringGenerator.generateRandomString(4);
-							request.setAttribute("animalprofile",random4+"."+fileExtension);
+							request.setAttribute("animalprofile","animalprofile/"+random4+"."+fileExtension);
 							map2.aniprofile(usernum, "/resources/animalprofile/"+random4+"."+fileExtension);
 						}
 					        // 모든 처리끝나고 db에 저장했으면 실제로 이미지 저장은 다른 서블릿으로 ㄱㄱ 
+						
 					        RequestDispatcher dispatcher = request.getRequestDispatcher("/upload");
 					        dispatcher.forward(request, response);
 						  } 
     
-				   
+				  //수정된 정보 세션에 다시 주입
+    			  //db는 바꼈지만 웹세션은 값이라 실시간 x
 					session.setAttribute("UserNickName",nickname);
 					session.setAttribute("UserEmail",email);
 					session.setMaxInactiveInterval(60 * 30);	    		
-				  response.sendRedirect("/app/mypage.jsp");
+					response.sendRedirect("/app/mypage.jsp");
     
 			  }catch(Exception e) {
 						response.getWriter().write("이미지 있고 택스트 업데이트 처리하는 오류");

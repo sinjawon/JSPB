@@ -33,7 +33,7 @@ public class Upload extends HttpServlet{
 	   @Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
-	    	
+		   System.out.println("여기로 보내졌어");
 	    	//utf8로 읽을꺼야
 	    	response.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/html;charset=UTF-8");
@@ -41,7 +41,8 @@ public class Upload extends HttpServlet{
 	      
 	    
 			/* getServletContext().getRealPath("/") */
-	        String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img\\userprofile";
+	        //저장할 최상위 경로 img 전까지
+	        String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img";
 	        
 	     
 	        try {
@@ -49,35 +50,57 @@ public class Upload extends HttpServlet{
 	            Collection<Part> parts = request.getParts();
 	            for (Part part : parts) {
 	                if (part.getSubmittedFileName() != null) {
-	                    String fileName = getFileName(part);
-	                    String filePath = uploadPath + File.separator + fileName;
+	                	
+	                		
+	               if(part.getName().equals("image") && request.getPart("image").getSize() > 0) {
+	            	   
+	                		String userpath = (String)request.getAttribute("userprofile");
+	                			
+							/* String fileName = getFileName(part); */
+		                    String filePath = uploadPath + File.separator + userpath;
+		                    System.out.println(filePath);
+		                    // 파일을 지정된 경로로 복사
+		                    try (InputStream in = part.getInputStream()) {
+		                        Files.copy(in, new File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+		                        
+		                        response.getWriter().println("이미지 업로드 성공<br>");
+			                    response.getWriter().println("파일 경로: " + filePath);
+			                    response.sendRedirect("/app/mypage.jsp");
+		                    }catch (Exception e) {
+		                    	response.getWriter().println("이미지 업로드 실패: "+filePath+ e.getMessage());
+							}
+	                			
+	              }else if(part.getName().equals("petimage") && request.getPart("petimage").getSize() > 0) {
+	            	  System.out.println("팻이미지로 가야해");
+	                		String petpath = (String)request.getAttribute("animalprofile");
+	                		 System.out.println(petpath);	
+							/* String fileName = getFileName(part); */
+		                    String filePath = uploadPath + File.separator + petpath;
 
-	                    // 파일을 지정된 경로로 복사
-	                    try (InputStream in = part.getInputStream()) {
-	                        Files.copy(in, new File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
-	                    }
-
-	                    response.getWriter().println("이미지 업로드 성공<br>");
-	                    response.getWriter().println("파일 경로: " + filePath);
+		                    // 파일을 지정된 경로로 복사
+		                    try (InputStream in = part.getInputStream()) {
+		                        Files.copy(in, new File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+		                        
+		                        response.getWriter().println("이미지 업로드 성공<br>");
+			                    response.getWriter().println("파일 경로: " + filePath);
+			                    response.sendRedirect("/app/mypage.jsp");
+		                    }catch (Exception e) {
+		                    	response.getWriter().println("이미지 업로드 실패: " +filePath + e.getMessage());
+							}
+	                			
+	                			
+	                		}
+	  
 	                }
 	            }
+	    
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            response.getWriter().println("이미지 업로드 실패: " + e.getMessage());
 	        }
 	    }
 	   
-		/*
-		 * private String saveFileToServer(String uploadPath, Part filePart) throws
-		 * IOException { // 파일을 서버 폴더에 저장하는 로직을 구현 String fileName =
-		 * getFileName(filePart); String filePath = uploadPath + File.separator +
-		 * fileName;
-		 * 
-		 * try (InputStream in = filePart.getInputStream()) { Files.copy(in, new
-		 * File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING); }
-		 * 
-		 * return "/images/" + fileName; }
-		 */
+		
 
 	    private String getFileName(Part part) {
 	        for (String content : part.getHeader("content-disposition").split(";")) {
