@@ -70,7 +70,7 @@
         		e.printStackTrace();
         	} %>
             
-            
+                    
               
         <div class="info_menu">
             <button class='Modifybtn' ><a href="infomodify.jsp">정보 수정</a></button>
