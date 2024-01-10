@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/infomodify.css"> 
 <script src="/resources/infomodify.js" defer></script>
 <title>petpeople</title>
+
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
@@ -82,6 +83,9 @@
         <input type="submit" value="제출" class='modi_submit'>
          </form>
     </div>
+    <script>
+  			document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+</script>
     	<%
         	}
         	catch(Exception e) {
@@ -90,6 +94,7 @@
             
     
 <%@include file="../jsp/footer.jsp"%>
+
 </body>
 </html>
 </html>

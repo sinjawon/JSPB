@@ -78,6 +78,7 @@
             <form action="../api/select/logout.jsp"><button type="submit" value="로그아웃" class='logoutbtn'>로그아웃</button><input type="hidden" name="logoutAction" value="true"/></form>
         </div>
     </div>
+    
     <%@include file="../jsp/footer.jsp"%>
 </body>
 </html>

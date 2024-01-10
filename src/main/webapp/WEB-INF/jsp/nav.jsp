@@ -61,7 +61,7 @@
             <div class='myprofile'>
 
             	
-            	<div class='myprofile_wrap' style="width:40px; height:40px;text-align: center;border-radius: 50%; overflow: hidden;"><img style="width:100%; height:100%" class='myprofile_img' src=<%=map2.getuserProfile(usernum).toStringProfile()%> alt="유저프로필" />
+            	<div class='myprofile_wrap' style="width:40px; height:40px;text-align: center;border-radius: 50%; overflow: hidden;	"><img style="width:100%; height:100%" class='myprofile_img' src=<%=map2.getuserProfile(usernum).toStringProfile()%> alt="유저프로필" />
             	</div>
             	<div><p><%=session.getAttribute("UserNickName") %> 님</p></div>
       
