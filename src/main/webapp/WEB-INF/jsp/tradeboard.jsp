@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/resources/board.css"> 
+<link rel="stylesheet" type="text/css" href="/resources/tradeboard.css"> 
 
 <title>Insert title here</title>
 </head>
@@ -15,55 +16,55 @@
             <div class="trade_contents">
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>
                 <div class="trade_board">
                     <div class="product"><img src="" alt="물품" ></div>
-                    <div class="product_name">물품이름</div>
+                    <div class="product_name"><a href="trade.jsp">물품이름</a></div>
                     <div class="trade_writer">작성자</div>
                     <div class="price">가격</div>
                 </div>

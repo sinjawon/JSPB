@@ -15,7 +15,70 @@
             <div class="main_contents">
                 <div class="board">
                     <div class="board_wrap">
-                        <div class="title">제목</div>
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
+                        <div class="board_contents">내용</div>
+                    </div>
+                    <div class="loca">위치</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">게시일</div>
+                </div>
+                <div class="board">
+                    <div class="board_wrap">
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
+                        <div class="board_contents">내용</div>
+                    </div>
+                    <div class="loca">위치</div>                    
+                    <div class="writer">작성자</div>
+                    <div class="date">게시일</div>
+                </div>
+                <div class="board">
+                    <div class="board_wrap">
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
+                        <div class="board_contents">내용</div>
+                    </div>
+                    <div class="loca">위치</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">게시일</div>
+                </div>
+                <div class="board">
+                    <div class="board_wrap">
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
+                        <div class="board_contents">내용</div>
+                    </div>
+                    <div class="loca">위치</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">게시일</div>
+                </div>
+                <div class="board">
+                    <div class="board_wrap">
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
+                        <div class="board_contents">내용</div>
+                    </div>
+                    <div class="loca">위치</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">게시일</div>
+                </div>
+                <div class="board">
+                    <div class="board_wrap">
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
+                        <div class="board_contents">내용</div>
+                    </div>
+                    <div class="loca">위치</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">게시일</div>
+                </div>
+                <div class="board">
+                    <div class="board_wrap">
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
+                        <div class="board_contents">내용</div>
+                    </div>
+                    <div class="loca">위치</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">게시일</div>
+                </div>
+                <div class="board">
+                    <div class="board_wrap">
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
                         <div class="board_contents">내용</div>
                     </div>
                     <div class="loca">위치</div>
@@ -27,70 +90,16 @@
                         <div class="title">제목</div>
                         <div class="board_contents">내용</div>
                     </div>
+                    <div class="loca">위치</div>
                     <div class="writer">작성자</div>
                     <div class="date">게시일</div>
                 </div>
                 <div class="board">
                     <div class="board_wrap">
-                        <div class="title">제목</div>
+                        <div class="title"><a href="walkdetail.jsp">제목</a></div>
                         <div class="board_contents">내용</div>
                     </div>
-                    <div class="writer">작성자</div>
-                    <div class="date">게시일</div>
-                </div>
-                <div class="board">
-                    <div class="board_wrap">
-                        <div class="title">제목</div>
-                        <div class="board_contents">내용</div>
-                    </div>
-                    <div class="writer">작성자</div>
-                    <div class="date">게시일</div>
-                </div>
-                <div class="board">
-                    <div class="board_wrap">
-                        <div class="title">제목</div>
-                        <div class="board_contents">내용</div>
-                    </div>
-                    <div class="writer">작성자</div>
-                    <div class="date">게시일</div>
-                </div>
-                <div class="board">
-                    <div class="board_wrap">
-                        <div class="title">제목</div>
-                        <div class="board_contents">내용</div>
-                    </div>
-                    <div class="writer">작성자</div>
-                    <div class="date">게시일</div>
-                </div>
-                <div class="board">
-                    <div class="board_wrap">
-                        <div class="title">제목</div>
-                        <div class="board_contents">내용</div>
-                    </div>
-                    <div class="writer">작성자</div>
-                    <div class="date">게시일</div>
-                </div>
-                <div class="board">
-                    <div class="board_wrap">
-                        <div class="title">제목</div>
-                        <div class="board_contents">내용</div>
-                    </div>
-                    <div class="writer">작성자</div>
-                    <div class="date">게시일</div>
-                </div>
-                <div class="board">
-                    <div class="board_wrap">
-                        <div class="title">제목</div>
-                        <div class="board_contents">내용</div>
-                    </div>
-                    <div class="writer">작성자</div>
-                    <div class="date">게시일</div>
-                </div>
-                <div class="board">
-                    <div class="board_wrap">
-                        <div class="title">제목</div>
-                        <div class="board_contents">내용</div>
-                    </div>
+                    <div class="loca">위치</div>
                     <div class="writer">작성자</div>
                     <div class="date">게시일</div>
                 </div>
