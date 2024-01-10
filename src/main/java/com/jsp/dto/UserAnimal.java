@@ -1,5 +1,10 @@
 package com.jsp.dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.ParseException;
+
+
 public class UserAnimal {
 	    private String userNum; //유저번호
 	    private String animalname;//동물이름
@@ -55,8 +60,20 @@ public class UserAnimal {
 	 }  
 	 
 	 public String toStringPatBirth() {
-		 return this.animalBirth;
-	 }  
+	        try {
+	           
+	            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(this.animalBirth);
+       
+	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+	            return sdf.format(date);
+
+	        } catch (ParseException e) {
+          
+	            e.printStackTrace();
+	            return ""; 
+	        }
+	    }
 	 
 	 public String toStringPatGender() {
 		 return this.animalgender;

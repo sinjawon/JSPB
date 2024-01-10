@@ -17,7 +17,7 @@ public class Ajax {
 	// MyBatis
 	
 	public static String GET(String url) {
-		url = "http://localhost:8877" + url;
+		url = "http://localhost:4885" + url;
 		String result = "";
 		try{
 			URL to = new URL(url);
