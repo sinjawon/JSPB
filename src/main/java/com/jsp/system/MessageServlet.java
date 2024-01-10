@@ -22,13 +22,7 @@ public class MessageServlet extends HttpServlet {
         String receiver = request.getParameter("receiver");
         String content = request.getParameter("content");
 
-        Message message = new Message();
-        message.setSender(sender);
-        message.setReceiver(receiver);
-        message.setContent(content);
-        message.setTimestamp(new Date());
-
-        MessageService.addMessage(message);
+        
 
         response.sendRedirect("messages.jsp");
     }

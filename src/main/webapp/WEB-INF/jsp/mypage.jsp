@@ -16,9 +16,10 @@
   <%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
         		 String usernum = (String)session.getAttribute("UserNum");
-        		 
+        		 UserDao map2 = con.OpenMap(request, UserDao.class);
         		 
         		 %>
+        		
     <div class="info_wrap">
         <div class="info">
             <div class=profile><a href="mypage.jsp">프로필</a></div>
@@ -26,8 +27,8 @@
         </div>
         <div class="userPet_info">
             <div class="user_info">
-                <span>회원</span>
-                <div class="info_image"><img src="" alt=""></div>
+                <span>회원</span>   <%-- <%=map2.getuserProfile(usernum).toStringProfile()%> --%>
+                <div class="info_image"><img src="<%=map2.getuserProfile(usernum).toStringProfile()%>" alt=""></div>
                 <div class="info_box">
                     <span><%=session.getAttribute("UserNickName")%></span>
                     <div></div>
@@ -37,7 +38,8 @@
                     <div></div>
                 </div>
             </div>
-         
+            
+      
             
           
      		

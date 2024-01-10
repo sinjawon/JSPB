@@ -29,9 +29,9 @@ public interface UserDao {
 	@Select( "select userEmail from Member3 where userid=#{userid}")
 	public User getuserEmail(@Param("userid") String userid);
 	
-	//아이디로 이미지 찾기	
-	@Select( "select userProfile from Member3 where userid=#{userid}")
-	public User getuserProfile(@Param("userid") String userid);		
+	//유저 넘버로 프로파일 찾기	
+	@Select( "select userProfile from Member3 where userNum = #{usernum}")
+	public User getuserProfile(@Param("usernum") String usernum);		
 			
 	//모든 유저닉네임찾기 
 	@Select( "select userNickName from Member3")
@@ -45,6 +45,8 @@ public interface UserDao {
 	@Select("select userPw from Member3 where userid=#{userid}")
 	public User getuserpw(@Param("userid") String userid);
 	
+
+	
 	
 	//유저넘버로 유저 닉네임 업데이트
 	@Update("UPDATE Member3 SET userNickName = #{nickname} WHERE userNum = #{usernum}")
@@ -57,6 +59,9 @@ public interface UserDao {
 	//넘버로 유저 프로파일 주소 업데이트
 	@Update("UPDATE Member3 SET userProfile = #{userProfile} WHERE userNum = #{usernum}")
 	public int udtprofile(@Param("usernum") String usernum,@Param("userProfile") String userProfile);
+	
+	
+	
 	
 
 	

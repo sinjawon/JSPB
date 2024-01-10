@@ -8,10 +8,10 @@
 <body>
 
 <h2>쪽지 작성</h2>
-<form action="/MessageServlet" method="post">
-    보내는 사람: <input type="text" name="sender" required><br>
-    받는 사람: <input type="text" name="receiver" required><br>
-    내용: <textarea name="content" required></textarea><br>
+<form action="/MessageServlet" method="post"> <!--  -->
+     <input type="text" name="sender" style="display:none" required value="<%=session.getAttribute("UserNum")%>"><br>
+     <input type="text" name="receiver" placeholder="받는사람" required><br>
+     <textarea name="content" placeholder="내용" required ></textarea><br>
     <input type="submit" value="전송">
 </form>
 

@@ -9,9 +9,8 @@ public class UserNote {
 	
 	private String sender; //아마유저 닉네임
     private String receiver;//아마 유저 번호
-    private String content;// 내용 
-    private Date timestamp;// 시간까지 날짜
-    
+    private String notecontent;// 내용 
+    private Date notetime;// 시간까지 날짜
     
 	public String getSender() {
 		return sender;
@@ -25,18 +24,17 @@ public class UserNote {
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
 	}
-	public String getContent() {
-		return content;
+	public String getNotecontent() {
+		return notecontent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setNotecontent(String notecontent) {
+		this.notecontent = notecontent;
 	}
-	public Date getTimestamp() {
-		return timestamp;
+	public Date getNotetime() {
+		return notetime;
 	}
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
+	public void setNotetime(Date notetime) {
+		this.notetime = notetime;
 	}
-    
-    
+  
 }

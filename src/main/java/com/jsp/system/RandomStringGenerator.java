@@ -12,6 +12,7 @@ public class RandomStringGenerator {
         for (int i = 0; i < length; i++) {
             int randomIndex = random.nextInt(characters.length());
             randomString.append(characters.charAt(randomIndex));
+            
         }
 
         return randomString.toString();
