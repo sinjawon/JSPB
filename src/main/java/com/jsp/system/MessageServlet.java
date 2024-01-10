@@ -24,6 +24,8 @@ public class MessageServlet extends HttpServlet {
  	  
  	   try(DBConnector con = new DBConnector();){
  		  
+ 		   //인코딩 아닌거 중요하네  받고 도출 방법을 이렇게 해야하는데 내가 어디서 꼬인 코드를 만들었나봐
+ 		   request.setCharacterEncoding("UTF-8");
  		    response.setCharacterEncoding("UTF-8");
  		   response.setContentType("text/html;charset=UTF-8");
  		    
@@ -38,11 +40,13 @@ public class MessageServlet extends HttpServlet {
  	        String sender = request.getParameter("sender");
  	        String receiver = request.getParameter("receiver");
  	        String content = request.getParameter("content");
- 	       response.getWriter().println(sender);
- 	      response.getWriter().println(receiver);
- 	        response.getWriter().println(content);
+ 	       response.getWriter().println(sender+receiver+content);
+ 	        	
+ 	       response.getWriter().println(timestamp);
  	        map.insertUserNote(sender, receiver, content, timestamp);
+ 	      
  	        map2.insertUserNoteSee();
+ 	       
  			/* response.sendRedirect("messages.jsp"); */
  		}
  		catch(Exception e) {

@@ -2,6 +2,7 @@ package com.jsp.dto;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.Timestamp;
 import java.text.ParseException;
 
 
@@ -10,7 +11,7 @@ public class UserNote {
 	private String sender; //아마유저 발신자 닉네임
     private String receiver;//아마 수신자 닉네임
     private String notecontent;// 내용 
-    private Date notetime;// 시간까지 날짜
+    private Timestamp notetime;// 시간까지 날짜
     
     
 	public String getNotenum() {
@@ -37,11 +38,12 @@ public class UserNote {
 	public void setNotecontent(String notecontent) {
 		this.notecontent = notecontent;
 	}
-	public Date getNotetime() {
+	public Timestamp getNotetime() {
 		return notetime;
 	}
-	public void setNotetime(Date notetime) {
+	public void setNotetime(Timestamp notetime) {
 		this.notetime = notetime;
 	}
+	
   
 }

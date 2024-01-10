@@ -10,7 +10,7 @@ import com.jsp.dto.*;
 public interface UserNoteDao {
 	
 	//메시지 저장 
-	@Insert("INSERT INTO UserNote(notenum,sender,receiver,notecontent,notetime) VALUES(noteseq.NEXTVAL,#{sender}, #{receiver}, #{notecontent}, #{notetime})")
+	@Insert("INSERT INTO UserNote(notenum,sender,receiver,notecontent,notetime) VALUES(notesq.NEXTVAL,#{sender}, #{receiver}, #{notecontent}, #{notetime})")
 	public void insertUserNote(
 			@Param("sender") String sender,
 			@Param("receiver") String receiver,
