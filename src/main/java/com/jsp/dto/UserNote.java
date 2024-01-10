@@ -6,12 +6,19 @@ import java.text.ParseException;
 
 
 public class UserNote {
-	
-	private String sender; //아마유저 닉네임
-    private String receiver;//아마 유저 번호
+	private String notenum; //쪽지 넘버
+	private String sender; //아마유저 발신자 닉네임
+    private String receiver;//아마 수신자 닉네임
     private String notecontent;// 내용 
     private Date notetime;// 시간까지 날짜
     
+    
+	public String getNotenum() {
+		return notenum;
+	}
+	public void setNotenum(String notenum) {
+		this.notenum = notenum;
+	}
 	public String getSender() {
 		return sender;
 	}

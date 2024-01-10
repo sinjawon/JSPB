@@ -8,6 +8,9 @@
     <title>쪽지함</title>
 </head>
 <body>
+<% 
+	
+%>
 
 <h2>쪽지 목록</h2>
 <c:forEach var="message" items="${messages}">
