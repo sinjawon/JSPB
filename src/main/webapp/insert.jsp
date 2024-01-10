@@ -10,6 +10,8 @@
     <script defer src="/resources/boardWrite.js"></script>
     <h1>글쓰기</h1>
     
+    
+    
     <form id="writeForm" action="/api/newPost" method="post">
         <input type="text" id="userNickname" name="userNickname" placeholder="작성자">
         <br>

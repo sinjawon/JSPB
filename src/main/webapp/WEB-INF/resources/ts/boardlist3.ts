@@ -27,6 +27,8 @@ async function ajax(url: string, option?: any) {
 
         template.content.querySelector(".userNickname").innerHTML = data.userNickname;
 
+
+
         template.content.querySelector(".hitCount").innerHTML = data.hitCount;
         template.content.querySelector(".regDate").innerHTML = data.regDate;
 

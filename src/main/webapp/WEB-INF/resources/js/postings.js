@@ -13,8 +13,22 @@ function fillPostData(userInfo, titleInfo, contentInfo) {
         viewTextarea.innerText = contentInfo;
     }
 }
-//@ts-ignore
 let clickedPostId = valueId; // 클릭한 게시글의 ID
+let userCheck = ""; ///ID로 작성자를 받아올 예정
+function writerSearch() {
+    fetch(`/api/writerSearch?boardListNum=${clickedPostId}`, {
+        method: "GET"
+    })
+        .then(response => response.text())
+        .catch(error => {
+        console.error('리스폰스 됐니?', error);
+    })
+        .then(data => {
+        userCheck = data;
+        console.log(userCheck + "뜨네");
+    });
+}
+writerSearch();
 function PostInfo() {
     fetch(`/api/showPost?boardListNum=${clickedPostId}`, {
         method: "GET"

@@ -1,6 +1,9 @@
 //@ts-nocheck
 
 
+
+
+
 //채울래
 function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) {
     let userNickname = document.getElementById('userNickname');
@@ -15,8 +18,36 @@ function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) 
         viewTextarea.innerText =contentInfo;
     }
 }
-//@ts-ignore
 let clickedPostId = valueId;// 클릭한 게시글의 ID
+
+
+
+
+let userCheck:String = ""; ///ID로 작성자를 받아올 예정
+function writerSearch() {//게시글 id로 작성자 찾는 함수
+    fetch(`/api/writerSearch?boardListNum=${clickedPostId}`, {
+        method: "GET"
+    })
+    .then(response => response.text())
+    .catch(error => {
+        console.error('리스폰스 됐니?', error);
+    })
+    .then(data => {
+        userCheck = data;
+        console.log(userCheck + "뜨네");
+    })
+    
+   
+}
+
+writerSearch()
+
+
+
+
+
+
+
 
 function PostInfo() {
     fetch(`/api/showPost?boardListNum=${clickedPostId}`,{
@@ -33,6 +64,7 @@ function PostInfo() {
 window.onload = function() {
     PostInfo();
 };
+
 
 
 

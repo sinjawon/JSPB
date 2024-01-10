@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.jsp.system.Ajax, org.json.*" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -24,7 +25,9 @@
 </head>
 <body>
 
-<h1>Board List</h1>
+<h1>Board List</h1>	     
+
+<%response.setCharacterEncoding("UTF-8"); %>
 	
 	<div id="boards">
 		<template>
@@ -45,7 +48,7 @@
 		
 	</div>
         
-        
+     <%response.setCharacterEncoding("UTF-8"); %>
 	<div class="searchBar">
    		<form action="/api/searchboard" method="post">
         	<label for="search">Search</label>

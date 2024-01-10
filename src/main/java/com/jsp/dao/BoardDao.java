@@ -9,6 +9,10 @@ import com.jsp.dto.*;
 @Mapper
 public interface BoardDao {
 
+	//게시글 id로 작성자 찾는 함수
+	@Select("SELECT userNickname FROM boardInfo WHERE boardListNum = #{boardListNum}")
+	public String getuserByboardListNum(@Param("boardListNum") int boardListNum);
+	
 	
 	@Select("SELECT * FROM boardInfo WHERE boardListNum = #{boardListNum}")
 	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);

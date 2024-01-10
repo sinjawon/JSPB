@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -15,10 +16,22 @@
     <div id="viewTitle">글 제목</div>
     <div id="viewTextarea">글 내용</div>
     
+    <%=session.getAttribute("UserNickName") %>
     
+    
+    <%
+    String targetValue = (String) session.getAttribute("UserNickName");
+    String desiredValue = ""; // 비교하려는 문자열
 
-        <button type="editPost" onclick="location.href='/editPost.jsp?id=<%=request.getParameter("id")%>'">수정</button>
-        <button type="deletePost" onclick="deletePost(<%=request.getParameter("id")%>)">삭제</a>
+    if (targetValue != null && targetValue.equals(desiredValue)) {
+%>
+        <button type="button" onclick="location.href='/editPost.jsp?id=<%=request.getParameter("id")%>'">수정</button>
+        <button type="button" onclick="deletePost(<%=request.getParameter("id")%>)">삭제</button>
+<%
+    }
+%>
+    
+  
     
     <form action="/boardList.jsp" method="post">
         <button type="submit">뒤로가기</button>
