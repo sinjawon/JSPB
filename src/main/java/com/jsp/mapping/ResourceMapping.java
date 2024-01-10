@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 // JSP, Servlet과 관련한 모든 기능은 javax라는 패키지에 포함
@@ -20,6 +22,9 @@ import javax.servlet.annotation.WebServlet;
 				@WebInitParam(name="key",value="값")
 		})
 public class ResourceMapping extends HttpServlet {
+	
+	private String defaultPath = "D:/donghyeok/web/JSPB/src/main/webapp";
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req,resp);
@@ -51,23 +56,20 @@ public class ResourceMapping extends HttpServlet {
 		}
 		else if(token.equalsIgnoreCase("jpeg") || token.equalsIgnoreCase("jpg")) {
 			resp.setContentType("image/jpeg");
-			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-				out.write(in.readAllBytes());
-			}catch(Exception e) {}
+			try(OutputStream out = resp.getOutputStream();){
+				Files.copy(Paths.get(defaultPath + "/WEB-INF/resources/img" + info), out);
+			}catch(Exception e) {}	
 		}
 		else if(token.equalsIgnoreCase("png")) {
 			resp.setContentType("image/png");
-			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-				out.write(in.readAllBytes());
+			try(OutputStream out = resp.getOutputStream();){
+				Files.copy(Paths.get(defaultPath + "/WEB-INF/resources/img" + info), out);
 			}catch(Exception e) {}	
 		}
 		else if(token.equalsIgnoreCase("gif")) {
 			resp.setContentType("image/gif");
-			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-				out.write(in.readAllBytes());
+			try(OutputStream out = resp.getOutputStream();){
+				Files.copy(Paths.get(defaultPath + "/WEB-INF/resources/img" + info), out);
 			}catch(Exception e) {}	
 		}
 		

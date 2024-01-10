@@ -18,12 +18,19 @@
 	<div class="modify">
         <h2>정보수정</h2>
         <!-- ../api/update/infomodify.jsp -->
+            	<%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum");
+        		   String gender = map.getAnimalGender(usernum).toStringPatGender();
+        		   UserDao map2 = con.OpenMap(request, UserDao.class);
+        		 %>  
+        		           
   <form action="/infomodify" method="post" enctype="multipart/form-data"> 
         <div class="info_modi">
             <div class="user_modi">
                 <span class='user'>회원</span>
-                <div class="modi_image"><img src="" alt=""></div>
-                <input type="file" name="image">
+                <div class="modi_image"><img class='infomodi_img' src="<%=map2.getuserProfile(usernum).toStringProfile()%>" alt=""></div>
+                <input  type="file" class='file' name="image">
        <div class="modiWrap">
                    
          <!-- 이름 -->
@@ -36,15 +43,9 @@
         
        </div>
             </div>                   
-            	<%try(DBConnector con = new DBConnector();){
-        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
-        		 String usernum = (String)session.getAttribute("UserNum");
-        		   String gender = map.getAnimalGender(usernum).toStringPatGender();
-        		 %>  
-        		           
             <div class="pet_modi">
                 <span class='pet'>반려동물</span>
-                <div class="modi_image"><img src="" alt=""></div>
+                <div class="modi_image"><img class='infomodi_img' src="<%=map.getAnimalProfile(usernum).getAnimalProfile()%>" alt=""></div>
              
                 <input type="file" class="file" name="petimage">
                 <div class="modiWrap">
@@ -78,7 +79,7 @@
                 </div>   
             </div>
         </div>
-        <input type="submit" value="제출">
+        <input type="submit" value="제출" class='modi_submit'>
          </form>
     </div>
     	<%

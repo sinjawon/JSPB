@@ -108,14 +108,16 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     overflow: hidden;
-	object-fit: contain;
+	object-fit:cover;
 	position: relative;
 }
 .info_image > .profile_img{
 	width: 100%;	
 	position: absolute;
-	top:0;
+	top:50%;
+	transform: translateY(-50%);
 	left: 0;
+	height: 100%;
 }
 .info_box{
     border-bottom: 2px solid #fa5;

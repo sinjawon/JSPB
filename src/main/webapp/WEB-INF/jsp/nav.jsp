@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.*, org.json.*"%>
+<%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
@@ -22,6 +24,12 @@
 </head>
 <body>
  <header>
+  <%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum"); 
+        			UserDao map2 = con.OpenMap(request, UserDao.class);
+        		 
+        		 %>
       <nav>
         <h1>
          <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" style= "width:350px" /></a>
@@ -50,7 +58,14 @@
             	</div>
             </c:if>
             <c:if test = "${sessionScope.UserNickName!=null }" >
-            <p><%=session.getAttribute("UserNickName") %> 님</p> <!-- 로그인하면 이름 뜨게 -->
+            <div class='myprofile'>
+
+            	
+            	<div class='myprofile_wrap' style="width:40px; height:40px;text-align: center;border-radius: 50%; overflow: hidden;"><img style="width:100%; height:100%" class='myprofile_img' src=<%=map2.getuserProfile(usernum).toStringProfile()%> alt="유저프로필" />
+            	</div>
+            	<div><p><%=session.getAttribute("UserNickName") %> 님</p></div>
+      
+            </div> <!-- 로그인하면 이름 뜨게 -->
 	            <div class="login">
 	              <div><form action="../api/select/logout.jsp"><input type="submit" value="로그아웃" /><input type="hidden" name="logoutAction" value="true"/></form></div>
 	              <div><a href="mypage.jsp">마이페이지</a></div>
@@ -59,6 +74,11 @@
           </div>    
         </div>     
       </nav>
+      <%
+        	}
+        	catch(Exception e) {
+        		e.printStackTrace();
+        	} %>
     </header>
 </body>
 </html>

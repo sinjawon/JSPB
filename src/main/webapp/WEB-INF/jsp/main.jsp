@@ -23,7 +23,7 @@
 <div class="swiper mainslide">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <a href=""
+          <a href="freeboard.jsp"
             ><img class="image" src="/resources/mainbanner08_sub.jpg" alt="자유"
           /></a>
           <div class="subTitle">
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <a href=""
+          <a href="boastboard.jsp"
             ><img class="image" src="/resources/mainbanner02.sub.jpg" alt="자랑"
           /></a>
           <div class="subTitle">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <a href=""
+          <a href="walkboard.jsp"
             ><img class="image" src="/resources/mainbanner06_sub.jpg" alt="산책"
           /></a>
           <div class="subTitle">
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <a href=""
+          <a href="tradeboard.jsp"
             ><img class="image" src="/resources/mainbanner07_sub.jpg" alt="정보"
           /></a>
           <div class="subTitle">
@@ -55,7 +55,10 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img class="image" src="/resources/mainbanner05_sub.jpg" alt="기타 "  />
+          <a href="joinmembership.jsp"><img class="image" src="/resources/mainbanner05_sub.jpg" alt="기타 "  /></a>
+          <div class='subTitle'>
+          	<h2>회원가입</h2>
+          </div>
         </div>
       </div>
       <div class="swiper-button-next next1"></div>
