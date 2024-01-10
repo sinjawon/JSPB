@@ -41,20 +41,25 @@ function editPost() {
         form.appendChild(boardListNum);
         form.submit();
     }
+    location.href = "/boardList.jsp";
 }
-// function deletePost(boardListNum: number) {
-//     fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
-//         method: "POST"
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.success) {
-//                 console.log("게시글 삭제 성공");
-//             } else {
-//                 console.error("게시글 삭제 실패:", data.message);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('게시글 삭제 중 오류 발생:', error);
-//         });
-// }
+function deletePost(boardListNum) {
+    fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
+        method: "POST"
+    })
+        .then(response => response.json())
+        .then(data => {
+        if (data.success) {
+            console.log("게시글 삭제 성공");
+            // 삭제 성공 시 필요한 작업 수행
+        }
+        else {
+            console.error("게시글 삭제 실패:", data.message);
+        }
+    })
+        .catch(error => {
+        console.error('게시글 삭제 중 오류 발생:', error);
+        alert('게시글 삭제 중 오류 발생');
+    });
+    location.href = "/boardList.jsp";
+}

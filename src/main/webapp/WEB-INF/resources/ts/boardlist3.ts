@@ -23,6 +23,7 @@ async function ajax(url: string, option?: any) {
         template.content.querySelector(".boardListNum")?.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
 
         template.content.querySelector(".title").innerHTML = data.title;
+        template.content.querySelector(".title")?.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
 
         template.content.querySelector(".userNickname").innerHTML = data.userNickname;
 
@@ -30,12 +31,12 @@ async function ajax(url: string, option?: any) {
         template.content.querySelector(".regDate").innerHTML = data.regDate;
 
         //수정 버튼 클릭하면 쿼리문에 글 id 가져와서 이동함
-        template.content.querySelector(".editPost").innerHTML = "수정";
-        template.content.querySelector(".editPost")?.setAttribute("href", `/editPost.jsp?id=${data.boardListNum}`);
+        // template.content.querySelector(".editPost").innerHTML = "수정";
+        // template.content.querySelector(".editPost")?.setAttribute("href", `/editPost.jsp?id=${data.boardListNum}`);
         
         //삭제 버튼 
-        template.content.querySelector(".deletePost").innerHTML = "삭제";
-        template.content.querySelector(".deletePost")?.setAttribute("onclick", `deletePost(${data.boardListNum})`);
+        // template.content.querySelector(".deletePost").innerHTML = "삭제";
+        // template.content.querySelector(".deletePost")?.setAttribute("onclick", `deletePost(${data.boardListNum})`);
       
 
         a.innerHTML = template.innerHTML;
@@ -52,23 +53,7 @@ async function ajax(url: string, option?: any) {
   });
 
 
-  function deletePost(boardListNum: number) {
-    fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
-        method: "POST"
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log("게시글 삭제 성공");
-            // 삭제 성공 시 필요한 작업 수행
-        } else {
-            console.error("게시글 삭제 실패:", data.message);
-        }
-    })
-    .catch(error => {
-        console.error('게시글 삭제 중 오류 발생:', error);
-    });
-}
+ //deletePost() 함수는 postings로 이사갔습니다
 
 
 

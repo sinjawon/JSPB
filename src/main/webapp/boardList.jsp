@@ -29,14 +29,14 @@
 	<div id="boards">
 		<template>
 			<a href="/postView.jsp?id=0" class="boardListNum">0</a>
-			<a class="title">글 제목</a>
+			<a href="/postView.jsp?id=0" class="title">글 제목</a>
 			<a class="userNickname">작성자</a>
 			<a class="hitCount">조회수</a>
 			<a class="regDate">등록일</a>
 			
-			<a href="/editPost.jsp?id=0" class="editPost">수정</a>
+			<!-- <a href="/editPost.jsp?id=0" class="editPost">수정</a> -->
 			
-			<a href="javascript:void(0)" class ="deletePost" onclick="deletePost(0)">삭제</a>
+			<!-- <a href="javascript:void(0)" class ="deletePost" onclick="deletePost(0)">삭제</a> -->
 			<%--<c:if test="${data.userNickname eq sessionScope.userNickname}">
 			 세션 확인용 이러면 작성자만 보이나? --%>
              

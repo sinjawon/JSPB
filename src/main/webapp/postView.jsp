@@ -15,9 +15,10 @@
     <div id="viewTitle">글 제목</div>
     <div id="viewTextarea">글 내용</div>
     
-    <c:if test="${data.userNickname eq sessionScope.userNickname}">
-        <button onclick="editPost(${data.boardListNum})">수정</button>
-    </c:if>
+    
+
+        <button type="editPost" onclick="location.href='/editPost.jsp?id=<%=request.getParameter("id")%>'">수정</button>
+        <button type="deletePost" onclick="deletePost(<%=request.getParameter("id")%>)">삭제</a>
     
     <form action="/boardList.jsp" method="post">
         <button type="submit">뒤로가기</button>
