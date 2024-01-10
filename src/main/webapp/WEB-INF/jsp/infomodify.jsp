@@ -18,7 +18,7 @@
   <form action="/infomodify" method="post" enctype="multipart/form-data"> 
         <div class="info_modi">
             <div class="user_modi">
-                <span>회원</span>
+                <span class='user'>회원</span>
                 <div class="modi_image"><img src="" alt=""></div>
                 <input type="file" name="image">
        <div class="modiWrap">
@@ -40,7 +40,7 @@
         		 %>  
         		           
             <div class="pet_modi">
-                <span>반려동물</span>
+                <span class='pet'>반려동물</span>
                 <div class="modi_image"><img src="" alt=""></div>
              
                 <input type="file" class="file" name="petimage">

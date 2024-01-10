@@ -101,18 +101,21 @@
 }
 
 .info_wrap .info_image{
+	border-radius: 50%;
     width:130px;
     height: 130px;
-    background-color: #999;
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
     overflow: hidden;
 	object-fit: contain;
+	position: relative;
 }
 .info_image > .profile_img{
-	width: 100%;
-
+	width: 100%;	
+	position: absolute;
+	top:0;
+	left: 0;
 }
 .info_box{
     border-bottom: 2px solid #fa5;
@@ -133,18 +136,7 @@
 
 }
 
-.withdraw{
-    position: absolute;
-    right: 3rem;
-    bottom:1rem;
-    font-size: 0.8rem;
-    text-decoration: underline;
-    color:#777    
-}
 
-.withdraw:hover{
-    color:red;
-}
 
 .user_info > .write,
 .pet_info > .write{

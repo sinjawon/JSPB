@@ -35,7 +35,7 @@
           <div class="box">
             <div class="board">
               <ul>
-                <li><a href="#">자유게시판</a></li>
+                <li><a href="freeboard">자유게시판</a></li>
                 <li><a href="#">자랑게시판</a></li>
                 <li><a href="#">산책게시판</a></li>
                 <li><a href="#">애완용품거래</a></li>
