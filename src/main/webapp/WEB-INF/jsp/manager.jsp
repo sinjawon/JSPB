@@ -18,7 +18,7 @@
 
       <h3 class="manager-people">가입인원</h3>
       <div class="manager-peoplech">
-        <!-- 가입인원 데이터 -->
+        <!-- 가입인원 데이터 회원이 몇명인지 숫자만 뜰수있게 -->
       </div>
     </div>
     
