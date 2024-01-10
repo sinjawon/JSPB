@@ -94,6 +94,8 @@
                     <div class="date">게시일</div>
                 </div>
             </div>
+           
+             <div class="freeboard-insert"><a href="insertpage.jsp">글쓰기</a></div>
         </div>
 		
 	<%@include file="../jsp/footer.jsp"%>

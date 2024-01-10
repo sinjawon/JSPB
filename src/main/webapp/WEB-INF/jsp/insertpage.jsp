@@ -13,6 +13,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@include file="../jsp/nav.jsp"%>
+	<div class="insertpage">
 	<div class="insert-box">
 
       <select
@@ -25,9 +27,16 @@
         <option value="work">산책게시판</option>
         <option value="boardlist.html">애완용품거래게시판</option>
       </select>
+      
+      
+	<p class="insertpage-p"><%=session.getAttribute("UserNickName") %> 님</p> 
 
 
     <div id="options">
     </div> 
+    </div>
+    </div>
+    
+	<%@include file="../jsp/footer.jsp"%>
 </body>
 </html>

@@ -1,8 +1,12 @@
 @charset "UTF-8";
+
+.insertpage{
+	margin: 12rem 0;
+}
+
 .insert-box {
   width: 60%;
   margin: auto;
-  margin-top: 2rem;
 }
 
 .insert-list {
@@ -17,6 +21,7 @@
   text-align: center;
   font-size: 25px;
   font-weight: bold;
+  margin: 2rem 0;
 }
 
 #titleInput {
@@ -66,4 +71,8 @@
 
 .insert-list:hover {
   cursor: pointer;
+}
+
+.insertpage-p{
+	float:right;
 }

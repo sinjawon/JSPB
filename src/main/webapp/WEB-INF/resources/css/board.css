@@ -50,3 +50,20 @@
     text-align: center;
     margin: auto;
 }
+
+
+
+.freeboard-insert{
+	width:5rem;
+	height:2rem;
+	border:2px solid #fa5;
+	border-radius: 20px;
+	text-align: center;
+	line-height: 1.7rem;
+	float:right;
+	margin-top:1rem;
+}
+
+.freeboard-insert:hover{
+	background:#fa5;
+}

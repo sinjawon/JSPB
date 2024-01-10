@@ -7,32 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>자랑 게시판</h1>
- <input
-          type="text"
-          id="userNickname"
-          name="userNickname"
-          placeholder="작성자"
-        />
+<h1>자랑게시판 글쓰기</h1>
+
         <input
           type="text"
           id="titleInput"
           name="title"
-          placeholder="dkssdsdsdsdsdadds을 입력해주세요"
+          placeholder="제목을 입력해주세요"
         />
         <textarea
           id="postTextarea"
           name="mainContents"
           placeholder="글 내용을 입력해주세요"
         ></textarea>
+        
+        <input type="file" class="file" >
         <div class="btns">
           <button type="button" onclick="submitPost()" class="insertok">
             확인
           </button>
-          <button type="button" onclick="cancelPost()" class="cancelbtn">
-            취소
-          </button>
-        </div>
+          <input type="submit" value="취소" class="cancelbtn" onclick="delOk()"/>
+      </div>
       </form> 
 </body>
 </html>
