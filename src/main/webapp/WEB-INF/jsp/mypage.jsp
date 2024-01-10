@@ -12,6 +12,13 @@
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
+
+  <%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum");
+        		 
+        		 
+        		 %>
     <div class="info_wrap">
         <div class="info">
             <div class=profile><a href="mypage.jsp">프로필</a></div>
@@ -22,8 +29,8 @@
                 <span class=user>회원</span>
                 <div class="info_image"><img class='profile_img' src="<%=session.getAttribute("UserProfile")%>" alt="user_image" ><!--<a href="https://kr.freepik.com/free-vector/avatars-circles-glyph-style_77972574.htm#query=profile&position=1&from_view=search&track=sph&uuid=05f9d470-7c0e-4d08-a4c0-9f157dcb5a43">작가 juicy_fish</a> 출처 Freepik  --></div>
                 <div class="info_box">
-                    <span class=write>닉네임</span>
-                    <span class=content><%=session.getAttribute("UserNickName") %></span>
+                    <span><%=session.getAttribute("UserNickName")%></span>
+                    <div></div>
                 </div>
                 <div class="info_box">
                     <span class=write>이메일</span>
@@ -32,9 +39,7 @@
             </div>
          
             
-            <%try(DBConnector con = new DBConnector();){
-        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
-        		 String usernum = (String)session.getAttribute("UserNum");%>
+          
      		
         		  <div class="pet_info">
                   <span class=pet>반려동물</span>

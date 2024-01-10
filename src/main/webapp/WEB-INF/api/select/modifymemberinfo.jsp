@@ -6,10 +6,12 @@
 
 
 <%            
+		
 	  try(DBConnector con = new DBConnector();){
 		if( ! request.getMethod().equalsIgnoreCase("GET")) throw new Exception();		
 		UserDao map = con.OpenMap(request, UserDao.class);
-		
+		UserAnimal map2 =con.OpenMap(request, UserAnimal.class);
+		request.getParameter("");
 	     String usernum = (String)session.getAttribute("usernum");
 		
 	
