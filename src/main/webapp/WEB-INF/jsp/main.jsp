@@ -13,6 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   
     <script src="/resources/mainbanner.js" defer></script>
+    <script src="/resources/modal.js" defer></script>
+    
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,7 +22,7 @@
 <div class="swiper mainslide">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <a href=""
+          <a href="freeboard.jsp"
             ><img class="image" src="/resources/mainbanner08_sub.jpg" alt="자유"
           /></a>
           <div class="subTitle">
@@ -28,7 +30,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <a href=""
+          <a href="boastboard.jsp"
             ><img class="image" src="/resources/mainbanner02.sub.jpg" alt="자랑"
           /></a>
           <div class="subTitle">
@@ -36,7 +38,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <a href=""
+          <a href="walkboard.jsp"
             ><img class="image" src="/resources/mainbanner06_sub.jpg" alt="산책"
           /></a>
           <div class="subTitle">
@@ -44,11 +46,11 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <a href=""
+          <a href="tradeboard.jsp"
             ><img class="image" src="/resources/mainbanner07_sub.jpg" alt="정보"
           /></a>
           <div class="subTitle">
-            <h2>정보게시판</h2>
+            <h2>애완용품거래게시판</h2>
           </div>
         </div>
         <div class="swiper-slide">
@@ -123,7 +125,18 @@
       </div>
     </div>
     
-    
+    <div type="button" class="main-note" id="open-modal"><i class="fa-regular fa-comments "></i></div>
+    <div id="modal" class="modal-content">
+    <div class="modal">
+	    <h2>모달창 제목</h2>
+	    <p>모달창 내용</p>
+	    
+    	<button id="close-modal">닫기</button>
+    </div>
+	</div>
+  
+</div>
+
     
 <%@include file="../jsp/footer.jsp"%>
 </body>

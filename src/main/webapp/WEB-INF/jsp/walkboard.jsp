@@ -106,8 +106,9 @@
          
          
             </div>
-            
+            <c:if test = "${sessionScope.UserNickName!=null }" >
              <div class="freeboard-insert"><a href="insertpage.jsp">글쓰기</a></div>
+            </c:if>
         </div>
 		
 	<%@include file="../jsp/footer.jsp"%>
