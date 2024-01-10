@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/resources/detail.css"> 
 
-<title>Insert title here</title>
+<title>petpeople</title>
 </head>
 <body>
 	<%@include file="../jsp/nav.jsp"%>

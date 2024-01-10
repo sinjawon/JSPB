@@ -6,7 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>petpeople</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/resources/myreset.css" />
 <link rel="stylesheet" href="/resources/mypage.css" />
 </head>
@@ -16,7 +19,7 @@
   <%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
         		 String usernum = (String)session.getAttribute("UserNum");
-        		 
+        			UserDao map2 = con.OpenMap(request, UserDao.class);
         		 
         		 %>
     <div class="info_wrap">

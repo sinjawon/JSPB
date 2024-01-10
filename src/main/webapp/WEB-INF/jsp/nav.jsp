@@ -6,6 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" type="text/css" href="/resources/myreset.css"> 
 <link rel="stylesheet" type="text/css" href="/resources/nav.css"> 
  <link
@@ -15,7 +18,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-<title>Insert title here</title>
+<title>petpeople</title>
 </head>
 <body>
  <header>
