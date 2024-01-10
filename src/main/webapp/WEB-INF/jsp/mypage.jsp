@@ -37,7 +37,6 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
             <span class="content"><%=session.getAttribute("UserEmail") %></span>
           </div>
         </div>
-        <<<<<<< HEAD
 
         <div class="pet_info">
           <span class="pet">반려동물</span>
@@ -82,7 +81,6 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
         </form>
       </div>
       <div class="withdraw"><a href="">회원탈퇴</a></div>
-      ======= >>>>>>> origin/donghyeok
     </div>
     <%@include file="../jsp/footer.jsp"%>
   </body>
