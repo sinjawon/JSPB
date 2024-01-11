@@ -155,8 +155,8 @@ pageEncoding="UTF-8"%>
 
 
 
-<!-- 
-    <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i> -->
+
+    <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i> 
      <div type="button" class="main-note" id="open-modal">
       <i class="fa-regular fa-comments"></i>
     </div>

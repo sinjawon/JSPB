@@ -17,7 +17,7 @@ map.getuserEmail(userid).toStringEmail(); */ /* String UserProfile =
 map.getuserProfile(userid).toStringProfile(); */ //세션에 유저 번호,닉네임 저장
 session.setAttribute("UserNum",UserNum);
 session.setAttribute("UserNickName",UserNickName);
-session.setAttribute("UserEmail",UserEmail); /*
+/* session.setAttribute("UserEmail",UserEmail); 
 session.setAttribute("UserProfile",UserProfile); */
 session.setMaxInactiveInterval(60 * 30); response.sendRedirect("/app/main.jsp");
 }else{ session.setAttribute("loginError", "매치하는 비밀번호x");
