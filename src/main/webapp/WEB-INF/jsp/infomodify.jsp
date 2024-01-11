@@ -37,6 +37,7 @@
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
         		 String usernum = (String)session.getAttribute("UserNum");
         		   String gender = map.getAnimalGender(usernum).toStringPatGender();
+    
         		 %>  
         		           
             <div class="pet_modi">

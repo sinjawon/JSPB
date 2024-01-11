@@ -15,15 +15,15 @@ public interface UserNoteDao {
 			@Param("sender") String sender,
 			@Param("receiver") String receiver,
 			@Param("notecontent") String notecontent,
-			@Param("notetime") Timestamp notetime 
+			@Param("notetime") String notetime 
 			);
 	
 	//모든 받는사람이 nickname 인사람
-	@Select("SELECT receiver, sender, content, timestamp FROM UserNote WHERE receiver = #{nickname}")
+	@Select("SELECT receiver, sender, notecontent, notetime FROM UserNote WHERE receiver = #{nickname}")
 	public List<UserNote> NoteReceiver(@Param("nickname") String nickname);
 	
 	//모든 보낸사람이 nickname 인사람
-	@Select("select receiver, sender, content, timestamp FROM UserNote WHERE sender = #{nickname}")
+	@Select("select receiver, sender, notecontent, notetime FROM UserNote WHERE sender = #{nickname}")
 	public List<UserNote> NoteSender(@Param("nickname") String nickname);
 	
 	

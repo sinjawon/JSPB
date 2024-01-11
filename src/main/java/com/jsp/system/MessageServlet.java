@@ -35,15 +35,27 @@ public class MessageServlet extends HttpServlet {
  			
  			Date currentDate = new Date();
  	    	Timestamp timestamp = new Timestamp(currentDate.getTime());
+ 	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+ 	    	String dateString = sdf.format(timestamp);
+ 	    	
  	    	response.getWriter().println("진행중이야2");
  	    	
  	        String sender = request.getParameter("sender");
  	        String receiver = request.getParameter("receiver");
  	        String content = request.getParameter("content");
  	       response.getWriter().println(sender+receiver+content);
- 	        	
- 	       response.getWriter().println(timestamp);
- 	        map.insertUserNote(sender, receiver, content, timestamp);
+ 	       
+			/*
+			 * DateWrap dates =new DateWrap(timestamp); String s = dates.toString();
+			 * 
+			 * response.getWriter().println(dates);
+			 */
+ 	        
+ 	       response.getWriter().println("시작"+timestamp+"\n" +"이거 다음 적용 \n");
+
+			/* response.getWriter().println(s); */
+ 	       
+ 	        map.insertUserNote(sender, receiver, content, dateString);
  	      
  	        map2.insertUserNoteSee();
  	       
