@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* swiper */
 .mainslide {
   width: 60%;
@@ -192,7 +193,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 }
 
 .note-content{
-    height: 4%;
+    height: 13%;
     display: flex;
     border-bottom: 1px solid #ccc;
 }

@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> 
+<%@page import="org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch"%>
+
+<%@ page import="java.util.*, org.json.*"%>
+<%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%> 
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,7 +34,12 @@ pageEncoding="UTF-8"%>
     <title>petpeople</title>
   </head>
   <body>
+
+        		 
     <%@include file="../jsp/nav.jsp"%>
+  
+ 
+        		 
     <div class="swiper mainslide">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -155,39 +164,44 @@ pageEncoding="UTF-8"%>
 
 
 
-
-    <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i> 
+ <%--    <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i> 
      <div type="button" class="main-note" id="open-modal">
       <i class="fa-regular fa-comments"></i>
     </div>
     <div id="modal" class="modal-content">
       <div class="modal">
         <h2>쪽지함</h2>
-        <div class="note-reception">
-          <div class="note-title">받은쪽지</div>
+       
+        <div class="note-reception" id="receiver">
+        <div class="note-title">받은쪽지</div>
+		 <% for(UserNote ReceiveNote : ReceiveNotes) { %> 
           <details>
             <summary class="summary">
               <div class="note-content">
-                <div class="note-content-detail">보낸 날짜</div>
-                <div class="note-content-writer">닉네임</div>
+                <div class="note-content-detail"><%=ReceiveNote.getNotetime()%></div>
+                <div class="note-content-writer"><%=ReceiveNote.getSender()%></div>
               </div>
             </summary>
-            <div class="note-content-div">쪽지내용</div>
+            <div class="note-content-div"><%=ReceiveNote.getNotecontent()%></div>
           </details>
+          
+		<% } %>
+	
         </div>
 
-        <div class="note-sent">
+        <div class="note-sent" id="sender">
           <div class="note-title2">보낸쪽지</div>
+		<% for(UserNote ReceiveNote : ReceiveNotes) { %> 
           <details>
-            <summary class="summary">
+            <summary class="summary" >
               <div class="note-content">
-                <div class="note-content-detail">보낸 날짜</div>
-                <div class="note-content-writer">닉네임</div>
-                <!-- 내가 보낸 쪽지라 닉네임은 없어도 될거 같음 -->
+                <div class="note-content-detail"><%=ReceiveNote.getNotetime()%></div>
+                <div class="note-content-writer"><%=ReceiveNote.getSender()%></div>
               </div>
             </summary>
-            <div class="note-content-div">쪽지내용</div>
+            <div class="note-content-div"><%=ReceiveNote.getNotecontent()%></div>
           </details>
+          	<% } %> 
         </div>
       </div>
 
@@ -200,6 +214,10 @@ pageEncoding="UTF-8"%>
       </a>
     </div>
     
+ --%>
+ 	<iframe src="./messagebox.jsp" style="position:fixed; bottom:2rem; right:1rem; width:40rem; height:50rem; z-index: 99999;"></iframe>
     <%@include file="../jsp/footer.jsp"%>
+    
+
   </body>
 </html>
