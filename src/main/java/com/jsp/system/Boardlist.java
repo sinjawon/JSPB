@@ -23,14 +23,10 @@ import com.jsp.dto.*;
 	    
 	    	response.setCharacterEncoding("utf-8");
 	    	response.setContentType("application/json");
-	    	 
-	    
-
-	    	
+	   	
 	    	try(DBConnector con = new DBConnector();){
 	    		BoardDao map = con.OpenMap(request, BoardDao.class);
-	    		
-	    		
+	    			    		
 	    		List<BoardInfo> exec = null;
 	    		
 	    		int page = 1; // 기본값 1로 설정 현재페이지

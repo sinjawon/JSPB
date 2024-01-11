@@ -16,11 +16,11 @@ function ajax(url, option) {
     });
 }
 // 처음 전체 보드리스트 출력 
-ajax("/api/boardlist", {
+ajax("/api/replylist", {
     method: "POST",
     body: new FormData(document.getElementById("searchtype")),
 }).then((json) => {
-    var _a, _b, _c, _d;
+    var _a, _b;
     console.log(json);
     let boards = document.querySelector("#boards");
     let template = document.querySelector("#boards template");
@@ -30,15 +30,10 @@ ajax("/api/boardlist", {
             (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
             template.content.querySelector(".title").innerHTML = data.title;
             (_b = template.content.querySelector(".title")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
+            template.content.querySelector(".mainContents").innerHTML = data.mainContents;
             template.content.querySelector(".userNickname").innerHTML = data.userNickname;
             template.content.querySelector(".hitCount").innerHTML = data.hitCount;
             template.content.querySelector(".regDate").innerHTML = data.regDate;
-            //수정 버튼 클릭하면 쿼리문에 글 id 가져와서 이동함
-            template.content.querySelector(".editPost").innerHTML = "수정";
-            (_c = template.content.querySelector(".editPost")) === null || _c === void 0 ? void 0 : _c.setAttribute("href", `/editPost.jsp?id=${data.boardListNum}`);
-            //삭제 버튼 
-            template.content.querySelector(".deletePost").innerHTML = "삭제";
-            (_d = template.content.querySelector(".deletePost")) === null || _d === void 0 ? void 0 : _d.setAttribute("onclick", `deletePost(${data.boardListNum})`);
             let a = document.createElement("a");
             // let span: HTMLElement | null = document.createElement("span");
             a.innerHTML = template.innerHTML;
@@ -75,6 +70,7 @@ function submitSearch() {
                     // 동적으로 생성된 div에 데이터 추가
                     a.querySelector(".boardListNum").innerHTML = data.boardListNum;
                     a.querySelector(".title").innerHTML = data.title;
+                    a.querySelector(".mainContents").innerHTML = data.mainContents;
                     a.querySelector(".userNickname").innerHTML = data.userNickname;
                     a.querySelector(".hitCount").innerHTML = data.hitCount;
                     a.querySelector(".regDate").innerHTML = data.regDate;

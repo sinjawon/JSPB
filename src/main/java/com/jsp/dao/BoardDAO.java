@@ -15,7 +15,7 @@ public interface BoardDao {
 	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardlistNum desc) result) x where num <= #{limit}")
 	public List<BoardInfo> getBoardInfoLimit(@Param("limit") int limit);
 			
-	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardlistNum desc) result) x where num between #{limit} * (#{page} - 1) +1 and #{limit} * #{page}")
+	@Select("select x.boardListNum, x.title, x.mainContents, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardlistNum desc) result) x where num between #{limit} * (#{page} - 1) +1 and #{limit} * #{page}")
 	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 	
 	@Select("select count(*) from boardInfo order by boardListNum desc")
