@@ -30,8 +30,8 @@ public interface UserDao {
 	public User getuserEmail(@Param("userid") String userid);
 	
 	//아이디로 이미지 찾기	
-	@Select( "select userProfile from Member3 where userid=#{userid}")
-	public User getuserProfile(@Param("userid") String userid);		
+	@Select( "select userProfile from Member3 where userNum = #{usernum}")
+	public User getuserProfile(@Param("usernum") String usernum);		
 			
 	//모든 유저닉네임찾기 
 	@Select( "select userNickName from Member3")

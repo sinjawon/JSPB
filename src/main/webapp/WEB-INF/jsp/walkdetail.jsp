@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" type="text/css" href="/resources/detail.css"> 
 
 
-<title>Insert title here</title>
+<title>petpeople</title>
 </head>
 <body>
 	<%@include file="../jsp/nav.jsp"%>
@@ -49,7 +52,7 @@
                 </div>
             </div>
             <div class="writing_field">
-                <input type="text" placeholder="댓글을 입력하세요">
+                <textarea name="opinion" cols="30" rows="5" class="text" placeholder="댓글을 입력하세요."></textarea>
                 <button type="submit">제출</button>
             </div>
         </div>

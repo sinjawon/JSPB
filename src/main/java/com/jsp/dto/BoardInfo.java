@@ -11,6 +11,8 @@ public class BoardInfo {
     private String regDate;  // 게시글 등록일
 	private int limit;
     private int page;
+    private int pagenum;
+    
     
 	public int getBoardListNum() {
 		return boardListNum ;

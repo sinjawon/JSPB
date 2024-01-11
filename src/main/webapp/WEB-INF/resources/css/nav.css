@@ -110,3 +110,13 @@ nav .box .login::before {
   font-family: "SUITE-Regular";
   cursor: pointer;
 }
+.myprofile {
+  display: flex;
+  position: absolute;
+  top: 45%;
+  right: 3%;
+  align-items: center;
+  transform: translateY(-50%);
+  gap: 1rem;
+  justify-content: center;
+}

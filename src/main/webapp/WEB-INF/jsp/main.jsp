@@ -4,18 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="/resources/main.css"> 
 <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" type="text/css" href="/resources/main.css"> 
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   
     <script src="/resources/mainbanner.js" defer></script>
-    <script src="/resources/modal.js" defer></script>
-    
-<title>Insert title here</title>
+<title>petpeople</title>
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
@@ -54,10 +55,9 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <a href="joinmembership.jsp"
-            ><img class="image" src="/resources/mainbanner05_sub.jpg" alt="기타 "  />
-            <div class="subTitle"></a>
-            <h2>회원가입 하러가기</h2>
+          <a href="joinmembership.jsp"><img class="image" src="/resources/mainbanner05_sub.jpg" alt="기타 "  /></a>
+          <div class='subTitle'>
+          	<h2>회원가입</h2>
           </div>
         </div>
       </div>
