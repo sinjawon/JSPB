@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="writing_field">
-                <input type="text" placeholder="댓글을 입력하세요">
+                <textarea name="opinion" cols="30" rows="5" class="text" placeholder="댓글을 입력하세요."></textarea>
                 <button type="submit">제출</button>
             </div>
         </div>
