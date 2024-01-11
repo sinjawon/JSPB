@@ -1,6 +1,7 @@
 package com.jsp.dao;
 
 import java.io.*;
+import java.sql.Timestamp;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
@@ -8,9 +9,23 @@ import com.jsp.dto.*;
 @Mapper
 public interface UserNoteDao {
 	
+	//메시지 저장 
+	@Insert("INSERT INTO UserNote(notenum,sender,receiver,notecontent,notetime) VALUES(notesq.NEXTVAL,#{sender}, #{receiver}, #{notecontent}, #{notetime})")
+	public void insertUserNote(
+			@Param("sender") String sender,
+			@Param("receiver") String receiver,
+			@Param("notecontent") String notecontent,
+			@Param("notetime") String notetime 
+			);
 	
-	//모든 수신자가 ?? 인사람 모든 쪽지 
-		@Select("select receiver sender content timestamp userNote from UserNote WHERE receiver ")
-		public List<UserNote> getuserNicknameAll();
+	//모든 받는사람이 nickname 인사람
+	@Select("SELECT receiver, sender, notecontent, notetime FROM UserNote WHERE receiver = #{nickname}")
+	public List<UserNote> NoteReceiver(@Param("nickname") String nickname);
+	
+	//모든 보낸사람이 nickname 인사람
+	@Select("select receiver, sender, notecontent, notetime FROM UserNote WHERE sender = #{nickname}")
+	public List<UserNote> NoteSender(@Param("nickname") String nickname);
+	
+	
 	
 }
