@@ -48,6 +48,7 @@ session.setAttribute("loginError", "아이디를 잘못입력");
 response.sendRedirect("/app/login.jsp");
 		  }	
 		  } 
+
 	catch(Exception e) {
 		response.getWriter().write("오류오류0");
 		
