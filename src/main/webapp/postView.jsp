@@ -7,7 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <title>작성한 글 확인 페이지</title>
-    <script>var valueId=<%=request.getParameter("id")%>;</script>
+    <script>
+    var valueId=<%=request.getParameter("id")%>;
+    var sessionUser='<%=session.getAttribute("UserNickName")%>';
+    </script>
     <script src="/resources/postings.js"></script>
 </head>
 <body>
@@ -16,21 +19,22 @@
     <div id="viewTitle">글 제목</div>
     <div id="viewTextarea">글 내용</div>
     
-    <%=session.getAttribute("UserNickName") %>
+   
     
     
-    <%
-    String targetValue = (String) session.getAttribute("UserNickName");
-    String desiredValue = ""; // 비교하려는 문자열
+    
+    <div id ="buttonContainer"></div>
+    
+   <%-- 버튼 
+   	<button type="button" onclick="location.href='/editPost.jsp?id=<%=request.getParameter("id")%>'">수정</button>
+    <button type="button" onclick="deletePost(<%=request.getParameter("id")%>)">삭제</button>
+    --%>
+    
+    
+  
+ 
+        
 
-    if (targetValue != null && targetValue.equals(desiredValue)) {
-%>
-        <button type="button" onclick="location.href='/editPost.jsp?id=<%=request.getParameter("id")%>'">수정</button>
-        <button type="button" onclick="deletePost(<%=request.getParameter("id")%>)">삭제</button>
-<%
-    }
-%>
-    
   
     
     <form action="/boardList.jsp" method="post">
