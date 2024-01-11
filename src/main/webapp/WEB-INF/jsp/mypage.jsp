@@ -26,6 +26,7 @@
         <div class="info">
             <div class=profile><a href="mypage.jsp">프로필</a></div>
             <div class=mydocument><a href="mydocument.jsp">내가 작성한 글</a></div>
+            <div class="notepage"><a href="notepage.jsp">쪽지함</a></div>
         </div>
         <div class="userPet_info">
             <div class="user_info">
