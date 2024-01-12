@@ -26,7 +26,7 @@
     <c:if test="${data.userNickname eq sessionScope.userNickname}">
         <button onclick="editPost(${data.boardListNum})">수정</button>
     </c:if>
-    <form action="/app/boardList.jsp" method="post" class=btnform>
+    <form action="/app/boardlist.jsp" method="post" class=btnform>
         <button type="submit" class='goback'>뒤로가기</button>
     </form>
     </div>

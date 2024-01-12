@@ -25,10 +25,13 @@ pageEncoding="UTF-8"%>
       href="/resources/favicon-16x16.png"
     />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" type="text/css" href="/resources/board.css">
+    
     <link rel="stylesheet" type="text/css" href="/resources/main.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+	<script defer src="/resources/boardlist4.js"></script>
     <script src="/resources/mainbanner.js" defer></script>
     <script src="/resources/modal.js" defer></script>
     <title>petpeople</title>
@@ -125,8 +128,32 @@ pageEncoding="UTF-8"%>
         <div class="main-container">
           <div class="free-flex">
             <a class="free-a" href="#home">
-              <div class="free-title">자유게시판 제목</div>
-              <div class="free-nick">닉네임</div>
+		<div id="boards">
+		<template>
+		<div class="board">
+			<div class="NumBox"><a href="/app/postview.jsp?id=0" class="boardListNum">0</a></div>
+			<div>
+				<div><a href="/app/postview.jsp?id=0" class="title">제목</a></div>
+				<div class="board_contents"><a class="mainContents" style="opacity:0">본문</a></div>
+			</div>
+			<div class="writer"><a class="userNickname">작성자</a></div>
+			<div><a class="hitCount" style="display:none;">조회수</a></div>
+			<div class="date"><a class="regDate" style="display:none;">등록일</a></div>
+		</div>
+		</template>
+		<form id="searchform" action="/api/boardlist" method="post" >
+        	<select id="searches" name="searchtype">
+        		<option value="all">== 선택 ==</option>
+				<option value="title">제목</option>
+				<option value="userNickname">작성자</option>
+			</select> 
+        		<input type="text" id="search" name="search">
+        		<input type="text" id="page" name="page" value="1" style="display:none;"/>
+        		<button type="button" onclick="submitSearch()" class="searchBtn">검색</button>
+   		</form> 
+	</div>
+              <!-- <div class="free-title">자유게시판 제목</div>
+              <div class="free-nick">닉네임</div> -->
             </a>
           </div>
         </div>

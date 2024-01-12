@@ -35,18 +35,11 @@
          <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" style= "width:350px" /></a>
         </h1>
         <div class="menu">
-        <form action="searchresult.jsp">
-          <div class="search">
-            <input type="search" />
-            <button type="submit">
-              <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-            </button>
-          </div>
-          </form>
+  			<div class="logo_img"><img src="/resource/logo.png" alt="" /></div>
           <div class="box">
             <div class="board">
               <ul>
-                <li><a href="boardList.jsp">자유게시판</a></li>
+                <li><a href="boardlist.jsp">자유게시판</a></li>
                 <li><a href="boastboard.jsp">자랑게시판</a></li>
                 <li><a href="walkboard.jsp">산책게시판</a></li>
                 <li><a href="tradeboard.jsp">애완용품거래</a></li>
@@ -60,16 +53,16 @@
             	</div>
             </c:if>
             <c:if test = "${sessionScope.UserNickName!=null }" >
-            <div class='myprofile'>
+            <div class="myprofile">
 
             	
-            	<div class='myprofile_wrap' style="width:40px; height:40px;text-align: center;border-radius: 50%; overflow: hidden;	"><img style="width:100%; height:100%" class='myprofile_img' src=<%=map2.getuserProfile(usernum).toStringProfile()%> alt="유저프로필" />
+            	<div class="myprofile_wrap" style="width:40px; height:40px;text-align: center;border-radius: 50%; overflow: hidden;	"><img style="width:100%; height:100%" class="myprofile_img" src=<%=map2.getuserProfile(usernum).toStringProfile()%> alt="유저프로필" />
             	</div>
             	<div><p><%=session.getAttribute("UserNickName") %> 님</p></div>
       
             </div> <!-- 로그인하면 이름 뜨게 -->
 	            <div class="login">
-	              <div><form action="../api/select/logout.jsp"><input type="submit" value="로그아웃" /><input type="hidden" name="logoutAction" value="true"/></form></div>
+	              <div><form action="../api/select/logout.jsp"><input type="submit" value="로그아웃" class="logout"/><input type="hidden" name="logoutAction" value="true"/></form></div>
 	              <div><a href="mypage.jsp">마이페이지</a></div>
             	</div>
             </c:if>

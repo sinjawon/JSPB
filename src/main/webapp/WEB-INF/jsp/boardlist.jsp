@@ -60,7 +60,7 @@
    			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'" >목록으로 돌아가기</button>
    		</form>  		
    		<form action="/insert" method="post">
-   			<button type="button" class="navyBtn" onClick="location.href='/app/insert.jsp'">글쓰기</button>
+   			<button type="button" class="navyBtn" onClick="location.href='/app/insertpage.jsp'">글쓰기</button>
    		</form>  		
 
 	</div>

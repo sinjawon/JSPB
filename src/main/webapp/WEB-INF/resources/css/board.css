@@ -56,6 +56,7 @@
 	font-size: 0.7rem;
 	font-weight: lighter;
 	color:rgba(0,0,0,0.5);
+	
 }
 
 .board > div:nth-of-type(2) > *{
