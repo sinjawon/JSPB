@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
 .insertpage{
-	margin: 12rem 0;
+	margin:auto;
+	margin-top:15rem;
+	margin-bottom:10rem;
 }
 
 .insert-box {
-  width: 60%;
+  width: 40%;
   margin: auto;
 }
 
@@ -41,31 +43,40 @@
 }
 
 .insertok {
-  width: 15rem;
+  width: 13rem;
   height: 3rem;
   border-radius: 20px;
   border: none;
   background-color: #fa5;
   margin: auto;
+  margin-left: 16.7rem;
 }
 
 .btns {
   display: flex;
 }
 
-.cancelbtn {
+.cancelbtn,
+.backbtn
+ {
   width: 5rem;
   height: 2rem;
   border: none;
   border-radius: 20px;
+  margin-left: 0.3rem;
 }
 
+
+
+
 .insertok:hover,
-.cancelbtn:hover {
+.cancelbtn:hover,
+.backbtn:hover {
   cursor: pointer;
 }
 
-.cancelbtn:hover {
+.cancelbtn:hover,
+.backbtn:hover {
   color: red;
 }
 

@@ -44,9 +44,9 @@ async function ajax(url: string, option?: any) {
   
               for (let data of json.data) {
                 template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-                template.content.querySelector(".boardListNum")?.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
+                template.content.querySelector(".boardListNum")?.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
                 template.content.querySelector(".title").innerHTML = data.title;
-                template.content.querySelector(".title")?.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
+                template.content.querySelector(".title")?.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
                 template.content.querySelector(".mainContents").innerHTML = data.mainContents;
                 template.content.querySelector(".userNickname").innerHTML = data.userNickname;
                 template.content.querySelector(".hitCount").innerHTML = data.hitCount;

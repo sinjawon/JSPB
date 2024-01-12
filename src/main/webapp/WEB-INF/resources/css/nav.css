@@ -15,7 +15,7 @@ nav {
   display: flex;
   width: 100%;
   position: fixed;
-  gap: 20rem;
+  gap: 18rem;
   left: 50%;
   transform: translateX(-50%);
   padding: 0.5rem 2rem 0 2rem;
@@ -32,6 +32,14 @@ nav h1 > img {
 }
 nav .menu {
   width: 100%;
+
+}
+nav .menu .logo_img{
+	width: 15%;
+	margin-left:13rem;
+}
+nav .menu .logo_img > img{
+	width: 100%;
 }
 nav .menu .search {
   margin-top: 2rem;
@@ -101,14 +109,15 @@ nav .box .login::before {
   background-color: #444;
 }
 
-.login input {
+.login  .logout {
   border: none;
   background-color: white;
-  font-size: 16px;
+  font-size: 14px;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 1000;
   font-family: "SUITE-Regular";
   cursor: pointer;
+  font-weight: lighter;
 }
 .myprofile {
   display: flex;

@@ -4,7 +4,8 @@
     margin: auto;
     margin-top: 10rem;
     margin-bottom: 10rem;
-    width: 60%;
+    width: 50%;
+    font-size: 0.8rem;
 }
 
 .main_board >  h3{
@@ -16,54 +17,91 @@
 
 }
 
-.main_board > .main_contents > .board {
-    border: 1px solid #000;
-    height: 5rem;
-    border-bottom: 1px solid black ;
-    margin-bottom: 0.5rem;
-    display: flex;
+.board{
+	display: flex; 
+	position: relative;
+	
+	
 }
-
-
-.main_board > .main_contents > .board > .board_wrap{
-    width: 80%;
-
-}
-.main_board > .main_contents > .board > .board_wrap > div{
-    height: 50%;
-}
-.board > .board_wrap > .title{
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
-
-.main_board > .main_contents > .board > .writer,
-.main_board > .main_contents > .board > .date{
-    width: 10%;
+.board > div{
+	width: 10%;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     text-align: center;
+    padding: 1rem;
     margin: auto;
+    
+    
 }
 
-.main_board > .main_contents > .board > .loca{
-    width:30%;
-    text-align: center;
-    margin: auto;
+.board > div:nth-of-type(2)::before{
+	content:'';
+	width:97%;
+	background-color: #888;
+	border: 0.1px solid #888;
+	position: absolute;
+	bottom:0;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0.5;
+	
+}
+.board > div:nth-of-type(2) {
+	width:50%;
+	text-align: left;
 }
 
-/* 글쓰기 버튼 */
+.board > div:nth-of-type(2) > div:nth-of-type(2){
+	font-size: 0.7rem;
+	font-weight: lighter;
+	color:rgba(0,0,0,0.5);
+	
+}
 
-.freeboard-insert{
-	width:5rem;
-	height:2rem;
-	border:2px solid #fa5;
-	border-radius: 20px;
+.board > div:nth-of-type(2) > *{
+	padding: 0.2rem 0;
+} 
+
+.pages{
 	text-align: center;
-	line-height: 1.7rem;
-	float:right;
-	margin-top:1rem;
+	padding: 1.5rem;
+	opacity: 0;
 }
 
-.freeboard-insert:hover{
-	background:#fa5;
+.pages >  span{
+	cursor: pointer;
+	padding: 0.5rem;
+}
+.pages >  span:hover{
+	color:#fa5;
+}
+
+#searchform{
+	text-align: center;	
+}
+#searchform>button{
+	border-radius: 10px;
+	background-color: #fa5;
+	border: none;
+	padding: 0.2rem 0.5rem ;
+	cursor: pointer;
+}
+
+#refresh{
+	text-align: center;
+	padding-top: 0.5rem;
+}
+
+#refresh > button{
+	border-radius: 10px;
+	background-color: #fa5;
+	border: none;
+	padding: 0.2rem 0.5rem ;
+	cursor: pointer;
+
+}
+
+.pages.on{
+	opacity: 1;
 }

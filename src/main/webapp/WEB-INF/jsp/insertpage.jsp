@@ -8,9 +8,9 @@
 <link rel="stylesheet" type="text/css" href="/resources/myreset.css"> 
 <link rel="stylesheet" type="text/css" href="/resources/insertpage.css"> 
 
-<script src="/resources/insertpage.js" defer></script>
+<script src="/resources/boardWrite.js" defer></script>
 
-<title>Insert title here</title>
+<title>petpeople</title>
 </head>
 <body>
 	<%@include file="../jsp/nav.jsp"%>
@@ -22,7 +22,7 @@
         name="insert-list"
         onchange="moveurl(this.value)"
       >
-        <option value="freepage.jsp">자유게시판</option>
+        <option value="insert.jsp">자유게시판</option>
         <option value="test.jsp">자랑게시판</option>
         <option value="work">산책게시판</option>
         <option value="boardlist.html">애완용품거래게시판</option>

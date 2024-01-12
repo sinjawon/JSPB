@@ -94,7 +94,8 @@
             	
         	catch(Exception e) {
         		e.printStackTrace();
-        	} %>
+        	} 
+        	%>
             
     
 <%@include file="../jsp/footer.jsp"%>
