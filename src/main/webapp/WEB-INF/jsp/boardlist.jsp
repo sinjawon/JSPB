@@ -11,8 +11,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" type="text/css" href="/resources/board.css"> 
+<link rel="stylesheet" type="text/css" href="/resources/board.css">
 <script defer src="/resources/boardlist4.js"></script>
+<script defer src="/resources/pagenumber.js"></script> 
 </head>
 <body>
 
@@ -51,12 +52,12 @@
 			</select> 
         		<input type="text" id="search" name="search">
         		<input type="text" id="page" name="page" value="1" style="display:none;"/>
-        		<button type="button" onclick="submitSearch()">검색</button>
+        		<button type="button" onclick="submitSearch()" class="searchBtn">검색</button>
    		</form> 
    		
    		
    		<form id="refresh" action="/api/boardlist" method="post">
-   			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'">목록으로 돌아가기</button>
+   			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'" >목록으로 돌아가기</button>
    		</form>  		
    		<form action="/insert" method="post">
    			<button type="button" class="navyBtn" onClick="location.href='/app/insert.jsp'">글쓰기</button>

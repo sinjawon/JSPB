@@ -8,6 +8,8 @@
 </head>
 <body>
     <script defer src="/resources/boardWrite.js"></script>
+    	<%@include file="../jsp/nav.jsp"%>
+    
     <h1>글쓰기</h1>
     
     <form id="writeForm" action="/api/newPost" method="post">
@@ -24,6 +26,8 @@
             <button type="button" onclick="location.href='/app/boardlist.jsp'">뒤로가기</button>
          </form>  
     </form>
+        	<%@include file="../jsp/footer.jsp"%>
+    
 </body>
 </html>
 
