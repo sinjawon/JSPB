@@ -19,11 +19,11 @@ public interface UserNoteDao {
 			);
 	
 	//모든 받는사람이 nickname 인사람
-	@Select("SELECT notenum , receiver, sender, notecontent, notetime FROM UserNote WHERE receiver = #{nickname} order by notetime desc")
+	@Select("SELECT notenum , receiver, sender, notecontent, notetime FROM UserNote WHERE receiver = #{nickname} ORDER BY notetime DESC")
 	public List<UserNote> NoteReceiver(@Param("nickname") String nickname);
 	
 	//모든 보낸사람이 nickname 인사람
-	@Select("select notenum , receiver, sender, notecontent, notetime FROM UserNote WHERE sender = #{nickname} order by notetime desc")
+	@Select("select notenum , receiver, sender, notecontent, notetime FROM UserNote WHERE sender = #{nickname} ORDER BY notetime DESC")
 	public List<UserNote> NoteSender(@Param("nickname") String nickname);
 	
 	

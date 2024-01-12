@@ -77,8 +77,11 @@ public class Infomodify extends HttpServlet{
 					   map2.anigender(usernum, gender); 
 					   map2.aniweight(usernum, weight);
 					   response.getWriter().write("5");
+					   
 						//이미지가 있으면
+					   
     if(request.getPart("image").getSize() > 0 || request.getPart("petimage").getSize() > 0 ) {
+    	
     	       response.getWriter().write("6");
     	         System.out.println("우저이미지");
 						if(request.getPart("image") != null && request.getPart("image").getSize() > 0){
