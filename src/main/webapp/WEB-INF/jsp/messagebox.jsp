@@ -1,4 +1,3 @@
-<%@page import="org.w3c.dom.html.HTMLTableRowElement"%>
 <%@page import="org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,11 +7,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+ <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <script src="/resources/modal.js" defer></script>
+    
+    <link rel="stylesheet" type="text/css" href="/resources/messagebox.css" />
+    
+    <link rel="stylesheet" type="text/css" href="/resources/myreset.css" />
     <meta charset="UTF-8">
     <title>쪽지함</title>
 </head>
 <body>
-
+<i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i> 
+     <div type="button" class="main-note" id="open-modal">
+      <i class="fa-regular fa-comments"></i>
+    </div>
 
 
 <% 
@@ -25,16 +41,22 @@ try(DBConnector con = new DBConnector();){
         		
         	    String userNickName = (String)session.getAttribute("UserNickName");
 
-        	    response.getWriter().write(userNickName);
-        	    
         	    List<UserNote> ReceiveNotes = note.NoteReceiver(userNickName);
         	    
         	    List<UserNote> SendNotes = note.NoteSender(userNickName);
 
         		 %>
-	 <div id="sender">	
-	 	<h2>발신목록</h2>
-<%if(session.getAttribute("UserNickName") != null){%>
+       <div id="modal" class="modal-content">
+      <div class="modal">
+        <h2>쪽지함</h2>
+        
+        <button type="button">sdsdsd</button>
+        <button type="button">sdsdsd</button>
+        <button type="button">sdsdsd</button>
+       
+        
+      	<div id="receiver" class="note-reception">
+        <div class="note-title">받은쪽지</div><%if(session.getAttribute("UserNickName") != null){%>
          
 		<% for(UserNote ReceiveNote : ReceiveNotes) {
 			
@@ -45,24 +67,27 @@ try(DBConnector con = new DBConnector();){
 			if("1".equals(seenum) || "3".equals(seenum)){
 				
 			%> 
-			  <details> 
-			     <summary><div><%=ReceiveNote.getNotetime()%></div>  <div><%=ReceiveNote.getSender()%></div></summary>
-			       <p><%=ReceiveNote.getNotecontent()%></p>
-			     </details>    
-			     <form action="/deletmessege">
+		  <details> 
+		     <summary class="note-content"><div class="note-content-detail"><%=ReceiveNote.getNotetime()%></div>  
+		     								<div class="note-content-writer"><%=ReceiveNote.getSender()%></div></summary>
+		    
+		       <p class="note-content-div"><%=ReceiveNote.getNotecontent()%></p>
+		      
+		     </details> 
+		      <form action="/deletmessege">
 				    <input type="button" value="메세지삭제" name=<%=seenum %>>
 				</form> 
 				
 			<%}%>
-		<%}%>
-<% }else{ %>
-		 <div>로그인을 해주세요</div>
+			<%}%>
+			
+<% }else{ %> <div>로그인을 해주세요</div>
 	  <%}%>
 	 </div> 
  
-  <div id="receiver">
-  	 <h2>수신목록</h2>
-	<%if(session.getAttribute("UserNickName") != null){%>
+	 <div id="sender">	
+        <div class="note-title2">보낸쪽지</div>
+        <%if(session.getAttribute("UserNickName") != null){%>
          
 		<% for(UserNote SendNote : SendNotes) { 
 			
@@ -85,10 +110,11 @@ try(DBConnector con = new DBConnector();){
 		 <div>로그인을 해주세요</div>
 	  <%}%>
 	 </div> 
+	 
+	 
+ </div>
  
- 
- 
- <%
+  <%
 }
         	catch(Exception e) {
         		e.printStackTrace();
@@ -106,13 +132,11 @@ try(DBConnector con = new DBConnector();){
     req5.send();
 }, 5000); // 1000 밀리초마다 실행 (1초마다)  	 -->
         	
-        	<h2>쪽지 작성</h2>
-<form action="/MessageServlet" method="POST" accept-charset="UTF-8"> <!-- style="display:none" --> 
-     <input type="text" name="sender" value="<%=session.getAttribute("UserNum")%>" required ><br>
-     <input type="text" name="receiver" placeholder="받는사람" required><br>
-     <textarea name="content" placeholder="내용" required ></textarea><br>
-    <input type="submit" value="전송">
-</form>
-        	
+      
+ 
+
+ 
+ 
+ 
 </body>
 </html>

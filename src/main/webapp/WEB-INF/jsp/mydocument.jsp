@@ -17,6 +17,7 @@
         <div class="info">
             <div><a href="mypage.jsp">프로필</a></div>
             <div><a href="mydocument.jsp">내가 작성한 글</a></div>
+            <div class="notepage"><a href="notepage.jsp">쪽지함</a></div>
         </div>
     <div class="document">
         <ul>

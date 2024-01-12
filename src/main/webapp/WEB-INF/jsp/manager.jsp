@@ -19,9 +19,21 @@
         <div class="manager">그래프</div>
       </div>
 
-      <h3 class="manager-people">가입인원</h3>
-      <div class="manager-peoplech">
-        <!-- 가입인원 데이터 -->
+      <div class="document">
+        <ul>
+          <li>
+            <div class="boards"><a href="#">쪽지</a></div>
+            <div class="boardDocs"></div>
+          </li>
+          <li>
+            <div class="boards"><a href="#">회원수</a></div>
+            <div class="boardDocs"></div>
+          </li>
+          <li>
+            <div class="boards"><a href="#">회원관리</a></div>
+            <div class="boardDocs"></div>
+          </li>
+        </ul>
       </div>
     </div>
     

@@ -35,12 +35,14 @@
          <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" style= "width:350px" /></a>
         </h1>
         <div class="menu">
+        <form action="searchresult.jsp">
           <div class="search">
             <input type="search" />
             <button type="submit">
               <i class="fa-solid fa-magnifying-glass fa-2x"></i>
             </button>
           </div>
+          </form>
           <div class="box">
             <div class="board">
               <ul>

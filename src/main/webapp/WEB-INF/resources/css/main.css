@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* swiper */
 .mainslide {
   width: 60%;
@@ -148,4 +149,6 @@
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color:#fa5;
 }
+
+
 
