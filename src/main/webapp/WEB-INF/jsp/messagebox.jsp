@@ -6,6 +6,7 @@
 <%@ page import="java.util.*, org.json.*"%>
 <%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 
@@ -48,7 +49,10 @@ try(DBConnector con = new DBConnector();){
 
         		 %>
 
-    <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i>
+}
+
+<!-- 
+    <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i> -->
     <div type="button" class="main-note" id="open-modal">
       <i class="fa-regular fa-comments"></i>
     </div>
@@ -159,7 +163,7 @@ try(DBConnector con = new DBConnector();){
 	         <form action="/deletmessege">		  
 			       <input type="text"  name ="SenddAll" value="<%=yesstt2%>">
 			       <input type="text"  name ="SendDeletAll" value="<%=Received%>">
-				   <button type="submit">받은 메시지 모두삭제</button>
+				   <button type="submit" class="showmessage">받은 메시지 모두삭제</button>
 			  </form>
 	
 	 </div> 

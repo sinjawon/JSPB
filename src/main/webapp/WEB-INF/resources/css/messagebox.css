@@ -85,9 +85,15 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  z-index: 2222;
+  z-index: 6666;
+  position: relative;
 }
 
+
+.showmessage{
+	z-index:1111;
+  position: relative;
+}
 .fa-solid:hover {
   color: red;
 }
