@@ -18,7 +18,7 @@
     
     <script src="/resources/modal.js" defer></script>
     
-    <link rel="stylesheet" type="text/css" href="/resources/main.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/messagebox.css" />
     
     <link rel="stylesheet" type="text/css" href="/resources/myreset.css" />
     <meta charset="UTF-8">
@@ -30,7 +30,10 @@
       <i class="fa-regular fa-comments"></i>
     </div>
 
-<%  try(DBConnector con = new DBConnector();){
+
+<% 
+  if(session.getAttribute("UserNickName") != null){
+try(DBConnector con = new DBConnector();){
 	
         		UserNoteDao note = con.OpenMap(request, UserNoteDao.class);
         		
@@ -38,55 +41,102 @@
         		
         	    String userNickName = (String)session.getAttribute("UserNickName");
 
-        	    response.getWriter().write(userNickName);
-        	    
         	    List<UserNote> ReceiveNotes = note.NoteReceiver(userNickName);
-        	    response.getWriter().write("이건받았나");
+        	    
         	    List<UserNote> SendNotes = note.NoteSender(userNickName);
 
         		 %>
        <div id="modal" class="modal-content">
       <div class="modal">
         <h2>쪽지함</h2>
+        
+        <button type="button">sdsdsd</button>
+        <button type="button">sdsdsd</button>
+        <button type="button">sdsdsd</button>
+       
+        
       	<div id="receiver" class="note-reception">
-        <div class="note-title">받은쪽지</div>
-	<% for(UserNote SendNote : SendNotes) { %> 
+        <div class="note-title">받은쪽지</div><%if(session.getAttribute("UserNickName") != null){%>
+         
+		<% for(UserNote ReceiveNote : ReceiveNotes) {
+			
+			String notenum = ReceiveNote.getNotenum();
+			
+			String seenum = cansee.GetcanSee(notenum);
+			
+			if("1".equals(seenum) || "3".equals(seenum)){
+				
+			%> 
 		  <details> 
-		     <summary class="note-content"><div class="note-content-detail"><%=SendNote.getNotetime()%></div>  
-		     								<div class="note-content-writer"><%=SendNote.getSender()%></div></summary>
+		     <summary class="note-content"><div class="note-content-detail"><%=ReceiveNote.getNotetime()%></div>  
+		     								<div class="note-content-writer"><%=ReceiveNote.getSender()%></div></summary>
 		    
-		       <p class="note-content-div"><%=SendNote.getNotecontent()%></p>
+		       <p class="note-content-div"><%=ReceiveNote.getNotecontent()%></p>
 		      
 		     </details> 
-		<% } %>
-	 </div>  
+		      <form action="/deletmessege">
+				    <input type="button" value="메세지삭제" name=<%=seenum %>>
+				</form> 
+				
+			<%}%>
+			<%}%>
+			
+<% }else{ %> <div>로그인을 해주세요</div>
+	  <%}%>
+	 </div> 
  
 	 <div id="sender">	
         <div class="note-title2">보낸쪽지</div>
-		<% for(UserNote ReceiveNote : ReceiveNotes) { %> 
-		  <details> 
-		     <summary><div><%=ReceiveNote.getNotetime()%></div>  <div><%=ReceiveNote.getSender()%></div></summary>
-		       
-		       <p><%=ReceiveNote.getNotecontent()%></p>
-		        <p>나와나와라용요ㅛ</p>
-		      
-		     </details> 
-		     <!-- x버ㅏ튼 추가하기 -->
-		<% } %>
+        <%if(session.getAttribute("UserNickName") != null){%>
+         
+		<% for(UserNote SendNote : SendNotes) { 
+			
+			String notenum = SendNote.getNotenum();
+			
+			String seenum = cansee.GetcanSee(notenum);
+			 
+			if("2".equals(seenum) || "3".equals(seenum)) {
+			%> 
+			  <details> 
+			     <summary><div><%=SendNote.getNotetime()%></div>  <div><%=SendNote.getSender()%></div></summary>
+			       <p><%=SendNote.getNotecontent()%></p>
+			     </details>    
+			     <form action="/deletmessege">
+				    <input type="button" value="메세지삭제" name=<%=seenum%>>
+				</form> 
+			<%}%>
+		<%}%>
+<% }else{ %>
+		 <div>로그인을 해주세요</div>
+	  <%}%>
 	 </div> 
 	 
 	 
  </div>
  
-
- 
- 
- 
- <%
+  <%
 }
         	catch(Exception e) {
         		e.printStackTrace();
         		response.getWriter().write("오류오류0");
-        	} %>
+        	} 
+}else{       	
+        	%>
+        <div>로그인을 해주세요<div>	
+     <% }%> 
+     
+   <!--   setInterval(function() {
+    // 주기적으로 실행할 코드
+    let req5 = new XMLHttpRequest();
+    req5.open("GET", "http://localhost:4885/app/messages.jsp", true);
+    req5.send();
+}, 5000); // 1000 밀리초마다 실행 (1초마다)  	 -->
+        	
+      
+ 
+
+ 
+ 
+ 
 </body>
 </html>
