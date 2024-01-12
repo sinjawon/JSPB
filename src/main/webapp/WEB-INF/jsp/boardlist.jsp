@@ -17,16 +17,16 @@
 <body>
 
 		
-	<%@include file="WEB-INF/jsp/nav.jsp"%>
+	<%@include file="../jsp/nav.jsp"%>
 <div class="main_board"> 
 		
 	<h3>자유게시판</h3>
 	<div id="boards">
 		<template>
 		<div class="board">
-			<div class="NumBox"><a href="/postView.jsp?id=0" class="boardListNum">0</a></div>
+			<div class="NumBox"><a href="/app/postview.jsp?id=0" class="boardListNum">0</a></div>
 			<div>
-				<div><a href="/postView.jsp?id=0" class="title">제목</a></div>
+				<div><a href="/app/postview.jsp?id=0" class="title">제목</a></div>
 				<div class="board_contents"><a class="mainContents">본문</a></div>
 			</div>
 			<div class="writer"><a class="userNickname">작성자</a></div>
@@ -56,14 +56,14 @@
    		
    		
    		<form id="refresh" action="/api/boardlist" method="post">
-   			<button type="button" class="back" onClick="location.href='/app/boardList.jsp'">목록으로 돌아가기</button>
+   			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'">목록으로 돌아가기</button>
    		</form>  		
    		<form action="/insert" method="post">
    			<button type="button" class="navyBtn" onClick="location.href='/app/insert.jsp'">글쓰기</button>
    		</form>  		
 
 	</div>
-	<%@include file="WEB-INF/jsp/footer.jsp"%>
+	<%@include file="../jsp/footer.jsp"%>
 	
 <!-- <h1>Board List</h1>
 		

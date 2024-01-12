@@ -42,9 +42,9 @@ function submitSearch() {
                 }
                 for (let data of json.data) {
                     template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-                    (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
+                    (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
                     template.content.querySelector(".title").innerHTML = data.title;
-                    (_b = template.content.querySelector(".title")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
+                    (_b = template.content.querySelector(".title")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
                     template.content.querySelector(".mainContents").innerHTML = data.mainContents;
                     template.content.querySelector(".userNickname").innerHTML = data.userNickname;
                     template.content.querySelector(".hitCount").innerHTML = data.hitCount;
