@@ -15,7 +15,11 @@ import com.jsp.dao.BoardDao;
 @WebServlet("/api/updatePost")
 public class updatePost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title = request.getParameter("title");
+      
+     	request.setCharacterEncoding("utf-8");
+    	response.setCharacterEncoding("utf-8");
+    	
+    	String title = request.getParameter("title");
         String mainContents = request.getParameter("mainContents");
         String userNickname = request.getParameter("userNickname");
 
@@ -26,7 +30,7 @@ public class updatePost extends HttpServlet {
         } catch(Exception e) {
             System.out.println("오류");
         }
-        response.sendRedirect("/boardList.jsp");
+        response.sendRedirect("/WEB-INF/jsp/boardlist.jsp");
     }
 }
 

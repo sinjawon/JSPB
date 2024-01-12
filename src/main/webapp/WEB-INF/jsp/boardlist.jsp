@@ -31,8 +31,8 @@
 		
 	<div id="boards">
 		<template>
-			<a href="/postView.jsp?id=0" class="boardListNum">0</a>
-			<a href="/postView.jsp?id=0" class="title">제목</a>
+			<a href="/app/postview.jsp?id=0" class="boardListNum">0</a>
+			<a href="/app/postview.jsp?id=0" class="title">제목</a>
 			<a class="mainContents">본문</a>
 			<a class="userNickname">작성자</a>
 			<a class="hitCount">조회수</a>
@@ -46,7 +46,7 @@
 	</div>
         
 	
-  		<form id="searchform" action="/api/boardlist" method="post">
+  		<form id="searchform" action="/api/boardList" method="post">
         	<select id="searches" name="searchtype">
         		<option value="all">== 선택 ==</option>
 				<option value="title">제목</option>
@@ -58,11 +58,11 @@
    		</form> 
    		
    		
-   		<form id="refresh" action="/api/boardlist" method="post">
-   			<button type="button" class="back" onClick="location.href='/boardList.jsp'">목록으로 돌아가기</button>
+   		<form id="refresh" action="/api/boardList" method="post">
+   			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'">목록으로 돌아가기</button>
    		</form>  		
    		<form action="/insert" method="post">
-   			<button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>
+   			<button type="button" class="navyBtn" onClick="location.href='/app/insert.jsp'">글쓰기</button>
    		</form>  		
 
 

@@ -2,6 +2,8 @@
 package com.jsp.system;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,32 +16,48 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
-import com.jsp.dao.ReplyDao;
-import com.jsp.dto.ReplyInfo;
+import com.jsp.dao.*;
+import com.jsp.dto.*;
 
 @WebServlet("/api/addReply")
 public class AddReply extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
+    	request.setCharacterEncoding("utf-8");
+    	response.setCharacterEncoding("utf-8");
+    	 
     	int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
-        String replyContents = request.getParameter("replyContents");
-      //String userNickname = request.getParameter("userNickname");
-        String userNickname = (String) request.getSession().getAttribute("userNickname");  
+         String replyContents = request.getParameter("replyContents");
+         String userNickname = request.getParameter("userNickname");
         
-        try (DBConnector con = new DBConnector()) {
-            ReplyDao map = con.OpenMap(request, ReplyDao.class);
-	    
+         
+         System.out.println(request.getParameter("boardListNum"));
+         System.out.println(request.getParameter("replyContents"));
+         System.out.println(request.getParameter("userNickname"));
+         
+        try (DBConnector con = new DBConnector();) {
+            ReplyDao rmap = con.OpenMap(request, ReplyDao.class);
+            System.out.println("con 만들기???");
+            
+           
             // 댓글 등록
-            map.insertNewReply(boardListNum, replyContents, userNickname);
-
-            // 성공 여부를 JSON으로 응답
-//            response.setContentType("application/json");
-//            response.getWriter().write("{\"success\": true}");
+            rmap.insertNewReply(boardListNum, replyContents, userNickname);
+            System.out.println(rmap);
+            System.out.println("보드에 들어갔나요?");
+           System.out.println(boardListNum);
         } catch (Exception e) {
-//            e.printStackTrace();
-//            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+           System.out.println("에러캐치");
         }
-	response.sendRedirect("/postView.jsp");
+        response.getWriter().write(new JSONObject().toString());
+        response.sendRedirect("/app/postview.jsp?id="+request.getParameter("boardListNum"));
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/app/postview.jsp?id=${boardListNum}");
+//        dispatcher.forward(request, response);   
+
+
     }
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
 }

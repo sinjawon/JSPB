@@ -28,6 +28,11 @@ public interface BoardDao {
 	@Select("SELECT * FROM boardInfo WHERE boardListNum = #{boardListNum}")
 	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
 	
+	
+	//지수- 게시글 id로 작성자 찾는 함수
+	@Select("SELECT userNickname FROM boardInfo WHERE boardListNum = #{boardListNum}")
+	public String getuserByboardListNum(@Param("boardListNum") int boardListNum);
+	
 	//@@지수-새로운 글을 추가하는 메서드. 
 	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
 	public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title, @Param("mainContents") String mainContents);
@@ -39,7 +44,7 @@ public interface BoardDao {
 
 	
 	// board 에서 title 로 검색
-	@Select("select * from boardInfo where title like #{title}")
+	@Select("select * from boardInfo where title like #{title} order by boardlistNum desc")
 	public List<BoardInfo> searchByTitle(@Param("title") String title);
 
 //	// user 에서 userNum 과 userPw 로 가입한 유저가 맞는지 확인

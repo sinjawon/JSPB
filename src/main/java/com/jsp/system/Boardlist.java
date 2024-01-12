@@ -17,10 +17,11 @@ import org.json.JSONObject;
 import com.jsp.dao.BoardDao;
 import com.jsp.dto.*;
 
-	@WebServlet("/api/boardlist")
+	@WebServlet("/api/boardList")
 	public class Boardlist extends HttpServlet {
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    
+	    	request.setCharacterEncoding("utf-8");
 	    	response.setCharacterEncoding("utf-8");
 	    	response.setContentType("application/json");
 	   	
@@ -58,7 +59,7 @@ import com.jsp.dto.*;
 		    		System.out.println(exec);
 		    		System.out.println("title out");
 		    		}
-		    	else {response.sendRedirect("/boardList.jsp");}
+		    	else {response.sendRedirect("/app/boardlist.jsp");}
 	    		Map<String, Object> result = new HashMap<String, Object>();
 	    			result.put("page", page);
 	    			result.put("totalPages", totalPages);

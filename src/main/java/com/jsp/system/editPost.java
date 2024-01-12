@@ -18,6 +18,7 @@ public class editPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
        String userNickname = request.getParameter("userNickname");
+       
        int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
        System.out.println(boardListNum);
        
@@ -37,7 +38,7 @@ public class editPost extends HttpServlet {
         } catch(Exception e) {
            System.out.println(userNickname);
         }
-        response.sendRedirect("/boardList.jsp");
+        response.sendRedirect("/app/boardlist.jsp");
        
        
        
