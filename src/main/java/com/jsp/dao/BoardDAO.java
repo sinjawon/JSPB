@@ -19,7 +19,6 @@ public interface BoardDao {
    @Select("select count(*) from boardInfo order by boardListNum desc")
    public int getBoardInfoAllCnt();
 
-//	
    @Select("select * from boardInfo order by boardListNum desc")
    public List<BoardInfo> getBoardInfoAll();
    

@@ -17,26 +17,22 @@ import com.jsp.dto.BoardInfo;
 public class editPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-    	String userNickname = request.getParameter("userNickname");
     	
-    	int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
-    	System.out.println("글번호" + boardListNum);
-    	
-        String title = request.getParameter("title");
-    	System.out.println("제목" + title);
-
-        String mainContents = request.getParameter("mainContents");
-    	System.out.println("내용"+ mainContents);
 
         try (DBConnector con = new DBConnector();){
-        	System.out.println("수정 되냐");
+        	String userNickname = request.getParameter("userNickname");
+        	
         	BoardDao map = con.OpenMap(request, BoardDao.class);
         	System.out.println("map이 안되니");
 
+            int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
+            String title = request.getParameter("title");
+            String mainContents = request.getParameter("mainContents");
+        	
         	map.updateBoardInfo(title, mainContents,boardListNum);
             System.out.println("보드에 들어갔나요?");
         } catch(Exception e) {
-        	System.out.println("editPost.java 에러");
+        	System.out.println("editPost api 에러");
         }
         response.sendRedirect("/boardList.jsp");
     	

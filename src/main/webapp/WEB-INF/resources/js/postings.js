@@ -76,20 +76,34 @@ function PostInfo() {
 window.onload = function () {
     PostInfo();
 };
+// function editPost() {
+//     let title = document.getElementById("viewTitle").innerText;
+//     let mainContents = document.getElementById("viewTextarea").innerText;
+//     fetch(`/api/editPost?boardListNum=${clickedPostId}`, {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/x-www-form-urlencoded"
+//         },
+//         body: `userNickname=${userCheck}&boardListNum=${clickedPostId}&title=${title}&mainContents=${mainContents}`
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         if (data.success) {
+//             console.log("게시글 수정 성공");
+//             // 필요한 작업 수행
+//         } else {
+//             console.error("게시글 수정 실패:", data.message);
+//         }
+//     })
+//     .catch(error => { 
+//         console.error('게시글 수정 중 오류 발생:', error);
+//         alert('게시글 수정 중 오류 발생');
+//     });
+//     location.href = "/boardList.jsp";
+// }
 function editPost() {
-    console.log("수정되었습니다");
     let form = document.getElementById("editForm");
-    let boardListNum = document.createElement("input");
-    console.log("수정 함수 실행은 되니?");
-    console.log(boardListNum);
-    if (form) {
-        boardListNum.type = "hidden";
-        boardListNum.name = "boardListNum";
-        boardListNum.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열로
-        form.appendChild(boardListNum);
-        form.submit();
-        console.log("폼에 담음");
-    }
+    form.submit();
     location.href = "/boardList.jsp";
 }
 //
