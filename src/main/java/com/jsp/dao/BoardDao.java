@@ -29,13 +29,14 @@ public interface BoardDao {
    //지수-게시글 id로 작성자 찾는 함수
  	@Select("SELECT userNickname FROM boardInfo WHERE boardListNum = #{boardListNum}")
  	public String getuserByboardListNum(@Param("boardListNum") int boardListNum);
-   
+
+ 	//------------- 이미지 오버로딩  
+ // BoardDao.java 파일의 insertNewBoard 메서드 수정
  	
-   //지수-새로운 글을 추가하는 메서드. 
    @Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
    public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title, @Param("mainContents") String mainContents);
    
-   
+  
    // board 에서 userNickName 으로 검색
    @Select("select * from boardInfo where userNickname like #{userNickname} order by boardlistNum desc")
    public List<BoardInfo> searchByUserNickname(@Param("userNickname") String userNickname);
