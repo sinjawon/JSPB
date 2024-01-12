@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* swiper */
 .mainslide {
   width: 60%;
@@ -149,3 +150,19 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color:#fa5;
 }
 
+
+
+.fa-solid:hover {
+  color: red;
+}
+
+.write-go {
+  text-align: center;
+  line-height: 2.7rem;
+  border-radius: 50px;
+  background-color: transparent;
+  position: fixed;
+  right: 10rem;
+  bottom: 4rem;
+  z-index:555555;
+}

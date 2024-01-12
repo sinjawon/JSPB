@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 @font-face {
   font-family: "SUITE-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
@@ -8,8 +7,7 @@
   font-weight: 400;
   font-style: normal;
 }
-body
- {
+body {
   font-family: "SUITE-Regular";
 }
 
@@ -71,7 +69,6 @@ nav .box .board ul li {
 }
 nav .box .board ul li:hover {
   color: #fa5;
-  
 }
 nav .box .board ul li:nth-of-type(1) {
   padding: 1rem 1rem 1rem 0;
@@ -85,10 +82,9 @@ nav .box .login {
   color: rgba(0, 0, 0, 0.5);
   position: relative;
   cursor: pointer;
-}  
+}
 nav .box .login > div:hover,
 .login input:hover {
-
   font-weight: bold;
   color: #333;
 }
@@ -105,15 +101,22 @@ nav .box .login::before {
   background-color: #444;
 }
 
-.login input{
-	border: none;
-	background-color: white;
-	font-size: 16px;
-	color: rgba(0, 0, 0, 0.5);
-	font-weight: 1000;
+.login input {
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 1000;
   font-family: "SUITE-Regular";
   cursor: pointer;
-
 }
-
-
+.myprofile {
+  display: flex;
+  position: absolute;
+  top: 45%;
+  right: 3%;
+  align-items: center;
+  transform: translateY(-50%);
+  gap: 1rem;
+  justify-content: center;
+}

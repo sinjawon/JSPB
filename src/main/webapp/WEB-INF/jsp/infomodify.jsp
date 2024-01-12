@@ -6,21 +6,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" type="text/css" href="/resources/infomodify.css"> 
 <script src="/resources/infomodify.js" defer></script>
-<title>Insert title here</title>
+<title>petpeople</title>
+
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
 	<div class="modify">
         <h2>정보수정</h2>
         <!-- ../api/update/infomodify.jsp -->
+            	<%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum");
+        		   String gender = map.getAnimalGender(usernum).toStringPatGender();
+        		   UserDao map2 = con.OpenMap(request, UserDao.class);
+        		 %>  
+        		           
   <form action="/infomodify" method="post" enctype="multipart/form-data"> 
         <div class="info_modi">
             <div class="user_modi">
-                <span>회원</span>
-                <div class="modi_image"><img src="" alt=""></div>
-                <input type="file" name="image">
+                <span class='user'>회원</span>
+                <div class="modi_image"><img class='infomodi_img' src="<%=map2.getuserProfile(usernum).toStringProfile()%>" alt=""></div>
+                <input  type="file" class='file' name="image">
        <div class="modiWrap">
                    
          <!-- 이름 -->
@@ -41,8 +52,8 @@
         		 %>  
         		           
             <div class="pet_modi">
-                <span>반려동물</span>
-                <div class="modi_image"><img src="" alt=""></div>
+                <span class='pet'>반려동물</span>
+                <div class="modi_image"><img class='infomodi_img' src="<%=map.getAnimalProfile(usernum).getAnimalProfile()%>" alt=""></div>
              
                 <input type="file" class="file" name="petimage">
                 <div class="modiWrap">
@@ -76,17 +87,22 @@
                 </div>   
             </div>
         </div>
-        <input type="submit" value="제출">
+        <input type="submit" value="제출" class='modi_submit'>
          </form>
     </div>
+    <script>
+  			document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+</script>
     	<%
-        	}
+        	
+           	}
         	catch(Exception e) {
         		e.printStackTrace();
         	} %>
             
     
 <%@include file="../jsp/footer.jsp"%>
+
 </body>
 </html>
 </html>

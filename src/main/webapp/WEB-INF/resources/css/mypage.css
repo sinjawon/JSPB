@@ -33,9 +33,14 @@
     position: relative;
 }
 
+.userPet_info .user,
+.pet_info .pet{
+	font-size: 1.3rem;
+	margin-right: 0.5rem;
+	}
+
 .userPet_info::before{
     content: '';
-
     height: 100%;
     position: absolute;
     border: 0.5px solid #999;
@@ -96,44 +101,47 @@
 }
 
 .info_wrap .info_image{
-    border-radius: 50%;
+	border-radius: 50%;
     width:130px;
     height: 130px;
-    background-color: #999;
     margin: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    overflow: hidden;
+	object-fit:cover;
+	position: relative;
 }
-.info_image > img{
-	width: 300px;
+.info_image > .profile_img{
+	width: 100%;	
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	left: 0;
+	height: 100%;
 }
 .info_box{
     border-bottom: 2px solid #fa5;
+    padding: 0 2rem;
+
 }
-.info_box > span{
-    width:20%;
+.info_box > .write{
+    width:25%;
     font-size:1.1rem;
+    color:#777 ;
+    padding: 0.5rem 0 0;
 }
-.info_box > div{
-    margin-left: 1rem;
-    padding-bottom: 0.5rem;
+.info_box > .content{
+    margin-left: 2rem;
+    padding: 0.5rem 0 0;
+    color:black;
+    
+
 }
 
-.withdraw{
-    position: absolute;
-    right: 3rem;
-    bottom:1rem;
-    font-size: 0.8rem;
-    text-decoration: underline;
-    color:#777    
-}
 
-.withdraw:hover{
-    color:red;
-}
 
-.user_info > span,
-.pet_info > span{
+.user_info > .write,
+.pet_info > .write{
     font-size: 1.4rem;
     font-weight: bold;
     padding-bottom: 0.5rem;
