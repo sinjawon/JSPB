@@ -37,7 +37,6 @@ try(DBConnector con = new DBConnector();){
         		
         	    String userNickName = (String)session.getAttribute("UserNickName");
 
-        	    response.getWriter().write(userNickName);
         	    
         	    List<UserNote> ReceiveNotes = note.NoteReceiver(userNickName);
         	    
@@ -200,14 +199,9 @@ try(DBConnector con = new DBConnector();){
         <button id="close-modal">
           <i class="fa-solid fa-xmark fa-2x"></i>
         </button>
-</div>
+		</div>
     </div>
 
-    <div class="write-go">
-      <a href="insertpage.jsp">
-        <i class="fa-solid fa-pen-to-square fa-2x"></i>
-      </a>
-    </div>
     
 
     

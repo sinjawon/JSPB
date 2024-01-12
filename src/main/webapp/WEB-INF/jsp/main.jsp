@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, org.json.*"%>
 <%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%> 
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -34,7 +35,8 @@ pageEncoding="UTF-8"%>
     <title>petpeople</title>
   </head>
   <body>
-
+  
+ 
         		 
     <%@include file="../jsp/nav.jsp"%>
   
@@ -215,7 +217,24 @@ pageEncoding="UTF-8"%>
     </div>
     
  --%>
+ <c:if test = "${sessionScope.UserNickName==null }" >
+  <div class="">
+ 	</div>
+ </c:if>
+ <c:if test = "${sessionScope.UserNickName!=null }" >
+	<div >
+    	<div class="write-go">
+		<a href="insertpage.jsp">
+       		<i class="fa-solid fa-pen-to-square fa-2x"></i>
+      	</a>
+    </div>
+
  	<iframe src="./messagebox.jsp" style="position:fixed; bottom:2rem; right:1rem; width:40rem; height:50rem; z-index: 99999;"></iframe>
+		
+ 	</div>
+ </c:if>
+ 
+
     <%@include file="../jsp/footer.jsp"%>
     
 

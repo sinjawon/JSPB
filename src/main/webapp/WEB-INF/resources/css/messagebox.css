@@ -20,7 +20,7 @@
   line-height: 2.7rem;
   border-radius: 50px;
   background-color: #fa5;
-  border: none;
+  border: 1px solid white;
   cursor: pointer;
   position: fixed;
   right: 5rem;
@@ -85,6 +85,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  z-index: 2222;
 }
 
 .fa-solid:hover {
@@ -131,7 +132,7 @@ summary::marker {
   position: fixed;
   right: 5rem;
   bottom: 4rem;
-  z-index: 1111111;
+  z-index: 1111;
 }
 
 .notebtn-box {
