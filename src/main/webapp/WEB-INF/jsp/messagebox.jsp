@@ -49,7 +49,7 @@ try(DBConnector con = new DBConnector();){
 
         		 %>
 
-}
+
 
 <!-- 
     <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i> -->
