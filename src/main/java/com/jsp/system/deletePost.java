@@ -17,6 +17,7 @@ public class deletePost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JSONObject result = new JSONObject();
 
+        
         try (DBConnector dbConnector = new DBConnector();) {
             int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
             BoardDao map = dbConnector.OpenMap(request, BoardDao.class);

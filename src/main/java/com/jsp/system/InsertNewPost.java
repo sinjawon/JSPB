@@ -18,6 +18,8 @@ import com.jsp.dao.BoardDao;
 public class InsertNewPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      	
+        request.setCharacterEncoding("utf-8");
+    	response.setCharacterEncoding("utf-8");
     	
     	String userNickname = request.getParameter("userNickname");
     	
@@ -33,11 +35,11 @@ public class InsertNewPost extends HttpServlet {
         } catch(Exception e) {
         	System.out.println(userNickname);
         }
-        
+
         response.setContentType("text/plain");
-    	response.setCharacterEncoding("UTF-8");
+ 
     	
-        response.sendRedirect("/boardList.jsp");
+        response.sendRedirect("/app/boardList.jsp");
     }
 }
 

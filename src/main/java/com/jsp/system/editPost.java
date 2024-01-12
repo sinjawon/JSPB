@@ -17,7 +17,8 @@ import com.jsp.dto.BoardInfo;
 public class editPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-    	
+    	request.setCharacterEncoding("utf-8");
+    	response.setCharacterEncoding("utf-8");
 
         try (DBConnector con = new DBConnector();){
         	String userNickname = request.getParameter("userNickname");
@@ -36,9 +37,7 @@ public class editPost extends HttpServlet {
         }
         
         response.setContentType("text/plain");
-    	response.setCharacterEncoding("UTF-8");
-    	
-        response.sendRedirect("/boardList.jsp");
+        response.sendRedirect("/app/boardList.jsp");
     	
     	
     }

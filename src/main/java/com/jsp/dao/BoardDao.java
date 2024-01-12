@@ -53,11 +53,6 @@ public interface BoardDao {
  	public String getuserByboardListNum(@Param("boardListNum") int boardListNum);
  
 
-   
-   // board 에서 title 로 검색
-   @Select("select * from boardInfo where title like #{title}")
-   public List<BoardInfo> searchByTitle(@Param("title") String title);
-
 
 	// board 에 글 쓸때 자동으로 seqBoardListNum 번호가 증가 title, mainContents
 	@Insert("insert into boardInfo values(seqBoardListNum.nextval, #{title}, #{mainContents})")

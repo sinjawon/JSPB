@@ -35,7 +35,6 @@ public class WriterSearch extends HttpServlet {
     		
     	}
        	request.setCharacterEncoding("utf-8");
-    
     	response.setContentType("text/plain");
     	response.setCharacterEncoding("UTF-8");
     	

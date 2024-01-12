@@ -120,5 +120,5 @@ function deletePost(boardListNum) {
         console.error('게시글 삭제 중 오류 발생:', error);
         alert('게시글 삭제 중 오류 발생');
     });
-    location.href = "/boardList.jsp";
+    location.href = "/app/boardlist.jsp";
 }
