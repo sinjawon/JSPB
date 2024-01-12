@@ -16,31 +16,31 @@ import com.jsp.dto.BoardInfo;
 @WebServlet("/api/writerSearch")
 public class WriterSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
-     	request.setCharacterEncoding("utf-8");
-    	response.setCharacterEncoding("utf-8");
     	
-       String post = new String();
-       
-       try (DBConnector con = new DBConnector();) {
-          int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
-          BoardDao map = con.OpenMap(request, BoardDao.class);
+    	String post = new String();
+    	request.setCharacterEncoding("UTF-8");
+    	try (DBConnector con = new DBConnector();) {
+    		int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
+    		BoardDao map = con.OpenMap(request, BoardDao.class);
 
-          
-          // 게시물 ID에 해당하는 정보를 DB에서 가져옴 , 메서드는 따로 추가했음
-          post = map.getuserByboardListNum(boardListNum);
+    		
+    		// 게시물 ID에 해당하는 정보를 DB에서 가져옴 , 메서드는 따로 추가했음
+    		post = map.getuserByboardListNum(boardListNum);
 
-          System.out.println(post);
+    		System.out.println(post + "writerSearch");
 
-          
-       } catch (Exception e) {
-          e.printStackTrace();
-          
-       }
-       response.setContentType("text/plain");
-       response.setCharacterEncoding("UTF-8");
-       
-       
-       response.getWriter().write(post);
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		
+    	}
+       	request.setCharacterEncoding("utf-8");
+    
+    	response.setContentType("text/plain");
+    	response.setCharacterEncoding("UTF-8");
+    	
+    	
+    	response.getWriter().write(post);
     }
 }
+

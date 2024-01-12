@@ -17,8 +17,7 @@ import com.jsp.dao.BoardDao;
 @WebServlet("/api/newPost")
 public class InsertNewPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     	request.setCharacterEncoding("utf-8");
-    	response.setCharacterEncoding("utf-8");
+     	
     	
     	String userNickname = request.getParameter("userNickname");
     	
@@ -30,13 +29,15 @@ public class InsertNewPost extends HttpServlet {
         	BoardDao map = con.OpenMap(request, BoardDao.class);
             map.insertNewBoard(userNickname ,title, mainContents);
             
-            System.out.println(map);
             System.out.println("보드에 들어갔나요?");
-            
         } catch(Exception e) {
         	System.out.println(userNickname);
         }
-        response.sendRedirect("/app/boardlist.jsp");
+        
+        response.setContentType("text/plain");
+    	response.setCharacterEncoding("UTF-8");
+    	
+        response.sendRedirect("/boardList.jsp");
     }
 }
 

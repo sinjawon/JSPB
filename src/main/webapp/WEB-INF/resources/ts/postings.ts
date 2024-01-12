@@ -1,10 +1,8 @@
 //@ts-nocheck
 
-
 //채울래
 function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) {
     let userNickname = document.getElementById('userNickname');
-    console.log(userNickname);
     let viewTitle = document.getElementById('viewTitle');
     let viewTextarea = document.getElementById('viewTextarea');
 
@@ -15,9 +13,9 @@ function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) 
         viewTextarea.innerText =contentInfo;
     }
 }
-//@ts-ignore
-let clickedPostId = valueId;// 클릭한 게시글의 ID
 
+
+let clickedPostId = valueId;// 클릭한 게시글의 ID
 
 
 let userCheck:String = sessionUser; //ID로 작성자를 받아올 예정
@@ -26,7 +24,9 @@ let writer = "";            //함수로 글쓴이 받아올 예정
 
 console.log("유저 데이터 체크" + userCheck);
 
-function addButtonsIfMatch() {
+///////
+
+function addEditButtonsIfMatch() {
     // 작성자와 사용자가 같을 경우
     if (writer === userCheck) {
         // 수정 버튼 생성
@@ -68,7 +68,7 @@ function writerSearch() {
         console.log("로그인 : " + userCheck);
 
         // 작성자와 사용자가 같으면 버튼 추가 함수 호출
-        addButtonsIfMatch();
+        addEditButtonsIfMatch();
     })
     .catch(error => {
         console.error('리스폰스 됐니?', error);
@@ -76,8 +76,6 @@ function writerSearch() {
 }
 
 writerSearch();
-
-
 
 
 function PostInfo() {
@@ -99,22 +97,45 @@ window.onload = function() {
 
 
 function editPost() {
-    console.log("수정되었습니다");
+    
     let form: HTMLFormElement | null = document.getElementById("editForm") as HTMLFormElement | null;
-    let boardListNum: HTMLInputElement | null = document.createElement("input") as HTMLInputElement | null;
-
-    if (form) {
-        boardListNum.type = "hidden";
-        boardListNum.name = "boardListNum";
-        boardListNum.value = clickedPostId.toString(); // 클릭한 게시글의 ID를 문자열로
-
-        form.appendChild(boardListNum);
+   
         form.submit();
-    }
-    console.log("폼 제출 하셨나요");
-    console.log(form);
-    location.href="/app/boardList.jsp";
+    
+   // location.href="/boardList.jsp";
 }
+
+
+
+
+
+
+//
+// function editPost(){
+//     console.log("수정되었습니다");
+
+//     fetch(`/api/editPost?boardListNum=${clickedPostId}`, {
+//         method: "POST"
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         if (data.success) {
+//             console.log("게시글 수정 성공");
+//             // 삭제 성공 시 필요한 작업 수행
+//         } else {
+//             console.error("게시글 수정 실패:", data.message);
+//         }
+//     })
+//     .catch(error => { 
+//         console.error('게시글 수정 중 오류 발생:', error);
+//         alert('게시글 수정 중 오류 발생');
+//     });
+
+//     location.href="/boardList.jsp";
+// }
+
+
+
 
 
 
