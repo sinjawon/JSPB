@@ -23,6 +23,11 @@
    }
     </style>
 <script defer src="/resources/boardlist4.js"></script>
+	<script>
+    var sessionUser = '<%=session.getAttribute("UserNickName")%>';
+    </script>
+
+
 </head>
 <body>
 
@@ -60,10 +65,20 @@
          
          <form id="refresh" action="/api/boardlist" method="post">
             <button type="button" class="back" onClick="location.href='/boardList.jsp'">목록으로 돌아가기</button>
-         </form>        
+         </form>       
+       
+<%
+
+    if (session.getAttribute("UserNickName") != null) {
+%>
          <form action="/insert" method="post">
-            <button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>
-         </form>        
+               <button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>
+            </form> 
+<%
+    }
+%>
+
+   
 
 
 </body>

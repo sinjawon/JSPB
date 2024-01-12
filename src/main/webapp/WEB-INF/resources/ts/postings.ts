@@ -26,7 +26,7 @@ console.log("유저 데이터 체크" + userCheck);
 
 ///////
 
-function addButtonsIfMatch() {
+function addEditButtonsIfMatch() {
     // 작성자와 사용자가 같을 경우
     if (writer === userCheck) {
         // 수정 버튼 생성
@@ -68,7 +68,7 @@ function writerSearch() {
         console.log("로그인 : " + userCheck);
 
         // 작성자와 사용자가 같으면 버튼 추가 함수 호출
-        addButtonsIfMatch();
+        addEditButtonsIfMatch();
     })
     .catch(error => {
         console.error('리스폰스 됐니?', error);

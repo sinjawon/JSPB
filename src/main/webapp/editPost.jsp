@@ -28,7 +28,7 @@
     	<textarea id="viewTextarea" name="mainContents" placeholder="글 내용"></textarea>
 
     	<button type="button" onclick="editPost()">수정</button>
-  
+    	
     <form action="/boardList" method="post">
         <button type="submit">뒤로가기</button>
     </form>

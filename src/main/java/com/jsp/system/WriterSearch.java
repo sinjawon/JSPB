@@ -18,7 +18,7 @@ public class WriterSearch extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	String post = new String();
-    	
+    	request.setCharacterEncoding("UTF-8");
     	try (DBConnector con = new DBConnector();) {
     		int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
     		BoardDao map = con.OpenMap(request, BoardDao.class);

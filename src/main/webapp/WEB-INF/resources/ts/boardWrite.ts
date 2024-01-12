@@ -1,3 +1,5 @@
+
+
 function submitPost(){
     console.log("전송되었습니다")
 
@@ -20,3 +22,26 @@ function cancelPost() {
     postTextarea.value = "";
     userNicknameArea.value = "";
 }
+
+//@ts-ignore
+Dropzone.autoDiscover=false;
+//@ts-ignore
+var dropzone = new Dropzone("div.dropzone", { 
+    url: "/api/image/upload",
+    method: "POST",
+    autoQueue: false, 
+    maxFiles: 10,
+    maxFilesize: 100,
+    paramName: 'boardImage',
+    timeout: 1000 * 60 * 3,
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',
+    init:function(){
+        let zone = this;
+        let button:HTMLElement = document.querySelector("button#submit") as HTMLElement;
+        button.addEventListener("click",()=>{
+            //@ts-ignore
+            zone.enqueueFiles(zone.getFilesWithStatus(Dropzone.ADDED));
+            submitPost();
+        });
+    }
+});

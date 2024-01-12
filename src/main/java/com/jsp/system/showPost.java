@@ -43,8 +43,8 @@ public class showPost extends HttpServlet {
     		result.put("success", false);
     		result.put("message", "게시글 조회에 실패했습니다.");
     	}
-//    	response.setContentType("application/json");
-//    	response.setCharacterEncoding("UTF-8");
+    	response.setContentType("text/plain");
+    	response.setCharacterEncoding("UTF-8");
     	
     	response.getWriter().write(result.toString());
     }
