@@ -19,11 +19,24 @@
         <br><br>
         <textarea id="postTextarea" name="mainContents" placeholder="글 내용"></textarea>
         <br><br><br>
+        
+        <input type="file" name="image1">
+        <input type="file" name="image2">
+        <input type="file" name="image3">
+        <input type="file" name="image4">
+
+        <br><br>
+        
+        
         <button type="button" onclick="submitPost()">확인</button>
         <button type="button" onclick="cancelPost()">취소</button>
        
+       
+       
+       
         <form action="/boardList" method="post">
    			<button type="button" onclick="location.href='/boardList.jsp'">뒤로가기</button>
+   
    		</form>  
      </form>
 </body>

@@ -29,7 +29,10 @@
 
     	<button type="button" onclick="editPost()">수정</button>
     
-    
+    <input type="file" name="image1">
+    <input type="file" name="image2">
+    <input type="file" name="image3">
+    <input type="file" name="image4">
     <form action="/boardList" method="post">
         <button type="submit">뒤로가기</button>
     </form>

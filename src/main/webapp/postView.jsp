@@ -12,8 +12,17 @@
     var sessionUser='<%=session.getAttribute("UserNickName")%>';
     </script>
     <script src="/resources/postings.js"></script>
+    <style><%-- 임시--%>
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
+
+
     <h1>게시글 보기 </h1>
     <div id="userNickname">작성자</div>
     <div id="viewTitle">글 제목</div>
