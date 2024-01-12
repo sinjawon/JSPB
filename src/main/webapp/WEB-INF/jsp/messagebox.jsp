@@ -1,3 +1,4 @@
+<%@page import="org.w3c.dom.html.HTMLTableRowElement"%>
 <%@page import="org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -41,9 +42,12 @@ try(DBConnector con = new DBConnector();){
         	    List<UserNote> ReceiveNotes = note.NoteReceiver(userNickName);
         	    
         	    List<UserNote> SendNotes = note.NoteSender(userNickName);
+        	    
+        	    List<String> Sended = new ArrayList<>();
+        	    List<String> Received = new ArrayList<>();
+        	    
 
         		 %>
-
 
     <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i>
     <div type="button" class="main-note" id="open-modal">
@@ -58,10 +62,63 @@ try(DBConnector con = new DBConnector();){
           <button type="button" class="notebtn2">보낸쪽지</button>
           <button type="button" class="notebtn3">쪽지쓰기</button>
         </div>
+        
+        <div id="sender" class="note-sendview">
+          <div class="note-title">보낸쪽지</div>
+          <%if(session.getAttribute("UserNickName") != null){%>
+         
+		<% for(UserNote ReceiveNote : ReceiveNotes) {
+			
+			String notenum = ReceiveNote.getNotenum();
+			
+			String seenum = cansee.GetcanSee(notenum);
+			
+			if("1".equals(seenum) || "3".equals(seenum)){
+				Sended.add(notenum);
+			%> 
+
+          <details>
+            <summary class="note-content">
+              <div class="note-content-box">
+                <div class="note-content-detail"><%=ReceiveNote.getNotetime()%></div>
+                <div class="note-content-writer"><%=ReceiveNote.getSender()%></div>
+              </div>
+              <div class="note-xbtn">
+                <form action="/deletmessege">
+				   	<input type="hidden" name="seenum" value="<%=seenum%>">
+			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
+                  <button type="submit" class="deletebtn">
+                    <i class="fa-solid fa-xmark fa-x"></i>
+                  </button>
+                </form>
+              </div>
+            </summary>
+
+            <p class="note-content-div"><%=ReceiveNote.getNotecontent()%></p>
+          </details>
+          	
+			<%}%>
+		<%}%>
+<% }else{ %>
+		 <div>로그인을 해주세요</div>
+	  <%}%>
+	  
+	  <% 
+	   JSONArray jsonArray = new JSONArray(Sended); 
+	 	String yesstt =	jsonArray.toString();	  
+	  %>
+	         <form action="/deletmessege">		  
+			       <input type="text"  name ="SenddAll" value="<%=yesstt%>">
+			       <input type="text"  name ="SendDeletAll" value="<%=Sended%>">
+				   <button type="submit">보낸 메시지 모두삭제</button>
+			  </form> 
+	 </div> 
+        
+        
         <div id="receiver" class="note-reception">
           <div class="note-title">받은쪽지</div>
-<%if(session.getAttribute("UserNickName") != null){%>
-         
+          <%if(session.getAttribute("UserNickName") != null){%>
+         		
 		<% for(UserNote SendNote : SendNotes) { 
 			
 			String notenum = SendNote.getNotenum();
@@ -69,6 +126,7 @@ try(DBConnector con = new DBConnector();){
 			String seenum = cansee.GetcanSee(notenum);
 			 
 			if("2".equals(seenum) || "3".equals(seenum)) {
+				Received.add(notenum);
 			%> 
           <details>
             <summary class="note-content">
@@ -78,7 +136,9 @@ try(DBConnector con = new DBConnector();){
               </div>
               <div class="note-xbtn">
                 <form action="/deletmessege">
-                  <button type="submit" class="deletebtn"  name=<%=seenum%>>
+			     	<input type="hidden" name="seenum" value="<%=seenum%>">
+			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
+                  <button type="submit" class="deletebtn"  >
                     <i class="fa-solid fa-xmark fa-x"></i>
                   </button>
                 </form>
@@ -87,53 +147,50 @@ try(DBConnector con = new DBConnector();){
 
             <p class="note-content-div"><%=SendNote.getNotecontent()%></p>
           </details>
-          
-                <%}%>
+          <%}%>
 		<%}%>
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
 	  <%}%>
-        </div>
+	  
+	  <% 
+	   JSONArray jsonArray2 = new JSONArray(Received);
+	 	String yesstt2 = jsonArray.toString();	  
+	  %>
+	         <form action="/deletmessege">		  
+			       <input type="text"  name ="SenddAll" value="<%=yesstt2%>">
+			       <input type="text"  name ="SendDeletAll" value="<%=Received%>">
+				   <button type="submit">받은 메시지 모두삭제</button>
+			  </form>
+	
+	 </div> 
+        
+            <%
+}
+        	catch(Exception e) {
+        		e.printStackTrace();
+        		response.getWriter().write("오류오류0");
+        	} 
+}else{       	
+        	%>
+        <div>로그인을 해주세요<div>	
+     <% }%> 
+        
+        
 
-        <div id="sender" class="note-sendview">
-          <div class="note-title">보낸쪽지</div>
-
-          <details>
-            <summary class="note-content">
-              <div class="note-content-box">
-                <div class="note-content-detail">time</div>
-                <div class="note-content-writer">nickname</div>
-              </div>
-              <div class="note-xbtn">
-                <form action="/deletmessege">
-                  <button type="submit" class="deletebtn">
-                    <i class="fa-solid fa-xmark fa-x"></i>
-                  </button>
-                </form>
-              </div>
-            </summary>
-
-            <p class="note-content-div">content</p>
-          </details>
-        </div>
-
+     
         <div class="note-write">
           <h2 class="note-title3">쪽지 작성</h2>
           <div class="note-write-form"> 
-          <form
-            action="/MessageServlet"
-            method="POST"
-            accept-charset="UTF-8"
-          >
-            <input type="hidden" name="sender" required class="note-sender" value="<%=session.getAttribute("UserNickName") %> "/><br />
+          <form action="/MessageServlet" method="POST" accept-charset="UTF-8">
+            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNum") %> " required/><br />
             <input
               type="text"
               name="receiver"
               placeholder="받는사람"
-              required
-              class="note-receiver"
-            /><br />
-            <textarea name="content" placeholder="내용" required class="notereceiver-content"></textarea
+              class="note-receiver" 
+              required><br />
+            	<textarea name="content" placeholder="내용"  class="notereceiver-content" required></textarea
             ><br />
                 <input type="submit" value="전송" class="write-btn"/>
             </div>
@@ -152,17 +209,8 @@ try(DBConnector con = new DBConnector();){
       </a>
     </div>
     
+
     
-    
-     <%
-}
-        	catch(Exception e) {
-        		e.printStackTrace();
-        		response.getWriter().write("오류오류0");
-        	} 
-}else{       	
-        	%>
-        <div>로그인을 해주세요<div>	
-     <% }%> 
+
 </body>
 </html>
