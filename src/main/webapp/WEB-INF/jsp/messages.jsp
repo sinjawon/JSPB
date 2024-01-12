@@ -30,6 +30,10 @@ try(DBConnector con = new DBConnector();){
         	    List<UserNote> ReceiveNotes = note.NoteReceiver(userNickName);
         	    
         	    List<UserNote> SendNotes = note.NoteSender(userNickName);
+        	    
+        	    List<String> Sended = new ArrayList<>();
+        	    List<String> Received = new ArrayList<>();
+        	    
 
         		 %>
 	 <div id="sender">	
@@ -43,14 +47,16 @@ try(DBConnector con = new DBConnector();){
 			String seenum = cansee.GetcanSee(notenum);
 			
 			if("1".equals(seenum) || "3".equals(seenum)){
-				
+				Sended.add(notenum);
 			%> 
 			  <details> 
 			     <summary><div><%=ReceiveNote.getNotetime()%></div>  <div><%=ReceiveNote.getSender()%></div></summary>
 			       <p><%=ReceiveNote.getNotecontent()%></p>
 			     </details>    
 			     <form action="/deletmessege">
-				    <input type="button" value="메세지삭제" name=<%=seenum %>>
+				   	<input type="hidden" name="seenum" value="<%=seenum%>">
+			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
+				   <button type="submit">x</button>
 				</form> 
 				
 			<%}%>
@@ -58,12 +64,22 @@ try(DBConnector con = new DBConnector();){
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
 	  <%}%>
+	  
+	  <% 
+	   JSONArray jsonArray = new JSONArray(Sended); 
+	 	String yesstt =	jsonArray.toString();	  
+	  %>
+	         <form action="/deletmessege">		  
+			       <input type="text"  name ="SenddAll" value="<%=yesstt%>">
+			       <input type="text"  name ="SendDeletAll" value="<%=Sended%>">
+				   <button type="submit">보낸 메시지 모두삭제</button>
+			  </form> 
 	 </div> 
  
   <div id="receiver">
   	 <h2>수신목록</h2>
 	<%if(session.getAttribute("UserNickName") != null){%>
-         
+         		
 		<% for(UserNote SendNote : SendNotes) { 
 			
 			String notenum = SendNote.getNotenum();
@@ -71,19 +87,34 @@ try(DBConnector con = new DBConnector();){
 			String seenum = cansee.GetcanSee(notenum);
 			 
 			if("2".equals(seenum) || "3".equals(seenum)) {
+				Received.add(notenum);
 			%> 
+			
 			  <details> 
 			     <summary><div><%=SendNote.getNotetime()%></div>  <div><%=SendNote.getSender()%></div></summary>
 			       <p><%=SendNote.getNotecontent()%></p>
 			     </details>    
 			     <form action="/deletmessege">
-				    <input type="button" value="메세지삭제" name=<%=seenum%>>
+			     	<input type="hidden" name="seenum" value="<%=seenum%>">
+			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
+				   <button type="submit">x</button>
 				</form> 
 			<%}%>
 		<%}%>
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
 	  <%}%>
+	  
+	  <% 
+	   JSONArray jsonArray2 = new JSONArray(Received);
+	 	String yesstt2 = jsonArray.toString();	  
+	  %>
+	         <form action="/deletmessege">		  
+			       <input type="text"  name ="SenddAll" value="<%=yesstt2%>">
+			       <input type="text"  name ="SendDeletAll" value="<%=Received%>">
+				   <button type="submit">받은 메시지 모두삭제</button>
+			  </form>
+	
 	 </div> 
  
  

@@ -23,7 +23,6 @@
             class="login-ipbox"
             placeholder="아이디"
           />
-        
           <input
             type="password"
             name="password"
