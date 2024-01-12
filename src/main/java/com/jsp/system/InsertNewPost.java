@@ -31,7 +31,7 @@ public class InsertNewPost extends HttpServlet {
         } catch(Exception e) {
         	System.out.println(userNickname);
         }
-        response.sendRedirect("/boardList.jsp");
+        response.sendRedirect("/app/boardlist.jsp");
     }
 }
 

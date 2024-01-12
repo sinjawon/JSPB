@@ -43,6 +43,7 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
           <%=map2.getuserProfile(usernum).toStringProfile()%> --%>
           <div class="info_image">
             <img
+              class="profile_img"
               src="<%=map2.getuserProfile(usernum).toStringProfile()%>"
               alt=""
             />

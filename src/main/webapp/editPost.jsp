@@ -7,7 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <title>글 수정 페이지</title>
-    <script>var valueId=<%=request.getParameter("id")%>;</script>
+    <script>
+    var valueId=<%=request.getParameter("id")%>;
+    var sessionUser='<%=session.getAttribute("UserNickName")%>';
+    </script>
+    
     <script src="/resources/postings.js"></script>
     
 </head>
@@ -25,9 +29,11 @@
     <br><br><br>
     <button type="button" onclick="editPost()">수정 확인</button>
     
-    <form action="/boardList" method="post">
-        <button type="submit">뒤로가기</button>
-    </form>
+   
+       <form id="refresh" action="/api/boardList" method="post">
+            <button type="button" onClick="location.href='/app/boardlist.jsp'">돌아가기</button>
+         </form>
+   
 </form>
     
     

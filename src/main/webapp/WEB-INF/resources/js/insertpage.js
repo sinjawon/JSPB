@@ -2,7 +2,7 @@
  * 
  */
  document.addEventListener("DOMContentLoaded", function() {
-            moveurl('freepage.jsp');
+            moveurl('insert.jsp');
         });
         
  function moveurl(url) {

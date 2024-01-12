@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resource/insertpage.css" />
 </head>
 <body>
 <h1>자유게시판 글쓰기</h1>

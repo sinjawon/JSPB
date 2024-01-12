@@ -44,7 +44,7 @@
         
        </div>
             </div>                   
-             
+            	
         		           
             <div class="pet_modi">
                 <span class='pet'>반려동물</span>
@@ -93,7 +93,8 @@
            	}
         	catch(Exception e) {
         		e.printStackTrace();
-        	} %>
+        	} 
+        	%>
             
     
 <%@include file="../jsp/footer.jsp"%>
