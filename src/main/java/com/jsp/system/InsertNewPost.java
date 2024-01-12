@@ -17,8 +17,11 @@ import com.jsp.dao.BoardDao;
 @WebServlet("/api/newPost")
 public class InsertNewPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String userNickname = request.getParameter("userNickname");
     	
+    	request.setCharacterEncoding("UTF-8");
+    	
+    	String userNickname = request.getParameter("userNickname");
+    	System.out.println("새 게시물 등록" +userNickname);
         String title = request.getParameter("title");
         String mainContents = request.getParameter("mainContents");
 
@@ -31,6 +34,10 @@ public class InsertNewPost extends HttpServlet {
         } catch(Exception e) {
         	System.out.println(userNickname);
         }
+        
+        response.setContentType("text/plain");
+    	response.setCharacterEncoding("UTF-8");
+    	
         response.sendRedirect("/boardList.jsp");
     }
 }

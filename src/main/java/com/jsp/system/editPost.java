@@ -34,6 +34,10 @@ public class editPost extends HttpServlet {
         } catch(Exception e) {
         	System.out.println("editPost api 에러");
         }
+        
+        response.setContentType("text/plain");
+    	response.setCharacterEncoding("UTF-8");
+    	
         response.sendRedirect("/boardList.jsp");
     	
     	

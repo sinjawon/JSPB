@@ -7,12 +7,10 @@ function submitPost() {
 function cancelPost() {
     // 글쓰기 창에서 작성된 내용 초기화 
     console.log("삭제되었습니다"); //확인용 메세지
-    let userNicknameArea = document.getElementById("userNickname");
     let titleInput = document.getElementById("titleInput");
     let postTextarea = document.getElementById("postTextarea");
     titleInput.value = "";
     postTextarea.value = "";
-    userNicknameArea.value = "";
 }
 //@ts-ignore
 Dropzone.autoDiscover = false;
@@ -20,6 +18,7 @@ Dropzone.autoDiscover = false;
 var dropzone = new Dropzone("div.dropzone", {
     url: "/api/image/upload",
     method: "POST",
+    dictDefaultMessage: "여기에 사진을 드래그&드랍 하세요.",
     autoQueue: false,
     maxFiles: 10,
     maxFilesize: 100,
@@ -33,6 +32,14 @@ var dropzone = new Dropzone("div.dropzone", {
             //@ts-ignore
             zone.enqueueFiles(zone.getFilesWithStatus(Dropzone.ADDED));
             submitPost();
+        });
+        //@ts-ignore
+        this.on('sending', (file, xhr, data) => {
+            let date = new Date(Date.now());
+            data.append("username", "name");
+            data.append("year", date.getFullYear());
+            data.append("month", date.getMonth() + 1);
+            data.append("day", date.getDate());
         });
     }
 });

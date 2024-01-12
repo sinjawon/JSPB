@@ -23,22 +23,45 @@ import javax.servlet.http.Part;
 	maxRequestSize = 1024 * 1024 * 500
 )
 public class ImageUploads extends HttpServlet{
+	
+	protected Part getParameter(Collection<Part> parts, String key) {
+		for(Part part : parts) {
+			if(part.getName().equalsIgnoreCase(key)) return part; 
+		}
+		return null;
+	}
+	
+	protected String getSignature(Part part) {
+		String header = part.getHeader("Content-Disposition");
+		String[] headers = header.split(";");
+		for(String head : headers) {
+			head = head.trim();
+			if(head.startsWith("filename")) {
+				String filename = head.split("=")[1];
+				String token = filename.substring(filename.lastIndexOf('.'));
+				token = token.substring(0, token.length() - 1);
+				return token;
+			}
+		}
+		return "";
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Collection<Part> parts = req.getParts();
-		for(Part part : parts) {
-			String header = part.getHeader("Content-Disposition");
-			String[] headers = header.split(";");
-			for(String head : headers) {
-				head = head.trim();
-				if(head.startsWith("filename")) {
-					String filename = head.split("=")[1];
-					String token = filename.substring(filename.lastIndexOf('.'));
-					token = token.substring(0, token.length() - 1);
-					Files.copy(part.getInputStream(), Paths.get(getServletContext().getRealPath("1" + token)));
-					break;
-				}
+		Part part = getParameter(parts, "boardImage");
+		String token = getSignature(part);
+		int i = 1; // 랜덤 이름용
+		if(!Files.exists(Paths.get(getServletContext().getRealPath(String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day"))))))
+			Files.createDirectories(Paths.get(getServletContext().getRealPath(String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day")))));
+		while(true) {
+			try {
+				Files.copy(part.getInputStream(), Paths.get(getServletContext().getRealPath(
+					String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day")) + "/" + Integer.toString(i) + token
+				)));
+				break;
 			}
+			catch(Exception e) {++i;}
 		}
 	}
 }
