@@ -14,19 +14,19 @@
     <script src="/resources/postings.js"></script>
 </head>
 <body>
-	<%@include file="WEB-INF/jsp/nav.jsp"%>
+	<%@include file="../jsp/nav.jsp"%>
 	<div class="detail">
     <h3>자유게시판</h3>
     <div class="detail_board">
 	    <div id="userNickname" class="detail_writer" >작성자</div>
 	    <div id="viewTitle" class="detail_title">글 제목</div>
-	    <div id="viewTextarea" class="detail_contents"><p>글</p></div>
+	    <div id="viewTextarea" class="detail_contents">글</div>
     </div>
     <div class="detail_btn">
     <c:if test="${data.userNickname eq sessionScope.userNickname}">
         <button onclick="editPost(${data.boardListNum})">수정</button>
     </c:if>
-    <form action="/boardList.jsp" method="post" class=btnform>
+    <form action="/app/boardList.jsp" method="post" class=btnform>
         <button type="submit" class='goback'>뒤로가기</button>
     </form>
     </div>
@@ -45,20 +45,20 @@
         <p>댓글이 없습니다.</p>
     </c:otherwise>
 </c:choose>
-    
-	<button type="button" onclick="editReply()">수정</button>  
-	<button type="button" onclick="deleteReply()">삭제</button>  
-    
-    <h1> 댓글 등록 </h1>
+    <div class="modi_btn">
+		<button type="button" onclick="editReply()">수정</button>  
+		<button type="button" onclick="deleteReply()">삭제</button>  
+    </div>
+ 
     <form id="replyForm" action="/api/addReply" method="post">
-        <br><br>
-        <textarea id="replyContents" name="replyContents" placeholder="댓글 내용"></textarea>
-        <br><br>
-        <button type="button" onclick="addReply()">등록</button>      
+       <div class="writing_field">
+        	<textarea id="replyContents" name="replyContents" placeholder="댓글 내용을 입력하세요" class="text"></textarea>
+        	<button type="button" onclick="addReply()" class="writing_btn">등록</button>
+       </div>      
       </form>
     </div>
       </div>
-	<%@include file="WEB-INF/jsp/footer.jsp"%>
+	<%@include file="../jsp/footer.jsp"%>
       
 </body>
 </html>

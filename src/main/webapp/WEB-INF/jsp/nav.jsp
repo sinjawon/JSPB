@@ -46,7 +46,7 @@
           <div class="box">
             <div class="board">
               <ul>
-                <li><a href="freeboard.jsp">자유게시판</a></li>
+                <li><a href="boardList.jsp">자유게시판</a></li>
                 <li><a href="boastboard.jsp">자랑게시판</a></li>
                 <li><a href="walkboard.jsp">산책게시판</a></li>
                 <li><a href="tradeboard.jsp">애완용품거래</a></li>
