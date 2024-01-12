@@ -15,11 +15,11 @@ public interface UserNoteSeeDao {
 		@Insert("INSERT INTO UserNoteSee (notenum) VALUES(notesee.NEXTVAL)")
 		public void insertUserNoteSee();
 	
-	  @Select("Select cansee from UserNoteSee Where notenum =${notenum}")
-		public void GetcanSee(@Param("notenum") String notenum);
+	  @Select("Select cansee from UserNoteSee Where notenum = #{notenum}")
+		public String GetcanSee(@Param("notenum") String notenum);
 	  
-	  @Insert("INSERT INTO UserNoteSee (cansee)  values (${seenum}) Where notenum = ${notenum}")
-		public void SetcanSee(@Param("notenum") String notenum,@Param("seenum") String seenum);
+	  @Insert("INSERT INTO UserNoteSee (cansee)  values (${seenum}) Where notenum = #{notenum}")
+		public String SetcanSee(@Param("notenum") String notenum,@Param("seenum") String seenum);
 		
 		
 }
