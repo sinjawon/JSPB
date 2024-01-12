@@ -44,12 +44,7 @@
         
        </div>
             </div>                   
-            	<%try(DBConnector con = new DBConnector();){
-        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
-        		 String usernum = (String)session.getAttribute("UserNum");
-        		   String gender = map.getAnimalGender(usernum).toStringPatGender();
-    
-        		 %>  
+             
         		           
             <div class="pet_modi">
                 <span class='pet'>반려동물</span>
