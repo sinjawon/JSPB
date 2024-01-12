@@ -55,15 +55,14 @@
 		     <summary class="note-content"><div class="note-content-detail"><%=SendNote.getNotetime()%></div>  
 		     								<div class="note-content-writer"><%=SendNote.getSender()%></div></summary>
 		    
-		       <p><%=SendNote.getNotecontent()%></p>
-		        <p>나와나와라용요ㅛ</p>
+		       <p class="note-content-div"><%=SendNote.getNotecontent()%></p>
 		      
 		     </details> 
 		<% } %>
 	 </div>  
  
 	 <div id="sender">	
-	 	<h2>발신목록</h2>
+        <div class="note-title2">보낸쪽지</div>
 		<% for(UserNote ReceiveNote : ReceiveNotes) { %> 
 		  <details> 
 		     <summary><div><%=ReceiveNote.getNotetime()%></div>  <div><%=ReceiveNote.getSender()%></div></summary>
