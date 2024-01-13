@@ -22,8 +22,8 @@ import javax.servlet.annotation.WebServlet;
             @WebInitParam(name="key",value="값")
       })
 public class ResourceMapping extends HttpServlet {
-   
-   private String defaultPath = "C:/javaweb/JSPB/src/main/webapp";
+	/* "C:/javaweb/JSPB/src/main/webapp" */
+   private String defaultPath = "C:\\eclip\\workspace\\JSPB\\src\\main\\webapp";
    
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
