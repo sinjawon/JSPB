@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<title>petpeople</title>
 <link rel="stylesheet" type="text/css" href="/resources/login.css"> 
 </head>
 <body>
@@ -23,7 +26,6 @@
             class="login-ipbox"
             placeholder="아이디"
           />
-        
           <input
             type="password"
             name="password"

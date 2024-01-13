@@ -10,22 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 import com.jsp.dao.BoardDao;
 
 @WebServlet("/api/newPost")
 public class InsertNewPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String userNickname = request.getParameter("userNickname");
+    	
         String title = request.getParameter("title");
         String mainContents = request.getParameter("mainContents");
 
-        try(DBConnector con = new DBConnector()){
-            BoardDao map = con.OpenMap(request, BoardDao.class);
-            map.insertNewBoard(userNickname ,title, mainContents );
+        try (DBConnector con = new DBConnector();){
+        	System.out.println("con 만들기");
+        	BoardDao map = con.OpenMap(request, BoardDao.class);
+            map.insertNewBoard(userNickname ,title, mainContents);
+            
+            System.out.println("보드에 들어갔나요?");
         } catch(Exception e) {
-            System.out.println("오류");
+        	System.out.println(userNickname);
         }
-        response.sendRedirect("/boardList.jsp");
+        response.sendRedirect("/app/boardlist.jsp");
     }
 }
 

@@ -63,7 +63,6 @@
   height: 0.3vh;
   background-color: #fa5;
   width: 100%;
-  margin-bottom: 2vh;
 }
 .main-container {
   display: flex;
@@ -74,7 +73,6 @@
 }
 
 .free-flex {
-  border-bottom: 1px solid #bbb;
   width: 100%;
 }
 
@@ -141,11 +139,41 @@
 }
 
 .swiper-button-next::after,
-.swiper-button-prev::after{
-  color:#fa5
+.swiper-button-prev::after {
+  color: #fa5;
 }
 
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color:#fa5;
+  background-color: #fa5;
 }
 
+.free-a > #boards {
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.free-a > #boards .board {
+  height: 26px;
+  border-bottom: 1px solid #ccc;
+}
+.free-a > #boards .board > div {
+  width: 25%;
+  padding: 0;
+}
+.free-a > #boards .board > div:nth-of-type(2) {
+  margin-top: 4px;
+  width: 50%;
+}
+
+.free-a > #boards .board > div:nth-of-type(2)::before {
+  display: none;
+}
+
+.free-a > #boards .board > .hitCount,
+.free-a > #boards .board > .date {
+  width: 1%;
+}
+
+.free-a > #boards .board > .title {
+  margin-bottom: 0.4rem;
+}

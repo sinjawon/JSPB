@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>petpeople</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" type="text/css" href="/resources/manager.css"> 
 </head>
 <body>
@@ -16,9 +19,21 @@
         <div class="manager">그래프</div>
       </div>
 
-      <h3 class="manager-people">가입인원</h3>
-      <div class="manager-peoplech">
-        <!-- 가입인원 데이터 -->
+      <div class="document">
+        <ul>
+          <li>
+            <div class="boards"><a href="#">쪽지</a></div>
+            <div class="boardDocs"></div>
+          </li>
+          <li>
+            <div class="boards"><a href="#">회원수</a></div>
+            <div class="boardDocs"></div>
+          </li>
+          <li>
+            <div class="boards"><a href="#">회원관리</a></div>
+            <div class="boardDocs"></div>
+          </li>
+        </ul>
       </div>
     </div>
     

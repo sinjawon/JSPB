@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>petpeople</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/resources/myreset.css" />
 <link rel="stylesheet" href="/resources/mydocument.css" />
 </head>
@@ -14,6 +17,7 @@
         <div class="info">
             <div><a href="mypage.jsp">프로필</a></div>
             <div><a href="mydocument.jsp">내가 작성한 글</a></div>
+            <div class="notepage"><a href="notepage.jsp">쪽지함</a></div>
         </div>
     <div class="document">
         <ul>
