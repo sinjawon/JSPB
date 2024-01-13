@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 async function ajax(url: string, option?: any) {
     console.log("ajax 로딩 중~~~~~");
     return fetch(url, option).then((res) => res.json());
