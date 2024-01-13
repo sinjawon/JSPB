@@ -53,7 +53,7 @@ try(DBConnector con = new DBConnector();){
 			     <summary><div><%=ReceiveNote.getNotetime()%></div>  <div><%=ReceiveNote.getSender()%></div></summary>
 			       <p><%=ReceiveNote.getNotecontent()%></p>
 			     </details>    
-			     <form action="/deletmessege">
+			     <form action="/deletmessege/recive">
 				   	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
 				   <button type="submit">x</button>
@@ -65,12 +65,12 @@ try(DBConnector con = new DBConnector();){
 		 <div>로그인을 해주세요</div>
 	  <%}%>
 	  
-	  <% 
+	 <%--  <% 
 	   JSONArray jsonArray = new JSONArray(Sended); 
 	 	String yesstt =	jsonArray.toString();	  
-	  %>
-	         <form action="/deletmessege">		  
-			       <input type="text"  name ="SenddAll" value="<%=yesstt%>">
+	  %> --%>
+	         <form action="/deletmessege/reciveall">		  
+			     <%--   <input type="text"  name ="SenddAll" value="<%=yesstt%>"> --%>
 			       <input type="text"  name ="SendDeletAll" value="<%=Sended%>">
 				   <button type="submit">보낸 메시지 모두삭제</button>
 			  </form> 
@@ -105,12 +105,12 @@ try(DBConnector con = new DBConnector();){
 		 <div>로그인을 해주세요</div>
 	  <%}%>
 	  
-	  <% 
+	 <%--  <% 
 	   JSONArray jsonArray2 = new JSONArray(Received);
 	 	String yesstt2 = jsonArray.toString();	  
-	  %>
+	  %> --%>
 	         <form action="/deletmessege">		  
-			       <input type="text"  name ="SenddAll" value="<%=yesstt2%>">
+			       <%-- <input type="text"  name ="SenddAll" value="<%=yesstt2%>"> --%>
 			       <input type="text"  name ="SendDeletAll" value="<%=Received%>">
 				   <button type="submit">받은 메시지 모두삭제</button>
 			  </form>
@@ -135,7 +135,7 @@ try(DBConnector con = new DBConnector();){
     let req5 = new XMLHttpRequest();
     req5.open("GET", "http://localhost:4885/app/messages.jsp", true);
     req5.send();
-}, 5000); // 1000 밀리초마다 실행 (1초마다)  	 -->
+}, 5000); // 5000 밀리초마다 실행 (5초마다)  	 -->
         	
         	<h2>쪽지 작성</h2>
 <form action="/MessageServlet" method="POST" accept-charset="UTF-8"> <!-- style="display:none" --> 

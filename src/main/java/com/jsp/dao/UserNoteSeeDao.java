@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.jsp.dto.UserNote;
 
@@ -18,8 +19,12 @@ public interface UserNoteSeeDao {
 	  @Select("Select cansee from UserNoteSee Where notenum = #{notenum}")
 		public String GetcanSee(@Param("notenum") String notenum);
 	  
-	  @Insert("INSERT INTO UserNoteSee (cansee)  values (${seenum}) Where notenum = #{notenum}")
+	   @Update("UPDATE UserNoteSee SET cansee = ${seenum} WHERE notenum = #{notenum}")
 		public String SetcanSee(@Param("notenum") String notenum,@Param("seenum") String seenum);
+	  
+	  
+	 
 		
 		
+	  
 }

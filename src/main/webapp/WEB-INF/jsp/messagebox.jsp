@@ -44,7 +44,9 @@ try(DBConnector con = new DBConnector();){
         	    List<UserNote> SendNotes = note.NoteSender(userNickName);
         	    
         	    List<String> Sended = new ArrayList<>();
+        	    List<String> Sendedsee = new ArrayList<>();
         	    List<String> Received = new ArrayList<>();
+        	    List<String> Receivedsee = new ArrayList<>();
         	    
 
         		 %>
@@ -78,6 +80,7 @@ try(DBConnector con = new DBConnector();){
 			
 			if("1".equals(seenum) || "3".equals(seenum)){
 				Sended.add(notenum);
+				Sendedsee.add(seenum);
 			%> 
 
           <details>
@@ -87,7 +90,7 @@ try(DBConnector con = new DBConnector();){
                 <div class="note-content-writer"><%=ReceiveNote.getSender()%></div>
               </div>
               <div class="note-xbtn">
-                <form action="/deletmessege">
+                <form action="/deletmessege/Send">
 				   	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
                   <button type="submit" class="deletebtn">
@@ -106,13 +109,14 @@ try(DBConnector con = new DBConnector();){
 		 <div>로그인을 해주세요</div>
 	  <%}%>
 	  
-	  <% 
+	 <%--  <% 
 	   JSONArray jsonArray = new JSONArray(Sended); 
 	 	String yesstt =	jsonArray.toString();	  
-	  %>
-	         <form action="/deletmessege">		  
-			       <input type="text"  name ="SenddAll" value="<%=yesstt%>">
-			       <input type="text"  name ="SendDeletAll" value="<%=Sended%>">
+	  %> --%>
+	         <form action="/Deletmessage/SendAll">		  
+			      <%--  <input type="text"  name ="SenddAll" value="<%=yesstt%>"> --%>
+			       <input type="text"  name ="seenums" value="<%=Sendedsee%>">
+			       <input type="text"  name ="notenums" value="<%=Sended%>">
 				   <button type="submit">보낸 메시지 모두삭제</button>
 			  </form> 
 	 </div> 
@@ -130,6 +134,7 @@ try(DBConnector con = new DBConnector();){
 			 
 			if("2".equals(seenum) || "3".equals(seenum)) {
 				Received.add(notenum);
+				Receivedsee.add(seenum);
 			%> 
           <details>
             <summary class="note-content">
@@ -138,7 +143,7 @@ try(DBConnector con = new DBConnector();){
                 <div class="note-content-writer"><%=SendNote.getSender()%></div>
               </div>
               <div class="note-xbtn">
-                <form action="/deletmessege">
+                <form action="/deletmessege/Receive">
 			     	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
                   <button type="submit" class="deletebtn"  >
@@ -156,13 +161,14 @@ try(DBConnector con = new DBConnector();){
 		 <div>로그인을 해주세요</div>
 	  <%}%>
 	  
-	  <% 
+	 <%--  <% 
 	   JSONArray jsonArray2 = new JSONArray(Received);
 	 	String yesstt2 = jsonArray.toString();	  
-	  %>
-	         <form action="/deletmessege">		  
-			       <input type="text"  name ="SenddAll" value="<%=yesstt2%>">
-			       <input type="text"  name ="SendDeletAll" value="<%=Received%>">
+	  %> --%>
+	         <form action="/Deletmessage/ReceiveAll">		  
+			     <%--   <input type="text"  name ="SenddAll" value="<%=yesstt2%>"> --%>
+			     <input type="text"  name ="ReceiveDeletAllsee" value="<%=Receivedsee%>">
+			       <input type="text"  name ="ReceiveDeletAll" value="<%=Received%>">
 				   <button type="submit" class="showmessage">받은 메시지 모두삭제</button>
 			  </form>
 	
