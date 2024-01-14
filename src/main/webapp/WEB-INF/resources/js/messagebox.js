@@ -49,7 +49,8 @@ function messgeajax(url, option) {
 // }
 function messgedelet(notenum, endpoint) {
     return __awaiter(this, void 0, void 0, function* () {
-        let Sendform = document.querySelector(`#sendform${notenum}`);
+        let Sendform = document.querySelector(`#${endpoint}form${notenum}`);
+        console.log(Sendform);
         let formData = new FormData(Sendform);
         let jsonData = {
             seenum: formData.get("seenum"),
@@ -65,13 +66,13 @@ function messgedelet(notenum, endpoint) {
         });
     });
 }
-function messgedeletAll(notenum, endpoint) {
+function messgedeletAll(endpoint) {
     return __awaiter(this, void 0, void 0, function* () {
-        let Sendform = document.querySelector(`#sendform${notenum}`);
+        let Sendform = document.querySelector(`#${endpoint}form`);
         let formData = new FormData(Sendform);
         let jsonData = {
-            seenum: formData.get("seenum"),
-            notenum: formData.get("notenum"),
+            seenums: formData.get("seenums"),
+            notenums: formData.get("notenums"),
             // 다른 필드들 추가
         };
         yield messgeajax(`/Deletmessage/${endpoint}`, {
@@ -87,17 +88,17 @@ function sendDelet(notenum) {
     return __awaiter(this, void 0, void 0, function* () {
         let summaryElement = document.querySelector(`#sendsum${notenum}`);
         summaryElement.style.display = 'none';
-        yield messgedelet(notenum, "Send");
+        yield messgedelet(notenum, "send");
     });
 }
-function RecieveDelet(notenum) {
+function recieveDelet(notenum) {
     return __awaiter(this, void 0, void 0, function* () {
-        let summaryElement = document.querySelector(`#sendsum${notenum}`);
+        let summaryElement = document.querySelector(`#receivesum${notenum}`);
         summaryElement.style.display = 'none';
-        yield messgedelet(notenum, "Recieve");
+        yield messgedelet(notenum, "recieve");
     });
 }
-function sendDeletAll(notenum) {
+function sendDeletAll(notenumString) {
     return __awaiter(this, void 0, void 0, function* () {
         let notenumArray = JSON.parse(notenumString);
         // 배열의 각 원소에 대해 반복
@@ -109,21 +110,21 @@ function sendDeletAll(notenum) {
                 summaryElement.style.display = 'none';
             }
         }
-        yield messgedeletAll(notenum, "SendAll");
+        yield messgedeletAll("sendAll");
     });
 }
-function RecieveDeletAll(notenum) {
+function recieveDeletAll(notenumString) {
     return __awaiter(this, void 0, void 0, function* () {
         let notenumArray = JSON.parse(notenumString);
         // 배열의 각 원소에 대해 반복
         for (let i = 0; i < notenumArray.length; i++) {
             let currentNotenum = notenumArray[i];
             // 작업 수행
-            let summaryElement = document.querySelector(`#sendsum${currentNotenum}`);
+            let summaryElement = document.querySelector(`#receivesum${currentNotenum}`);
             if (summaryElement) {
                 summaryElement.style.display = 'none';
             }
         }
-        yield messgedeletAll(notenum, "ReceiveAll");
+        yield messgedeletAll("receiveAll");
     });
 }

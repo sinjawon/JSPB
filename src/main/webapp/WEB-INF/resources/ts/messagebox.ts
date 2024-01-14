@@ -39,7 +39,8 @@ async function messgeajax(url: string, option?: any) {
 // }
 
 async function messgedelet(notenum: String, endpoint: String) {
-  let Sendform: FormData = document.querySelector(`#sendform${notenum}`);
+  let Sendform: FormData = document.querySelector(`#${endpoint}form${notenum}`);
+  console.log(Sendform);
   let formData = new FormData(Sendform);
   let jsonData = {
     seenum: formData.get("seenum"),
@@ -55,12 +56,13 @@ async function messgedelet(notenum: String, endpoint: String) {
   });
 }
 
-async function messgedeletAll(notenum: String, endpoint: String) {
-  let Sendform: FormData = document.querySelector(`#sendform${notenum}`);
+
+async function messgedeletAll(endpoint: String) {
+  let Sendform: FormData = document.querySelector(`#${endpoint}form`);
   let formData = new FormData(Sendform);
   let jsonData = {
-    seenum: formData.get("seenum"),
-    notenum: formData.get("notenum"),
+    seenums: formData.get("seenums"),
+    notenums: formData.get("notenums"),
     // 다른 필드들 추가
   };
   await messgeajax(`/Deletmessage/${endpoint}`, {  
@@ -86,17 +88,18 @@ async function sendDelet(notenum:String){
 
   let summaryElement = document.querySelector(`#sendsum${notenum}`);
     summaryElement.style.display = 'none';
-    await messgedelet(notenum,"Send");
+    await messgedelet(notenum,"send");
 }
 
-async function RecieveDelet(notenum:String){
+async function recieveDelet(notenum:String){
  
-  let summaryElement = document.querySelector(`#sendsum${notenum}`);
+  let summaryElement = document.querySelector(`#receivesum${notenum}`);
     summaryElement.style.display = 'none';
-    await messgedelet(notenum,"Recieve");
+    await messgedelet(notenum,"recieve");
 }
 
-async function sendDeletAll(notenum:String){ 
+
+async function sendDeletAll(notenumString:String){ 
   let notenumArray = JSON.parse(notenumString);
 
   // 배열의 각 원소에 대해 반복
@@ -109,10 +112,10 @@ async function sendDeletAll(notenum:String){
           summaryElement.style.display = 'none';      
       }
   }
-    await messgedeletAll(notenum,"SendAll");
+    await messgedeletAll("sendAll");
 }
 
-async function RecieveDeletAll(notenum:String){ 
+async function recieveDeletAll(notenumString:String){ 
   let notenumArray = JSON.parse(notenumString);
 
   // 배열의 각 원소에 대해 반복
@@ -120,11 +123,11 @@ async function RecieveDeletAll(notenum:String){
       let currentNotenum = notenumArray[i];
 
       // 작업 수행
-      let summaryElement = document.querySelector(`#sendsum${currentNotenum}`);
+      let summaryElement = document.querySelector(`#receivesum${currentNotenum}`);
       if (summaryElement) {
           summaryElement.style.display = 'none';      
       }
   }
-    await messgedeletAll(notenum,"ReceiveAll");
+    await messgedeletAll("receiveAll");
 }
 

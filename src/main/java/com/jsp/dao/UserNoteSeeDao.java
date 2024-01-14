@@ -20,7 +20,7 @@ public interface UserNoteSeeDao {
 		public String GetcanSee(@Param("notenum") String notenum);
 	  
 	   @Update("UPDATE UserNoteSee SET cansee = ${seenum} WHERE notenum = #{notenum}")
-		public String SetcanSee(@Param("notenum") String notenum,@Param("seenum") String seenum);
+		public void SetcanSee(@Param("notenum") String notenum,@Param("seenum") String seenum);
 	  
 	  
 	 

@@ -50,12 +50,12 @@ public class Deletmessage extends HttpServlet {
 	    	 String action = req.getPathInfo();
 	    	
     	 
-    	 if ("/Send".equals(action)) {
-    		 System.out.println("어 나왔어222");
+    	 if ("/send".equals(action)) {
+    		 System.out.println("어 나왔어send2");
     		    String seenum = jsonObject.getString("seenum");
-		    	 System.out.println("이게번호야"+seenum);
+		    	 
 		    	 String notenum = jsonObject.getString("notenum");
-		    	 System.out.println("이게넘버야"+notenum);
+		    	 
 		    	 if(seenum.equals("3")) {
 		    		 seenum = "2";
 		    	 }
@@ -64,8 +64,10 @@ public class Deletmessage extends HttpServlet {
 		    	 }
 		    	 map.SetcanSee(notenum, seenum);
 		    	 resp.getWriter().println("발신삭제 완료"+notenum+","+seenum);
-         }else if("/Receive".equals(action)){
+         }else if("/recieve".equals(action)){
+        	 System.out.println("어왔어re");
         	    String seenum = jsonObject.getString("seenum");
+        	    System.out.println("이게번호야"+seenum);
         	    String notenum = jsonObject.getString("notenum");
 	        	 if(seenum.equals("3")) {
 	        		 seenum = "1";
@@ -74,34 +76,38 @@ public class Deletmessage extends HttpServlet {
 	        	 }
 	        	 map.SetcanSee(notenum, seenum);
 	        	 resp.getWriter().println("수신삭제 완료"+notenum+","+seenum);
- }else if ("/SendAll".equals(action)) {
-        
+ }else if ("/sendAll".equals(action)) {
+	 System.out.println("어 나왔어1");
         //문자열받고
 	    String a = jsonObject.getString("seenums");
+	    System.out.println(a);
 	    String b = jsonObject.getString("notenums");
-        
+	    System.out.println(b);
         //다시 배열로 담고
         String[] anumStrings = a.replaceAll("[\\[\\]\\s]", "").replaceAll(",\\s*", ",").split(",");
+        System.out.println(Arrays.toString(anumStrings));
         String[] bnumStrings = b.replaceAll("[\\[\\]\\s]", "").replaceAll(",\\s*", ",").split(",");
+        
         String[] amodifiedArray = new String[anumStrings.length];
         //see 넘버 3->1 ,1->4 로 바꾸고
         for (int i = 0; i < anumStrings.length; i++) {
             String value = anumStrings[i];
             amodifiedArray[i] = "3".equals(value) ? "2" : "1".equals(value) ? "4" : value;
         }
-
+        System.out.println(Arrays.toString(amodifiedArray));
         Map<String, String> myMap = createMap(bnumStrings, amodifiedArray);
-        
         for (Map.Entry<String, String> entry : myMap.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            
-            // map.setcansee 메서드를 사용하여 (키, 값) 추가
-            map.SetcanSee(key, value);
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
         }
+        for (Map.Entry<String, String> entry : myMap.entrySet()) {
+            // map.setcansee 메서드를 사용하여 (키, 값) 추가
+            System.out.println("몇번?");
+            map.SetcanSee(entry.getKey(), entry.getValue());
+        }
+       
         resp.getWriter().println("발신 모두삭제 완료"+myMap);
 
-}else if ("/ReceiveAll".equals(action)) {
+}else if ("/receiveAll".equals(action)) {
 			//문자열받고
 	    resp.getWriter().println("발신 모두삭제1 ");
 	      String a = jsonObject.getString("seenums");
