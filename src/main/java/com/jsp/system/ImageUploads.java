@@ -1,4 +1,6 @@
 package com.jsp.system;
+import com.jsp.system.RandomStringGenerator;
+
 
 import java.io.IOException;
 import java.nio.file.CopyOption;
@@ -38,30 +40,41 @@ public class ImageUploads extends HttpServlet{
 			head = head.trim();
 			if(head.startsWith("filename")) {
 				String filename = head.split("=")[1];
+
 				String token = filename.substring(filename.lastIndexOf('.'));
 				token = token.substring(0, token.length() - 1);
+				//드랍존 오류인지 꼬랑지에 ;를 달고다님 잘라줬음
+
 				return token;
 			}
 		}
 		return "";
 	}
 	
+	
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Collection<Part> parts = req.getParts();
 		Part part = getParameter(parts, "boardImage");
 		String token = getSignature(part);
-		int i = 1; // 랜덤 이름용
+		
+		String imageName = RandomStringGenerator.generateRandomString(10);//랜덤 이름용
+		
+		
+		
 		if(!Files.exists(Paths.get(getServletContext().getRealPath(String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day"))))))
 			Files.createDirectories(Paths.get(getServletContext().getRealPath(String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day")))));
 		while(true) {
 			try {
 				Files.copy(part.getInputStream(), Paths.get(getServletContext().getRealPath(
-					String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day")) + "/" + Integer.toString(i) + token
+					String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day")) + "/" + imageName + token
 				)));
 				break;
 			}
-			catch(Exception e) {++i;}
+			catch(Exception e) {
+				System.out.println("이게 겹쳐?");
+			}
 		}
 	}
 }
