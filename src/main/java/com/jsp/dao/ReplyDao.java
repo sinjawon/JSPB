@@ -19,7 +19,7 @@ public interface ReplyDao {
 	public int getReplyInfoAllCnt(@Param("boardListNum") int boardListNum);
 	
 	// boardlistNum 를 기준으로 댓글이 달린 게시글을 찾아가서 보여주기
-	@Select("select * from replyInfo where boardListNum =#{boardListNum}")
+	@Select("select * from replyInfo where boardListNum =#{boardListNum} order by replyNum")
 	public List<ReplyInfo> searchByBoardListNum(@Param("boardListNum") int boardListNum); 
 	
 	// 새로운 댓글을 추가하는 메서드. 

@@ -49,13 +49,13 @@ import com.jsp.dto.*;
 //	     			exec = map.getBoardInfoPage(limit, page);
 	     		else if(request.getParameter("searchtype").equalsIgnoreCase("userNickname")) {
 		     		System.out.println("userNickname in");
-		     		exec = map.searchByUserNickname("%"+request.getParameter("search")+"%");
+		     		exec = map.searchByUserNicknamePaged("%"+request.getParameter("search")+"%", limit, page);
 		     		System.out.println(exec);
 		     		System.out.println("userNickname out");
 		     		}
 		    	else if(request.getParameter("searchtype").equalsIgnoreCase("title")) {
 		    		System.out.println("title in");
-		    		exec = map.searchByTitle("%"+request.getParameter("search")+"%");
+		    		exec = map.searchByTitlePaged("%"+request.getParameter("search")+"%", limit, page);
 		    		System.out.println(exec);
 		    		System.out.println("title out");
 		    		}

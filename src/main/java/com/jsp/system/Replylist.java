@@ -33,21 +33,36 @@ public class Replylist extends HttpServlet {
                  ReplyDao map = con.OpenMap(request, ReplyDao.class);
 
                  List<ReplyInfo> replyList = null;
-                 int boardListNum = 80;
-//                 int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
+//                 int boardListNum = 80;
+                 int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
                  System.out.println(boardListNum);
                  if (boardListNum > 0) {
-                     replyList = map.searchByBoardListNum(boardListNum);
-
-//                     // 포맷에 맞게 날짜를 변환
-//                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                     for (ReplyInfo reply : replyList) {
-//                         reply.setRegDateFormatted(dateFormat.format(reply.getRegDate()));
-//                     }
+                     replyList = map.searchByBoardListNum(boardListNum);               
                  }
 
-                 request.setAttribute("replyList", replyList);
-                 response.sendRedirect("/app/postview.jsp?id="+request.getParameter("boardListNum"));
+                 // 댓글 목록을 JSON 형식으로 변환
+                 JSONObject jsonResponse = new JSONObject();
+                 jsonResponse.put("replyList", replyList);
+                 jsonResponse.put("success", true);
+                 // JSON 응답 전송
+                 response.getWriter().write(jsonResponse.toString());
+                 
+//                 Map<String, Object> result = new HashMap<String, Object>();
+//                 result.put("replyList", replyList);
+//                 result.put("success", true);
+//                 response.getWriter().write(new JSONObject(result).toString());
+//                 JSONObject jsonResult = new JSONObject(result);
+//
+//                 response.getWriter().write(jsonResult.toString());
+                 
+//                 JSONObject jsonResponse = new JSONObject();
+//                 jsonResponse.put("replyList", replyList);
+//                 response.getWriter().write(jsonResponse.toString());
+//                 request.setAttribute("replyList", replyList);
+//                 response.sendRedirect("/app/postview.jsp?id="+request.getParameter("boardListNum"));
+                 
+                 System.out.println(replyList);
+                 
 //                 RequestDispatcher dispatcher = request.getRequestDispatcher("/app/postview.jsp?id="+request.getParameter("boardListNum"));
 //                 dispatcher.forward(request, response);
 
@@ -64,37 +79,5 @@ public class Replylist extends HttpServlet {
      }
    
      
-//     try (DBConnector con = new DBConnector();) {
-//         ReplyDao map = con.OpenMap(request, ReplyDao.class);
-//
-//         List<ReplyInfo> exec = null;
-////         int boardListNum =80;
-//         int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
-////        System.out.println(request.getParameter("boardListNum"));
-//         if(boardListNum>0) {
-//        	 System.out.println(boardListNum);
-//        	 exec = map.searchByBoardListNum(boardListNum); 
-////         }else {response.sendRedirect("/app/postview.jsp");
-//        	 }
-//        
-//         System.out.println(boardListNum);
-//         System.out.println(exec);
-//         
-//         Map<String, Object> result = new HashMap<String, Object>();
-//			result.put("data", exec);
-//		System.out.println(new JSONObject(result).toString());
-//		response.getWriter().write(new JSONObject(result).toString());
-//		
-//     } catch (Exception e) {
-//         e.printStackTrace();
-//         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-//     }
-// }
-//
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		this.doPost(req, resp);
-//	}
-//}
 
 

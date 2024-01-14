@@ -18,6 +18,13 @@ public interface BoardDao {
 	@Select("select x.boardListNum, x.title, x.mainContents, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardlistNum desc) result) x where num between #{limit} * (#{page} - 1) +1 and #{limit} * #{page}")
 	public List<BoardInfo> getBoardInfoPage(@Param("limit") int limit, @Param("page")  int page);
 	
+	// 페이징 board 에서 userNickName 으로 검색
+	@Select("select x.boardListNum, x.title, x.mainContents, x.userNickname, x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo where userNickname like #{userNickname} order by boardListNum desc) result) x where x.num between #{limit} * (#{page} - 1) + 1 AND #{limit} * #{page}")
+	public List<BoardInfo> searchByUserNicknamePaged(@Param("userNickname") String userNickname, @Param("limit") int limit, @Param("page") int page);
+	// 페이징 board 에서 title 으로 검색
+	@Select("select x.boardListNum, x.title, x.mainContents, x.userNickname, x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo where title like #{title}  order by boardListNum desc) result) x where x.num between #{limit} * (#{page} - 1) + 1 AND #{limit} * #{page}")
+	public List<BoardInfo> searchByTitlePaged(@Param("title") String title, @Param("limit") int limit, @Param("page") int page);
+	
 	@Select("select count(*) from boardInfo order by boardListNum desc")
 	public int getBoardInfoAllCnt();
 
@@ -39,11 +46,12 @@ public interface BoardDao {
 	@Select("select * from boardInfo where userNickname like #{userNickname} order by boardlistNum desc")
 	public List<BoardInfo> searchByUserNickname(@Param("userNickname") String userNickname);
 
-	
+
 	// board 에서 title 로 검색
 	@Select("select * from boardInfo where title like #{title} order by boardlistNum desc")
 	public List<BoardInfo> searchByTitle(@Param("title") String title);
-   
+	// 페이징 board 에서 title 로 검색
+
      
   
    

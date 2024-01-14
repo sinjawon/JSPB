@@ -46,7 +46,8 @@ public class showPost extends HttpServlet {
     		result.put("success", false);
     		result.put("message", "게시글 조회에 실패했습니다.");
     	}
-    	response.setContentType("text/plain");
+//    	response.setContentType("text/plain");
+    	response.setContentType("application/json");
     	response.getWriter().write(result.toString());
     }
 }
