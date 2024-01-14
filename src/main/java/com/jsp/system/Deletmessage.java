@@ -2,6 +2,7 @@
 
 package com.jsp.system;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,30 +15,47 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.*;
+
 import com.jsp.dao.*;
 import com.jsp.dto.UserNoteSee;
 
 @WebServlet("/Deletmessage/*")
 public class Deletmessage extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		this.doGet(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		this.doPost(request, response);
     } 
     @Override
-    protected void doGet(HttpServletRequest req, javax.servlet.http.HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, javax.servlet.http.HttpServletResponse resp)
     		throws ServletException, IOException {
-    	
-    	 try (DBConnector con = new DBConnector()) {
+    	   req.setCharacterEncoding("UTF-8");
+    	   resp.setCharacterEncoding("UTF-8");
+    	   resp.setContentType("application/json");
+    	 try (DBConnector con = new DBConnector();
+    		  BufferedReader reader = req.getReader(); 
+    			 ) {
     		 UserNoteSeeDao map = con.OpenMap(req,  UserNoteSeeDao.class);
     		
-    	 String action = req.getPathInfo();
-    	 req.setCharacterEncoding("UTF-8");
-    	 resp.setCharacterEncoding("UTF-8");
+    		 
+    		 StringBuilder sb = new StringBuilder();
+    		 String line;
+
+    		 while ((line = reader.readLine()) != null) {
+    		     sb.append(line);
+    		 }
+
+    		 // JSON 데이터 파싱
+    		 JSONObject jsonObject = Ajax.JsonToObj(sb.toString());
+    		//Deletmessage/여기올 문자 구분	
+	    	 String action = req.getPathInfo();
+	    	
     	 
     	 if ("/Send".equals(action)) {
     		 System.out.println("어 나왔어222");
-		    	 String seenum = req.getParameter("seenum");
+    		    String seenum = jsonObject.getString("seenum");
 		    	 System.out.println("이게번호야"+seenum);
-		    	 String notenum = req.getParameter("notenum");
+		    	 String notenum = jsonObject.getString("notenum");
+		    	 System.out.println("이게넘버야"+notenum);
 		    	 if(seenum.equals("3")) {
 		    		 seenum = "2";
 		    	 }
@@ -47,8 +65,8 @@ public class Deletmessage extends HttpServlet {
 		    	 map.SetcanSee(notenum, seenum);
 		    	 resp.getWriter().println("발신삭제 완료"+notenum+","+seenum);
          }else if("/Receive".equals(action)){
-	        	 String seenum = req.getParameter("seenum");
-	        	 String notenum = req.getParameter("notenum");
+        	    String seenum = jsonObject.getString("seenum");
+        	    String notenum = jsonObject.getString("notenum");
 	        	 if(seenum.equals("3")) {
 	        		 seenum = "1";
 	        	 }else if(seenum.equals("2")){
@@ -59,8 +77,9 @@ public class Deletmessage extends HttpServlet {
  }else if ("/SendAll".equals(action)) {
         
         //문자열받고
-        String a =  req.getParameter("seenums");
-        String b =  req.getParameter("notenums");
+	    String a = jsonObject.getString("seenums");
+	    String b = jsonObject.getString("notenums");
+        
         //다시 배열로 담고
         String[] anumStrings = a.replaceAll("[\\[\\]\\s]", "").replaceAll(",\\s*", ",").split(",");
         String[] bnumStrings = b.replaceAll("[\\[\\]\\s]", "").replaceAll(",\\s*", ",").split(",");
@@ -84,8 +103,10 @@ public class Deletmessage extends HttpServlet {
 
 }else if ("/ReceiveAll".equals(action)) {
 			//문자열받고
-	        String a =  req.getParameter("seenums");
-	        String b =  req.getParameter("notenums");
+	    resp.getWriter().println("발신 모두삭제1 ");
+	      String a = jsonObject.getString("seenums");
+	      resp.getWriter().println("발신 모두삭제2 ");
+	       String b = jsonObject.getString("notenums");
 	        //다시 배열로 담고
 	        String[] anumStrings = a.replaceAll("[\\[\\]\\s]", "").replaceAll(",\\s*", ",").split(",");
 	        String[] bnumStrings = b.replaceAll("[\\[\\]\\s]", "").replaceAll(",\\s*", ",").split(",");
@@ -111,6 +132,7 @@ public class Deletmessage extends HttpServlet {
     	 
     	//트라이케치 
     	 } catch (Exception e) {
+    		 
     		 
     		 resp.getWriter().println("오류");
          } 

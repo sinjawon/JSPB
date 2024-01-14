@@ -28,10 +28,15 @@
 </head>
 <body>
 
-<% 
+<% 	 request.setCharacterEncoding("UTF-8");
+     response.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+ 
   if(session.getAttribute("UserNickName") != null){
+	  			
+		 
 try(DBConnector con = new DBConnector();){
-	
+					
         		UserNoteDao note = con.OpenMap(request, UserNoteDao.class);
         		
         		UserNoteSeeDao cansee = con.OpenMap(request, UserNoteSeeDao.class);
@@ -93,7 +98,7 @@ try(DBConnector con = new DBConnector();){
                 <form action="/Deletmessage/Send" id="sendform<%=notenum%>">
 				   	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
-                  <button type="submit" class="deletebtn" onclick="snedDelet('<%=notenum%>');" value="<%=notenum%>">
+                  <button type="button"  class="deletebtn" onclick="sendDelet('<%=notenum%>');" value="<%=notenum%>">
                     <i class="fa-solid fa-xmark fa-x"></i>
                   </button>
                 </form>
@@ -146,7 +151,7 @@ try(DBConnector con = new DBConnector();){
                 <form action="/Deletmessage/Receive">
 			     	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
-                  <button type="submit" class="deletebtn"  >
+                  <button  class="deletebtn" onclick="sendDelet('<%=notenum%>');" >
                     <i class="fa-solid fa-xmark fa-x"></i>
                   </button>
                 </form>

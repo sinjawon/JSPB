@@ -11,21 +11,119 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 function messgeajax(url, option) {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log("이게뭐야1");
         return fetch(url, option).then((res) => res.json());
     });
 }
-function SendAjax(notenum) {
+//  async function sendAjax(notenum: String) {
+//   let Sendform:FormData = document.querySelector(`#sendform${notenum}`); 
+//   let formData = new FormData(Sendform);
+//   let jsonData = {
+//     seenum: formData.get("seenum"),
+//     notenum: formData.get("notenum"),
+//     // 다른 필드들 추가
+//   };
+//   await messgeajax("/Deletmessage/Send", {  
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(jsonData),
+//   });
+// }
+// async function RecieveAjax(notenum: String) {
+//   let Sendform:FormData = document.querySelector(`#sendform${notenum}`); 
+//   let formData = new FormData(Sendform);
+//   let jsonData = {
+//     seenum: formData.get("seenum"),
+//     notenum: formData.get("notenum"),
+//     // 다른 필드들 추가
+//   };
+//   await messgeajax("/Deletmessage/Recieve", {  
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(jsonData),
+//   });
+// }
+function messgedelet(notenum, endpoint) {
     return __awaiter(this, void 0, void 0, function* () {
         let Sendform = document.querySelector(`#sendform${notenum}`);
-        messgeajax("/Deletmessage/Send", {
+        let formData = new FormData(Sendform);
+        let jsonData = {
+            seenum: formData.get("seenum"),
+            notenum: formData.get("notenum"),
+            // 다른 필드들 추가
+        };
+        yield messgeajax(`/Deletmessage/${endpoint}`, {
             method: "POST",
-            body: Sendform,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(jsonData),
         });
     });
 }
-function snedDelet(notenum) {
-    event.preventDefault();
-    SendAjax(notenum);
-    let summaryElement = document.querySelector(`#sendsum${notenum}`);
-    summaryElement.style.display = 'none';
+function messgedeletAll(notenum, endpoint) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let Sendform = document.querySelector(`#sendform${notenum}`);
+        let formData = new FormData(Sendform);
+        let jsonData = {
+            seenum: formData.get("seenum"),
+            notenum: formData.get("notenum"),
+            // 다른 필드들 추가
+        };
+        yield messgeajax(`/Deletmessage/${endpoint}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(jsonData),
+        });
+    });
+}
+function sendDelet(notenum) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let summaryElement = document.querySelector(`#sendsum${notenum}`);
+        summaryElement.style.display = 'none';
+        yield messgedelet(notenum, "Send");
+    });
+}
+function RecieveDelet(notenum) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let summaryElement = document.querySelector(`#sendsum${notenum}`);
+        summaryElement.style.display = 'none';
+        yield messgedelet(notenum, "Recieve");
+    });
+}
+function sendDeletAll(notenum) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let notenumArray = JSON.parse(notenumString);
+        // 배열의 각 원소에 대해 반복
+        for (let i = 0; i < notenumArray.length; i++) {
+            let currentNotenum = notenumArray[i];
+            // 작업 수행
+            let summaryElement = document.querySelector(`#sendsum${currentNotenum}`);
+            if (summaryElement) {
+                summaryElement.style.display = 'none';
+            }
+        }
+        yield messgedeletAll(notenum, "SendAll");
+    });
+}
+function RecieveDeletAll(notenum) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let notenumArray = JSON.parse(notenumString);
+        // 배열의 각 원소에 대해 반복
+        for (let i = 0; i < notenumArray.length; i++) {
+            let currentNotenum = notenumArray[i];
+            // 작업 수행
+            let summaryElement = document.querySelector(`#sendsum${currentNotenum}`);
+            if (summaryElement) {
+                summaryElement.style.display = 'none';
+            }
+        }
+        yield messgedeletAll(notenum, "ReceiveAll");
+    });
 }
