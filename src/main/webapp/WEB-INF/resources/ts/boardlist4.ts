@@ -17,10 +17,11 @@ async function ajax(url: string, option?: any) {
         let formData = new FormData(form);
   
   
-        ajax("/api/boardlist", {
+        ajax("/api/boardlist",{
             method: "POST",
             body: formData,
         }).then((json) => {
+            
             console.log(json);
   
             let boards: HTMLElement | null = document.querySelector("#boards");

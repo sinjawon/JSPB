@@ -14,7 +14,7 @@ public class Ajax {
 	
 	
 	//JPA - Java Persistence API
-	// MyBatis
+	// MyBatis  
 	
 	public static String GET(String url) {
 		url = "http://localhost:4885" + url;

@@ -19,7 +19,7 @@
     />
     
     <script src="/resources/modal.js" defer></script>
-    
+    <script src="/resources/messagebox.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/resources/messagebox.css" />
     
     <link rel="stylesheet" type="text/css" href="/resources/myreset.css" />
@@ -84,16 +84,16 @@ try(DBConnector con = new DBConnector();){
 			%> 
 
           <details>
-            <summary class="note-content">
+            <summary class="note-content" id="sendsum<%=notenum%>">
               <div class="note-content-box">
                 <div class="note-content-detail"><%=ReceiveNote.getNotetime()%></div>
                 <div class="note-content-writer"><%=ReceiveNote.getSender()%></div>
               </div>
               <div class="note-xbtn">
-                <form action="/deletmessege/Send">
+                <form action="/Deletmessage/Send" id="sendform<%=notenum%>">
 				   	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
-                  <button type="submit" class="deletebtn">
+                  <button type="submit" class="deletebtn" onclick="snedDelet('<%=notenum%>');" value="<%=notenum%>">
                     <i class="fa-solid fa-xmark fa-x"></i>
                   </button>
                 </form>
@@ -143,7 +143,7 @@ try(DBConnector con = new DBConnector();){
                 <div class="note-content-writer"><%=SendNote.getSender()%></div>
               </div>
               <div class="note-xbtn">
-                <form action="/deletmessege/Receive">
+                <form action="/Deletmessage/Receive">
 			     	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
                   <button type="submit" class="deletebtn"  >

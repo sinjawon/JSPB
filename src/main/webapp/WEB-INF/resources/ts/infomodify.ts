@@ -1,5 +1,5 @@
 //@ts-nocheck
-function makelment( a:String):Element{
+function makelment(a:String):Element{
  return document.querySelector(a);
 }
 function modify(a:String,b:Element ,c:Element){

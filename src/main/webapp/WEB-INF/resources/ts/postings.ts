@@ -58,6 +58,7 @@ function editPost() {
 // function deletePost(boardListNum: number) {
 //     fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
 //         method: "POST"
+        
 //     })
 //         .then(response => response.json())
 //         .then(data => {
