@@ -199,8 +199,8 @@ try(DBConnector con = new DBConnector();){
         <div class="note-write">
           <h2 class="note-title3">쪽지 작성</h2>
           <div class="note-write-form"> 
-          <form action="/MessageServlet" method="POST" accept-charset="UTF-8">
-            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNum") %> " required/><br />
+          <form action="/MessageServlet" method="POST" accept-charset="UTF-8" id="writemessage">
+            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNickName")%>" required/><br />
             <input
               type="text"
               name="receiver"
@@ -209,7 +209,7 @@ try(DBConnector con = new DBConnector();){
               required><br />
             	<textarea name="content" placeholder="내용"  class="notereceiver-content" required></textarea
             ><br />
-                <input type="submit" value="전송" class="write-btn"/>
+                <input type="button" value="전송" class="write-btn" onclick="writemessage();"/>
             </div>
           </form>
         </div>

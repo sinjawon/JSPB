@@ -1,42 +1,10 @@
 //@ts-nocheck
 
 async function messgeajax(url: string, option?: any) {
-  console.log("이게뭐야1");
     return fetch(url, option).then((res) => res.json());
    
   } 
-//  async function sendAjax(notenum: String) {
-//   let Sendform:FormData = document.querySelector(`#sendform${notenum}`); 
-//   let formData = new FormData(Sendform);
-//   let jsonData = {
-//     seenum: formData.get("seenum"),
-//     notenum: formData.get("notenum"),
-//     // 다른 필드들 추가
-//   };
-//   await messgeajax("/Deletmessage/Send", {  
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(jsonData),
-//   });
-// }
-// async function RecieveAjax(notenum: String) {
-//   let Sendform:FormData = document.querySelector(`#sendform${notenum}`); 
-//   let formData = new FormData(Sendform);
-//   let jsonData = {
-//     seenum: formData.get("seenum"),
-//     notenum: formData.get("notenum"),
-//     // 다른 필드들 추가
-//   };
-//   await messgeajax("/Deletmessage/Recieve", {  
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(jsonData),
-//   });
-// }
+
 
 async function messgedelet(notenum: String, endpoint: String) {
   let Sendform: FormData = document.querySelector(`#${endpoint}form${notenum}`);
@@ -75,15 +43,6 @@ async function messgedeletAll(endpoint: String) {
 }
 
 
-
-
-
-
-
-
-
-
-
 async function sendDelet(notenum:String){
 
   let summaryElement = document.querySelector(`#sendsum${notenum}`);
@@ -118,11 +77,8 @@ async function sendDeletAll(notenumString:String){
 async function recieveDeletAll(notenumString:String){ 
   let notenumArray = JSON.parse(notenumString);
 
-  // 배열의 각 원소에 대해 반복
   for (let i = 0; i < notenumArray.length; i++) {
       let currentNotenum = notenumArray[i];
-
-      // 작업 수행
       let summaryElement = document.querySelector(`#receivesum${currentNotenum}`);
       if (summaryElement) {
           summaryElement.style.display = 'none';      
@@ -130,4 +86,24 @@ async function recieveDeletAll(notenumString:String){
   }
     await messgedeletAll("receiveAll");
 }
+
+async function writemessage(){
+  let writeform: FormData = document.querySelector(`#writemessage`);
+  let writeformData = new FormData(writeform);
+  let writejsonData = {
+    sender: writeformData.get("sender"),
+    receiver: writeformData.get("receiver"),
+    content: writeformData.get("content")
+  };
+   messgeajax("/MessageServlet",{  
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(writejsonData),
+  });
+  console.log("완료");
+  location.reload();
+}
+
 
