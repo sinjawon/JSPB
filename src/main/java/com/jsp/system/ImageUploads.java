@@ -1,9 +1,5 @@
 package com.jsp.system;
-import com.jsp.system.RandomStringGenerator;
-
-
 import java.io.IOException;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
@@ -15,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import com.jsp.dao.PostImageDao;
 
 @WebServlet(urlPatterns = {
 	"/api/image/upload"
@@ -61,10 +59,20 @@ public class ImageUploads extends HttpServlet{
 		
 		String imageName = RandomStringGenerator.generateRandomString(10);//랜덤 이름용
 		
+		int boardListNum = Integer.parseInt(req.getParameter("boardListNum"));
+        int imageNum = Integer.parseInt(req.getParameter("imageNum"));
 		
-		
+        try (DBConnector con = new DBConnector();){
+        	PostImageDao map = con.OpenMap(req, PostImageDao.class);
+            map.saveImage(imageName, imageNum);
+            
+        } catch(Exception e) {
+        }
+        
+        
 		if(!Files.exists(Paths.get(getServletContext().getRealPath(String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day"))))))
 			Files.createDirectories(Paths.get(getServletContext().getRealPath(String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day")))));
+		System.out.println(Paths.get(getServletContext().getRealPath(String.join("/",req.getParameter("year"),req.getParameter("month"),req.getParameter("day")))));
 		while(true) {
 			try {
 				Files.copy(part.getInputStream(), Paths.get(getServletContext().getRealPath(

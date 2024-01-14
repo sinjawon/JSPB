@@ -34,6 +34,10 @@ public interface BoardDao {
 	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
 	public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title, @Param("mainContents") String mainContents);
 	
+	//최근에 추가된 id값 돌려줌
+	@Select("SELECT seqBoardListNum.currval FROM dual")
+    int getNewlyInsertedBoardId();
+	
 	
 	// board 에서 userNickName 으로 검색
 	@Select("select * from boardInfo where userNickname like #{userNickname} order by boardlistNum desc")

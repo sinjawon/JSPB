@@ -19,6 +19,8 @@ function cancelPost() {
     
     titleInput.value = "";
     postTextarea.value = "";
+    dropzone.removeAllFiles();
+
 }
 
 //@ts-ignore
@@ -49,6 +51,7 @@ var dropzone = new Dropzone("div.dropzone", {
             data.append("year",date.getFullYear());
             data.append("month",date.getMonth() + 1);
             data.append("day",date.getDate());
+
         });
     }
 });

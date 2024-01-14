@@ -11,6 +11,7 @@ function cancelPost() {
     let postTextarea = document.getElementById("postTextarea");
     titleInput.value = "";
     postTextarea.value = "";
+    dropzone.removeAllFiles();
 }
 //@ts-ignore
 Dropzone.autoDiscover = false;

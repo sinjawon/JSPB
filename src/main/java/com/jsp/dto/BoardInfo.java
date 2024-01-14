@@ -14,6 +14,7 @@ public class BoardInfo {
     private int pagenum;
     
     
+    
 	public int getBoardListNum() {
 		return boardListNum ;
 	}
