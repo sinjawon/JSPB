@@ -29,7 +29,7 @@ var dropzone = new Dropzone("div.dropzone", {
     method: "POST",
     dictDefaultMessage:"여기에 사진을 드래그&드랍 하세요.",
     autoQueue: false, 
-    maxFiles: 10,
+    maxFiles: 4,
     maxFilesize: 100,
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,

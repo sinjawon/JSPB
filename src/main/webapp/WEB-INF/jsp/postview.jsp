@@ -22,6 +22,9 @@
     <div id="viewTitle">글 제목</div>
     <div id="viewTextarea">글 내용</div>
     
+    
+    <div> 이미지 공간 4개까지</div>
+    
     <%session.getAttribute("UserNickName");%>
     
   	 <div id ="buttonContainer"></div>
