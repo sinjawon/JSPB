@@ -116,7 +116,7 @@ try(DBConnector con = new DBConnector();){
 	         <form action="/deletmessege">		  
 			       <input type="text"  name ="SenddAll" value="<%=yesstt%>">
 			       <input type="text"  name ="SendDeletAll" value="<%=Sended%>">
-				   <button type="submit">보낸 메시지 모두삭제</button>
+				   <button type="submit">받은 메시지 모두삭제</button>
 			  </form> 
 	 </div> 
         
@@ -166,7 +166,7 @@ try(DBConnector con = new DBConnector();){
 	         <form action="/deletmessege">		  
 			       <input type="text"  name ="SenddAll" value="<%=yesstt2%>">
 			       <input type="text"  name ="SendDeletAll" value="<%=Received%>">
-				   <button type="submit" class="showmessage">받은 메시지 모두삭제</button>
+				   <button type="submit" class="showmessage">보낸 메시지 모두삭제</button>
 			  </form>
 	
 	 </div> 

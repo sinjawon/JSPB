@@ -205,3 +205,6 @@ summary::marker {
   background-color: white;
   margin-top: 1rem;
 }
+
+.note-sender:focus {outline: none;} 
+
