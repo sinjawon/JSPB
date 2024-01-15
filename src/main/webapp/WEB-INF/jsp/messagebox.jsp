@@ -189,7 +189,7 @@ try(DBConnector con = new DBConnector();){
           <h2 class="note-title3">쪽지 작성</h2>
           <div class="note-write-form"> 
           <form action="/MessageServlet" method="POST" accept-charset="UTF-8">
-            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNum") %> " required/><br />
+            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNickName") %> " required readonly style="border:none;"/><br />
             <input
               type="text"
               name="receiver"
