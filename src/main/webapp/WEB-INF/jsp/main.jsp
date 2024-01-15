@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
     <div class="swiper mainslide">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <a href="freeboard.jsp"
+          <a href="boardlist.jsp"
             ><img
               class="image"
               src="/resources/mainbanner08_sub.jpg"

@@ -13,6 +13,7 @@
 <title>petpeople</title>
 </head>
 <body>
+
 	<%@include file="../jsp/nav.jsp"%>
 	<div class="insertpage">
 	<div class="insert-box">
@@ -29,8 +30,8 @@
       </select>
       
       
-	<p class="insertpage-p"><%=session.getAttribute("UserNickName") %> 님</p> 
-
+<%-- 	<p class="insertpage-p"><%=session.getAttribute("UserNickName") %> 님</p> 
+ --%>
 
     <div id="options">
     </div> 
