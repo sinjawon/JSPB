@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" type="text/css" href="/resources/board.css">
-<script defer src="/resources/boardlist4.js"></script>
+<script defer src="/resources/boardlist.js"></script>
 <script defer src="/resources/pagenumber.js"></script> 
 </head>
 <body>
@@ -37,7 +37,7 @@
 		</template>
 	</div>
 	
-	<div id="pages" class=pages>
+	<div id="pages" class="pages">
 		<template> 
 			<span onclick="pageChange(this.innerText)">1</span>
 		</template>

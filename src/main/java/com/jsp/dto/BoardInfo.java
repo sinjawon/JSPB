@@ -4,9 +4,9 @@ package com.jsp.dto;
 public class BoardInfo {
 	// seqBoard
     private int boardListNum; // Primary Key 글쓴 순서대로 1씩 증가
+    private String userNickname;
     private String title; // 제목
     private String mainContents; // 본문
-    private String userNickname;
     private int hitCount; // 조회수
     private String regDate;  // 게시글 등록일
 	private int limit;
