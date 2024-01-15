@@ -9,10 +9,11 @@ public class PostImage {
 	public String getImageName() {
 		return imageName;
 	}
-//	public void setImageName(String imageName) {
-//		this.imageName = imageName;
-//	}
 	//이미지 이름은 조작 할 일 없겠죠?
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	
 	
 	public int getBoardListNum() {
 		return boardListNum;
@@ -22,13 +23,14 @@ public class PostImage {
 	}
 	
 	
+	
 	public int getImageNum() {
 		return imageNum;
 	}
-//	public void setImageNum(int imageNum) {
-//		this.imageNum = imageNum;
-//	}
 	//이미지 삽입 순서도 안 바뀌겠죠?
+	public void setImageNum(int imageNum) {
+		this.imageNum = imageNum;
+	}
 	
 }
 

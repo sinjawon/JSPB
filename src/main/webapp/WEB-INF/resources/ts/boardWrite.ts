@@ -23,6 +23,8 @@ function cancelPost() {
 
 }
 
+
+let index:number = 0;
 //@ts-ignore
 Dropzone.autoDiscover=false;
 //@ts-ignore
@@ -33,13 +35,16 @@ var dropzone = new Dropzone("div.dropzone", {
     autoQueue: false, 
     maxFiles: 4,
     maxFilesize: 100,
+    //headers :{ "imageOrder": index},
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
     acceptedFiles: '.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',
     init:function(){
         let zone = this;
         let button:HTMLElement = document.querySelector("button#submit") as HTMLElement;
-        button.addEventListener("click",()=>{
+        
+        button.addEventListener("click", () => {
+    
             //@ts-ignore
             zone.enqueueFiles(zone.getFilesWithStatus(Dropzone.ADDED));
             submitPost();

@@ -13,6 +13,7 @@ function cancelPost() {
     postTextarea.value = "";
     dropzone.removeAllFiles();
 }
+let index = 0;
 //@ts-ignore
 Dropzone.autoDiscover = false;
 //@ts-ignore
@@ -23,6 +24,7 @@ var dropzone = new Dropzone("div.dropzone", {
     autoQueue: false,
     maxFiles: 4,
     maxFilesize: 100,
+    //headers :{ "imageOrder": index},
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
     acceptedFiles: '.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',

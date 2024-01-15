@@ -15,6 +15,9 @@ function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) 
 }
 
 
+
+
+
 let clickedPostId = valueId;// 클릭한 게시글의 ID
 
 

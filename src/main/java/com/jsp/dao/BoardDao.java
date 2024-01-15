@@ -36,7 +36,7 @@ public interface BoardDao {
 	
 	//최근에 추가된 id값 돌려줌
 	@Select("SELECT seqBoardListNum.currval FROM dual")
-    int getNewlyInsertedBoardId();
+    public int getNewlyInsertedBoardId();
 	
 	
 	// board 에서 userNickName 으로 검색

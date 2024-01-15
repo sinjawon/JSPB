@@ -9,12 +9,13 @@ import com.jsp.dto.*;
 @Mapper
 public interface PostImageDao {
 	
-	@Insert("insert into PostImage (imageName, boardListNum, imageNum) values (#{imageName}, seqBoardListNum.nextval, #{imageNum},")
-	public void saveImage(@Param("imageName") String imageName, @Param("imageNum") int imageNum);
+	//@지수 - 이미지를 넣을 때 최신 글? 그러니 seqBoardListNum.currval로 최신 글을 찾을 거
+	@Insert("insert into PostImage (imageName, boardListNum, imageNum) values (#{imageName}, #{boardListNum}, #{imageNum},")
+	public void saveImage(@Param("imageName") String imageName, @Param("boardListNum") int boardListNum, @Param("imageNum") int imageNum);
 	
 
-	@Insert("insert into PostImage (imageName, boardListNum, imageNum) values (#{imageName}, #{boardListNum}, #{imageNum})")
-	@Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-	void saveImage(PostImage postImage);
-	}
+	@Select("SELECT * from PostImage WHERE boardListNum = #{boardListNum}")
+	public List<String> searchImageByBoardListNum(@Param("boardListNum") int boardListNum); 
 
+
+}

@@ -29,7 +29,6 @@ public class InsertNewPost extends HttpServlet {
         	BoardDao map = con.OpenMap(request, BoardDao.class);
             map.insertNewBoard(userNickname ,title, mainContents);
             
-            int newBoardId = map.getNewlyInsertedBoardId();
             
             
             System.out.println("보드에 들어갔나요?");
