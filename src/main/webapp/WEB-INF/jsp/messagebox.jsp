@@ -24,9 +24,12 @@
     
     <link rel="stylesheet" type="text/css" href="/resources/myreset.css" />
     <meta charset="UTF-8">
+    
     <title>쪽지함</title>
 </head>
 <body>
+
+
 
 <% 
   if(session.getAttribute("UserNickName") != null){

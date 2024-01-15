@@ -249,14 +249,13 @@ pageEncoding="UTF-8"%>
  	</div>
  </c:if>
  <c:if test = "${sessionScope.UserNickName!=null }" >
-	<div >
-    	<div class="write-go">
-		<a href="insertpage.jsp">
+	<div style="position:fixed; bottom:4.7rem; right:3.5rem; ">
+    	<div class="write-go" >
+		<a href="insertpage.jsp" >
        		<i class="fa-solid fa-pen-to-square fa-2x"></i>
       	</a>
     </div>
-
- 	<iframe src="./messagebox.jsp" style="position:fixed; bottom:2rem; right:1rem; width:40rem; height:50rem; z-index: 99999;"></iframe>
+ 	<iframe src="./messagebox.jsp" style="position:fixed; bottom:7rem; right:-2rem; width:25rem; height:40rem; z-index: 1;">></iframe>
 		
  	</div>
  </c:if>
