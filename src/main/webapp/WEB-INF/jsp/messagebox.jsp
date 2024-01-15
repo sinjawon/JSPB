@@ -75,7 +75,7 @@ try(DBConnector con = new DBConnector();){
         </div>
         
         <div id="sender" class="note-sendview">
-          <div class="note-title">보낸쪽지</div>
+          <div class="note-title">받은쪽지</div>
           <%if(session.getAttribute("UserNickName") != null){%>
          
 		<% for(UserNote ReceiveNote : ReceiveNotes) {
@@ -130,7 +130,7 @@ try(DBConnector con = new DBConnector();){
         
         
         <div id="receiver" class="note-reception">
-          <div class="note-title">받은쪽지</div>
+          <div class="note-title">보낸쪽지</div>
           <%if(session.getAttribute("UserNickName") != null){%>
          		
 		<% for(UserNote SendNote : SendNotes) { 

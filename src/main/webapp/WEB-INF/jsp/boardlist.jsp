@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.jsp.system.Ajax, org.json.*" %>
+    <%@ page import="java.util.*, org.json.*"%>
+<%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +22,15 @@
 
 		
 	<%@include file="../jsp/nav.jsp"%>
+	
+	  <%try(DBConnector con = new DBConnector();){
+        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
+        		 String usernum = (String)session.getAttribute("UserNum"); 
+        			UserDao map2 = con.OpenMap(request, UserDao.class);
+        		 
+        		 %>
+        		 
+        		 
 <div class="main_board"> 
 		
 	<h3>자유게시판</h3>
@@ -59,11 +71,27 @@
    		<form id="refresh" action="/api/boardlist" method="post">
    			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'" >목록으로 돌아가기</button>
    		</form>  		
-   		<form action="/insert" method="post">
-   			<button type="button" class="navyBtn" onClick="location.href='/app/insertpage.jsp'">글쓰기</button>
-   		</form>  		
+   		
+   		<c:if test = "${sessionScope.UserNickName==null }" >
+	            <div >
+            	</div>
+            </c:if>
+            <c:if test = "${sessionScope.UserNickName!=null }" >
+		
+		   		<form action="/insert" method="post">
+		   			<button type="button" class="navyBtn" onClick="location.href='/app/insertpage.jsp'">글쓰기</button>
+		   		</form>  
+            </c:if>
 
 	</div>
+	
+	
+	
+      <%
+        	}
+        	catch(Exception e) {
+        		e.printStackTrace();
+        	} %>
 	<%@include file="../jsp/footer.jsp"%>
 	
 <!-- <h1>Board List</h1>
