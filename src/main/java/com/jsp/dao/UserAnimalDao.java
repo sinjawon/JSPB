@@ -52,6 +52,11 @@ public interface UserAnimalDao {
 			//넘버로 동물 프로파일 업데이트
 			@Update("UPDATE memberAnimal SET animalProfile = #{animalProfile} WHERE userNum = #{usernum}")
 			public int aniprofile(@Param("usernum") String usernum,@Param("animalProfile") String animalProfile);
+			
+			
+			//유저 넘버로 삭제
+			@Delete("delete memberAnimal where userNum = #{usernum}")
+			public void deleteUserAnimal(@Param("usernum") String usernum);
 	
 	
 	

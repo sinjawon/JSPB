@@ -10,8 +10,13 @@
     <meta charset="UTF-8">
     <title>petpeople</title>
     <link rel="stylesheet" type="text/css" href="/resources/detail.css"> 
-    <script>var valueId=<%=request.getParameter("id")%>;</script>
+    <script>
+    	var valueId=<%=request.getParameter("id")%>;		
+    	var sessionUser='<%=session.getAttribute("UserNickName")%>';
+    </script>
     <script src="/resources/postings.js"></script>
+    <script defer src="/resources/reply.js"></script>
+    
 </head>
 <body>
 	<%@include file="../jsp/nav.jsp"%>
@@ -22,6 +27,11 @@
 	    <div id="viewTitle" class="detail_title">글 제목</div>
 	    <div id="viewTextarea" class="detail_contents">글</div>
     </div>
+    <div> 이미지 공간 4개까지</div>
+	<% session.getAttribute("UserNickName"); %>
+
+	<div id="buttonContainer"></div>
+	
     <div class="detail_btn">
     <c:if test="${data.userNickname eq sessionScope.userNickname}">
         <button onclick="editPost(${data.boardListNum})">수정</button>
@@ -30,6 +40,18 @@
         <button type="submit" class='goback'>뒤로가기</button>
     </form>
     </div>
+    
+    <div id="replyContainer">
+		<template>
+			<div class="userNickname">작성자</div>
+			<div class="replyContents">본문</div>
+			<div class="regDate">등록일</div>
+			<button class="editReply" name="editReply"
+				onclick="editReply(${data.replyNum})">수정</button>
+			<button class="deleteReply" name="deleteReply"
+				onclick="deleteReply(${data.replyNum})">삭제</button>
+		</template>
+	</div>
     
     <div class="comment_box">
      <h4>댓글</h4>
@@ -45,13 +67,25 @@
         <p>댓글이 없습니다.</p>
     </c:otherwise>
 </c:choose>
-    <div class="modi_btn">
-		<button type="button" onclick="editReply()">수정</button>  
-		<button type="button" onclick="deleteReply()">삭제</button>  
-    </div>
+    <div id="replyContainer" class="modi_btn">
+		<template>
+			<div class="userNickname">작성자</div>
+			<div class="replyContents">본문</div>
+			<div class="regDate">등록일</div>
+			<button class="editReply" name="editReply"
+				onclick="editReply(${data.replyNum})">수정</button>
+			<button class="deleteReply" name="deleteReply"
+				onclick="deleteReply(${data.replyNum})">삭제</button>
+		</template>
+	</div>
  
     <form id="replyForm" action="/api/addReply" method="post">
        <div class="writing_field">
+       		<input type="text" id="boardListNumInput" name="boardListNum"
+			value="<%=request.getParameter("id")%>" readonly>
+			<input type="text" id="userNickname" name="userNickname"
+			value="<%=session.getAttribute("UserNickName")%>"
+			placeholder="작성자 닉네임">
         	<textarea id="replyContents" name="replyContents" placeholder="댓글 내용을 입력하세요" class="text"></textarea>
         	<button type="button" onclick="addReply()" class="writing_btn">등록</button>
        </div>      

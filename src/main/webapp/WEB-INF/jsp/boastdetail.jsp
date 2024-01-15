@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,11 @@
 <title>petpeople</title>
 </head>
 <body>
+
+
+<%request.setCharacterEncoding("UTF-8"); %>
+<%response.setCharacterEncoding("UTF-8"); %>
+
 	<%@include file="../jsp/nav.jsp"%>
 		<div class="detail">
             <h3>자랑게시판</h3>

@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-	<script defer src="/resources/boardlist4.js"></script>
+	<script defer src="/resources/boardlist.js"></script>
     <script src="/resources/mainbanner.js" defer></script>
     <script src="/resources/modal.js" defer></script>
     <title>petpeople</title>
@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
     <div class="swiper mainslide">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <a href="freeboard.jsp"
+          <a href="boardlist.jsp"
             ><img
               class="image"
               src="/resources/mainbanner08_sub.jpg"

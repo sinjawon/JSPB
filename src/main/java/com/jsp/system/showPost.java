@@ -17,15 +17,18 @@ import com.jsp.dto.BoardInfo;
 public class showPost extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        
-       JSONObject result = new JSONObject();
-       
-       try (DBConnector con = new DBConnector();) {
-          int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
-          BoardDao map = con.OpenMap(request, BoardDao.class);
+     	request.setCharacterEncoding("utf-8");
+    	response.setCharacterEncoding("utf-8");
+    	
+    	JSONObject result = new JSONObject();
+    	
+    	try (DBConnector con = new DBConnector();) {
+    		int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
+    		BoardDao map = con.OpenMap(request, BoardDao.class);
 
-          
-          // 게시물 ID에 해당하는 정보를 DB에서 가져옴 , 메서드는 따로 추가했음
-          BoardInfo post = map.getBoardInfoById(boardListNum);
+    		
+    		// 게시물 ID에 해당하는 정보를 DB에서 가져옴 , 메서드는 따로 추가했음
+    		BoardInfo post = map.getBoardInfoById(boardListNum);
 
           // 가져온 정보를 JSON 형태로 전송
           result.put("success", true);
@@ -37,15 +40,14 @@ public class showPost extends HttpServlet {
           
           System.out.println(post.getUserNickname());
 
-          
-       } catch (Exception e) {
-          e.printStackTrace();
-          result.put("success", false);
-          result.put("message", "게시글 조회에 실패했습니다.");
-       }
-//       response.setContentType("application/json");
-//       response.setCharacterEncoding("UTF-8");
-       
-       response.getWriter().write(result.toString());
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		result.put("success", false);
+    		result.put("message", "게시글 조회에 실패했습니다.");
+    	}
+//    	response.setContentType("text/plain");
+    	response.setContentType("application/json");
+    	response.getWriter().write(result.toString());
     }
 }

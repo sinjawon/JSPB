@@ -22,7 +22,7 @@ import javax.servlet.annotation.WebServlet;
             @WebInitParam(name="key",value="값")
       })
 public class ResourceMapping extends HttpServlet {
-   
+	/* "C:/javaweb/JSPB/src/main/webapp" */ /*  */
    private String defaultPath = "D:/jge_jspclone/JSPB/src/main/webapp";
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

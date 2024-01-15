@@ -87,3 +87,8 @@
 .insertpage-p{
 	float:right;
 }
+
+#userNickname{
+	border: none;
+	padding: 0 0 1.5rem;
+}

@@ -1,5 +1,6 @@
 package com.jsp.system;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import com.jsp.dao.*;
 
 
@@ -20,19 +23,30 @@ public class MessageServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	   
+    	 //인코딩 아닌거 중요하네  받고 도출 방법을 이렇게 해야하는데 내가 어디서 꼬인 코드를 만들었나봐
+		   request.setCharacterEncoding("UTF-8");
+		    response.setCharacterEncoding("UTF-8");
+		   response.setContentType("text/html;charset=UTF-8");
  	   
  	  
- 	   try(DBConnector con = new DBConnector();){
+ 	   try(DBConnector con = new DBConnector();
+ 			  BufferedReader reader = request.getReader();    
+ 			   ){
+ 		 
+ 		 StringBuilder sb = new StringBuilder();
+ 		 String line;
+ 		 while ((line = reader.readLine()) != null) {
+ 		     sb.append(line);
+ 		 }
+ 		// JSON 데이터 파싱
+		 JSONObject jsonObject = Ajax.JsonToObj(sb.toString());
  		  
- 		   //인코딩 아닌거 중요하네  받고 도출 방법을 이렇게 해야하는데 내가 어디서 꼬인 코드를 만들었나봐
- 		   request.setCharacterEncoding("UTF-8");
- 		    response.setCharacterEncoding("UTF-8");
- 		   response.setContentType("text/html;charset=UTF-8");
+ 		  
  		    
  			UserNoteDao map = con.OpenMap(request, UserNoteDao.class);
  			UserNoteSeeDao map2 = con.OpenMap(request, UserNoteSeeDao.class);
- 			response.getWriter().println("진행중이야1");
  			
+ 			System.out.println("어 나왔어");
  			Date currentDate = new Date();
  	    	Timestamp timestamp = new Timestamp(currentDate.getTime());
  	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -40,9 +54,11 @@ public class MessageServlet extends HttpServlet {
  	    	
  	    	response.getWriter().println("진행중이야2");
  	    	
- 	        String sender = request.getParameter("sender");
- 	        String receiver = request.getParameter("receiver");
- 	        String content = request.getParameter("content");
+ 	    	System.out.println("어 나왔어2");
+ 	        String sender = jsonObject.getString("sender");
+ 	       System.out.println("어 나왔어3");
+ 	        String receiver = jsonObject.getString("receiver");
+ 	        String content = jsonObject.getString("content");
  	       response.getWriter().println(sender+receiver+content);
  	       
 			/*
@@ -59,7 +75,7 @@ public class MessageServlet extends HttpServlet {
  	      
  	        map2.insertUserNoteSee();
  	        
- 	       
+ 	       System.out.println(sender+receiver+ content+ dateString);
  			response.sendRedirect("app/messagebox.jsp");
  		}
  		catch(Exception e) {

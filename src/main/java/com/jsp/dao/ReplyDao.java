@@ -15,15 +15,15 @@ public interface ReplyDao {
 //	private String regDate;
 	
 	// boardlistNum 를 기준으로 댓글개수
-	@Select("select count(*) from replyInfo where boardlistNum =#{boardlistNum}")
+	@Select("select count(*) from replyInfo where boardListNum =#{boardListNum}")
 	public int getReplyInfoAllCnt(@Param("boardListNum") int boardListNum);
 	
 	// boardlistNum 를 기준으로 댓글이 달린 게시글을 찾아가서 보여주기
-	@Select("select * from replyInfo where boardlistNum =#{boardlistNum}")
+	@Select("select * from replyInfo where boardListNum =#{boardListNum} order by replyNum")
 	public List<ReplyInfo> searchByBoardListNum(@Param("boardListNum") int boardListNum); 
 	
 	// 새로운 댓글을 추가하는 메서드. 
-	@Insert("insert into replyInfo (replyNum, boardListNum, replyContents, userNickname, regDate) values (seqReplyNum.nextval, #{boardlistNum}, #{replyContents}, #{userNickname}, sysdate)")
+	@Insert("insert into replyInfo (replyNum, boardListNum, replyContents, userNickname, regDate) values (seqReplyNum.nextval, #{boardListNum}, #{replyContents}, #{userNickname}, sysdate)")
 	public void insertNewReply(@Param("boardListNum") int boardListNum, @Param("replyContents") String replyContents, @Param("userNickname") String userNickname);
 		
 	// ReplyInfo 에 글 지울때 replyNum 인 글을 지운다?

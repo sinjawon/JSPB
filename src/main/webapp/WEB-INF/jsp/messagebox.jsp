@@ -19,7 +19,7 @@
     />
     
     <script src="/resources/modal.js" defer></script>
-    
+    <script src="/resources/messagebox.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/resources/messagebox.css" />
     
     <link rel="stylesheet" type="text/css" href="/resources/myreset.css" />
@@ -29,12 +29,15 @@
 </head>
 <body>
 
-
-
-<% 
+<% 	 request.setCharacterEncoding("UTF-8");
+     response.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+ 
   if(session.getAttribute("UserNickName") != null){
+	  			
+		 
 try(DBConnector con = new DBConnector();){
-	
+					
         		UserNoteDao note = con.OpenMap(request, UserNoteDao.class);
         		
         		UserNoteSeeDao cansee = con.OpenMap(request, UserNoteSeeDao.class);
@@ -47,7 +50,9 @@ try(DBConnector con = new DBConnector();){
         	    List<UserNote> SendNotes = note.NoteSender(userNickName);
         	    
         	    List<String> Sended = new ArrayList<>();
+        	    List<String> Sendedsee = new ArrayList<>();
         	    List<String> Received = new ArrayList<>();
+        	    List<String> Receivedsee = new ArrayList<>();
         	    
 
         		 %>
@@ -81,19 +86,20 @@ try(DBConnector con = new DBConnector();){
 			
 			if("1".equals(seenum) || "3".equals(seenum)){
 				Sended.add(notenum);
+				Sendedsee.add(seenum);
 			%> 
 
           <details>
-            <summary class="note-content">
+            <summary class="note-content" id="sendsum<%=notenum%>">
               <div class="note-content-box">
                 <div class="note-content-detail"><%=ReceiveNote.getNotetime()%></div>
                 <div class="note-content-writer"><%=ReceiveNote.getSender()%></div>
               </div>
               <div class="note-xbtn">
-                <form action="/deletmessege">
+                <form action="/Deletmessage/send" id="sendform<%=notenum%>">
 				   	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
-                  <button type="submit" class="deletebtn">
+                  <button type="button"  class="deletebtn" onclick="sendDelet('<%=notenum%>');" value="<%=notenum%>">
                     <i class="fa-solid fa-xmark fa-x"></i>
                   </button>
                 </form>
@@ -110,13 +116,15 @@ try(DBConnector con = new DBConnector();){
 	  <%}%>
 	  
 	  <% 
-	   JSONArray jsonArray = new JSONArray(Sended); 
-	 	String yesstt =	jsonArray.toString();	  
-	  %>
-	         <form action="/deletmessege">		  
-			       <input type="text"  name ="SenddAll" value="<%=yesstt%>">
-			       <input type="text"  name ="SendDeletAll" value="<%=Sended%>">
-				   <button type="submit">받은 메시지 모두삭제</button>
+	  
+
+	 	/* String yesstt =	jsonArray.toString(); */	  
+	  %> 
+	         <form action="/Deletmessage/sendAll" id="sendAllform">		  
+			      <%--  <input type="text"  name ="SenddAll" value="<%=yesstt%>"> --%>
+			       <input type="text"  name ="seenums" value="<%=Sendedsee%>">
+			       <input type="text"  name ="notenums" value="<%=Sended%>">
+				   <button type="button" onclick="sendDeletAll('<%=Sended%>');" >보낸 메시지 모두삭제</button>
 			  </form> 
 	 </div> 
         
@@ -133,23 +141,25 @@ try(DBConnector con = new DBConnector();){
 			 
 			if("2".equals(seenum) || "3".equals(seenum)) {
 				Received.add(notenum);
+				Receivedsee.add(seenum);
 			%> 
           <details>
-            <summary class="note-content">
+            <summary class="note-content" id="receivesum<%=notenum%>">
               <div class="note-content-box">
                 <div class="note-content-detail"><%=SendNote.getNotetime()%></div>
                 <div class="note-content-writer"><%=SendNote.getSender()%></div>
               </div>
               <div class="note-xbtn">
-                <form action="/deletmessege">
+                <form action="/Deletmessage/receive" id="recieveform<%=notenum%>">
 			     	<input type="hidden" name="seenum" value="<%=seenum%>">
 			     	<input type="hidden"  name ="notenum" value="<%=notenum%>">
-                  <button type="submit" class="deletebtn"  >
+                  <button type="button"  class="deletebtn" onclick="recieveDelet('<%=notenum%>');" value="<%=notenum%>">
                     <i class="fa-solid fa-xmark fa-x"></i>
                   </button>
                 </form>
               </div>
             </summary>
+           
 
             <p class="note-content-div"><%=SendNote.getNotecontent()%></p>
           </details>
@@ -159,15 +169,17 @@ try(DBConnector con = new DBConnector();){
 		 <div>로그인을 해주세요</div>
 	  <%}%>
 	  
-	  <% 
-	   JSONArray jsonArray2 = new JSONArray(Received);
-	 	String yesstt2 = jsonArray.toString();	  
-	  %>
-	         <form action="/deletmessege">		  
-			       <input type="text"  name ="SenddAll" value="<%=yesstt2%>">
-			       <input type="text"  name ="SendDeletAll" value="<%=Received%>">
-				   <button type="submit" class="showmessage">보낸 메시지 모두삭제</button>
+	
+	         <form action="/Deletmessage/receiveAll" id="receiveAllform">		  
+			     <input type="text"  name ="seenums" value="<%=Receivedsee%>">
+			       <input type="text"  name ="notenums" value="<%=Received%>">
+				   <button type="button" class="showmessage" onclick="recieveDeletAll('<%=Received%>');">받은 메시지 모두삭제</button>
 			  </form>
+			   <!-- <form action="/Deletmessage/sendAll" id="sendAllform">		  
+			       <input type="text"  name ="seenums" value="<%=Sendedsee%>">
+			       <input type="text"  name ="notenums" value="<%=Sended%>">
+				   <button type="button" onclick="sendDeletAll('<%=Sended%>');" >보낸 메시지 모두삭제</button>
+			  </form>  -->
 	
 	 </div> 
         
@@ -198,7 +210,7 @@ try(DBConnector con = new DBConnector();){
               required><br />
             	<textarea name="content" placeholder="내용"  class="notereceiver-content" required></textarea
             ><br />
-                <input type="submit" value="전송" class="write-btn"/>
+                <input type="button" value="전송" class="write-btn" onclick="writemessage();"/>
             </div>
           </form>
         </div>
