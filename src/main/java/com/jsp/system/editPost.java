@@ -16,7 +16,10 @@ import com.jsp.dto.BoardInfo;
 @WebServlet("/api/editPost")
 public class editPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+    	request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+    	
+    	
        String userNickname = request.getParameter("userNickname");
        int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
        System.out.println(boardListNum);

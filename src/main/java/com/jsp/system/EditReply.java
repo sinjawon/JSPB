@@ -22,6 +22,9 @@ import com.jsp.dto.ReplyInfo;
 public class EditReply extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+    	
 
   	    int replyNum = Integer.parseInt(request.getParameter("replyNum"));
         String replyContents = request.getParameter("replyContents");

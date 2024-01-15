@@ -21,6 +21,8 @@ import com.jsp.dto.ReplyInfo;
 public class AddReply extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
     	
     	int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
         String replyContents = request.getParameter("replyContents");
