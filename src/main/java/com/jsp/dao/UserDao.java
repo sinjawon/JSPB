@@ -62,11 +62,13 @@ public interface UserDao {
 	
 	
 	
+	//유저 넘버로 삭제
+	@Delete("delete from Member3 where userNum = #{usernum}")
+	public void deleteUser(@Param("usernum") String usernum);
 	
-
-	
-	
-	
+	//유저 아이디 ,바꿀 비밀번호 비밀번호 변경
+	@Update("update Member3 set userPw=#{newPassword} where userid=#{userid}")
+	public void updateUserPassword(@Param("userid") String userid, @Param("newPassword") String newPassword);
 	
 	
 	
