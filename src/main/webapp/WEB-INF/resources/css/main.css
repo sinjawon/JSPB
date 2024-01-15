@@ -177,3 +177,8 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 .free-a > #boards .board > .title {
   margin-bottom: 0.4rem;
 }
+
+.fa-solid:hover {
+  color: #fa5;
+}
+	
