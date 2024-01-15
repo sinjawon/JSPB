@@ -30,43 +30,20 @@
     <div> 이미지 공간 4개까지</div>
 	<% session.getAttribute("UserNickName"); %>
 
-	<div id="buttonContainer"></div>
 	
     <div class="detail_btn">
-    <c:if test="${data.userNickname eq sessionScope.userNickname}">
-        <button onclick="editPost(${data.boardListNum})">수정</button>
-    </c:if>
+
     <form action="/app/boardlist.jsp" method="post" class=btnform>
+		<div id="buttonContainer"></div>
         <button type="submit" class='goback'>뒤로가기</button>
     </form>
     </div>
     
-    <div id="replyContainer">
-		<template>
-			<div class="userNickname">작성자</div>
-			<div class="replyContents">본문</div>
-			<div class="regDate">등록일</div>
-			<button class="editReply" name="editReply"
-				onclick="editReply(${data.replyNum})">수정</button>
-			<button class="deleteReply" name="deleteReply"
-				onclick="deleteReply(${data.replyNum})">삭제</button>
-		</template>
-	</div>
     
     <div class="comment_box">
      <h4>댓글</h4>
-    <c:choose>
-    <c:when test="${not empty replyList}">
-        <c:forEach var="reply" items="${replyList}">
-            <div class="replyContents">${reply.replyContents}</div>
-            <div class="userNickname">${reply.userNickname}</div>
-            <div class="regDate">${reply.regDate}</div>
-        </c:forEach>
-    </c:when>
-    <c:otherwise>
-        <p>댓글이 없습니다.</p>
-    </c:otherwise>
-</c:choose>
+    
+
     <div id="replyContainer" class="modi_btn">
 		<template>
 			<div class="userNickname">작성자</div>

@@ -48,8 +48,6 @@ function loadReply() {
         }
     });
 }
-// 댓글작성자
-let currentUser = sessionUser; // 실제 기본값으로 설정하세요
 function displayReply(replies) {
     let replyContainer = document.querySelector("#replyContainer");
     let template = document.querySelector("#replyContainer template");
@@ -60,11 +58,7 @@ function displayReply(replies) {
             clone.querySelector(".userNickname").innerHTML = data.userNickname;
             clone.querySelector(".replyContents").innerHTML = data.replyContents;
             clone.querySelector(".regDate").innerHTML = data.regDate;
-            if (currentUser === data.userNickname) {
-                // 맞다면 삭제 버튼을 활성화
-                clone.querySelector(".deleteReply").setAttribute("data-replynum", data.replyNum.toString());
-            }
-            console.log(currentUser, data.userNickname);
+            clone.querySelector(".deleteReply").setAttribute("data-replynum", data.replyNum.toString());
             replyContainer.appendChild(clone);
         }
     }

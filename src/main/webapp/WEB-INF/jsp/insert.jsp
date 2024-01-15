@@ -22,7 +22,7 @@
 	        <button type="button" onclick="submitPost()" class="insertok">확인</button>
 	        <button type="button" onclick="cancelPost()" class="cancelbtn">취소</button>
 	        <form action="/app/boardlist" method="post">
-	            <button type="button" onclick="location.href='/app/boardlist.jsp'" class="backbtn">뒤로가기</button>
+	            <button type="button" onclick="location.href='/app/boardlist.jsp'" class="backbtn">게시판</button>
 	         </form>  
     </form>
            </div>

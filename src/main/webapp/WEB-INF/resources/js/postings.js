@@ -78,6 +78,7 @@ window.onload = function () {
 };
 function editPost() {
     let form = document.getElementById("editForm");
+    
     form.submit();
     // location.href="/boardList.jsp";
 }
