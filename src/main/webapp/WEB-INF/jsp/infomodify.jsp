@@ -24,6 +24,7 @@
         		 String usernum = (String)session.getAttribute("UserNum");
         		   String gender = map.getAnimalGender(usernum).toStringPatGender();
         		   UserDao map2 = con.OpenMap(request, UserDao.class);
+        		   
         		 %>  
         		           
   <form action="/infomodify" method="post" enctype="multipart/form-data"> 
@@ -86,11 +87,11 @@
          </form>
     </div>
     <script>
-  			document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+  			document.getElementById('date').value = new Date().toISOString().substring(0, 10); 
 </script>
     	<%
-        	
-           	}
+}
+            	
         	catch(Exception e) {
         		e.printStackTrace();
         	} 
