@@ -15,68 +15,58 @@ function ajax(url, option) {
         return fetch(url, option).then((res) => res.json());
     });
 }
-// 처음 전체 보드리스트 출력 
-ajax("/api/replylist", {
-    method: "POST",
-    body: new FormData(document.getElementById("searchtype")),
-}).then((json) => {
-    var _a, _b;
-    console.log(json);
-    let boards = document.querySelector("#boards");
-    let template = document.querySelector("#boards template");
-    if (template) {
-        for (let data of json.data) {
-            template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-            (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
-            template.content.querySelector(".title").innerHTML = data.title;
-            (_b = template.content.querySelector(".title")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
-            template.content.querySelector(".mainContents").innerHTML = data.mainContents;
-            template.content.querySelector(".userNickname").innerHTML = data.userNickname;
-            template.content.querySelector(".hitCount").innerHTML = data.hitCount;
-            template.content.querySelector(".regDate").innerHTML = data.regDate;
-            let a = document.createElement("a");
-            // let span: HTMLElement | null = document.createElement("span");
-            a.innerHTML = template.innerHTML;
-            if (boards) {
-                boards.appendChild(a);
-            }
-        }
-    }
-});
+window.onload = submitSearch();
 // 검색 폼 제출 시 호출되는 함수
 function submitSearch() {
     console.log("전송되었습니다");
-    // 검색 폼 가져오기
-    let form = document.getElementById("searchtype");
+    let form = document.getElementById("searchform");
     if (form) {
         let formData = new FormData(form);
-        ajax("/api/boardlist", {
+        ajax("/api/boardList", {
             method: "POST",
             body: formData,
         }).then((json) => {
+            var _a, _b;
             console.log(json);
             let boards = document.querySelector("#boards");
             let template = document.querySelector("#boards template");
+            let pagesContainer = document.querySelector("#pages");
+            let pageTemplate = document.querySelector("#pages template");
             // 기존의 게시글 목록을 지우고 새로운 검색 결과를 표시
             if (template) {
                 boards.innerHTML = "";
-                // JSON 데이터를 이용하여 동적으로 HTML 생성
+                if (json.data.length === 0) {
+                    alert("일치하는 결과가 없습니다. 리스트로 돌아갑니다.");
+                    location.reload(); // 페이지를 강제로 다시 로드
+                    return;
+                }
                 for (let data of json.data) {
-                    // 새로운 div 생성
+                    template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
+                    (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
+                    template.content.querySelector(".title").innerHTML = data.title;
+                    (_b = template.content.querySelector(".title")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
+                    template.content.querySelector(".mainContents").innerHTML = data.mainContents;
+                    template.content.querySelector(".userNickname").innerHTML = data.userNickname;
+                    template.content.querySelector(".hitCount").innerHTML = data.hitCount;
+                    template.content.querySelector(".regDate").innerHTML = data.regDate;
                     let a = document.createElement("div");
-                    // template 내용을 복제하여 div에 추가
-                    let clone = document.importNode(template.content, true);
-                    a.appendChild(clone);
-                    // 동적으로 생성된 div에 데이터 추가
-                    a.querySelector(".boardListNum").innerHTML = data.boardListNum;
-                    a.querySelector(".title").innerHTML = data.title;
-                    a.querySelector(".mainContents").innerHTML = data.mainContents;
-                    a.querySelector(".userNickname").innerHTML = data.userNickname;
-                    a.querySelector(".hitCount").innerHTML = data.hitCount;
-                    a.querySelector(".regDate").innerHTML = data.regDate;
-                    // div를 #boards 아래에 추가
-                    boards.appendChild(template);
-                    boards.appendChild(a);
+                    a.innerHTML = template.innerHTML;
+                    if (boards) {
+                        boards.appendChild(template);
+                        boards.appendChild(a);
+                    }
+                }
+            }
+            if (pageTemplate && pagesContainer) {
+                pagesContainer.innerHTML = "";
+                for (let i = 1; i <= json.totalPages; i += 1) {
+                    let span = document.createElement("span");
+                    span.innerText = i;
+                    span.onclick = function () {
+                        pageChange(i);
+                    };
+                    pagesContainer.appendChild(pageTemplate);
+                    pagesContainer.appendChild(span);
                 }
             }
         });
@@ -84,25 +74,6 @@ function submitSearch() {
 }
 // 페이지 링크 동기화 안되었음 일단 클릭하면 이동은 가능함
 function pageChange(page) {
-    document.querySelector("#searchtype #page").value = page;
+    document.querySelector("#searchform #page").value = page;
     submitSearch();
-}
-// 삭제
-function deletePost(boardListNum) {
-    fetch(`/api/deletePost?boardListNum=${boardListNum}`, {
-        method: "POST"
-    })
-        .then(response => response.json())
-        .then(data => {
-        if (data.success) {
-            console.log("게시글 삭제 성공");
-            // 삭제 성공 시 필요한 작업 수행
-        }
-        else {
-            console.error("게시글 삭제 실패:", data.message);
-        }
-    })
-        .catch(error => {
-        console.error('게시글 삭제 중 오류 발생:', error);
-    });
 }

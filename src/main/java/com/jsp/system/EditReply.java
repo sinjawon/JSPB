@@ -42,6 +42,6 @@ public class EditReply extends HttpServlet {
             e.printStackTrace();
 //            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
-	response.sendRedirect("/postView.jsp");
+	response.sendRedirect("/WEB-INF/jsp/postview.jsp");
     }
 }

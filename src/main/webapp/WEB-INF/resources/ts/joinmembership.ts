@@ -92,7 +92,7 @@ async function logincheckID(){
   document.getElementById('signupForm').addEventListener('submit', function(event) {
     
     event.preventDefault();
- 
+  
     
     let name = document.getElementById('name').value;
     let nickname = document.getElementById('nickname').value;
@@ -123,7 +123,6 @@ async function logincheckID(){
 
       alert(errorMessage);
     }
-    
   });
 
 
