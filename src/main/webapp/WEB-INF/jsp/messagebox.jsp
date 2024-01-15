@@ -64,13 +64,13 @@ try(DBConnector con = new DBConnector();){
       <div class="modal">
         <h2>쪽지함</h2>
         <div class="notebtn-box">
-          <button type="button" class="notebtn1">받은쪽지</button>
-          <button type="button" class="notebtn2">보낸쪽지</button>
+          <button type="button" class="notebtn1">보낸쪽지</button>
+          <button type="button" class="notebtn2">받은쪽지</button>
           <button type="button" class="notebtn3">쪽지쓰기</button>
         </div>
         
         <div id="sender" class="note-sendview">
-          <div class="note-title">보낸쪽지</div>
+          <div class="note-title">받은쪽지</div>
           <%if(session.getAttribute("UserNickName") != null){%>
          
 		<% for(UserNote ReceiveNote : ReceiveNotes) {
@@ -122,7 +122,7 @@ try(DBConnector con = new DBConnector();){
         
         
         <div id="receiver" class="note-reception">
-          <div class="note-title">받은쪽지</div>
+          <div class="note-title">보낸쪽지</div>
           <%if(session.getAttribute("UserNickName") != null){%>
          		
 		<% for(UserNote SendNote : SendNotes) { 
