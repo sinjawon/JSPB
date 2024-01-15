@@ -25,7 +25,6 @@ try(DBConnector con = new DBConnector();){
             String email = request.getParameter("email");     
            String foundUserId = "이거다";
     %>
-
             <p>찾는 아이디: <%= foundUserId %></p>
 
     <%
@@ -40,18 +39,22 @@ try(DBConnector con = new DBConnector();){
     <%
         } else {
     %>
+    <div class="idsearch">
 
             <form action="/app/findIdPassword.jsp" method="post">
                 <label>Email: <input type="text" name="email"></label>
                 <input type="hidden" name="action" value="findId">
                 <input type="submit" value="아이디찾기">
             </form>
+    </div>
+    <div class="pwdsearch">
 
             <form action="/app/findIdPassword.jsp" method="post">
                 <label>User ID: <input type="text" name="userId"></label>
                 <input type="hidden" name="action" value="findPassword">
                 <input type="submit" value="비밀번호찾기">
             </form>
+   </div>
 
     <%
         }

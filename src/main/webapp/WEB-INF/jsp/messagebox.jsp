@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/messagebox.css" />
     
     <link rel="stylesheet" type="text/css" href="/resources/myreset.css" />
+<script defer src="/resources/pagenumber.js"></script> 
     <meta charset="UTF-8">
     
     <title>쪽지함</title>
@@ -224,6 +225,11 @@ try(DBConnector con = new DBConnector();){
     
 
     
-
+<div id="pages" class="pages">
+		<template> 
+			<span onclick="pageChange(this.innerText)">1</span>
+		</template>
+	</div>
+        
 </body>
 </html>
