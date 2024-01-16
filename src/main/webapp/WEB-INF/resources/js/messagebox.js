@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-};
+}; 
 function messgeajax(url, option) {
     return __awaiter(this, void 0, void 0, function* () {
         return fetch(url, option).then((res) => res.json());
