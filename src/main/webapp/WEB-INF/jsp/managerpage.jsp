@@ -80,7 +80,6 @@ var users = <%=array.toString()%>;</script>
       <div class="manaber-box">
         <div class="manaber-title">회원관리</div>
        
-          <div class="membership-box">
         <table class="manager-membership">
         
           <tr>

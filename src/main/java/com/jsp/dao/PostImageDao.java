@@ -1,4 +1,4 @@
-
+  
 package com.jsp.dao;
 
 import java.io.*;
@@ -18,3 +18,4 @@ public interface PostImageDao {
 	void saveImage(PostImage postImage);
 	}
 
+  

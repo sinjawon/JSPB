@@ -8,7 +8,7 @@ import com.jsp.dto.*;
 
 @Mapper
 public interface UserNoteDao {
-	
+	   
 	//메시지 저장 
 	@Insert("INSERT INTO UserNote(notenum,sender,receiver,notecontent,notetime) VALUES(notesq.NEXTVAL,#{sender}, #{receiver}, #{notecontent}, #{notetime})")
 	public void insertUserNote(

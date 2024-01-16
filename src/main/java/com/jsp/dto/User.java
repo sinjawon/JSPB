@@ -9,8 +9,8 @@ package com.jsp.dto;
 	    private String userPw;//유저페스워드
 	    private String userEmail;//유저 이메일
 	    private String userProfile;//유저 이미지
-	    private String userJoinDay;//가입날짜
-	    
+	    private String userJoinDay;
+	        
 		public String getUserNum() {
 			return userNum;
 		}

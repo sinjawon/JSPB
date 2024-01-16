@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import com.jsp.dto.UserNote;
 
 public interface UserNoteSeeDao {
-		
+		   
 	    //메시지 저장
 		@Insert("INSERT INTO UserNoteSee (notenum) VALUES(notesee.NEXTVAL)")
 		public void insertUserNoteSee();

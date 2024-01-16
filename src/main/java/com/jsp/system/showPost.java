@@ -54,3 +54,4 @@ public class showPost extends HttpServlet {
     	response.getWriter().write(result.toString());
     }
 }
+   

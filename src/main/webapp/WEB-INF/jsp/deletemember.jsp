@@ -22,7 +22,7 @@
 
         .deleteWrap{
         text-align: center;
-   
+      
         }
     </style>
     <script type="text/javascript">         

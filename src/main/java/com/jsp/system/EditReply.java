@@ -45,3 +45,4 @@ public class EditReply extends HttpServlet {
 	response.sendRedirect("/WEB-INF/jsp/postview.jsp");
     }
 }
+   

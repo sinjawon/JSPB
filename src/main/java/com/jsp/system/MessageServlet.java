@@ -41,7 +41,7 @@ public class MessageServlet extends HttpServlet {
  		// JSON 데이터 파싱
 		 JSONObject jsonObject = Ajax.JsonToObj(sb.toString());
  		  
- 		  
+ 		     
  		    
  			UserNoteDao map = con.OpenMap(request, UserNoteDao.class);
  			UserNoteSeeDao map2 = con.OpenMap(request, UserNoteSeeDao.class);

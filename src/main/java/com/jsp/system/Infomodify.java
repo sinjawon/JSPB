@@ -53,8 +53,8 @@ public class Infomodify extends HttpServlet{
 						UserDao map = con.OpenMap(request, UserDao.class);
 						
 						UserAnimalDao map2 =con.OpenMap(request, UserAnimalDao.class);
-
-						
+   
+						   
 					     String usernum = (String)session.getAttribute("UserNum");			    
 					   //유저 닉네임 이메일 수정
 					   

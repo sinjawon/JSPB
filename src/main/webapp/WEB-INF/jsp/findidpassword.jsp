@@ -86,24 +86,7 @@ try(DBConnector con = new DBConnector();){
          <%--   <p class="findpwd">찾는 비번: <%= foundPassword %></p> --%>
 
     <%
-        } else if("findPassword".equals(action) == false ){ %>
-<script>
-    	    Swal.fire({
-    	    	  title: "찾는비번",
-    	    	  text: "못찾았습니다.",
-    	    	  icon: "success",
-    	    	  
-    	    	  confirmButtonColor: '#3085d6',
-    	    	  confirmButtonText: '확인' 
-    	    	}).then(result => {
-    	    		//확인 누르면
-    	    		if(result.isConfirmed) {
-    	    			window.location.href="/app/login.jsp";
-    	    		}
-    	    	});
-    	   </script>
-        <%}
-        else {
+        } else {
     %>
     
    <div class="findbox">

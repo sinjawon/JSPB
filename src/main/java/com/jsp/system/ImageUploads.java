@@ -45,7 +45,7 @@ public class ImageUploads extends HttpServlet{
 		}
 		return "";
 	}
-	
+	   
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Collection<Part> parts = req.getParts();

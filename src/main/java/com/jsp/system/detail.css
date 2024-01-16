@@ -54,12 +54,15 @@
 	font-size: 1.5rem;
 }
 
-.detail_btn{
+.detail_btn > form{
 	display: flex;
 	justify-content: right;
-	gap: 1rem;
+	gap: 0.3rem;
 }
-.detail_btn > button,
+.detail_btn > form > #buttonContainer > button{
+	margin-left:0.3rem; 
+}
+.detail_btn > form > #buttonContainer > button,
 .btnform > .goback
 {
 	border-radius: 10px;
@@ -122,6 +125,46 @@
 }
 
 .modi_btn{
-	margin-top:2rem;
+	margin:0.5rem;
+	padding-bottom:1rem ;
+	position: relative;
 }
 
+
+.userNickname,
+.regDate{
+	font-size: 0.7rem;
+}
+
+.replyContents{
+	padding: 0.5rem 0;
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+	position: relative;
+}
+
+.replyContents::before{
+	content:'';
+	width:100%;
+	border: 0.1px solid rgba(0, 0, 0, 0.2);
+	position: absolute;
+	bottom: 0;
+}
+
+
+
+.modi_btnWrap > button{
+	border-radius: 10px;
+	background-color: white;
+	border:1px solid black;
+	cursor: pointer;
+	padding: 0.1rem 0;
+	width: 3vw;
+	font-weight: bold;
+	font-size: 0.7rem;
+}
+
+.replyWrap{
+	display: flex;
+	justify-content: space-between;
+}

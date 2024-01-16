@@ -19,3 +19,4 @@ public class UserNoteSee {
 		this.cansee = cansee;
 	}	 
 }
+   

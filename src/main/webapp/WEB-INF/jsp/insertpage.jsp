@@ -31,7 +31,7 @@
       
       
 <%-- 	<p class="insertpage-p"><%=session.getAttribute("UserNickName") %> 님</p> 
- --%>
+ --%>  
 
     <div id="options">
     </div> 
