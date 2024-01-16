@@ -18,6 +18,10 @@ public interface UserDao {
 	        @Param("password") String password,
 	        @Param("dateString") String dateString
 	        );
+
+	//모든 유저
+	@Select( "select * from Member3")
+	public List<User> getAllUser();
 	
 	//아이디로 유저번호찾기
 	@Select( "select userNum from Member3 where userid=#{userid}")
