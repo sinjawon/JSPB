@@ -10,6 +10,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" type="text/css" href="/resources/manager.css"> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" defer></script>
+<script src="/resources/manager.js" defer></script>
 </head>
 <body>
 <%@include file="../jsp/nav.jsp"%>
@@ -30,7 +31,7 @@ try(DBConnector con = new DBConnector();){
       <div class="manager-top">
         <h3 class="manager-join">회원유동 그래프</h3>
         <div class="manager">
-        <canvas id="bar-chart" width="300" height="230"></canvas>
+        <canvas id="bar-chart"></canvas>
         </div>
       </div>
 
@@ -49,7 +50,7 @@ try(DBConnector con = new DBConnector();){
             <div class="boardDocs">
             	<ul>
              <%for (User user : userNumNiCk){%>
-            		<li><p>회원 넘버: <%=user.getUserNum()%></p> <p>회원 닉네임:<%=user.getUserNickname()%></p> <button>회원삭제</button></li>
+            		<li><p>회원 넘버: <%=user.getUserNum()%></p> <p>회원 닉네임:<%=user.getUserNickname()%></p> <button value="<%=user.getUserNum()%>">회원삭제</button></li>
             	<%}%>	
             	</ul>
             
