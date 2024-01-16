@@ -80,5 +80,7 @@ package com.jsp.dto;
     public String toStringProfile() {
     	return this.userProfile;
     }
-	  
-}
+    
+   
+    
+	}
