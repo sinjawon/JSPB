@@ -99,12 +99,12 @@ function ChartGraph(query, options){
 
   let monthRanges = [4, 3, 2, 1, 0];
   let monthCounts = monthRanges.map((daysAgo) =>
-	filterUsersByTimeRange(users, 0, daysAgo, 0).length
+	filterUsersByTimeRange(users, daysAgo, 0, 0).length
   );
 
   let yearRanges = [4, 3, 2, 1, 0];
   let yearCounts = yearRanges.map((daysAgo) =>
-	filterUsersByTimeRange(users, daysAgo, 0, 0).length
+	filterUsersByTimeRange(users, 0, daysAgo, 0).length
   );
 
 
@@ -125,3 +125,23 @@ function ChartGraph(query, options){
 
 //로드하면 일다 이거 보여주고
   ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별"});
+
+
+
+
+
+  ///////////////////////////////////////////////
+   // 버튼 클릭 이벤트 처리
+   function deleteButtonClickHandler(button) {
+    // 현재 클릭된 버튼의 value 값 가져오기
+    let buttonValue = button.value;
+	console.log(buttonValue);
+
+    // AJAX를 사용하여 삭제 
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:4885/DeletUser/", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+    xhr.send("buttonValue=" + encodeURIComponent(buttonValue));
+	button.parentNode.parentNode.remove();
+}

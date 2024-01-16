@@ -96,7 +96,7 @@ var users = <%=array.toString()%>;
 	            <td><%=user.getUserNum()%></td>
 	            <td><%=user.getUserNickname()%></td>
 	            <td><%=user.getUserJoinDay()%></td>
-	            <td><button value="<%=user.getUserNum()%>">회원삭제</button></td>
+	            <td><button value="<%=user.getUserNum()%>"  onclick="deleteButtonClickHandler(this)">회원삭제</button></td>
 	          </tr>
 	          <%}%>	
 	          
