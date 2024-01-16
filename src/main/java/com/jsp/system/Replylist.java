@@ -23,9 +23,11 @@ import com.jsp.dto.ReplyInfo;
 
 @WebServlet("/api/replylist")
 public class Replylist extends HttpServlet {
- protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-	 request.setCharacterEncoding("utf-8");
-	 response.setCharacterEncoding("utf-8");
+ protected void doPost(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+	 
+	 request.setCharacterEncoding("UTF-8");
+     response.setCharacterEncoding("UTF-8");
      response.setContentType("application/json");
 
              try (DBConnector con = new DBConnector();) {

@@ -16,6 +16,9 @@ import com.jsp.dto.BoardInfo;
 @WebServlet("/api/showPost")
 public class showPost extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
        
      	request.setCharacterEncoding("utf-8");
     	response.setCharacterEncoding("utf-8");

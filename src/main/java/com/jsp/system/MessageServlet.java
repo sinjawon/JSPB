@@ -76,6 +76,7 @@ public class MessageServlet extends HttpServlet {
  	        map2.insertUserNoteSee();
  	        
  	       System.out.println(sender+receiver+ content+ dateString);
+ 	       
  			response.sendRedirect("app/messagebox.jsp");
  		}
  		catch(Exception e) {

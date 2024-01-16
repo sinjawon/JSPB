@@ -17,27 +17,27 @@ import org.json.JSONObject;
 import com.jsp.dao.BoardDao;
 import com.jsp.dto.*;
 
-	@WebServlet("/api/boardList")
-	public class Boardlist extends HttpServlet {
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    
-	    	request.setCharacterEncoding("utf-8");
-	    	response.setCharacterEncoding("utf-8");
-	    	response.setContentType("application/json");
-	   	
-	    	try(DBConnector con = new DBConnector();){
-	    		BoardDao map = con.OpenMap(request, BoardDao.class);
-	    			    		
-	    		List<BoardInfo> exec = null;
-	    		
-	    		int page = 1; // 기본값 1로 설정 현재페이지
-	            int limit = 10; // 페이지당 아이템 수
-	            int totalItems = map.getBoardInfoAllCnt();
-	            int totalPages = (int) Math.ceil((double) totalItems / limit);
-	            System.out.println(request.getParameter("page"));
-	            if (request.getParameter("page") != null) {
-	            	page = Integer.parseInt(request.getParameter("page"));
-	            }
+   @WebServlet("/api/boardlist")
+   public class Boardlist extends HttpServlet {
+       protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	   	
+    	  request.setCharacterEncoding("utf-8");
+          response.setCharacterEncoding("utf-8");
+          response.setContentType("application/json");
+         
+          try(DBConnector con = new DBConnector();){
+             BoardDao map = con.OpenMap(request, BoardDao.class);
+                          
+             List<BoardInfo> exec = null;
+             
+             int page = 1; // 기본값 1로 설정 현재페이지
+               int limit = 10; // 페이지당 아이템 수
+               int totalItems = map.getBoardInfoAllCnt();
+               int totalPages = (int) Math.ceil((double) totalItems / limit);
+               System.out.println(request.getParameter("page"));
+               if (request.getParameter("page") != null) {
+                  page = Integer.parseInt(request.getParameter("page"));
+               }
 
 	            // 아이템의 시작 위치 계산
 	            
