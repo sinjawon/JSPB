@@ -19,7 +19,6 @@ public class deletePost extends HttpServlet {
         	
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-
         
         try (DBConnector dbConnector = new DBConnector();) {
             int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));

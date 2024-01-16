@@ -49,7 +49,11 @@
 .gojoin {
   font-size: 13px;
   text-align: right;
+  float: right;
+  display: flex;
+  gap: 2rem;
 }
+
 
 .gojoin > a {
   text-decoration: none;
