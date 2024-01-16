@@ -169,7 +169,7 @@ try(DBConnector con = new DBConnector();){
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
 	  <%}%>
-	  
+	   
 	
 	         <form action="/Deletmessage/receiveAll" id="receiveAllform">		  
 			     <input type="text"  name ="seenums" value="<%=Receivedsee%>">
