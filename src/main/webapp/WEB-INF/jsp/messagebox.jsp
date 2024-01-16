@@ -168,7 +168,7 @@ try(DBConnector con = new DBConnector();){
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
 	  <%}%>
-	  
+	   
 	
 	         <form action="/Deletmessage/receiveAll" id="receiveAllform">		  
 			     <input type="text"  name ="seenums" value="<%=Receivedsee%>">
@@ -200,8 +200,8 @@ try(DBConnector con = new DBConnector();){
         <div class="note-write">
           <h2 class="note-title3">쪽지 작성</h2>
           <div class="note-write-form"> 
-          <form action="/MessageServlet" method="POST" accept-charset="UTF-8">
-            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNickName") %>" required readonly style="border:none;"/><br />
+          <form action="/MessageServlet" method="POST" accept-charset="UTF-8" id="writemessage">
+            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNickName")%>" required readonly style="border:none;" /><br />
             <input
               type="text"
               name="receiver"
