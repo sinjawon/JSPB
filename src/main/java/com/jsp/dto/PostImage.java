@@ -5,7 +5,7 @@ public class PostImage {
 	private String imageName; //랜덤생성될 예정
 	private int boardListNum; //외래키
 	private int imageNum;// 이미지 나올 순서
-	
+	   
 	public String getImageName() {
 		return imageName;
 	}

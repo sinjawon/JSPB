@@ -12,7 +12,7 @@ public class UserAnimal {
 	    private String animalgender;//동물성별
 	    private String animalweight;//동물무게
 	    private String animalProfile;//동물이미지
-	    
+	          
 		public String getUserNum() {
 			return userNum;
 		}

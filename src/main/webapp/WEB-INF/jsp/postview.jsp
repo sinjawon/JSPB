@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="com.jsp.system.Ajax, org.json.*" %>
+<%@ page import="com.jsp.system.Ajax, org.json.*,java.util.*" %>
 <%@ page import="com.jsp.dto.ReplyInfo" %>
+
+
 
 
 <!DOCTYPE html>
@@ -20,6 +22,7 @@
 </head>
 <body>
 	<%@include file="../jsp/nav.jsp"%>
+
 	<div class="detail">
     <h3>자유게시판</h3>
     <div class="detail_board">
@@ -30,62 +33,45 @@
     <div> 이미지 공간 4개까지</div>
 	<% session.getAttribute("UserNickName"); %>
 
-	<div id="buttonContainer"></div>
 	
     <div class="detail_btn">
-    <c:if test="${data.userNickname eq sessionScope.userNickname}">
-        <button onclick="editPost(${data.boardListNum})">수정</button>
-    </c:if>
+
     <form action="/app/boardlist.jsp" method="post" class=btnform>
-        <button type="submit" class='goback'>뒤로가기</button>
+		<div id="buttonContainer"></div>
+        <button type="submit" class='goback'>게시판가기</button>
     </form>
     </div>
-    
-    <div id="replyContainer">
-		<template>
-			<div class="userNickname">작성자</div>
-			<div class="replyContents">본문</div>
-			<div class="regDate">등록일</div>
-			<button class="editReply" name="editReply"
-				onclick="editReply(${data.replyNum})">수정</button>
-			<button class="deleteReply" name="deleteReply"
-				onclick="deleteReply(${data.replyNum})">삭제</button>
-		</template>
-	</div>
+       
     
     <div class="comment_box">
      <h4>댓글</h4>
-    <c:choose>
-    <c:when test="${not empty replyList}">
-        <c:forEach var="reply" items="${replyList}">
-            <div class="replyContents">${reply.replyContents}</div>
-            <div class="userNickname">${reply.userNickname}</div>
-            <div class="regDate">${reply.regDate}</div>
-        </c:forEach>
-    </c:when>
-    <c:otherwise>
-        <p>댓글이 없습니다.</p>
-    </c:otherwise>
-</c:choose>
+    
+
     <div id="replyContainer" class="modi_btn">
 		<template>
-			<div class="userNickname">작성자</div>
-			<div class="replyContents">본문</div>
-			<div class="regDate">등록일</div>
-			<button class="editReply" name="editReply"
-				onclick="editReply(${data.replyNum})">수정</button>
-			<button class="deleteReply" name="deleteReply"
-				onclick="deleteReply(${data.replyNum})">삭제</button>
+			<div class="replyWrap">
+				<div>
+					<div class="userNickname">작성자</div>
+					<div class="regDate">등록일</div>
+				</div>
+				<div class="modi_btnWrap">
+					<button class="editReply" name="editReply"
+						onclick="editReply(${data.replyNum})">수정</button>
+					<button class="deleteReply" name="deleteReply"
+						onclick="deleteReply(${data.replyNum})">삭제</button>
+				</div>
+			</div>
+				<div class="replyContents">본문</div>
 		</template>
 	</div>
  
     <form id="replyForm" action="/api/addReply" method="post">
        <div class="writing_field">
        		<input type="text" id="boardListNumInput" name="boardListNum"
-			value="<%=request.getParameter("id")%>" readonly>
+			value="<%=request.getParameter("id")%>" readonly style="display:none;">
 			<input type="text" id="userNickname" name="userNickname"
 			value="<%=session.getAttribute("UserNickName")%>"
-			placeholder="작성자 닉네임">
+			placeholder="작성자 닉네임" style="display:none;">
         	<textarea id="replyContents" name="replyContents" placeholder="댓글 내용을 입력하세요" class="text"></textarea>
         	<button type="button" onclick="addReply()" class="writing_btn">등록</button>
        </div>      
@@ -93,6 +79,7 @@
     </div>
       </div>
 	<%@include file="../jsp/footer.jsp"%>
+	    
       
 </body>
 </html>

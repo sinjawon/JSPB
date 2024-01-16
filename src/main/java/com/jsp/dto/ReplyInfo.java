@@ -6,7 +6,7 @@ public class ReplyInfo {
 	private String replyContents; // 댓글 내용
 	private String userNickname;
 	private String regDate;
-	
+	   
 	public int getReplyNum() {
 		return replyNum;
 	}

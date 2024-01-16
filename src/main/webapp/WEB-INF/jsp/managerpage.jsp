@@ -81,14 +81,15 @@ var users = <%=array.toString()%>;</script>
         <div class="manaber-title">회원관리</div>
        
         <table class="manager-membership">
+        
           <tr>
             <th>회원넘버</th>
             <th>닉네임</th>
             <th>가입날짜</th>
             <th></th>
           </tr>
-          
              <%for (User user : allUser){%>
+             
           <tr class="manager-tr">
             <td><%=user.getUserNum()%></td>
             <td><%=user.getUserNickname()%></td>
@@ -96,7 +97,10 @@ var users = <%=array.toString()%>;</script>
             <td><button value="<%=user.getUserNum()%>">회원삭제</button></td>
           </tr>
           <%}%>	
+          
         </table> 
+          </div>
+        
       </div>
     </div>
     

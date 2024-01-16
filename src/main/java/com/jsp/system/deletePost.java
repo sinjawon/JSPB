@@ -38,4 +38,4 @@ public class deletePost extends HttpServlet {
         
         response.getWriter().write(result.toString());
     }
-}
+}  

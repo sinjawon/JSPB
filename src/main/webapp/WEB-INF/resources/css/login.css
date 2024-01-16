@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 .login-box {
   width: 30vw;
   height: 70vh;
@@ -54,7 +53,6 @@
   gap: 2rem;
 }
 
-
 .gojoin > a {
   text-decoration: none;
   color: black;
@@ -63,7 +61,7 @@
 .login-img {
   width: 100%;
 }
-  
+
 .loginimg {
   width: 15vw;
   margin: auto;

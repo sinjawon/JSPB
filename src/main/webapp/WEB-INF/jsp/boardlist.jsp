@@ -132,7 +132,7 @@
    		<form action="/insert" method="post">
    			<button type="button" class="navyBtn" onClick="location.href='/insert.jsp'">글쓰기</button>
    		</form>   -->		
-
-
+   
+   
 </body>
 </html>

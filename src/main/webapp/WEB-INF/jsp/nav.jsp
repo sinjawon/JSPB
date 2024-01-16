@@ -25,7 +25,6 @@
 <body>
  <header>
   <%try(DBConnector con = new DBConnector();){
-        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
         		 String usernum = (String)session.getAttribute("UserNum"); 
         			UserDao map2 = con.OpenMap(request, UserDao.class);
         		 
@@ -35,7 +34,7 @@
          <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" style= "width:350px" /></a>
         </h1>
         <div class="menu">
-  			<div class="logo_img"><img src="/resource/logo.png" alt="" /></div>
+  			<a href="main.jsp"><div class="logo_img"><img src="/resource/logo.png" alt="logo" /></div></a>
           <div class="box">
             <div class="board">
               <ul>
@@ -45,7 +44,7 @@
                 <li><a href="tradeboard.jsp">애완용품거래</a></li>
               </ul>
             </div>
-            
+              
             <c:if test = "${sessionScope.UserNickName==null }" >
 	            <div class="login">
 	              <div><a href="login.jsp">로그인</a></div>

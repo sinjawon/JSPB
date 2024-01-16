@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+  
 .main_board {
   margin: auto;
   margin-top: 10rem;
@@ -51,6 +51,7 @@
   font-weight: lighter;
   color: rgba(0, 0, 0, 0.5);
 }
+
 
 .board > div:nth-of-type(2) > * {
   padding: 0.2rem 0;

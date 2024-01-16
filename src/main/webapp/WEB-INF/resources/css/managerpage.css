@@ -71,6 +71,9 @@ body {
 .boards-people,
 .boards-wrtie {
   background-color: white;
+  font-size:30px;
+  font-weight:bold;
+  line-height:5rem;
 }
 
 .manaber-title {
@@ -87,13 +90,22 @@ body {
   border: 2px solid black;
 }
 
-td,
-th {
-  text-align:center;
-  height:2rem;
+
+
+
+.manager-tr td{
+	text-align:center;
+  	height:2rem;
 }
 
 .manager-tr{
 	border-bottom:1px solid #ddd;
   	line-height: 2rem;
 }
+.membership-box{
+	width:100%;
+	overflow:auto;
+	height:10rem;
+}
+
+.membership-box table { white-space: nowrap; border-collapse: collapse; }

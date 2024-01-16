@@ -43,7 +43,7 @@ public class AddReply extends HttpServlet {
             ReplyDao rmap = con.OpenMap(request, ReplyDao.class);
             System.out.println("con 만들기???");
             
-           
+              
             // 댓글 등록
            rmap.insertNewReply(boardListNum, replyContents, userNickname);
            System.out.println(rmap);

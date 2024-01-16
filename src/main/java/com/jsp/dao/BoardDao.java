@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
-
+    
 @Mapper
 public interface BoardDao {
 

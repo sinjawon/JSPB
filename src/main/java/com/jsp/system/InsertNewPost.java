@@ -37,7 +37,7 @@ public class InsertNewPost extends HttpServlet {
         }
 
         response.setContentType("text/plain");
- 
+    
     	
         response.sendRedirect("/app/boardList.jsp");
     }
