@@ -10,12 +10,13 @@ public interface UserDao {
 	
 
 	//회원가입 시 등록 할 (이름,닉네임,아이디,비번) usernum은 시퀀스로 
-	@Insert("INSERT INTO Member3(userNum,userName,userNickName,userId,userPw,userJoinDay) VALUES(seqbd.NEXTVAL, #{name}, #{nickname}, #{userid}, #{password},#{dateString})")
+	@Insert("INSERT INTO Member3(userNum,userName,userNickName,userId,userPw,userEmail,userJoinDay) VALUES(seqbd.NEXTVAL, #{name}, #{nickname}, #{userid}, #{password},#{userEmail},#{dateString})")
 	public void joinmember(
 	        @Param("name") String name,
 	        @Param("nickname") String nickname,
 	        @Param("userid") String userid,
 	        @Param("password") String password,
+	        @Param("userEmail") String userEmail,
 	        @Param("dateString") String dateString
 	        );
 
@@ -54,6 +55,10 @@ public interface UserDao {
 	//유저비밀번호찾기 이건 api안뿌리게 
 	@Select("select userPw from Member3 where userid=#{userid}")
 	public User getuserpw(@Param("userid") String userid);
+	
+	//가장 높은 유저 넘버
+	@Select("SELECT MAX(userNum) FROM member3")
+	public int getHighestUserNum();
 	
 
 	
