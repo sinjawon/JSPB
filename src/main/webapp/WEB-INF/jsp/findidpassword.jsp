@@ -86,7 +86,7 @@ try(DBConnector con = new DBConnector();){
          <%--   <p class="findpwd">찾는 비번: <%= foundPassword %></p> --%>
 
     <%
-        } else if("findPassword".equals(action) == false){ %>
+        } else if("findPassword".equals(action) == false ){ %>
 <script>
     	    Swal.fire({
     	    	  title: "찾는비번",
@@ -101,7 +101,7 @@ try(DBConnector con = new DBConnector();){
     	    			window.location.href="/app/login.jsp";
     	    		}
     	    	});
-    	    
+    	   </script>
         <%}
         else {
     %>
