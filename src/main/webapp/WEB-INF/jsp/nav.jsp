@@ -39,9 +39,9 @@
             <div class="board">
               <ul>
                 <li><a href="boardlist.jsp">자유게시판</a></li>
-                <li><a href="boastboard.jsp">자랑게시판</a></li>
-                <li><a href="walkboard.jsp">산책게시판</a></li>
-                <li><a href="tradeboard.jsp">애완용품거래</a></li>
+                <li><a href="boardlist2.jsp">자랑게시판</a></li>
+                <li><a href="boardlist3.jsp">산책게시판</a></li>
+                <li><a href="boardlist4.jsp">애완용품거래</a></li>
               </ul>
             </div>
               

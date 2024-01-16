@@ -36,8 +36,8 @@
 	
     <div class="detail_btn">
 
-    <form action="/app/boardlist.jsp" method="post" class=btnform>
-		<div id="buttonContainer"></div>
+    <form action="/app/boardlist.jsp" method="post" class="btnform">
+		<div id="buttonContainer" class="buttonContainer" ></div>
         <button type="submit" class='goback'>게시판가기</button>
     </form>
     </div>
@@ -55,8 +55,8 @@
 					<div class="regDate">등록일</div>
 				</div>
 				<div class="modi_btnWrap">
-					<button class="editReply" name="editReply"
-						onclick="editReply(${data.replyNum})">수정</button>
+					<%-- <button class="editReply" name="editReply"
+						onclick="editReply(${data.replyNum})">수정</button> --%>
 					<button class="deleteReply" name="deleteReply"
 						onclick="deleteReply(${data.replyNum})">삭제</button>
 				</div>
