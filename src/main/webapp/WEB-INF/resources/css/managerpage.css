@@ -93,7 +93,7 @@ body {
 
 
 
-.manager-tr > td{
+.manager-tr td{
 	text-align:center;
   	height:2rem;
 }
@@ -102,3 +102,10 @@ body {
 	border-bottom:1px solid #ddd;
   	line-height: 2rem;
 }
+.membership-box{
+	width:100%;
+	overflow:auto;
+	height:10rem;
+}
+
+.membership-box table { white-space: nowrap; border-collapse: collapse; }
