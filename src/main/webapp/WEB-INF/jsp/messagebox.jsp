@@ -24,6 +24,7 @@
     
     <link rel="stylesheet" type="text/css" href="/resources/myreset.css" />
     <meta charset="UTF-8">
+    
     <title>쪽지함</title>
 </head>
 <body>
@@ -68,13 +69,13 @@ try(DBConnector con = new DBConnector();){
       <div class="modal">
         <h2>쪽지함</h2>
         <div class="notebtn-box">
-          <button type="button" class="notebtn1">받은쪽지</button>
-          <button type="button" class="notebtn2">보낸쪽지</button>
+          <button type="button" class="notebtn1">보낸쪽지</button>
+          <button type="button" class="notebtn2">받은쪽지</button>
           <button type="button" class="notebtn3">쪽지쓰기</button>
         </div>
         
         <div id="sender" class="note-sendview">
-          <div class="note-title">보낸쪽지</div>
+          <div class="note-title">받은쪽지</div>
           <%if(session.getAttribute("UserNickName") != null){%>
          
 		<% for(UserNote ReceiveNote : ReceiveNotes) {
@@ -123,13 +124,13 @@ try(DBConnector con = new DBConnector();){
 			      <%--  <input type="text"  name ="SenddAll" value="<%=yesstt%>"> --%>
 			       <input type="text"  name ="seenums" value="<%=Sendedsee%>">
 			       <input type="text"  name ="notenums" value="<%=Sended%>">
-				   <button type="button" onclick="sendDeletAll('<%=Sended%>');" >보낸 메시지 모두삭제</button>
+				   <button type="button" onclick="sendDeletAll('<%=Sended%>');" >받은 메시지 모두삭제</button>
 			  </form> 
 	 </div> 
         
         
         <div id="receiver" class="note-reception">
-          <div class="note-title">받은쪽지</div>
+          <div class="note-title">보낸쪽지</div>
           <%if(session.getAttribute("UserNickName") != null){%>
          		
 		<% for(UserNote SendNote : SendNotes) { 
@@ -167,12 +168,12 @@ try(DBConnector con = new DBConnector();){
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
 	  <%}%>
-	  
+	   
 	
 	         <form action="/Deletmessage/receiveAll" id="receiveAllform">		  
 			     <input type="text"  name ="seenums" value="<%=Receivedsee%>">
 			       <input type="text"  name ="notenums" value="<%=Received%>">
-				   <button type="button" class="showmessage" onclick="recieveDeletAll('<%=Received%>');">받은 메시지 모두삭제</button>
+				   <button type="button" class="showmessage" onclick="recieveDeletAll('<%=Received%>');">보낸 메시지 모두삭제</button>
 			  </form>
 			   <!-- <form action="/Deletmessage/sendAll" id="sendAllform">		  
 			       <input type="text"  name ="seenums" value="<%=Sendedsee%>">
@@ -200,7 +201,7 @@ try(DBConnector con = new DBConnector();){
           <h2 class="note-title3">쪽지 작성</h2>
           <div class="note-write-form"> 
           <form action="/MessageServlet" method="POST" accept-charset="UTF-8" id="writemessage">
-            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNickName")%>" required readonly/><br />
+            <input type="text" name="sender"  class="note-sender" value="<%=session.getAttribute("UserNickName")%>" required readonly style="border:none;" /><br />
             <input
               type="text"
               name="receiver"
@@ -224,5 +225,6 @@ try(DBConnector con = new DBConnector();){
 
     
 
+        
 </body>
 </html>

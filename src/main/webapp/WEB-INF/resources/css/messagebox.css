@@ -196,7 +196,7 @@ summary::marker {
 }
 
 .notereceiver-content {
-  height: 10rem;
+  height: 10rem; 
 }
 
 .write-btn {
@@ -205,3 +205,6 @@ summary::marker {
   background-color: white;
   margin-top: 1rem;
 }
+
+.note-sender:focus {outline: none;} 
+

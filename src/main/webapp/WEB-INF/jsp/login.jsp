@@ -34,26 +34,21 @@
           />
           <input type="submit" value="로그인" class="loginbtn" />
         </form>
+        
         <!-- 로그인 실패 시 에러 메시지가 있으면 표시 -->
         <% String loginError = (String)request.getAttribute("loginError"); %>
         <% if (loginError != null) { %>
             <p style="color: red;"><%= loginError %></p>
         <% } %>
         <div class="gojoin">
-          
+          	<a href="http://localhost:4885/app/findidpassword.jsp">아이디/비밀번호 찾기</a>
+ 			<a href="http://localhost:4885/app/joinmembership.jsp">회원가입</a>
         </div>
       </div>
     </div>
      
     
 <%@include file="../jsp/footer.jsp"%>
-	<%-- <form action="../api/select/logincheck.jsp">	
- 	<label for="userid">아이디:</label><input type="text" name="userid">
- 	<label for="password">비밀번호:</label><input type="text" name="password">
- 	<input type="submit" value="로그인">
- 	</form>
- 	 <%-- 로그인 실패 시 에러 메시지가 있으면 표시 --%>
- 	  
- 	<a href="http://localhost:4885/app/joinmembership.jsp">회원가입</a>
+	
 </body>
 </html>
