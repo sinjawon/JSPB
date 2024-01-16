@@ -25,7 +25,6 @@
 <body>
  <header>
   <%try(DBConnector con = new DBConnector();){
-        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
         		 String usernum = (String)session.getAttribute("UserNum"); 
         			UserDao map2 = con.OpenMap(request, UserDao.class);
         		 
