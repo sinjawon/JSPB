@@ -57,3 +57,71 @@ function ChartGraph(query, options){
 
 
 //////////////////////////////////////////////////////////////////////////////////그래프존
+
+ function filterUsersByTimeRange(users, monthsAgo = 0, yearsAgo = 0, daysAgo = 0) {
+	let currentDate = new Date();
+	let targetDate = new Date(currentDate);
+	targetDate.setMonth(targetDate.getMonth() - monthsAgo);
+	targetDate.setFullYear(targetDate.getFullYear() - yearsAgo);
+	targetDate.setDate(targetDate.getDate() - daysAgo);
+  
+	return users.filter((data) => {
+	  let newUserJoinDay = new Date(data.userJoinDay);
+  
+	  return (
+		newUserJoinDay.getFullYear() === targetDate.getFullYear() &&
+		newUserJoinDay.getMonth() === targetDate.getMonth() &&
+		newUserJoinDay.getDate() === targetDate.getDate()
+	  );
+	});
+  }
+
+  function getRecentDates(startDate, count, interval) {
+	let recentDates = [];
+	let currentDate = new Date(startDate);
+  
+	for (let i = 0; i < count; i++) {
+	  recentDates.push(currentDate.toISOString().split('T')[0]); // 날짜만 추출
+	  currentDate.setUTCDate(currentDate.getUTCDate() - interval);
+	}
+  
+	return recentDates;
+  }
+  let today = new Date(); // 현재 날짜
+  let recentDays = getRecentDates(today, 5, 1).reverse(); // 가장 최근일자로부터 5일
+  let recentMonths = getRecentDates(today, 5, 30).reverse(); // 가장 최근달로부터 5달
+  let recentYears = getRecentDates(today, 5, 365).reverse(); // 가장 최근년도로부터 5년
+
+  let dateRanges = [4, 3, 2, 1, 0];
+  let dateCounts = dateRanges.map((daysAgo) =>
+	filterUsersByTimeRange(users, 0, 0, daysAgo).length
+  );
+
+  let monthRanges = [4, 3, 2, 1, 0];
+  let monthCounts = monthRanges.map((daysAgo) =>
+	filterUsersByTimeRange(users, 0, daysAgo, 0).length
+  );
+
+  let yearRanges = [4, 3, 2, 1, 0];
+  let yearCounts = yearRanges.map((daysAgo) =>
+	filterUsersByTimeRange(users, daysAgo, 0, 0).length
+  );
+
+
+
+  let btdate = document.querySelector("#btdate");
+  btdate.addEventListener("click",()=>{
+	ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별"});
+ });
+ let btmonth = document.querySelector("#btmonth");
+ btmonth.addEventListener("click",()=>{
+	ChartGraph("#bar-chart", {datas:monthCounts,labels:recentMonths,title:"월별"});
+ });
+ let btyear = document.querySelector("#btyear");
+ btyear.addEventListener("click",()=>{
+	ChartGraph("#bar-chart", {datas:yearCounts,labels:recentYears,title:"년별"});
+ });
+
+
+//로드하면 일다 이거 보여주고
+  ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별"});
