@@ -34,7 +34,7 @@
          <a href="main.jsp"><img src="/resources/logo.png" alt="Logo" style= "width:350px" /></a>
         </h1>
         <div class="menu">
-  			<div class="logo_img"><img src="/resource/logo.png" alt="" /></div>
+  			<a href="main.jsp"><div class="logo_img"><img src="/resource/logo.png" alt="logo" /></div></a>
           <div class="box">
             <div class="board">
               <ul>
