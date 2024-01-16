@@ -1,5 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+List<User> allUser = new LinkedList<User>();
+int allboard= 0;
+try(DBConnector con = new DBConnector();){
+	UserDao map = con.OpenMap(request, UserDao.class);
+	BoardDao map2 = con.OpenMap(request, BoardDao.class);
+     allboard  = map2.getBoardInfoAllCnt();
+	allUser = map.getAllUser();
+}
+
+catch(Exception e) { e.printStackTrace(); }
+JSONArray array = new JSONArray();
+for(User user : allUser){
+	JSONObject targetUser = new JSONObject();
+	targetUser.put("userNum",user.getUserNum());
+	targetUser.put("userName",user.getUserName()); 
+	targetUser.put("userNickName",user.getUserNickname());
+	targetUser.put("userId",user.getUserId());
+	targetUser.put("userEmail",user.getUserEmail());
+	targetUser.put("userJoinDay",user.getUserJoinDay());
+	array.put(targetUser);
+}
+
+
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +37,9 @@
 <link rel="stylesheet" type="text/css" href="/resources/managerpage.css"> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" defer></script>
 <script src="/resources/manager.js" defer></script>
+<script>
+
+var users = <%=array.toString()%>;</script>
 </head>
 <body>
 
@@ -17,22 +47,15 @@
 
 
 
- <%
-try(DBConnector con = new DBConnector();){
-		UserDao map = con.OpenMap(request, UserDao.class);
-		
-		List<User> userNumNiCk = map.getuserNumNick();
-		
-		
-		
-		 
- %>
+
 
     <div class="manager-box">
       <h2 class="manager-title">관리자페이지 입니다.</h2>
       <div class="manager-top">
         <h3 class="manager-join">회원유동 그래프</h3>
         <div class="manager">
+        <canvas id="bar-chart"></canvas>
+        
         <canvas id="bar-chart"></canvas>
         </div>
       </div>
@@ -42,13 +65,13 @@ try(DBConnector con = new DBConnector();){
           <li>
             <div class="boardDocs">
               <div class="boards">회원수</div>
-              <div class="boards-people">sddsds명</div>
+              <div class="boards-people"><%=array.length()%>명</div>
             </div>
           </li>
           <li>
             <div class="boardDocs">
               <div class="boards">등록된 게시글 수</div>
-              <div class="boards-wrtie">sddsds명</div>
+              <div class="boards-wrtie"><%=allboard%>개</div>
             </div>
           </li>
         </ul>
@@ -65,11 +88,11 @@ try(DBConnector con = new DBConnector();){
             <th></th>
           </tr>
           
-             <%for (User user : userNumNiCk){%>
+             <%for (User user : allUser){%>
           <tr class="manager-tr">
             <td><%=user.getUserNum()%></td>
             <td><%=user.getUserNickname()%></td>
-            <td>회원가입날짜</td>
+            <td><%=user.getUserJoinDay()%></td>
             <td><button value="<%=user.getUserNum()%>">회원삭제</button></td>
           </tr>
           <%}%>	
@@ -77,12 +100,7 @@ try(DBConnector con = new DBConnector();){
       </div>
     </div>
     
-      <%	
-	}
-	catch(Exception e) {
-		e.printStackTrace();
-	}
-%>  
+
     
     
     <%@include file="../jsp/footer.jsp"%>

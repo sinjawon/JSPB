@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <title>아이디/비밀번호 찾기</title>
     <script src="/resources/findidpwd.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/findidpwd.css"> 
 <link rel="stylesheet" type="text/css" href="/resources/myreset.css"> 
 </head>
@@ -28,6 +30,7 @@ try(DBConnector con = new DBConnector();){
             String email = request.getParameter("email");     
            String foundUserId = "이거다";
     %>
+  
             <p>찾는 아이디: <%= foundUserId %></p>
 
     <%
@@ -36,7 +39,23 @@ try(DBConnector con = new DBConnector();){
             String userId = request.getParameter("userId");
             String foundPassword = map.getuserpw(userId).toStringPW();
     %>
-            <p class="findpwd">찾는 비번: <%= foundPassword %></p>
+      <script>
+	   <%--  var pwd = <%= foundPassword %>
+	    alert("찾는비번" + pwd);
+	    window.location.href="/app/login.jsp";  --%>
+	    var pwd = <%= foundPassword %>
+	    Swal.fire({
+	    	  title: "찾는비번",
+	    	  text: pwd,
+	    	  icon: "success"
+	    	});
+	    
+	    /* 
+	    setTimeout(() => window.location.href="/app/login.jsp";, 2000); */
+	    
+	    
+      </script>
+         <%--   <p class="findpwd">찾는 비번: <%= foundPassword %></p> --%>
 
     <%
         } else {
