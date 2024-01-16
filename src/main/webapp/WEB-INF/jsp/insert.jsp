@@ -29,7 +29,7 @@
         <button type="submit" id="submit">확인</button>
         <button type="button" onclick="cancelPost()">취소</button>
         
-        <form action="/app/boardList" method="post">
+        <form action="/app/boardlist" method="post">
    			<button type="button" onclick="location.href='/app/boardlist.jsp'">뒤로가기</button>
    		</form>  
     </form>

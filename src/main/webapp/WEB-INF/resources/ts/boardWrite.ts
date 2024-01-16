@@ -15,10 +15,11 @@ function cancelPost() {
     
     let titleInput = document.getElementById("titleInput") as HTMLInputElement;
     let postTextarea = document.getElementById("postTextarea") as HTMLTextAreaElement;
-
-    
+ 
     titleInput.value = "";
     postTextarea.value = "";
+    dropzone.removeAllFiles();
+
 }
 
 //@ts-ignore
@@ -29,7 +30,7 @@ var dropzone = new Dropzone("div.dropzone", {
     method: "POST",
     dictDefaultMessage:"여기에 사진을 드래그&드랍 하세요.",
     autoQueue: false, 
-    maxFiles: 10,
+    maxFiles: 4,
     maxFilesize: 100,
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
@@ -49,6 +50,7 @@ var dropzone = new Dropzone("div.dropzone", {
             data.append("year",date.getFullYear());
             data.append("month",date.getMonth() + 1);
             data.append("day",date.getDate());
+
         });
     }
 });

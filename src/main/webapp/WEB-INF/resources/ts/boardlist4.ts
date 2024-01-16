@@ -1,114 +1,90 @@
 
 //@ts-nocheck
-async function ajax(url: string, option?: any) {
+async function ajax4(url: string, option?: any) {
     console.log("ajax 로딩 중~~~~~");
     return fetch(url, option).then((res) => res.json());
   }
   
-  window.onload= submitSearch();
+  window.onload = submitSearch4();
   
   
   // 검색 폼 제출 시 호출되는 함수
-  function submitSearch() {
+  function submitSearch4() {
     console.log("전송되었습니다");
-    let form: HTMLFormElement | null = document.getElementById("searchform");
+    let form: HTMLFormElement | null = document.getElementById("searchform4");
   
     if (form) {
         let formData = new FormData(form);
   
-       
-        ajax("/api/boardList", {
+        ajax4("/api/boardList4", {
             method: "POST",
             body: formData,
         }).then((json) => {
             console.log(json);
   
-            let boards: HTMLElement | null = document.querySelector("#boards");
-            let template: HTMLTemplateElement | null = document.querySelector("#boards template");
+            let boards4: HTMLElement | null = document.querySelector("#boards4");
+            let template: HTMLTemplateElement | null = document.querySelector("#boards4 template");
   
-            let pagesContainer = document.querySelector("#pages");
-            let pageTemplate = document.querySelector("#pages template");
+            let pagesContainer4: HTMLElement | null = document.querySelector("#pages4");
+            let pageTemplate: HTMLTemplateElement | null = document.querySelector("#pages4 template");
   
-      
-           
+  
+  
             // 기존의 게시글 목록을 지우고 새로운 검색 결과를 표시
             if (template) {
-                boards.innerHTML = "";
+                boards4.innerHTML = "";
   
                 if (json.data.length === 0) {
-                  alert("일치하는 결과가 없습니다. 리스트로 돌아갑니다.");
-                  location.reload(); // 페이지를 강제로 다시 로드
-                  return;
-              }
-             
+                    alert("일치하는 결과가 없습니다. 리스트로 돌아갑니다.");
+                    location.reload(); // 페이지를 강제로 다시 로드
+                    return;
+                }
   
-              for (let data of json.data) {
-                template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-                template.content.querySelector(".boardListNum")?.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
-                template.content.querySelector(".title").innerHTML = data.title;
-                template.content.querySelector(".title")?.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
-                template.content.querySelector(".mainContents").innerHTML = data.mainContents;
-                template.content.querySelector(".userNickname").innerHTML = data.userNickname;
-                template.content.querySelector(".hitCount").innerHTML = data.hitCount;
-                template.content.querySelector(".regDate").innerHTML = data.regDate;
-              
-                
-                let a: HTMLElement | null = document.createElement("div");
-                
-                a.innerHTML = template.innerHTML;
-                if (boards) {
-                    boards.appendChild(template);
-                    boards.appendChild(a);
+                for (let data of json.data) {
+                    template.content.querySelector(".boardListNum4").innerHTML = data.boardListNum4;
+                    template.content.querySelector(".boardListNum4")?.setAttribute("href", `/app/postview4.jsp?id=${data.boardListNum4}`);
+                    template.content.querySelector(".title4").innerHTML = data.title4;
+                    template.content.querySelector(".title4")?.setAttribute("href", `/app/postview4.jsp?id=${data.boardListNum4}`);
+                    template.content.querySelector(".mainContents4").innerHTML = data.mainContents4;
+                    template.content.querySelector(".userNickname4").innerHTML = data.userNickname4;
+                    template.content.querySelector(".hitCount4").innerHTML = data.hitCount4;
+                    template.content.querySelector(".regDate4").innerHTML = data.regDate4;
+  
+  
+                    let a: HTMLElement | null = document.createElement("div");
+  
+                    a.innerHTML = template.innerHTML;
+                    if (boards4) {
+                        boards4.appendChild(template);
+                        boards4.appendChild(a);
+                    }
                 }
             }
   
-                // // JSON 데이터를 이용하여 동적으로 HTML 생성
-                // for (let data of json.data) {
-                //     // 새로운 div 생성
-                //     let a = document.createElement("div");
+            if (pageTemplate && pagesContainer4) {
+                pagesContainer4.innerHTML = "";
   
-                //     // template 내용을 복제하여 div에 추가
-                //     let clone: DocumentFragment = document.importNode(template.content, true);
-                //     a.appendChild(clone);
-  
-                //     // 동적으로 생성된 div에 데이터 추가
-                //     a.querySelector(".boardListNum")!.innerHTML = data.boardListNum;
-                //     a.querySelector(".boardListNum")?.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
-                //     a.querySelector(".title")!.innerHTML = data.title;
-                //     a.querySelector(".title")?.setAttribute("href", `/postView.jsp?id=${data.boardListNum}`);
-                //     a.querySelector(".mainContents")!.innerHTML = data.mainContents;
-                //     a.querySelector(".userNickname")!.innerHTML = data.userNickname;
-                //     a.querySelector(".hitCount")!.innerHTML = data.hitCount;
-                //     a.querySelector(".regDate")!.innerHTML = data.regDate;
-  
-                //     // div를 #boards 아래에 추가
-                //     boards.appendChild(template);
-                //     boards.appendChild(a);
-                // }
+                for (let i = 1; i <= json.totalPages4; i += 1) {
+                    let span = document.createElement("span");
+                    span.innerText = i;
+                    span.onclick = function () {
+                        pageChange4(i);
+                    };
+                    pagesContainer4.appendChild(pageTemplate);
+                    pagesContainer4.appendChild(span);
+                }
             }
-  
-            if (pageTemplate && pagesContainer) {
-              pagesContainer.innerHTML = "";
-      
-              for (let i = 1; i <= json.totalPages; i += 1) {
-                  let span = document.createElement("span");
-                  span.innerText = i;
-                  span.onclick = function () {
-                      pageChange(i);
-                  };
-                  pagesContainer.appendChild(span);
-              }
-          }
   
         });
     }
   }
   
   // 페이지 링크 동기화 안되었음 일단 클릭하면 이동은 가능함
-  function pageChange(page){
-      document.querySelector("#searchform #page").value = page;
-      submitSearch();
+  function pageChange4(page4) {
+    document.querySelector("#searchform4 #page4").value = page4;
+    submitSearch4();
   }
+  
   
   
   

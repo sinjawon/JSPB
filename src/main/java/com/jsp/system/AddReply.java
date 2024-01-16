@@ -21,20 +21,16 @@ import com.jsp.dto.*;
 
 @WebServlet("/api/addReply")
 public class AddReply extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	 request.setCharacterEncoding("utf-8");
     	 response.setCharacterEncoding("utf-8");
          response.setContentType("application/json");
-    	 
-         
-         
-    	int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
+    
+    	 int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
          String replyContents = request.getParameter("replyContents");
          String userNickname = request.getParameter("userNickname");
-        
-         
+            
          System.out.println(request.getParameter("boardListNum"));
          System.out.println("111");
          System.out.println(request.getParameter("replyContents"));
@@ -49,20 +45,16 @@ public class AddReply extends HttpServlet {
             
            
             // 댓글 등록
-            rmap.insertNewReply(boardListNum, replyContents, userNickname);
-            System.out.println(rmap);
-            System.out.println("보드에 들어갔나요?");
+           rmap.insertNewReply(boardListNum, replyContents, userNickname);
+           System.out.println(rmap);
+           System.out.println("보드에 들어갔나요?");
            System.out.println(boardListNum);
         } catch (Exception e) {
            System.out.println("에러캐치");
         }
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("success", true);
-        response.getWriter().write(jsonResponse.toString());
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/app/postview.jsp?id=${boardListNum}");
-//        dispatcher.forward(request, response);   
-
-
+        response.getWriter().write(jsonResponse.toString());  
     }
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

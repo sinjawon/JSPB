@@ -1,132 +1,89 @@
 
 //@ts-nocheck
-async function ajax(url: string, option?: any) {
+async function ajax2(url: string, option?: any) {
   console.log("ajax 로딩 중~~~~~");
   return fetch(url, option).then((res) => res.json());
 }
 
-function validateSearchForm() {
-  // 사용자 정의 유효성 검사를 수행합니다.
-  let searchInput: HTMLInputElement | null = document.getElementById("search") as HTMLInputElement;
-  if (!searchInput || searchInput.value.length < 3 || searchInput.value.length > 10) {
-      alert("검색어는 3자 이상 10자 이하이어야 합니다.");
-      return false; // 폼 제출 방지
-  }
-
-  // 유효성 검사를 통과하면 submitSearch 함수를 호출합니다.
-  submitSearch(); // submitSearch 함수 호출
-  return false; // 기본 폼 제출 방지
-}
-
-let form: FormData = new FormData();
-
-ajax("/api/boardlist", {
-  method: "POST",
-  body: new FormData(document.getElementById("searchtype")),
-}).then((json) => {
-  console.log(json);
-
-
-  let pagesContainer = document.querySelector("#pages");
-  let pageTemplate = document.querySelector("#pages template");
-
-  if (pageTemplate && pagesContainer) {
-      pagesContainer.innerHTML = ""; // 기존의 페이지 링크를 지우기
-
-      for (let i = 1; i <= json.totalPages; i+=1) {
-          let span = document.createElement("span");
-        //   span.classList.add("paging"); // span에 class 추가
-          span.innerText = i;
-          span.onclick = function () {
-              pageChange(i);
-          };
-          pagesContainer.appendChild(span);
-      }
-  }
-
-
-
-  let boards: HTMLElement | null = document.querySelector("#boards");
-  let template: HTMLTemplateElement | null = document.querySelector("#boards template");
-  
-  if (template) {
-      for (let data of json.data) {
-          template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-          template.content.querySelector(".title").innerHTML = data.title;
-          template.content.querySelector(".userNickname").innerHTML = data.userNickname;
-          template.content.querySelector(".hitCount").innerHTML = data.hitCount;
-          template.content.querySelector(".regDate").innerHTML = data.regDate;
-          let a: HTMLElement | null = document.createElement("a");
-          // let span: HTMLElement | null = document.createElement("span");
-          a.innerHTML = template.innerHTML;
-          if (boards) {
-              boards.appendChild(a);
-          }
-      }
-  }
-  // else if(pagetemplate){
-  //   for (let data of json.data) {
-  //     template.content.querySelector(".paging").innerHTML = data.paging;
-  //     let b: HTMLElement | null = document.createElement("div");
-  //     b.innerHTML = pagetemplate.innerHTML;
-  //     if (pages) {
-  //       pages.appendChild(b);
-  //   }
-  //   }
-  // }
-});
+window.onload = submitSearch2();
 
 
 // 검색 폼 제출 시 호출되는 함수
-function submitSearch() {
+function submitSearch2() {
   console.log("전송되었습니다");
-
-  // 검색 폼 가져오기
-  let form: HTMLFormElement | null = document.getElementById("searchtype");
+  let form: HTMLFormElement | null = document.getElementById("searchform2");
 
   if (form) {
       let formData = new FormData(form);
 
-      ajax("/api/boardlist", {
+      ajax2("/api/boardList2", {
           method: "POST",
           body: formData,
       }).then((json) => {
           console.log(json);
 
-          let boards: HTMLElement | null = document.querySelector("#boards");
-          let template: HTMLTemplateElement | null = document.querySelector("#boards template");
-         
+          let boards2: HTMLElement | null = document.querySelector("#boards2");
+          let template: HTMLTemplateElement | null = document.querySelector("#boards2 template");
+
+          let pagesContainer2: HTMLElement | null = document.querySelector("#pages2");
+          let pageTemplate: HTMLTemplateElement | null = document.querySelector("#pages2 template");
+
+
+
           // 기존의 게시글 목록을 지우고 새로운 검색 결과를 표시
           if (template) {
-              boards.innerHTML = "";
+              boards2.innerHTML = "";
 
-              // JSON 데이터를 이용하여 동적으로 HTML 생성
+              if (json.data.length === 0) {
+                  alert("일치하는 결과가 없습니다. 리스트로 돌아갑니다.");
+                  location.reload(); // 페이지를 강제로 다시 로드
+                  return;
+              }
+
               for (let data of json.data) {
-                  // 새로운 div 생성
-                  let a = document.createElement("div");
+                  template.content.querySelector(".boardListNum2").innerHTML = data.boardListNum2;
+                  template.content.querySelector(".boardListNum2")?.setAttribute("href", `/app/postview2.jsp?id=${data.boardListNum2}`);
+                  template.content.querySelector(".title2").innerHTML = data.title2;
+                  template.content.querySelector(".title2")?.setAttribute("href", `/app/postview2.jsp?id=${data.boardListNum2}`);
+                  template.content.querySelector(".mainContents2").innerHTML = data.mainContents2;
+                  template.content.querySelector(".userNickname2").innerHTML = data.userNickname2;
+                  template.content.querySelector(".hitCount2").innerHTML = data.hitCount2;
+                  template.content.querySelector(".regDate2").innerHTML = data.regDate2;
 
-                  // template 내용을 복제하여 div에 추가
-                  let clone: DocumentFragment = document.importNode(template.content, true);
-                  a.appendChild(clone);
 
-                  // 동적으로 생성된 div에 데이터 추가
-                  a.querySelector(".boardListNum")!.innerHTML = data.boardListNum;
-                  a.querySelector(".title")!.innerHTML = data.title;
-                  a.querySelector(".userNickname")!.innerHTML = data.userNickname;
-                  a.querySelector(".hitCount")!.innerHTML = data.hitCount;
-                  a.querySelector(".regDate")!.innerHTML = data.regDate;
+                  let a: HTMLElement | null = document.createElement("div");
 
-                  // div를 #boards 아래에 추가
-                  boards.appendChild(template);
-                  boards.appendChild(a);
+                  a.innerHTML = template.innerHTML;
+                  if (boards2) {
+                      boards2.appendChild(template);
+                      boards2.appendChild(a);
+                  }
               }
           }
+
+          if (pageTemplate && pagesContainer2) {
+              pagesContainer2.innerHTML = "";
+
+              for (let i = 1; i <= json.totalPages2; i += 1) {
+                  let span = document.createElement("span");
+                  span.innerText = i;
+                  span.onclick = function () {
+                      pageChange2(i);
+                  };
+                  pagesContainer2.appendChild(pageTemplate);
+                  pagesContainer2.appendChild(span);
+              }
+          }
+
       });
   }
 }
 
-// function pageChange(page){
-// 	document.querySelector("#searchtype #page").value = page;
-// 	submitSearch();
-// }
+// 페이지 링크 동기화 안되었음 일단 클릭하면 이동은 가능함
+function pageChange2(page2) {
+  document.querySelector("#searchform2 #page2").value = page2;
+  submitSearch2();
+}
+
+
 

@@ -1,102 +1,126 @@
 "use strict";
-//@ts-nocheck
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 document.addEventListener("DOMContentLoaded", () => {
-    // 페이지 로딩 시 댓글 목록을 불러오는 함수 호출
     loadReply();
-    // 댓글 등록 버튼 클릭 시
-    const addReplyBtn = document.getElementById("addReplyBtn");
-    addReplyBtn.addEventListener("click", () => {
-        addReply();
+    let addReplyBtn = document.getElementById("addReplyBtn");
+    if (addReplyBtn) {
+        addReplyBtn.addEventListener("click", addReply);
+    }
+    document.addEventListener("click", (event) => {
+        if (event.target && event.target.className == "deleteReply") {
+            let replyNum = parseInt(event.target.getAttribute("data-replynum") || "", 10);
+            // console.log(replyNum);
+            if (!isNaN(replyNum)) {
+                deleteReply(replyNum);
+            }
+        }
     });
 });
 function loadReply() {
-    // 현재 게시글의 ID를 가져옴
-    const boardListNumInput = document.getElementById("boardListNumInput");
-    const boardListNum = boardListNumInput.value;
-    // Fetch API를 사용하여 댓글 목록을 서버에서 비동기적으로 불러옴
-    fetch("/api/replylist", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Cache-Control": "no-cache" // 이 부분을 추가
-        },
-        body: `boardListNum=${encodeURIComponent(boardListNum)}`
-    })
-        .then(response => {
-        if (!response.ok) {
-            throw new Error("댓글 불러오기 실패");
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let boardListNumInput = document.getElementById("boardListNumInput");
+            let boardListNum = boardListNumInput.value;
+            let formData = new FormData();
+            formData.append("boardListNum", boardListNum);
+            let response = yield fetch(`/api/replylist?${new URLSearchParams(formData)}`, {
+                method: "GET",
+                headers: {
+                    "Cache-Control": "no-cache",
+                },
+            });
+            if (!response.ok) {
+                throw new Error("댓글 불러오기 실패");
+            }
+            let replyList = yield response.json();
+            displayReply(replyList);
         }
-        return response.json();
-    })
-        .then(replyList => {
-        console.log(replyList); // 서버 응답 확인
-        // 댓글 목록을 받아와서 화면에 표시하는 함수 호출
-        displayReply(replyList);
-    })
-        .catch(error => {
-        console.log(error);
+        catch (error) {
+            console.error(error);
+        }
     });
 }
-function displayReply(replyies) {
-    // 댓글 목록을 돌면서 화면에 표시하는 코드 작성
-    for (let i = 0; i < replyies.replyList.length; i++) {
-        const reply = replyies.replyList[i];
-        const replyHtml = `<div class="comment">
-                              <div class="userNickname">${reply.userNickname}</div>
-                              <div class="replyContents">${reply.replyContents}</div>
-                              <div class="regDate">${reply.regDate}</div>
-                            </div>`;
-        // 화면에 댓글 추가
-        const replyContainer = document.getElementById("replyContainer");
-        if (replyContainer) {
-            replyContainer.innerHTML += replyHtml;
+// 댓글작성자
+let currentUser = sessionUser; // 실제 기본값으로 설정하세요
+function displayReply(replies) {
+    let replyContainer = document.querySelector("#replyContainer");
+    let template = document.querySelector("#replyContainer template");
+    if (template && replyContainer) {
+        replyContainer.innerHTML = "";
+        for (let data of replies.replyList) {
+            let clone = document.importNode(template.content, true);
+            clone.querySelector(".userNickname").innerHTML = data.userNickname;
+            clone.querySelector(".replyContents").innerHTML = data.replyContents;
+            clone.querySelector(".regDate").innerHTML = data.regDate;
+            if (currentUser === data.userNickname) {
+                // 맞다면 삭제 버튼을 활성화
+                clone.querySelector(".deleteReply").setAttribute("data-replynum", data.replyNum.toString());
+            }
+            console.log(currentUser, data.userNickname);
+            replyContainer.appendChild(clone);
         }
     }
 }
 function addReply() {
-    // 댓글 등록 시 사용자 입력 값을 가져와서 서버로 전송
-    const boardListNumInput = document.getElementById("boardListNumInput");
-    const boardListNum = boardListNumInput.value;
-    const userNicknameInput = document.getElementById("userNickname");
-    const userNickname = userNicknameInput.value;
-    const replyContentsInput = document.getElementById("replyContents");
-    const replyContents = replyContentsInput.value;
-    // Fetch API를 사용하여 댓글을 서버에 등록
-    fetch("/api/addReply", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `boardListNum=${encodeURIComponent(boardListNum)}&` +
-            `userNickname=${encodeURIComponent(userNickname)}&` +
-            `replyContents=${encodeURIComponent(replyContents)}`
-    })
-        .then(response => {
-        if (!response.ok) {
-            throw new Error("댓글 등록 실패");
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let formData = new FormData(document.getElementById("replyForm"));
+            let response = yield fetch("/api/addReply", {
+                method: "POST",
+                body: formData,
+            });
+            if (!response.ok) {
+                throw new Error("댓글 등록 실패");
+            }
+            let replyList = yield response.json();
+            if (replyList.success) {
+                clearReplyInput();
+                loadReply();
+                location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
+            }
         }
-        // 응답 형식이 JSON인지 확인
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-            return response.json();
+        catch (error) {
+            console.error("Fetch 오류:", error);
         }
-        else {
-            // JSON이 아니라면 적절히 처리 (여기서는 HTML 응답을 로그로 출력)
-            console.log("Non-JSON response:", response);
-            return { success: false, message: "JSON이 아닌 응답을 받았습니다" };
+    });
+}
+function clearReplyInput() {
+    let replyContentsInput = document.getElementById("replyContents");
+    if (replyContentsInput) {
+        replyContentsInput.value = "";
+    }
+}
+function deleteReply(replyNum) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            console.log(replyNum);
+            let response = yield fetch(`/api/deleteReply?replyNum=${replyNum}`, {
+                method: "POST",
+            });
+            if (!response.ok) {
+                throw new Error("댓글 삭제 실패");
+            }
+            let replyList = yield response.json();
+            if (replyList.success) {
+                console.log("댓글 삭제 성공");
+                loadReply();
+                location.href = '/app/postview.jsp?id=' + document.getElementById("boardListNumInput").value;
+            }
+            else {
+                console.error("댓글 삭제 실패:", replyList.success);
+            }
         }
-    })
-        .then(replyList => {
-        console.log(replyList); // 서버 응답 확인
-        // 댓글 등록 성공 시, 댓글 입력 창 비우기
-        if (replyList.success) {
-            loadReply(); // 댓글 목록을 다시 불러오기
-            // 페이지를 원하는 URL로 리디렉션
-            window.location.href = '/app/postview.jsp?id=' + boardListNum;
+        catch (error) {
+            console.error('댓글 삭제 중 오류 발생:', error);
+            alert('댓글 삭제 중 오류 발생');
         }
-    })
-        .catch(error => {
-        // 예외 처리
-        console.error("Fetch 오류:", error);
     });
 }

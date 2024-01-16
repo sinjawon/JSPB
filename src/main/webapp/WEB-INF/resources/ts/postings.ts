@@ -14,7 +14,6 @@ function fillPostData(userInfo: string, titleInfo: string, contentInfo: string) 
     }
 }
 
-
 let clickedPostId = valueId;// 클릭한 게시글의 ID
 
 
@@ -77,7 +76,6 @@ function writerSearch() {
 
 writerSearch();
 
-
 function PostInfo() {
     fetch(`/api/showPost?boardListNum=${clickedPostId}`,{
     method: "GET"  
@@ -104,38 +102,6 @@ function editPost() {
     
    // location.href="/boardList.jsp";
 }
-
-
-
-
-
-
-//
-// function editPost(){
-//     console.log("수정되었습니다");
-
-//     fetch(`/api/editPost?boardListNum=${clickedPostId}`, {
-//         method: "POST"
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         if (data.success) {
-//             console.log("게시글 수정 성공");
-//             // 삭제 성공 시 필요한 작업 수행
-//         } else {
-//             console.error("게시글 수정 실패:", data.message);
-//         }
-//     })
-//     .catch(error => { 
-//         console.error('게시글 수정 중 오류 발생:', error);
-//         alert('게시글 수정 중 오류 발생');
-//     });
-
-//     location.href="/boardList.jsp";
-// }
-
-
-
 
 
 

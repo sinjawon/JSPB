@@ -30,7 +30,6 @@ async function logincheckID(){
            idcheck= true;         
             alert("사용가능한 이이디입니다");
          
-
         }
    });
   }

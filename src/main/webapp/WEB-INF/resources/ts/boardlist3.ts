@@ -1,86 +1,90 @@
 
 //@ts-nocheck
-function ajax(url, option) {
-  return __awaiter(this, void 0, void 0, function* () {
-      console.log("ajax 로딩 중~~~~~");
-      return fetch(url, option).then((res) => res.json());
-  });
-}
-function validateSearchForm() {
-  // 사용자 정의 유효성 검사를 수행합니다.
-  let searchInput = document.getElementById("search");
-  if (!searchInput || searchInput.value.length < 3 || searchInput.value.length > 10) {
-      alert("검색어는 3자 이상 10자 이하이어야 합니다.");
-      return false; // 폼 제출 방지
+async function ajax3(url: string, option?: any) {
+    console.log("ajax 로딩 중~~~~~");
+    return fetch(url, option).then((res) => res.json());
   }
-  // 유효성 검사를 통과하면 submitSearch 함수를 호출합니다.
-  submitSearch(); // submitSearch 함수 호출
-  return false; // 기본 폼 제출 방지
-}
-
-ajax("/api/boardlist", {
-  method: "POST",
-  body: new FormData(document.getElementById("searchtype")),
-}).then((json) => {
-  console.log(json);
-  let boards = document.querySelector("#boards");
-  let template = document.querySelector("#boards template");
-  if (template) {
-      for (let data of json.data) {
-          template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-          template.content.querySelector(".title").innerHTML = data.title;
-          template.content.querySelector(".userNickname").innerHTML = data.userNickname;
-          template.content.querySelector(".hitCount").innerHTML = data.hitCount;
-          template.content.querySelector(".regDate").innerHTML = data.regDate;
-          let a = document.createElement("a");
-          a.innerHTML = template.innerHTML;
-          if (boards) {
-              boards.appendChild(a);
-          }
-      }
+  
+  window.onload = submitSearch3();
+  
+  
+  // 검색 폼 제출 시 호출되는 함수
+  function submitSearch3() {
+    console.log("전송되었습니다");
+    let form: HTMLFormElement | null = document.getElementById("searchform3");
+  
+    if (form) {
+        let formData = new FormData(form);
+  
+        ajax3("/api/boardList3", {
+            method: "POST",
+            body: formData,
+        }).then((json) => {
+            console.log(json);
+  
+            let boards3: HTMLElement | null = document.querySelector("#boards3");
+            let template: HTMLTemplateElement | null = document.querySelector("#boards3 template");
+  
+            let pagesContainer3: HTMLElement | null = document.querySelector("#pages3");
+            let pageTemplate: HTMLTemplateElement | null = document.querySelector("#pages3 template");
+  
+  
+  
+            // 기존의 게시글 목록을 지우고 새로운 검색 결과를 표시
+            if (template) {
+                boards3.innerHTML = "";
+  
+                if (json.data.length === 0) {
+                    alert("일치하는 결과가 없습니다. 리스트로 돌아갑니다.");
+                    location.reload(); // 페이지를 강제로 다시 로드
+                    return;
+                }
+  
+                for (let data of json.data) {
+                    template.content.querySelector(".boardListNum3").innerHTML = data.boardListNum3;
+                    template.content.querySelector(".boardListNum3")?.setAttribute("href", `/app/postview3.jsp?id=${data.boardListNum3}`);
+                    template.content.querySelector(".title3").innerHTML = data.title3;
+                    template.content.querySelector(".title3")?.setAttribute("href", `/app/postview3.jsp?id=${data.boardListNum3}`);
+                    template.content.querySelector(".mainContents3").innerHTML = data.mainContents3;
+                    template.content.querySelector(".userNickname3").innerHTML = data.userNickname3;
+                    template.content.querySelector(".hitCount3").innerHTML = data.hitCount3;
+                    template.content.querySelector(".regDate3").innerHTML = data.regDate3;
+  
+  
+                    let a: HTMLElement | null = document.createElement("div");
+  
+                    a.innerHTML = template.innerHTML;
+                    if (boards3) {
+                        boards3.appendChild(template);
+                        boards3.appendChild(a);
+                    }
+                }
+            }
+  
+            if (pageTemplate && pagesContainer3) {
+                pagesContainer3.innerHTML = "";
+  
+                for (let i = 1; i <= json.totalPages3; i += 1) {
+                    let span = document.createElement("span");
+                    span.innerText = i;
+                    span.onclick = function () {
+                        pageChange3(i);
+                    };
+                    pagesContainer3.appendChild(pageTemplate);
+                    pagesContainer3.appendChild(span);
+                }
+            }
+  
+        });
+    }
   }
-});
-// 검색 폼 제출 시 호출되는 함수
-function submitSearch() {
-  console.log("전송되었습니다");
-  // 검색 폼 가져오기
-  let form = document.getElementById("searchtype");
-  if (form) {
-      let formData = new FormData(form);
-      ajax("/api/boardlist", {
-          method: "POST",
-          body: formData,
-      }).then((json) => {
-          console.log(json);
-          let boards = document.querySelector("#boards");
-          let template = document.querySelector("#boards template");
-          // 기존의 게시글 목록을 지우고 새로운 검색 결과를 표시
-          if (template) {
-              boards.innerHTML = "";
-              // JSON 데이터를 이용하여 동적으로 HTML 생성
-              for (let data of json.data) {
-                  // 새로운 div 생성
-                  let a = document.createElement("div");
-                  // template 내용을 복제하여 div에 추가
-                  let clone = document.importNode(template.content, true);
-                  a.appendChild(clone);
-                  // 동적으로 생성된 div에 데이터 추가
-                  a.querySelector(".boardListNum").innerHTML = data.boardListNum;
-                  a.querySelector(".title").innerHTML = data.title;
-                  a.querySelector(".userNickname").innerHTML = data.userNickname;
-                  a.querySelector(".hitCount").innerHTML = data.hitCount;
-                  a.querySelector(".regDate").innerHTML = data.regDate;
-                  // div를 #boards 아래에 추가
-                  boards.appendChild(template);
-                  boards.appendChild(a);
-              }
-          }
-      });
+  
+  // 페이지 링크 동기화 안되었음 일단 클릭하면 이동은 가능함
+  function pageChange3(page3) {
+    document.querySelector("#searchform3 #page3").value = page3;
+    submitSearch3();
   }
-}
-
-
-function pageChange(page){
-document.querySelector("#searchtype #page").value = page;
-submitSearch();
-}
+  
+  
+  
+  
