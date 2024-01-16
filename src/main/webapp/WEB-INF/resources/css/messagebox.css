@@ -150,10 +150,10 @@ summary::marker {
 .notebtn3 {
   margin: 0 0.5rem;
   font-size: 13px;
-
+  border:none;
   width: 5rem;
   height: 2rem;
-  border: 2px solid #fa5;
+  border-bottom: 2px solid #fa5;
   background-color: white;
 }
 

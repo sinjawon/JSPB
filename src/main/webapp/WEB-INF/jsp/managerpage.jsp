@@ -79,27 +79,30 @@ var users = <%=array.toString()%>;</script>
 
       <div class="manaber-box">
         <div class="manaber-title">회원관리</div>
-       
-        <table class="manager-membership">
+        <div id="table-scroll" class="table-scroll">
         
-          <tr>
-            <th>회원넘버</th>
-            <th>닉네임</th>
-            <th>가입날짜</th>
-            <th></th>
-          </tr>
-             <%for (User user : allUser){%>
-             
-          <tr class="manager-tr">
-            <td><%=user.getUserNum()%></td>
-            <td><%=user.getUserNickname()%></td>
-            <td><%=user.getUserJoinDay()%></td>
-            <td><button value="<%=user.getUserNum()%>">회원삭제</button></td>
-          </tr>
-          <%}%>	
-          
-        </table> 
-          </div>
+	       <div class="manager222">
+	        <table class="manager-membership">
+	        
+	          <tr>
+	            <th>회원넘버</th>
+	            <th>닉네임</th>
+	            <th>가입날짜</th>
+	            <th></th>
+	          </tr>
+	             <%for (User user : allUser){%>
+	             
+	          <tr class="manager-tr">
+	            <td><%=user.getUserNum()%></td>
+	            <td><%=user.getUserNickname()%></td>
+	            <td><%=user.getUserJoinDay()%></td>
+	            <td><button value="<%=user.getUserNum()%>">회원삭제</button></td>
+	          </tr>
+	          <%}%>	
+	          
+	        </table> 
+	        </div>
+	          </div>
         
       </div>
     </div>
