@@ -12,7 +12,7 @@ public class UserNote {
     private String receiver;//아마 수신자 닉네임
     private String notecontent;// 내용 
     private Timestamp notetime;// 시간까지 날짜
-    
+       
     
 	public String getNotenum() {
 		return notenum;

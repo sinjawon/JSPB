@@ -40,7 +40,7 @@ import com.jsp.dto.*;
 	            }
 
 	            // 아이템의 시작 위치 계산
-	            
+	               
 	    		
 	     		if(request.getParameter("searchtype") == null||request.getParameter("searchtype").equalsIgnoreCase("all"))
 	     			exec = map.getBoardInfoPage(limit, page);

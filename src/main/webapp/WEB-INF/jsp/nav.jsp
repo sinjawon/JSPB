@@ -44,7 +44,7 @@
                 <li><a href="tradeboard.jsp">애완용품거래</a></li>
               </ul>
             </div>
-            
+              
             <c:if test = "${sessionScope.UserNickName==null }" >
 	            <div class="login">
 	              <div><a href="login.jsp">로그인</a></div>

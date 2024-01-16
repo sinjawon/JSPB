@@ -24,7 +24,7 @@ public class ApiController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-
+    
 		
 		RequestDispatcher dispatcher = null;
 		String path = req.getPathInfo().toLowerCase();

@@ -12,7 +12,7 @@ public class BoardInfo {
 	private int limit;
     private int page;
     private int pagenum;
-    
+      
     
 	public int getBoardListNum() {
 		return boardListNum ;

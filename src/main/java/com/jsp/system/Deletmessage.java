@@ -48,7 +48,7 @@ public class Deletmessage extends HttpServlet {
     		 JSONObject jsonObject = Ajax.JsonToObj(sb.toString());
     		//Deletmessage/여기올 문자 구분	
 	    	 String action = req.getPathInfo();
-	    	
+	    	   
     	 
     	 if ("/send".equals(action)) {
     		 System.out.println("어 나왔어send2");

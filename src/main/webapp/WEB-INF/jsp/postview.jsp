@@ -41,7 +41,7 @@
         <button type="submit" class='goback'>게시판가기</button>
     </form>
     </div>
-    
+       
     
     <div class="comment_box">
      <h4>댓글</h4>
