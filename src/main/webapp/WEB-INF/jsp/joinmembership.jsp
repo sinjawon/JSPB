@@ -20,7 +20,7 @@
       
       <div class="join-title">회원가입</div>
       <div class="join-labelbox">
-        <input type="text" name="name" class="ipbox" id="name" placeholder="이름" />
+        <input type="text" name="name" class="ipbox" id="name" placeholder="이름" required/>
         <div class="nick-box">
           <input
             type="text"
@@ -28,25 +28,32 @@
             id="nickname"
             placeholder="닉네임"
             class="ipbox"
+            required
           />
           <button class="ckbox" type="button"  onclick="logincheckName()">중복체크</button>
         </div>
         <div class="id-box">
-          <input type="text"  id="userid" name="userid" class="ipbox" placeholder="아이디" />
+          <input type="text"  id="userid" name="userid" class="ipbox" placeholder="아이디" required/>
           <button class="ckbox" type="button"  onclick="logincheckID()">중복체크</button>
         </div>
+        
+        <div class="email-box">
+          <input type="text"  id="useremail" name="useremail" class="ipbox" placeholder="이메일" required/>
+        </div>
+        
         <input
           type="password"
           id="password" name="password"
           class="ipbox"
           placeholder="비밀번호"
+          required
         />
         <input 
           type="password"
           placeholder="비밀번호 확인"
           id="passwordcheck" 
           name="passwordcheck"
-          class="ipbox"/>
+          class="ipbox" required/>
         <div id="passwordMatchStatus"></div>
         <input type="submit" value="회원가입" class="submitbtn" id="signupButton" />
       </div>

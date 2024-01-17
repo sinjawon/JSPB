@@ -85,20 +85,33 @@ body {
 
 .manager-membership {
   width: 70%;
-  height: 7rem;
+  height: 25rem;
   margin: auto;
   border: 2px solid black;
+  display:block;
+  overflow:auto;
+  background:white;
 }
 
 
-
-
-.manager-tr > td{
+.manager-membership th {
+  position : sticky;
+  top : 0;
+  background:white;
+  height: 3rem;
+  line-height: 3rem;
+}
+.manager-tr td{
 	text-align:center;
   	height:2rem;
+  	width:30rem;
 }
 
 .manager-tr{
 	border-bottom:1px solid #ddd;
   	line-height: 2rem;
 }
+
+
+
+

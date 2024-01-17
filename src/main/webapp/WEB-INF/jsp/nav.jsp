@@ -45,13 +45,28 @@
               </ul>
             </div>
               
+              
+              <c:if test = "${sessionScope.UserNickName=='가니'}" >
+              
+              	<div class="myprofile">
+	            	<div class="myprofile_wrap" style="width:40px; height:40px;text-align: center;border-radius: 50%; overflow: hidden;	"><img style="width:100%; height:100%" class="myprofile_img" src=<%=map2.getuserProfile(usernum).toStringProfile()%> alt="유저프로필" />
+	            	</div>
+	            	<div><p><%=session.getAttribute("UserNickName") %> 님</p></div>
+            	</div>
+              
+	           <div class="login">
+	              <div><form action="../api/select/logout.jsp"><input type="submit" value="로그아웃" class="logout"/><input type="hidden" name="logoutAction" value="true"/></form></div>
+	              <div><a href="managerpage.jsp">관리자페이지</a></div>
+            	</div>
+            </c:if>
+              
             <c:if test = "${sessionScope.UserNickName==null }" >
 	            <div class="login">
 	              <div><a href="login.jsp">로그인</a></div>
 	              <div><a href="joinmembership.jsp">회원가입</a></div>
             	</div>
             </c:if>
-            <c:if test = "${sessionScope.UserNickName!=null }" >
+            <c:if test = "${sessionScope.UserNickName!=null && sessionScope.UserNickName != '가니'}" >
             <div class="myprofile">
 
             	
@@ -65,6 +80,7 @@
 	              <div><a href="mypage.jsp">마이페이지</a></div>
             	</div>
             </c:if>
+            
           </div>    
         </div>     
       </nav>

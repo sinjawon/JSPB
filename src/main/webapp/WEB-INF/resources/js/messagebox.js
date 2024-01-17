@@ -109,7 +109,8 @@ function writemessage() {
             },
             body: JSON.stringify(writejsonData),
         });
-        console.log("완료");
-        location.reload();
+        setTimeout(() => {
+            location.reload();
+        }, 100);
     });
 }
