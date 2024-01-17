@@ -14,7 +14,7 @@ function ChartGraph(query, options){
 		case "line":
 			break;
 		case "bar":
-			info.backColor = options.backColor || ["red"];
+			info.backColor = options.backColor || ["blue"];
 			info.backColor = info.backColor.slice(0, info.datas.length);
 			break;
 	}
