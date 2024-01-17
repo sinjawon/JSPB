@@ -154,7 +154,7 @@ try(DBConnector con = new DBConnector();){
             <summary class="note-content" id="receivesum<%=notenum%>">
               <div class="note-content-box">
                 <div class="note-content-detail"><%=SendNote.getNotetime()%></div>
-                <div class="note-content-writer"><%=SendNote.getSender()%></div>
+                <div class="note-content-writer"><%=SendNote.getReceiver()%></div>
               </div>
               <div class="note-xbtn">
                 <form action="/Deletmessage/receive" id="recieveform<%=notenum%>">
