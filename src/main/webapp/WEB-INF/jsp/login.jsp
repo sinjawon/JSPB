@@ -6,9 +6,13 @@
 <head>
 <meta charset="UTF-8">
  <% String loginError = (String)session.getAttribute("loginError");%>
- <% if (loginError != null) { %>
-            <script>let loginErrors ="<%=loginError%>"</script>
-        <% } %>
+            <script>
+             let loginErrors = null;
+            	 <% if (loginError != null) { %>
+                 loginErrors ="<%=loginError%>";
+            	 <% } %>
+            </script>
+        
 <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
@@ -26,6 +30,7 @@
                 text: loginErrors,
                 icon: 'warning',
             });
+           <%session.removeAttribute("loginError");%>
         }
     });
   </script>
