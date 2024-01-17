@@ -14,7 +14,7 @@ function ChartGraph(query, options){
 		case "line":
 			break;
 		case "bar":
-			info.backColor = options.backColor || ["red","blue","green","aqua","yellow"];
+			info.backColor = options.backColor || ["red"];
 			info.backColor = info.backColor.slice(0, info.datas.length);
 			break;
 	}
@@ -151,22 +151,22 @@ function ChartGraph(query, options){
   let btdate = document.querySelector("#btdate");
   btdate.addEventListener("click",()=>{
 	document.querySelector("#bar-chart").innerHTML='';
-	ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별"});
+	ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별",type:"line"});
  });
  let btmonth = document.querySelector("#btmonth");
  btmonth.addEventListener("click",()=>{
 	document.querySelector("#bar-chart").innerHTML='';
-	ChartGraph("#bar-chart", {datas:monthCounts,labels:recentMonths,title:"월별"});
+	ChartGraph("#bar-chart", {datas:monthCounts,labels:recentMonths,title:"월별",type:"line"});
  });
  let btyear = document.querySelector("#btyear");
  btyear.addEventListener("click",()=>{
 	document.querySelector("#bar-chart").innerHTML='';
-	ChartGraph("#bar-chart", {datas:yearCounts,labels:recentYears,title:"년별"});
+	ChartGraph("#bar-chart", {datas:yearCounts,labels:recentYears,title:"년별",type:"line"});
  });
 
 
 //로드하면 일다 이거 보여주고
-  ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별"});
+  ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별",type:"line"});
 
 
 
