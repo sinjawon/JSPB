@@ -143,6 +143,8 @@ try(DBConnector con = new DBConnector();){
 				Received.add(notenum);
 				Receivedsee.add(seenum);
 			%> 
+			
+			<div class="scroll">
           <details>
             <summary class="note-content" id="receivesum<%=notenum%>">
               <div class="note-content-box">
@@ -163,6 +165,7 @@ try(DBConnector con = new DBConnector();){
 
             <p class="note-content-div"><%=SendNote.getNotecontent()%></p>
           </details>
+          </div>
           <%}%>
 		<%}%>
 <% }else{ %>

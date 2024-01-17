@@ -85,7 +85,7 @@ body {
 
 .manager-membership {
   width: 70%;
-  height: 25rem;
+  height: 30rem;
   margin: auto;
   border: 2px solid black;
   display:block;
@@ -103,7 +103,8 @@ body {
 }
 .manager-tr td{
 	text-align:center;
-  	height:2rem;
+  	height:3rem;
+  line-height: 3rem;
   	width:30rem;
 }
 

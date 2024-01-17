@@ -177,6 +177,7 @@ summary::marker {
 
 .note-sendview {
   display: none;
+  overflow:auto;
 }
 
 .note-write {
@@ -208,3 +209,8 @@ summary::marker {
 
 .note-sender:focus {outline: none;} 
 
+.scroll{
+	
+  overflow:auto;
+  height:5rem;
+}
