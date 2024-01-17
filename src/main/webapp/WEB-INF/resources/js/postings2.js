@@ -81,6 +81,38 @@ function editPost2() {
     form.submit();
     // location.href="/boardList.jsp";
 }
+// 이미지 불러오기
+function getImagePaths2() {
+    fetch(`/api/getImagePaths2?boardListNum2=${clickedPostId2}`, {
+        method: "GET"
+    })
+        .then(response => response.json())
+        .then(data => {
+        // 이미지를 표시할 함수 호출
+        console.log(data.paths2);
+        console.log("11");
+        displayImages2(data.paths2);
+        console.log("22");
+    })
+        .catch(error => {
+        console.error('이미지 경로를 가져오지 못했습니다.', error);
+    });
+}
+// 이미지를 표시하는 함수
+function displayImages2(imagePaths2) {
+    let imageContainer2 = document.getElementById("imageContainer2");
+    console.log(imagePaths2);
+    console.log("33");
+    // 이미지를 표시할 div에 이미지 경로 넣음
+    //imagePaths.paths.forEach(imagePath => {
+    imagePaths2.forEach(imagePath => {
+        let img = document.createElement("img");
+        img.src = `/resources/${imagePath}`; //경로 /*/*/가져온 이름
+        console.log("44");
+        imageContainer2.appendChild(img);
+    });
+}
+getImagePaths2();
 function deletePost2(boardListNum2) {
     fetch(`/api/deletePost2?boardListNum2=${boardListNum2}`, {
         method: "POST"

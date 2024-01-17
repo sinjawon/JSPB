@@ -71,11 +71,12 @@ a.mainContents4 {
 		<button type="button" class="back4"
 			onClick="location.href='/app/boardlist4.jsp'">목록으로 돌아가기</button>
 	</form>
+	<%if(session.getAttribute("UserNickName") != null) { %>
 	<form action="/insert4" method="post">
 		<button type="button" class="navyBtn4"
 			onClick="location.href='/app/insert4.jsp'">글쓰기</button>
 	</form>
-
+	<%} %>
 
 </body>
 </html>

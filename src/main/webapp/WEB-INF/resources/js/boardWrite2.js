@@ -1,5 +1,5 @@
 "use strict";
-function submitPos() {
+function submitPost2() {
     console.log("전송되었습니다");
     let form = document.getElementById("writeForm2");
     form.submit();
@@ -11,16 +11,17 @@ function cancelPost2() {
     let postTextarea2 = document.getElementById("postTextarea2");
     titleInput2.value = "";
     postTextarea2.value = "";
+    dropzone.removeAllFiles();
 }
 //@ts-ignore
 Dropzone.autoDiscover = false;
 //@ts-ignore
 var dropzone = new Dropzone("div.dropzone", {
-    url: "/api/image/upload",
+    url: "/api/image/upload2",
     method: "POST",
     dictDefaultMessage: "여기에 사진을 드래그&드랍 하세요.",
     autoQueue: false,
-    maxFiles: 10,
+    maxFiles: 1,
     maxFilesize: 100,
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
@@ -31,7 +32,7 @@ var dropzone = new Dropzone("div.dropzone", {
         button.addEventListener("click", () => {
             //@ts-ignore
             zone.enqueueFiles(zone.getFilesWithStatus(Dropzone.ADDED));
-            submitPost();
+            submitPost2();
         });
         //@ts-ignore
         this.on('sending', (file, xhr, data) => {

@@ -26,7 +26,8 @@
 	<div id="viewTitle2">글 제목</div>
 	<div id="viewTextarea2">글 내용</div>
 
-	<div> 이미지 공간 4개까지</div>
+	<div id="imageContainer2"></div>
+	   
 	<% session.getAttribute("UserNickName"); %>
 
 	<div id="buttonContainer2"></div>

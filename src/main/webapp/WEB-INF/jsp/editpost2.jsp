@@ -31,7 +31,7 @@
     
    
        <form id="refresh2" action="/api/boardList2" method="post">
-   			<button type="button" onClick="location.href='/app/boardlist2.jsp'">돌아가기</button>
+   			<button type="button" onClick="location.href='/app/postview2.jsp?id=<%= request.getParameter("id") %>'">돌아가기</button>
    		</form>
    
 </form>
