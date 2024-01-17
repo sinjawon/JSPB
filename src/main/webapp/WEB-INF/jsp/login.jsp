@@ -5,12 +5,14 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <% String loginError = (String)session.getAttribute("loginError");%> <% if
-    (loginError != null) { %>
+    <% String loginError = (String)session.getAttribute("loginError");%>
     <script>
-      let loginErrors = "<%=loginError%>";
+      let loginErrors = null;
+       <% if (loginError != null) { %>
+          loginErrors ="<%=loginError%>";
+       <% } %>
     </script>
-    <% } %>
+
     <link
       rel="icon"
       type="image/png"
@@ -33,16 +35,17 @@ pageEncoding="UTF-8"%>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
     <script>
       console.log("왔어!");
-      document.addEventListener("DOMContentLoaded", function () {
-        // 페이지가 로드될 때 SweetValue 값을 확인하고 SweetAlert을 표시
-        if (loginErrors != null) {
-          Swal.fire({
-            title: "",
-            text: loginErrors,
-            icon: "warning",
-          });
-        }
-      });
+         document.addEventListener("DOMContentLoaded", function() {
+             // 페이지가 로드될 때 SweetValue 값을 확인하고 SweetAlert을 표시
+             if (loginErrors != null) {
+                 Swal.fire({
+                     title: '',
+                     text: loginErrors,
+                     icon: 'warning',
+                 });
+                <%session.removeAttribute("loginError");%>
+             }
+           });
     </script>
   </head>
   <body>
