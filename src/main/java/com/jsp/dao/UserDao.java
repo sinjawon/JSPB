@@ -28,6 +28,8 @@ public interface UserDao {
 	@Select( "select userNum from Member3 where userid=#{userid}")
 	public User getuserNum(@Param("userid") String userid);
 	
+	
+	
 	//아이디로 유저닉네임 찾기
 	@Select( "select userNickName from Member3 where userid=#{userid}")
 	public User getuserNickName(@Param("userid") String userid);
@@ -48,6 +50,11 @@ public interface UserDao {
 	@Select( "select userId from Member3")
 	public List<User> getuseridAll();
 	
+	//이메일로 아뒤찾기
+	@Select( "select userId from Member3 where userEmail = #{useremial}")
+	public String getuseridAsEmail(@Param("useremial") String useremail);
+	
+	
 	//유저넘버 아이디
 	@Select( "select userNum,userNickName from Member3")
 	public List<User> getuserNumNick();
@@ -55,6 +62,12 @@ public interface UserDao {
 	//유저비밀번호찾기 이건 api안뿌리게 
 	@Select("select userPw from Member3 where userid=#{userid}")
 	public User getuserpw(@Param("userid") String userid);
+	
+	//이메일로 유저번호찾기
+	@Select( "select userPw from Member3 where userEmail = #{email}")
+	public User getuserNumAsEmail(@Param("email") String email);
+	
+	
 	
 	//가장 높은 유저 넘버
 	@Select("SELECT MAX(userNum) FROM member3")
@@ -84,6 +97,9 @@ public interface UserDao {
 	//유저 아이디 ,바꿀 비밀번호 비밀번호 변경
 	@Update("update Member3 set userPw=#{newPassword} where userid=#{userid}")
 	public void updateUserPassword(@Param("userid") String userid, @Param("newPassword") String newPassword);
+	
+	
+	
 	
 	
 	
