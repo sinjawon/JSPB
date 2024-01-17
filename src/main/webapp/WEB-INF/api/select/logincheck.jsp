@@ -33,17 +33,17 @@ if(userid != null){
                 session.setAttribute("UserEmail",UserEmail);
                 session.setMaxInactiveInterval(60 * 30);
                 response.sendRedirect("/app/main.jsp");
-           }else{              
-               session.setAttribute("loginError", "매치하는 비밀번호x");          
+           }else{ 
+               session.setAttribute("loginError","매치하는 비밀번호x");
                response.sendRedirect("/app/login.jsp");
                }      
-      }else{
-         session.setAttribute("loginError", "비밀번호에 맞는 아이디 x");          
-         response.sendRedirect("/app/login.jsp");
-      }
-}else{
-session.setAttribute("loginError", "아이디를 잘못입력");          
-response.sendRedirect("/app/login.jsp");
+	      }else{
+	         session.setAttribute("loginError", "비밀번호에 맞는 아이디 x"); 
+	         response.sendRedirect("/app/login.jsp");
+	      }
+	}else{
+	session.setAttribute("loginError","아이디를 잘못입력");
+	response.sendRedirect("/app/login.jsp");
         }   
         } 
 
