@@ -58,23 +58,53 @@ function ChartGraph(query, options){
 
 //////////////////////////////////////////////////////////////////////////////////그래프존
 
- function filterUsersByTimeRange(users, monthsAgo = 0, yearsAgo = 0, daysAgo = 0) {
+ function filterDay(users,  daysAgo = 0) {
 	let currentDate = new Date();
 	let targetDate = new Date(currentDate);
-	targetDate.setMonth(targetDate.getMonth() - monthsAgo);
-	targetDate.setFullYear(targetDate.getFullYear() - yearsAgo);
+
 	targetDate.setDate(targetDate.getDate() - daysAgo);
   
 	return users.filter((data) => {
 	  let newUserJoinDay = new Date(data.userJoinDay);
   
-	  return (
-		newUserJoinDay.getFullYear() === targetDate.getFullYear() &&
-		newUserJoinDay.getMonth() === targetDate.getMonth() &&
+	  return (	
 		newUserJoinDay.getDate() === targetDate.getDate()
 	  );
 	});
   }
+  function filtermonth(users, yearsAgo = 0) {
+	let currentDate = new Date();
+	let targetDate = new Date(currentDate);
+	targetDate.setFullYear(targetDate.getFullYear() - yearsAgo);
+	return users.filter((data) => {
+	  let newUserJoinDay = new Date(data.userJoinDay);
+  
+	  return (
+		newUserJoinDay.getFullYear() === targetDate.getFullYear()
+	  );
+	});
+  }
+
+  function filteryear(users,yearsAgo = 0) {
+	let currentDate = new Date();
+	let targetDate = new Date(currentDate);
+	targetDate.setFullYear(targetDate.getFullYear() - yearsAgo);
+	return users.filter((data) => {
+	  let newUserJoinDay = new Date(data.userJoinDay);
+  
+	  return (
+		newUserJoinDay.getFullYear() === targetDate.getFullYear()
+	  );
+	});
+  }
+
+
+
+
+
+
+
+
 
   function getRecentDates(startDate, count, interval) {
 	let recentDates = [];
@@ -87,38 +117,50 @@ function ChartGraph(query, options){
   
 	return recentDates;
   }
+  
   let today = new Date(); // 현재 날짜
   let recentDays = getRecentDates(today, 5, 1).reverse(); // 가장 최근일자로부터 5일
   let recentMonths = getRecentDates(today, 5, 30).reverse(); // 가장 최근달로부터 5달
+  recentMonths = recentMonths.map(date => {
+	return date.substring(0, 7);
+  });
   let recentYears = getRecentDates(today, 5, 365).reverse(); // 가장 최근년도로부터 5년
+  recentYears = recentYears.map(date => {
+	return date.substring(0, 4);
+  });
+
 
   let dateRanges = [4, 3, 2, 1, 0];
   let dateCounts = dateRanges.map((daysAgo) =>
-	filterUsersByTimeRange(users, 0, 0, daysAgo).length
+	filterDay(users,daysAgo).length
   );
 
   let monthRanges = [4, 3, 2, 1, 0];
   let monthCounts = monthRanges.map((daysAgo) =>
-	filterUsersByTimeRange(users, daysAgo, 0, 0).length
+	filtermonth(users, daysAgo).length
   );
+  
 
   let yearRanges = [4, 3, 2, 1, 0];
   let yearCounts = yearRanges.map((daysAgo) =>
-	filterUsersByTimeRange(users, 0, daysAgo, 0).length
+	filteryear(users,daysAgo).length
   );
-
+ 
 
 
   let btdate = document.querySelector("#btdate");
   btdate.addEventListener("click",()=>{
+	document.querySelector("#bar-chart").innerHTML='';
 	ChartGraph("#bar-chart", {datas:dateCounts,labels:recentDays,title:"일별"});
  });
  let btmonth = document.querySelector("#btmonth");
  btmonth.addEventListener("click",()=>{
+	document.querySelector("#bar-chart").innerHTML='';
 	ChartGraph("#bar-chart", {datas:monthCounts,labels:recentMonths,title:"월별"});
  });
  let btyear = document.querySelector("#btyear");
  btyear.addEventListener("click",()=>{
+	document.querySelector("#bar-chart").innerHTML='';
 	ChartGraph("#bar-chart", {datas:yearCounts,labels:recentYears,title:"년별"});
  });
 
