@@ -10,30 +10,21 @@
     <script defer src="/resources/boardWrite4.js"></script>
 </head>
 <body>
-    <h1>글쓰기4</h1>
-    
-    
-    
+
         
     <form id="writeForm4" action="/api/newPost4" method="post">
-        <input type="text" id="userNickname4" name="userNickname4" value='<%=session.getAttribute("UserNickName")%>' readonly>
-        <br>
-        <input type="text" id="titleInput4" name="title4" placeholder="글 제목">
-        <br><br>
-        <textarea id="postTextarea4" name="mainContents4" placeholder="글 내용"></textarea>
-        <br><br><br>
-        
-        
+        <input type="text" id="userNickname4" name="userNickname4" class="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
+        <input type="text" id="titleInput4" name="title4" placeholder="글 제목" class="titleInput">
+        <textarea id="postTextarea4" name="mainContents4" placeholder="글 내용" class="postTextarea"></textarea>
         <div class="dropzone"></div>
-        
-        <button type="submit" id="submit">확인</button>
-        <button type="button" onclick="cancelPost4()">취소</button>
-        
+        <div class="btns">
+           <button type="submit" id="submit" class="insertok">확인</button>
+           <button type="button" onclick="cancelPost4()" class="cancelbtn">취소</button>
         <form action="/app/boardlist4" method="post">
-   			<button type="button" onclick="location.href='/app/boardlist4.jsp'">뒤로가기</button>
-   		</form>  
+            <button type="button" onclick="location.href='/app/boardlist4.jsp'" class="backbtn">게시판</button>
+         </form>  
+        </div>
     </form>
 </body>
 </html>
-
 

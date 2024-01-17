@@ -75,7 +75,7 @@
             <c:if test = "${sessionScope.UserNickName!=null }" >
 	<form action="/insert4" method="post">
 		<button type="button" class="navyBtn4 navyBtn"
-			onClick="location.href='/app/insert4.jsp'">글쓰기</button>
+			onClick="location.href='/app/insertpage.jsp'">글쓰기</button>
 	</form>
 	</c:if>
 	</div>

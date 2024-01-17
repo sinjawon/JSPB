@@ -7,6 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>글 수정 페이지3</title>
+    <link rel="stylesheet" type="text/css" href="/resources/editpost.css"> 
+
     <script>
     var valueId=<%=request.getParameter("id")%>;
     var sessionUser='<%=session.getAttribute("UserNickName")%>';
@@ -16,26 +18,34 @@
     
 </head>
 <body>
-    <h1>글 수정하기3</h1>
+
+    <%@include file="../jsp/nav.jsp"%>
     
+        <div class="editContainer">
     
-    <form id="editForm3" action="/api/editPost3" method="post">
-    <input type="hidden" name="boardListNum3" value="<%= request.getParameter("id") %>">
-    <textarea id="userNickname3" name="userNickname3" placeholder="작성자"></textarea>
-    <br>
-    <textarea id="viewTitle3" name="title3" placeholder="글 제목"></textarea>
-    <br><br>
-    <textarea id="viewTextarea3" name="mainContents3" placeholder="글 내용"></textarea>
-    <br><br><br>
-    <button type="button" onclick="editPost3()">수정 확인</button>
-    
+          <h2>글 수정하기2</h2>
+          <form id="editForm3" action="/api/editPost3" method="post" class="editForm">
+             <input type="hidden" name="boardListNum3" value="<%= request.getParameter("id") %>">
+             <textarea id="userNickname3" name="userNickname3" placeholder="작성자" class="userNickname" ></textarea>
+             <br>
+             <textarea id="viewTitle3" name="title3" placeholder="글 제목" class="viewTitle" ></textarea>
+             <br><br>
+             <textarea id="viewTextarea3" name="mainContents3" placeholder="글 내용" class="viewTextarea"></textarea>
+             <br><br><br>
+             
+              <div class="editbtnWrap">
+         
+                <button type="button" onclick="editPost3()">수정 확인</button>
+                   <form id="refresh3" action="/api/boardList3" method="post">
+                     <button type="button" onClick="location.href='/app/boardlist3.jsp'">돌아가기</button>
+                  </form>
+               </div>
    
-       <form id="refresh3" action="/api/boardList3" method="post">
-   			<button type="button" onClick="location.href='/app/boardlist3.jsp'">돌아가기</button>
-   		</form>
-   
-</form>
+         </form>
+        </div>
     
+    
+           <%@include file="../jsp/footer.jsp"%>   
     
 
 </body>
