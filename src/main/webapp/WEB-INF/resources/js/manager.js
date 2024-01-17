@@ -12,7 +12,7 @@ function ChartGraph(query, options){
 	info.animation.duration = options.animation && (options.animation.duration || 0); 
 	switch(info.type){
 		case "line":
-			info.backColor = options.backColor || ["red"];
+			info.backColor = options.backColor || ["rgb(127, 199, 217, 0.5)"];
 			break;
 		case "bar":
 			info.backColor = options.backColor || ["blue"];
@@ -158,12 +158,12 @@ function ChartGraph(query, options){
  let btmonth = document.querySelector("#btmonth");
  btmonth.addEventListener("click",()=>{
 	document.querySelector("#bar-chart").innerHTML='';
-	ChartGraph("#bar-chart", {datas:monthCounts,labels:recentMonths,title:"월별",type:"line"});
+	ChartGraph("#bar-chart", {datas:monthCounts,labels:recentMonths,title:"월별",type:"line", backColor:"rgb(158, 184, 217, 0.5)"});
  });
  let btyear = document.querySelector("#btyear");
  btyear.addEventListener("click",()=>{
 	document.querySelector("#bar-chart").innerHTML='';
-	ChartGraph("#bar-chart", {datas:yearCounts,labels:recentYears,title:"년별",type:"line"});
+	ChartGraph("#bar-chart", {datas:yearCounts,labels:recentYears,title:"년별",type:"line", backColor:"rgb(41, 75, 41, 0.3)"});
  });
 
 
