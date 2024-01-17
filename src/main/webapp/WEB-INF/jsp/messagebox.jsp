@@ -76,6 +76,7 @@ try(DBConnector con = new DBConnector();){
         
         <div id="sender" class="note-sendview">
           <div class="note-title">받은쪽지</div>
+          <div class="scroll">
           <%if(session.getAttribute("UserNickName") != null){%>
          
 		<% for(UserNote ReceiveNote : ReceiveNotes) {
@@ -113,6 +114,7 @@ try(DBConnector con = new DBConnector();){
 		<%}%>
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
+		 
 	  <%}%>
 	  
 	  <% 
@@ -120,6 +122,8 @@ try(DBConnector con = new DBConnector();){
 
 	 	/* String yesstt =	jsonArray.toString(); */	  
 	  %> 
+	  
+          </div>
 	         <form action="/Deletmessage/sendAll" id="sendAllform">		  
 			      <%--  <input type="text"  name ="SenddAll" value="<%=yesstt%>"> --%>
 			       <input type="text"  name ="seenums" value="<%=Sendedsee%>">
@@ -131,6 +135,8 @@ try(DBConnector con = new DBConnector();){
         
         <div id="receiver" class="note-reception">
           <div class="note-title">보낸쪽지</div>
+          
+			<div class="scroll">
           <%if(session.getAttribute("UserNickName") != null){%>
          		
 		<% for(UserNote SendNote : SendNotes) { 
@@ -144,7 +150,6 @@ try(DBConnector con = new DBConnector();){
 				Receivedsee.add(seenum);
 			%> 
 			
-			<div class="scroll">
           <details>
             <summary class="note-content" id="receivesum<%=notenum%>">
               <div class="note-content-box">
@@ -165,12 +170,13 @@ try(DBConnector con = new DBConnector();){
 
             <p class="note-content-div"><%=SendNote.getNotecontent()%></p>
           </details>
-          </div>
           <%}%>
 		<%}%>
 <% }else{ %>
 		 <div>로그인을 해주세요</div>
 	  <%}%>
+	  
+          </div>
 	   
 	
 	         <form action="/Deletmessage/receiveAll" id="receiveAllform">		  
