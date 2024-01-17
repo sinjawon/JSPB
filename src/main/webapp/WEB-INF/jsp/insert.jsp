@@ -13,7 +13,6 @@
     <h1>글쓰기</h1>
     
     
-    
         
     <form id="writeForm" action="/api/newPost" method="post">
         <input type="text" id="userNickname" name="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly >

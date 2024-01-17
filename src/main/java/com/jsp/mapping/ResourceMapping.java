@@ -16,7 +16,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet; 
 
 // /resources/년/월/일/파일명.jpg
-
+//어디에 저장해도 되게 
 @WebServlet(urlPatterns = {
 		"/resources/*",
 		"/resource/*"

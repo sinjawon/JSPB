@@ -42,7 +42,6 @@ var dropzone = new Dropzone("div.dropzone", {
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
     acceptedFiles: '.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',
-    
     init:function(){
         let zone = this;
         let button:HTMLElement = document.querySelector("button#submit") as HTMLElement;
