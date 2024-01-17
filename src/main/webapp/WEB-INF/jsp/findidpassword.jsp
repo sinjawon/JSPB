@@ -77,19 +77,27 @@
         	console.log(SweetValue);
           	console.log(SweetValueCheck);
             Swal.fire({
-                title: 'Alert가 실행되었습니다.',
+                title: '찾았습니다.',
                 text: sweetValue,
                 icon: 'success',
+
+                confirmButtonText: "로그인 하러가기"
+            }).then((result) => {
+           	  if (result.isConfirmed) {
+           		  window.location.href="/app/login.jsp";
+           	  }
+
             });
+            
             SweetValue = null;
         	SweetValueCheck = null;
         }else if(sweetValue != null && SweetValueCheck =="false" ){
         	console.log(SweetValue);
           	console.log(SweetValueCheck);
         	Swal.fire({
-                title: 'Alert가 실행되었습니다.',
+                title: '찾지못했습니다.',
                 text: sweetValue,
-                icon: 'error',
+                icon: 'warning',
             });
         	SweetValue = null;
         	SweetValueCheck = null;
