@@ -30,7 +30,7 @@ public interface BoardDao {
 	
 	
 	
-	//@@지수-새로운 글을 추가하는 메서드. 
+	//지수-새로운 글을 추가하는 메서드. 
 	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
 	public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title, @Param("mainContents") String mainContents);
 	

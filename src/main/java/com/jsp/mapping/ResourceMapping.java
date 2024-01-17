@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 // JSP, Servlet과 관련한 모든 기능은 javax라는 패키지에 포함
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletRequest; // request -> 요청
 import javax.servlet.http.HttpServletResponse; // response -> 응답
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet; 
+
+// /resources/년/월/일/파일명.jpg
 
 @WebServlet(urlPatterns = {
 		"/resources/*",
@@ -51,24 +55,51 @@ public class ResourceMapping extends HttpServlet {
 		}
 		else if(token.equalsIgnoreCase("jpeg") || token.equalsIgnoreCase("jpg")) {
 			resp.setContentType("image/jpeg");
-			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-				out.write(in.readAllBytes());
-			}catch(Exception e) {}
+			if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
+				try(OutputStream out = resp.getOutputStream();
+						InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
+					out.write(in.readAllBytes());		
+				}
+				catch(Exception e) {}
+			}
+			else {
+				try(OutputStream out = resp.getOutputStream();
+						InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
+					out.write(in.readAllBytes());
+				}catch(Exception e) {}
+			}
 		}
 		else if(token.equalsIgnoreCase("png")) {
 			resp.setContentType("image/png");
-			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-				out.write(in.readAllBytes());
-			}catch(Exception e) {}	
+			if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
+				try(OutputStream out = resp.getOutputStream();
+						InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
+					out.write(in.readAllBytes());		
+				}
+				catch(Exception e) {}
+			}
+			else {
+				try(OutputStream out = resp.getOutputStream();
+						InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
+					out.write(in.readAllBytes());
+				}catch(Exception e) {}	
+			}
 		}
 		else if(token.equalsIgnoreCase("gif")) {
 			resp.setContentType("image/gif");
-			try(OutputStream out = resp.getOutputStream();
-					InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-				out.write(in.readAllBytes());
-			}catch(Exception e) {}	
+			if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
+				try(OutputStream out = resp.getOutputStream();
+						InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
+					out.write(in.readAllBytes());		
+				}
+				catch(Exception e) {}
+			}
+			else {
+				try(OutputStream out = resp.getOutputStream();
+						InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
+					out.write(in.readAllBytes());
+				}catch(Exception e) {}
+			}
 		}
 		
 //		String id = req.getParameter("id");

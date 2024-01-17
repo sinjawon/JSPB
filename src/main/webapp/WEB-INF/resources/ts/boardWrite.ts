@@ -8,6 +8,9 @@ function submitPost(){
 
 }
 
+
+
+
 function cancelPost() {
     
     // 글쓰기 창에서 작성된 내용 초기화 
@@ -33,12 +36,13 @@ var dropzone = new Dropzone("div.dropzone", {
     method: "POST",
     dictDefaultMessage:"여기에 사진을 드래그&드랍 하세요.",
     autoQueue: false, 
-    maxFiles: 4,
+    maxFiles: 1,
     maxFilesize: 100,
     //headers :{ "imageOrder": index},
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
     acceptedFiles: '.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',
+    
     init:function(){
         let zone = this;
         let button:HTMLElement = document.querySelector("button#submit") as HTMLElement;

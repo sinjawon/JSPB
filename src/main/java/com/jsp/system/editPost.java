@@ -19,14 +19,14 @@ public class editPost extends HttpServlet {
         
     	request.setCharacterEncoding("utf-8");
     	response.setCharacterEncoding("utf-8");
-
+    	int boardListNum=0;
         try (DBConnector con = new DBConnector();){
         	String userNickname = request.getParameter("userNickname");
         	
         	BoardDao map = con.OpenMap(request, BoardDao.class);
         	System.out.println("map이 안되니");
 
-            int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
+            boardListNum = Integer.parseInt(request.getParameter("boardListNum"));
             String title = request.getParameter("title");
             String mainContents = request.getParameter("mainContents");
         	
@@ -37,8 +37,8 @@ public class editPost extends HttpServlet {
         }
         
         response.setContentType("text/plain");
-        response.sendRedirect("/app/boardList.jsp");
-    	
+        response.sendRedirect("/app/postview.jsp?id="+boardListNum);
+        //수정했던 글로 가도록 변경함
     	
     }
 }
