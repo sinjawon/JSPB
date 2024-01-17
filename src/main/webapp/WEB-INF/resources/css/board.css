@@ -57,6 +57,13 @@
   padding: 0.2rem 0;
 }
 
+.board > .writer{
+	width: 25%;
+}
+
+.board > .hitBox{
+	width: 10%;
+}
 .pages {
   text-align: center;
   padding: 1.5rem;

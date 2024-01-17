@@ -47,7 +47,6 @@
   width: 30%;
   height: 30vh;
   /* margin: auto; */
-  border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
 }
 .mainshopimg {
@@ -157,28 +156,34 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-bottom: 1px solid #ccc;
 }
 .free-a > .boards .board > div {
-  width: 25%;
   padding: 0;
 }
 .free-a > .boards .board > div:nth-of-type(2) {
-  margin-top: 4px;
+  margin-top: 1px;
   width: 50%;
+  text-align: center;
 }
 
 .free-a > .boards .board > div:nth-of-type(2)::before {
   display: none;
 }
 
-.free-a > .boards .board > .hitCount,
+.free-a > .boards .board > .hitCountBox,
 .free-a > .boards .board > .date {
-  width: 1%;
+	width: 0;
 }
 
-.free-a > .boards .board > .title {
-  margin-bottom: 0.4rem;
+.free-a > .boards  .board > .writer{
+	width: 20%;
+	margin-left: 3rem;
+	margin: 0;
+	margin-top:0.2rem;
+	text-align: right;
+
 }
+
 
 .fa-solid:hover {
   color: #fa5;
 }
-	
+

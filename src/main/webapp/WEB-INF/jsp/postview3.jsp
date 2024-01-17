@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.jsp.system.Ajax, org.json.*"%>
 <%@ page import="com.jsp.dto.ReplyInfo"%>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 
 
 <!DOCTYPE html>
@@ -65,14 +66,19 @@
 
 
 	<form id="replyForm3" action="/api/addReply3" method="post">
+     
 		 <div class="writing_field">
 			<input type="text" id="boardListNumInput3" name="boardListNum3"
 				value="<%=request.getParameter("id")%>" readonly style="display:none;"> 
 			 <input type="text" id="userNickname3" name="userNickname3"
 				value="<%=session.getAttribute("UserNickName")%>"
 				placeholder="작성자 닉네임" style="display:none;">
+     <c:if test = "${sessionScope.UserNickName==null }" >
+     </c:if>
+    <c:if test = "${sessionScope.UserNickName!=null}">
 			<textarea id="replyContents3" name="replyContents3" placeholder="댓글 내용" class="text"></textarea>
 			<button type="button" id="addReplyBtn3" onclick="addReply()" class="writing_btn">등록</button>
+			</c:if>
 			</div>
 	</form>
 		</div>

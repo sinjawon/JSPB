@@ -45,7 +45,7 @@
 				<div class="board_contents"><a class="mainContents">본문</a></div>
 			</div>
 			<div class="writer"><a class="userNickname">작성자</a></div>
-			<div><a class="hitCount">조회수</a></div>
+			<div class="hitBox"><a class="hitCount">조회수</a></div>
 			<div class="date"><a class="regDate">등록일</a></div>
 		</div>
 		</template>

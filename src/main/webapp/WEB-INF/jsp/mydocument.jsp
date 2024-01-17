@@ -22,20 +22,29 @@
     <div class="document">
         <ul>
           <li>
-                <div class=boards><a href="#">자유게시판</a></div>
-                <div class="boardDocs"></div>
+                <div class=boards><a href="boardlist.jsp">자유게시판</a></div>
+                <div class="boardDocs">
+                	 <%@include file="../jsp/myboard.jsp"%>
+
+                </div>
             </li>
             <li>
-                <div class=boards><a href="#">자랑게시판</a></div>
-                <div class="boardDocs"></div>
+                <div class=boards><a href="boardlist2.jsp">자랑게시판</a></div>
+                <div class="boardDocs">
+             		<%@include file="../jsp/myboard2.jsp"%>
+                </div>
             </li>
             <li>
-                <div class=boards><a href="#">산책게시판</a></div>
-                <div class="boardDocs"></div>
+                <div class=boards><a href="boardlist3.jsp">산책게시판</a></div>
+                <div class="boardDocs">
+                	<%@include file="../jsp/myboard3.jsp"%>
+                </div>
             </li>
             <li>
-                <div class=boards><a href="#">애완용품거래</a></div>
-                <div class="boardDocs"></div>
+                <div class=boards><a href="boardlist4.jsp">애완용품거래</a></div>
+                <div class="boardDocs">
+                	<%@include file="../jsp/myboard4.jsp"%>
+                </div>
             </li>
         </ul>
     </div>
