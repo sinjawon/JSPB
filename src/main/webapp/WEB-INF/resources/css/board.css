@@ -98,3 +98,6 @@
 .pages.on {
   opacity: 1;
 }
+.fa-solid:hover {
+  color: #fa5;
+}
