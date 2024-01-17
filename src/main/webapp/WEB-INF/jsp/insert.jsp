@@ -16,7 +16,7 @@
     
         
     <form id="writeForm" action="/api/newPost" method="post">
-        <input type="text" id="userNickname" name="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
+        <input type="text" id="userNickname" name="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly >
         <br>
         <input type="text" id="titleInput" name="title" placeholder="글 제목">
         <br><br>

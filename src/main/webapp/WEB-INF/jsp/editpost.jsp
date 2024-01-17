@@ -31,8 +31,9 @@
     
    
        <form id="refresh" action="/api/boardList" method="post">
-   			<button type="button" onClick="location.href='/app/boardlist.jsp'">돌아가기</button>
+   			<button type="button" onClick="location.href='/app/postview.jsp?id=<%= request.getParameter("id") %>'">돌아가기</button>
    		</form>
+   		<%-- 수정했던 글로 가도록 변경함 --%>
    
 </form>
     
@@ -40,20 +41,6 @@
     
     
     
-    <%-- <form id="editForm" action="/api/editPost" method="post">
-       <div id= boardListNum>${valueId} </div>
-       <textarea id="userNickname" name="userNickname" placeholder="작성자"></textarea>
-       <br>
-       <textarea id="viewTitle" name="title" placeholder="글 제목"></textarea>
-       <br><br>
-       <textarea id="viewTextarea" name="mainContents" placeholder="글 내용"></textarea>
-       <br><br><br>
-    
-        <button type="button" onclick="editPost()">수정 확인</button>
-        
-        <form action="/boardList" method="post">
-            <button type="submit">뒤로가기</button>
-        </form>
-    </form> --%>
+   
 </body>
 </html>

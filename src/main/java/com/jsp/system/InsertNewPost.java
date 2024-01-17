@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 import com.jsp.dao.BoardDao;
 
 @WebServlet("/api/newPost")
@@ -25,13 +23,18 @@ public class InsertNewPost extends HttpServlet {
     	
         String title = request.getParameter("title");
         String mainContents = request.getParameter("mainContents");
+        int boardNum;
+        
+        
+
 
         try (DBConnector con = new DBConnector();){
         	System.out.println("con 만들기");
         	BoardDao map = con.OpenMap(request, BoardDao.class);
             map.insertNewBoard(userNickname ,title, mainContents);
+            boardNum = map.getNewlyInsertedBoardId(); 
+            System.out.println(boardNum  + "번 게시글 입력됨");
             
-            System.out.println("보드에 들어갔나요?");
         } catch(Exception e) {
         	System.out.println(userNickname);
         }

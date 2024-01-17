@@ -37,15 +37,17 @@ public interface BoardDao {
 
 	@Select("SELECT * FROM boardInfo WHERE boardListNum = #{boardListNum}")
 	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
-
-	// @@지수-새로운 글을 추가하는 메서드.
-	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, to_char(sysdate,'yy.mm.dd'))")
-	public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title,
-			@Param("mainContents") String mainContents);
-
+	
+	
+	
+	//지수-새로운 글을 추가하는 메서드. 
+	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
+	public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title, @Param("mainContents") String mainContents);
+	
 	//최근에 추가된 id값 돌려줌
 	@Select("SELECT seqBoardListNum.currval FROM dual")
-    int getNewlyInsertedBoardId();
+    public int getNewlyInsertedBoardId();
+	
 	
 	// board 에서 userNickName 으로 검색
 	@Select("select * from boardInfo where userNickname like #{userNickname} order by boardlistNum desc")
