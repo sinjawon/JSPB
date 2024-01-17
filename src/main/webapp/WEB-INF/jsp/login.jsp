@@ -14,7 +14,7 @@
 <%@include file="../jsp/nav.jsp"%>
  <div class="login-box">
       <div class="loginimg">
-        <img src="/resources/logindog.jpg" alt="이미지" class="login-img" />
+        <img src="/resources/logindog.jpg" alt="이미지" class="login-img"/>
   	    </div>
       <div class="login-title">로그인</div>
       <div class="login-box2">
