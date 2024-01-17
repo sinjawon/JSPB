@@ -56,7 +56,7 @@
 	</div>
         
 	
-  		<form id="searchform" action="/api/boardlist" method="post" >
+  		<form id="searchform" class="searchform" action="/api/boardlist" method="post" >
         	<select id="searches" name="searchtype">
         		<option value="all">== 선택 ==</option>
 				<option value="title">제목</option>
@@ -68,7 +68,7 @@
    		</form> 
    		
    		
-   		<form id="refresh" action="/api/boardlist" method="post">
+   		<form id="refresh" class="refresh" action="/api/boardlist" method="post">
    			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'" >목록으로 돌아가기</button>
    		</form>  		
    		

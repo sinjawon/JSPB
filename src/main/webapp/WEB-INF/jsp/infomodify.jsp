@@ -83,7 +83,10 @@
                 </div>   
             </div>
         </div>
-        <input type="submit" value="제출" class='modi_submit'>
+        <input type="submit" value="제출" class="modi_submit">
+         </form>
+         <form action="">
+	        <input type="submit" value="회원탈퇴" class="withdraw">
          </form>
     </div>
     <script>
