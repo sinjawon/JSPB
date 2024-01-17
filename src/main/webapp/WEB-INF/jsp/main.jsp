@@ -184,8 +184,8 @@ pageEncoding="UTF-8"%>
 				</template>
 			 </div>
 	
-				<form id="searchform3" class="searchform" action="/api/boardList3" method="post">
-					<select id="searches3" name="searchtype3">
+				<form id="searchform3" class="searchform" action="/api/boardList3" method="post" style="display:none">
+					<select id="searches3" name="searchtype3" >
 						<option value="all3">== 선택 ==</option>
 						<option value="title3">제목</option>
 						<option value="userNickname3">작성자</option>

@@ -6,8 +6,8 @@ List<User> allUser = new LinkedList<User>();
 int allboard= 0;
 try(DBConnector con = new DBConnector();){
 	UserDao map = con.OpenMap(request, UserDao.class);
-//	BoardDao map2 = con.OpenMap(request, BoardDao.class);
- //    allboard  = map2.getBoardInfoAllCnt();
+	BoardDao map2 = con.OpenMap(request, BoardDao.class);
+	allboard  = map2.getBoardInfoAllCnt();
 	 allUser = map.getAllUser();
 }catch(Exception e) { e.printStackTrace();}
 
