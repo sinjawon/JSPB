@@ -69,16 +69,39 @@ function displayReply(replies: { replyList: Reply[] }) {
             clone.querySelector(".userNickname").innerHTML = data.userNickname;
             clone.querySelector(".replyContents").innerHTML = data.replyContents;
             clone.querySelector(".regDate").innerHTML = data.regDate;
+
+            //========================================================================변경
+            //현재 유저와 작성자가 같으면
             if (currentUser === data.userNickname) {
-                // 맞다면 삭제 버튼을 활성화
-                clone.querySelector(".deleteReply").setAttribute("data-replynum", data.replyNum.toString());
-            }
+
+                // 삭제 버튼 생성
+                let deleteReplyButton = document.createElement("button");
+                deleteReplyButton.type = "button";
+                deleteReplyButton.innerText = "삭제";
+                deleteReplyButton.onclick = function() {
+                    //댓글 삭제 함수 내장
+                    deleteReply(data.replyNum)
+            };
+
+        // 버튼들을 추가할 부모 요소 가져오기
+            let replyDeleteButtonContainer = document.getElementById("replyDeleteButtonContainer");
+
+        // 부모 요소에 버튼들 추가
+            if (replyDeleteButtonContainer) {
+                replyDeleteButtonContainer.appendChild(deleteReplyButton);
+                }
+             }
+             //========================================================================
             console.log(currentUser, data.userNickname);
 
             replyContainer.appendChild(clone);
         }
     }
 }
+
+
+
+
 
 async function addReply() {
     try {

@@ -47,8 +47,11 @@
 			<div class="regDate">등록일</div>
 		<%-- 	<button class="editReply" name="editReply"
 				onclick="editReply(${data.replyNum})">수정</button> --%>
-			<button class="deleteReply" name="deleteReply"
-				onclick="deleteReply(${data.replyNum})">삭제</button>
+				
+				
+			<div id ="replyButtonContainer"></div>	
+			<%-- <button class="deleteReply" name="deleteReply"
+				onclick="deleteReply(${data.replyNum})">삭제</button> --%>
 		</template>
 	</div>
 
