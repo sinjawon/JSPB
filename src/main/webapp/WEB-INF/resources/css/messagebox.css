@@ -213,3 +213,9 @@ summary::marker {
   overflow:auto;
   height:18rem;
 }
+
+#receiveAllform,
+#sendAllform{
+	margin-top:1rem;
+	
+}
