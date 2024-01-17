@@ -67,10 +67,10 @@
 	<form id="replyForm3" action="/api/addReply3" method="post">
 		 <div class="writing_field">
 			<input type="text" id="boardListNumInput3" name="boardListNum3"
-				value="<%=request.getParameter("id")%>" readonly> <br>
+				value="<%=request.getParameter("id")%>" readonly style="display:none;"> 
 			 <input type="text" id="userNickname3" name="userNickname3"
 				value="<%=session.getAttribute("UserNickName")%>"
-				placeholder="작성자 닉네임"> <br>
+				placeholder="작성자 닉네임" style="display:none;">
 			<textarea id="replyContents3" name="replyContents3" placeholder="댓글 내용" class="text"></textarea>
 			<button type="button" id="addReplyBtn3" onclick="addReply()" class="writing_btn">등록</button>
 			</div>
