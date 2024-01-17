@@ -16,7 +16,6 @@ function submitSearch() {
     if (form) {
         let formData = new FormData(form);
 
-
         ajax("/api/boardList", {
             method: "POST",
             body: formData,

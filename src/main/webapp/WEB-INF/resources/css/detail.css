@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset "UTF-8";
 
 
 .detail{
@@ -60,7 +59,7 @@
    justify-content: right;
    gap: 1rem;
 }
-.detail_btn > button,
+.buttonContainer > button,
 .btnform > .goback
 {
    border-radius: 10px;
@@ -72,16 +71,17 @@
    font-weight: bold;
 }
 
-
+.buttonContainer > button{
+	margin-left: 0.5rem;
+}
 .comment_box{
-    width: 80%;
+    width: 70%;
     margin: auto;
 }
 .comment_box > h4{
     font-size: 1.3rem;
     font-weight: bold;
     margin-top: 3rem;
-    margin-bottom: 1rem;
     border-bottom: 1px solid black;
     padding: 0.5rem 0;
     
@@ -123,5 +123,34 @@
 }
 
 .modi_btn{
-   margin-top:2rem;
+   margin-top:1rem;
+}
+.btnform{
+	display: flex ;
+	gap: 0.5rem ;
+}
+.modi_btnWrap > button{
+	border-radius:10px;
+	background-color: white;
+	border: 1px solid black;
+}
+.replyWrap{
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.9rem;
+}
+
+.replyContents{
+	padding: 0.5rem 0;
+	margin-bottom: 0.5rem;
+	position: relative;
+	font-size: 1.2rem;
+}
+
+.replyContents::before{
+	content:'';
+	width: 100%;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	position: absolute;
+	bottom: 0;
 }

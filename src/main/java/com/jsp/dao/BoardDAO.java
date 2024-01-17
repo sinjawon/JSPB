@@ -5,9 +5,13 @@ import java.io.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
-    
+
 @Mapper
 public interface BoardDao {
+	
+	// 조회수 증가 테스트중
+	@Update("update boardInfo set hitCount = hitCount+! where boardlistNum =#{boardlistNum}")
+	public int updateHitCount(@Param("hitCount") int hitCount, @Param("boardlistNum") int boardlistNum);
 
 	@Select("select x.boardListNum, x.title, x.userNickname,x.hitCount, x.regDate from (select ROWNUM as num, result.* from (select * from boardInfo order by boardlistNum desc) result) x where num <= #{limit}")
 	public List<BoardInfo> getBoardInfoLimit(@Param("limit") int limit);
@@ -35,7 +39,7 @@ public interface BoardDao {
 	public BoardInfo getBoardInfoById(@Param("boardListNum") int boardListNum);
 
 	// @@지수-새로운 글을 추가하는 메서드.
-	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, sysdate)")
+	@Insert("insert into boardInfo (boardListNum, title, mainContents, userNickname, hitCount, regDate) values (seqBoardListNum.nextval, #{title}, #{mainContents}, #{userNickname}, 0, to_char(sysdate,'yy.mm.dd'))")
 	public void insertNewBoard(@Param("userNickname") String userNickname, @Param("title") String title,
 			@Param("mainContents") String mainContents);
 

@@ -124,7 +124,10 @@
     bottom:1rem;
     font-size: 0.8rem;
     text-decoration: underline;
-    color:#777    
+    color:#777;
+    border: none;
+    background-color: white;    
+    cursor: pointer;
 }
 
 .withdraw:hover{

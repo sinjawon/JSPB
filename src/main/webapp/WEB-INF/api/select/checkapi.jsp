@@ -6,8 +6,10 @@
 
    
 <%
-	try(DBConnector con = new DBConnector();){		
-		UserDao map = con.OpenMap(request, UserDao.class);		
+	try(DBConnector con = new DBConnector();){
+		UserDao map = con.OpenMap(request, UserDao.class);
+		System.out.println(map.hashCode());
+		System.out.println(map.getuseridAll());	
 		//null값처리
 		List<User> userid = new ArrayList<>();
 		for (User id : map.getuseridAll()) {
@@ -15,6 +17,7 @@
 		        userid.add(id);
 		    }
 		}
+		System.out.println("Hello");
 		//null값처리
 		List<User> usernickname = new ArrayList<>();
 		for (User nick : map.getuserNicknameAll()) {
@@ -28,6 +31,6 @@
 		response.getWriter().write(new JSONObject(result).toString());
 	}
 	catch(Exception e) {
-		
+		//e.printStackTrace();
 	}
 %>
