@@ -12,6 +12,7 @@ function ChartGraph(query, options){
 	info.animation.duration = options.animation && (options.animation.duration || 0); 
 	switch(info.type){
 		case "line":
+			info.backColor = options.backColor || ["red"];
 			break;
 		case "bar":
 			info.backColor = options.backColor || ["blue"];
@@ -25,6 +26,7 @@ function ChartGraph(query, options){
 	      datasets: [
 	        {
 	          label: info.label,
+			  borderColor: info.backColor,
 	          backgroundColor: info.backColor,
 	          data: info.datas
 	        }
