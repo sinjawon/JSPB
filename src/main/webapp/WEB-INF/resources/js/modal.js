@@ -9,11 +9,6 @@ const closeModalBtn = document.getElementById("close-modal");
 
 modalBtn.addEventListener("click", () => {
   modal.style.display = "block";
-  if(modal == true){
-	  modalBtn.addEventListener("click", () => {
-		  modal.style.display = "none";
-	  })
-  }
 });
 
 closeModalBtn.addEventListener("click", () => {
