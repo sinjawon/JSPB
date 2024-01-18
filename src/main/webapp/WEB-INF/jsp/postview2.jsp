@@ -66,7 +66,7 @@
 					<div class="replyContents2 replyContents">본문</div>
 		</template>
 	</div>   
-
+   
 	<form id="replyForm2" action="/api/addReply2" method="post">
      
 		 <div class="writing_field">

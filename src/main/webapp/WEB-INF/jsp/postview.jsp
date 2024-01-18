@@ -64,11 +64,11 @@
 						onclick="deleteReply(${data.replyNum})">삭제</button>
 <!-- 						<div id ="replyDeleteButtonContainer"></div>  
  -->				</div>
-			</div>   
+			</div>     
 				<div class="replyContents">본문</div>
 		</template>
 	</div>
- 
+    
     <form id="replyForm" action="/api/addReply" method="post">
        <div class="writing_field">
        		<input type="text" id="boardListNumInput" name="boardListNum"
