@@ -16,13 +16,9 @@
     
         
     <form id="writeForm3" action="/api/newPost3" method="post">
-        <input type="text" id="userNickname3" name="userNickname3" value='<%=session.getAttribute("UserNickName")%>' readonly>
-        <br>
-        <input type="text" id="titleInput3" name="title3" placeholder="글 제목">
-        <br><br>
-        <textarea id="postTextarea3" name="mainContents3" placeholder="글 내용"></textarea>
-        <br><br><br>
-        
+        <input type="text" id="userNickname3" name="userNickname3" class="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
+        <input type="text" id="titleInput3" name="title3" placeholder="제목을 입력해주세요" class="titleInput">
+        <textarea id="postTextarea3" name="mainContents3" placeholder="글 내용을 입력해주세요" class="postTextarea"></textarea>
         
         <div class="dropzone"></div>
         

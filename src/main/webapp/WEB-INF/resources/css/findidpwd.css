@@ -17,10 +17,16 @@
   width: 7rem;
   height: 2rem;
   margin: auto;
-  background-color: white;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid #fa5;
   cursor: pointer;
+}
+.pwdbtn{
+	
+  background-color: white;
+}
+.idbtn{
+	background-color:#fa5;
 }
 
 .btnbox {
