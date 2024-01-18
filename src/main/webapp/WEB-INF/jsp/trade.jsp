@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.jsp.system.Ajax, org.json.*"%>
+<%@ page import="com.jsp.dto.ReplyInfo"%>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +16,12 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
 <link rel="stylesheet" type="text/css" href="/resources/trade.css"> 
+<script>
+    var valueId=<%=request.getParameter("id")%>;
+    var sessionUser='<%=session.getAttribute("UserNickName")%>';
+</script>
+<script src="/resources/postings4.js"></script>
+<script defer src="/resources/reply4.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   
@@ -50,6 +60,9 @@
       <div class="swiper-pagination p1"></div>
       
     </div>
+    
+    
+	<% session.getAttribute("UserNickName"); %>
     
      <div class="trade-info">
         <div class="trade_image"><img src="" alt="" /></div>
