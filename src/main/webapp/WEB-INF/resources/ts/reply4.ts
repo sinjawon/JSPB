@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         10
       );
       // console.log(replyNum);
-      if (!isNaN(replyNum4)) {
+      if (!isNaN(replyNum4)) {    
         deleteReply4(replyNum4);
       }
     }
