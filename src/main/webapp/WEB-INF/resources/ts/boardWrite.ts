@@ -1,19 +1,3 @@
-//@ts-nocheck
-document.addEventListener("DOMContentLoaded", function() {
-    moveurl('insert.jsp');
-});
-
-function moveurl(url) {
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("options").innerHTML = this.responseText;
-}
-};
-xhttp.open("GET", url, true);
-xhttp.send();
-};
-
 
 
 function submitPost(){
@@ -23,6 +7,9 @@ function submitPost(){
     form.submit();
 
 }
+
+
+
 
 function cancelPost() {
     
@@ -38,6 +25,8 @@ function cancelPost() {
 
 }
 
+
+let index:number = 0;
 //@ts-ignore
 Dropzone.autoDiscover=false;
 //@ts-ignore
@@ -46,15 +35,19 @@ var dropzone = new Dropzone("div.dropzone", {
     method: "POST",
     dictDefaultMessage:"여기에 사진을 드래그&드랍 하세요.",
     autoQueue: false, 
-    maxFiles: 4,
+    maxFiles: 1,
     maxFilesize: 100,
+    //headers :{ "imageOrder": index},
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
     acceptedFiles: '.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF',
+    
     init:function(){
         let zone = this;
         let button:HTMLElement = document.querySelector("button#submit") as HTMLElement;
-        button.addEventListener("click",()=>{
+        
+        button.addEventListener("click", () => {
+    
             //@ts-ignore
             zone.enqueueFiles(zone.getFilesWithStatus(Dropzone.ADDED));
             submitPost();
@@ -70,4 +63,3 @@ var dropzone = new Dropzone("div.dropzone", {
         });
     }
 });
-

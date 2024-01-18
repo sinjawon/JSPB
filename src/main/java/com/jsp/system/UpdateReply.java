@@ -55,4 +55,3 @@ public class UpdateReply extends HttpServlet {
 		this.doPost(req, resp);
 	}
 }
-   

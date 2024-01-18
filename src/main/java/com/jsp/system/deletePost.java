@@ -16,9 +16,6 @@ import com.jsp.dao.BoardDao;
 public class deletePost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JSONObject result = new JSONObject();
-        	
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
         
         try (DBConnector dbConnector = new DBConnector();) {
             int boardListNum = Integer.parseInt(request.getParameter("boardListNum"));

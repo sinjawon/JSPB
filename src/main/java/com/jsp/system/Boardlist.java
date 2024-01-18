@@ -27,7 +27,7 @@ import com.jsp.dto.*;
 	   	
 	    	try(DBConnector con = new DBConnector();){
 	    		BoardDao map = con.OpenMap(request, BoardDao.class);
-	    			    		
+	    			if(map==null) {System.out.println("sos");}    		
 	    		List<BoardInfo> exec = null;
 	    		
 	    		int page = 1; // 기본값 1로 설정 현재페이지

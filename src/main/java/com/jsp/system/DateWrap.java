@@ -16,4 +16,3 @@ public class DateWrap {
 		return "%d/%d/%d".formatted(date.getYear(),date.getMonth(),date.getDay());
 	}
 }
-   

@@ -10,20 +10,28 @@
     <script defer src="/resources/boardWrite2.js"></script>
 </head>
 <body>
-
+    <h1>글쓰기2</h1>
+    
+    
+    
         
     <form id="writeForm2" action="/api/newPost2" method="post">
-        <input type="text" id="userNickname2" name="userNickname2" class="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
-        <input type="text" id="titleInput2" name="title2" placeholder="글 제목" class="titleInput">
-        <textarea id="postTextarea2" name="mainContents2" placeholder="글 내용" class="postTextarea"></textarea>
+        <input type="text" id="userNickname2" name="userNickname2" value='<%=session.getAttribute("UserNickName")%>' readonly>
+        <br>
+        <input type="text" id="titleInput2" name="title2" placeholder="글 제목">
+        <br><br>
+        <textarea id="postTextarea2" name="mainContents2" placeholder="글 내용"></textarea>
+        <br><br><br>
+        
+        
         <div class="dropzone"></div>
-           <div class="btns">
-              <button type="submit" id="submit" class="insertok">확인</button>
-              <button type="button" onclick="cancelPost2()" class="cancelbtn">취소</button>
+        
+        <button type="submit" id="submit">확인</button>
+        <button type="button" onclick="cancelPost2()">취소</button>
+        
         <form action="/app/boardlist2" method="post">
-            <button type="button" onclick="location.href='/app/boardlist2.jsp'" class="backbtn">게시판</button>
-         </form>  
-           </div>
+   			<button type="button" onclick="location.href='/app/boardlist2.jsp'">뒤로가기</button>
+   		</form>  
     </form>
 </body>
 </html>
