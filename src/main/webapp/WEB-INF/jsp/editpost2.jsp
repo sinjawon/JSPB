@@ -21,7 +21,7 @@
     <%@include file="../jsp/nav.jsp"%>
     
     <div class="editContainer">
-    
+        
        <h2>글 수정하기</h2>
        <form id="editForm2" action="/api/editPost2" method="post" class="editForm">
           <input type="hidden" name="boardListNum2" value="<%= request.getParameter("id") %>">

@@ -37,6 +37,6 @@
         		<button type="button" onclick="submitSearch()" class="searchBtn">검색</button>
    		</form> 
 
-
+   
 </body>
 </html>

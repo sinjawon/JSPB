@@ -21,7 +21,7 @@
 
    
       <%@include file="../jsp/nav.jsp"%>
-     
+       
     
     <div class="editContainer">
        <h2>글 수정하기</h2>

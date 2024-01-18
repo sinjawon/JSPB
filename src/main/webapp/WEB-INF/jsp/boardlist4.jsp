@@ -31,7 +31,7 @@
         		 %>
        	 <div class="main_board"> 
 			<h3>애완용품거래</h3>
-
+   
 
 	<div id="boards4">
 		<template>

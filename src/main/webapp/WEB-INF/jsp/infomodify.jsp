@@ -26,7 +26,7 @@
         		   UserDao map2 = con.OpenMap(request, UserDao.class);
         		   
         		 %>    
-        		           
+        		               
   <form action="/infomodify" method="post" enctype="multipart/form-data"> 
         <div class="info_modi">
             <div class="user_modi">

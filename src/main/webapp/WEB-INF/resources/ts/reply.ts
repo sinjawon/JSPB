@@ -1,3 +1,4 @@
+
 //@ts-nocheck
 interface Reply {
     userNickname: string;
@@ -52,6 +53,7 @@ async function loadReply() {
     }
 }
 
+
 // 댓글작성자
 let currentUser:String = sessionUser; // 실제 기본값으로 설정하세요
 
@@ -77,6 +79,7 @@ function displayReply(replies: { replyList: Reply[] }) {
         }
     }
 }
+
 async function addReply() {
     try {
         let formData = new FormData(document.getElementById("replyForm") as HTMLFormElement);
