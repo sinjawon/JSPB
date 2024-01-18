@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.*, org.json.*"%>
+    <%@page import="org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch"%>
+    
 <%@ page import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -43,7 +45,7 @@
 				<div class="board_contents"><a class="mainContents">본문</a></div>
 			</div>
 			<div class="writer"><a class="userNickname">작성자</a></div>
-			<div><a class="hitCount">조회수</a></div>
+			<div class="hitBox"><a class="hitCount">조회수</a></div>
 			<div class="date"><a class="regDate">등록일</a></div>
 		</div>
 		</template>
@@ -72,19 +74,24 @@
    			<button type="button" class="back" onClick="location.href='/app/boardlist.jsp'" >목록으로 돌아가기</button>
    		</form>  		
    		
-   		<c:if test = "${sessionScope.UserNickName==null }" >
-	            <div >
-            	</div>
-            </c:if>
-            <c:if test = "${sessionScope.UserNickName!=null }" >
-		
-		   		<form action="/insert" method="post">
-		   			<button type="button" class="navyBtn" onClick="location.href='/app/insertpage.jsp'">글쓰기</button>
-		   		</form>  
-            </c:if>
+   		
 
 	</div>
-	
+		<c:if test = "${sessionScope.UserNickName==null }" >
+  <div class="">
+ 	</div>
+ </c:if>
+ <c:if test = "${sessionScope.UserNickName!=null }" >
+	<div style="position:fixed; bottom:4.7rem; right:3.5rem; ">
+    	<div class="write-go" >
+		<a href="insertpage.jsp" >
+       		<i class="fa-solid fa-pen-to-square fa-2x"></i>
+      	</a>
+    </div>
+ 	<iframe src="./messagebox.jsp" style="position:fixed; bottom:7rem; right:-2rem; width:25rem; height:40rem; z-index: 1;">></iframe>
+		
+ 	</div>
+ </c:if>
 	
 	
       <%

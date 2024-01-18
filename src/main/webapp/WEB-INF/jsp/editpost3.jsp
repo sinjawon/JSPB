@@ -23,7 +23,7 @@
     
         <div class="editContainer">
     
-          <h2>글 수정하기2</h2>
+          <h2>글 수정하기</h2>
           <form id="editForm3" action="/api/editPost3" method="post" class="editForm">
              <input type="hidden" name="boardListNum3" value="<%= request.getParameter("id") %>">
              <textarea id="userNickname3" name="userNickname3" placeholder="작성자" class="userNickname" ></textarea>

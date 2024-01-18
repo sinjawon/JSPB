@@ -128,7 +128,7 @@ try(DBConnector con = new DBConnector();){
 			      <%--  <input type="text"  name ="SenddAll" value="<%=yesstt%>"> --%>
 			       <input type="hidden"  name ="seenums" value="<%=Sendedsee%>">
 			       <input type="hidden"  name ="notenums" value="<%=Sended%>">
-				   <button type="button" onclick="sendDeletAll('<%=Sended%>');" >받은 메시지 모두삭제</button>
+				   <button type="button" class="showmessage" onclick="sendDeletAll('<%=Sended%>');" >받은 메시지 모두삭제</button>
 			  </form> 
 	 </div> 
         
@@ -184,11 +184,7 @@ try(DBConnector con = new DBConnector();){
 			       <input type="hidden"  name ="notenums" value="<%=Received%>">
 				   <button type="button" class="showmessage" onclick="recieveDeletAll('<%=Received%>');">보낸 메시지 모두삭제</button>
 			  </form>
-			   <!-- <form action="/Deletmessage/sendAll" id="sendAllform">		  
-			       <input type="text"  name ="seenums" value="<%=Sendedsee%>">
-			       <input type="text"  name ="notenums" value="<%=Sended%>">
-				   <button type="button" onclick="sendDeletAll('<%=Sended%>');" >보낸 메시지 모두삭제</button>
-			  </form>  -->
+			 
 	
 	 </div> 
         

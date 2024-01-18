@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="com.jsp.system.Ajax, org.json.*,java.util.*" %>
 <%@ page import="com.jsp.dto.ReplyInfo" %>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 
 
 
@@ -11,6 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <title>petpeople</title>
+    
+   
     <link rel="stylesheet" type="text/css" href="/resources/detail.css"> 
     <script>
     	var valueId=<%=request.getParameter("id")%>;		
@@ -72,9 +75,14 @@
 			<input type="text" id="userNickname" name="userNickname"
 			value="<%=session.getAttribute("UserNickName")%>"
 			placeholder="작성자 닉네임" style="display:none;">
+     <c:if test = "${sessionScope.UserNickName==null }" >
+     </c:if>
+    <c:if test = "${sessionScope.UserNickName!=null}">
+     
         	<textarea id="replyContents" name="replyContents" placeholder="댓글 내용을 입력하세요" class="text"></textarea>
         	<button type="button" onclick="addReply()" class="writing_btn">등록</button>
-       </div>      
+     </c:if>   
+       </div>   
       </form>
     </div>
       </div>

@@ -91,6 +91,8 @@
 
 
 .showmessage{
+  border: 2px solid #fa5;
+  background-color: white;
 	z-index:1111;
   position: relative;
 }

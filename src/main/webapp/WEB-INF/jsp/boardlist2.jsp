@@ -65,19 +65,23 @@
 		<button type="button" class="back2"
 			onClick="location.href='/app/boardlist2.jsp'">목록으로 돌아가기</button>
 	</form>
-		<c:if test = "${sessionScope.UserNickName==null }" >
-	            <div >
-            	</div>
-            </c:if>
-           <c:if test = "${sessionScope.UserNickName!=null }" >
-            
-		<form action="/insert2" method="post">
-			<button type="button" class="navyBtn2 navyBtn"
-				onClick="location.href='/app/insertpage.jsp'">글쓰기</button>
-		</form>
-			</c:if>
+	
 	</div>
-
+		 <c:if test = "${sessionScope.UserNickName==null }" >
+  <div class="">
+ 	</div>
+ 		</c:if>
+ <c:if test = "${sessionScope.UserNickName!=null }" >
+	<div style="position:fixed; bottom:4.7rem; right:3.5rem; ">
+    	<div class="write-go" >
+		<a href="insertpage.jsp" >
+       		<i class="fa-solid fa-pen-to-square fa-2x"></i>
+      	</a>
+    </div>
+ 	<iframe src="./messagebox.jsp" style="position:fixed; bottom:7rem; right:-2rem; width:25rem; height:40rem; z-index: 1;">></iframe>
+		
+ 	</div>
+ </c:if>
 	 <%
         	}
         	catch(Exception e) {

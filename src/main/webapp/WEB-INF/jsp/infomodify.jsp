@@ -86,7 +86,6 @@
         <input type="submit" value="제출" class="modi_submit">
          </form>
          <form action="../api/delet/withdrawal.jsp">
-           <%--  <input type="hidden" name="usernum" value="<%=session.getAttribute("UserNum")%>" class="withdraw"> --%>
 	        <input type="submit" value="회원탈퇴" class="withdraw">
          </form>
     </div>

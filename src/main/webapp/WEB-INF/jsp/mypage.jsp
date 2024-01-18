@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ page import="java.util.*, org.json.*"%> <%@ page
 import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
+        <%@page import="org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch"%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -109,6 +111,21 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
         </form>
       </div>
     </div>
+    <c:if test = "${sessionScope.UserNickName==null }" >
+  <div class="">
+ 	</div>
+ </c:if>
+ <c:if test = "${sessionScope.UserNickName!=null }" >
+	<div style="position:fixed; bottom:4.7rem; right:3.5rem; ">
+    	<div class="write-go" >
+		<a href="insertpage.jsp" >
+       		<i class="fa-solid fa-pen-to-square fa-2x"></i>
+      	</a>
+    </div>
+ 	<iframe src="./messagebox.jsp" style="position:fixed; bottom:7rem; right:-2rem; width:25rem; height:40rem; z-index: 1;">></iframe>
+		
+ 	</div>
+ </c:if>
 
     <%@include file="../jsp/footer.jsp"%>
   </body>
