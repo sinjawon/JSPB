@@ -154,9 +154,4 @@
 	position: absolute;
 	bottom: 0;
 }
-.deleteReply{
-	display: none;
-}
-.deleteReply.on{
-	display:block;
-}
+

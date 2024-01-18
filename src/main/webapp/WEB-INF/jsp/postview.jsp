@@ -60,10 +60,10 @@
 				<div class="modi_btnWrap">
 					<%-- <button class="editReply" name="editReply"
 						onclick="editReply(${data.replyNum})">수정</button> --%>
-					<%-- <button class="deleteReply" name="deleteReply"
-						onclick="deleteReply(${data.replyNum})">삭제</button> --%>
-						<div id ="replyDeleteButtonContainer"></div>  
-				</div>
+					<button class="deleteReply display" name="deleteReply"
+						onclick="deleteReply(${data.replyNum})">삭제</button>
+<!-- 						<div id ="replyDeleteButtonContainer"></div>  
+ -->				</div>
 			</div>
 				<div class="replyContents">본문</div>
 		</template>

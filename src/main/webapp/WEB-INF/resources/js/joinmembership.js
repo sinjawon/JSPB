@@ -36,7 +36,7 @@ function logincheckID() {
             }
             else {
                 idcheck = true;
-                alert("사용가능한 아이디입니다");
+                alert("사용가능한 이이디입니다");
             }
         });
     });

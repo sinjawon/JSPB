@@ -59,7 +59,7 @@
 				<div class="modi_btnWrap">
 		<%-- 	<button class="editReply" name="editReply"
 				onclick="editReply(${data.replyNum})">수정</button> --%>
-				<button class="deleteReply2 deleteReply on" name="deleteReply2"
+				<button class="deleteReply2" name="deleteReply2"
 					onclick="deleteReply2(${data.replyNum2})">삭제</button>
 				</div>
 			</div>
