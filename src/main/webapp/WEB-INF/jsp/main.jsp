@@ -19,6 +19,7 @@ pageEncoding="UTF-8"%>
       sizes="32x32"
       href="/resources/favicon-32x32.png"
     />
+    
     <link
       rel="icon"
       type="image/png"
