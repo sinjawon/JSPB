@@ -64,6 +64,7 @@ function displayReply2(replies2) {
                 // 맞다면 삭제 버튼을 활성화
                 clone.querySelector(".deleteReply2").setAttribute("data-replynum", data.replyNum2.toString());
             }
+            
             console.log(currentUser2, data.userNickname2);
             replyContainer2.appendChild(clone);
         }
