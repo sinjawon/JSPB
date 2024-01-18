@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import com.jsp.dto.*;
-     
+
 @Mapper
 public interface ReplyDao {
 
@@ -23,7 +23,7 @@ public interface ReplyDao {
 	public List<ReplyInfo> searchByBoardListNum(@Param("boardListNum") int boardListNum); 
 	
 	// 새로운 댓글을 추가하는 메서드. 
-	@Insert("insert into replyInfo (replyNum, boardListNum, replyContents, userNickname, regDate) values (seqReplyNum.nextval, #{boardListNum}, #{replyContents}, #{userNickname}, sysdate)")
+	@Insert("insert into replyInfo (replyNum, boardListNum, replyContents, userNickname, regDate) values (seqReplyNum.nextval, #{boardListNum}, #{replyContents}, #{userNickname}, to_char(sysdate,'yyyy.mm.dd hh24:mi'))")
 	public void insertNewReply(@Param("boardListNum") int boardListNum, @Param("replyContents") String replyContents, @Param("userNickname") String userNickname);
 		
 	// ReplyInfo 에 글 지울때 replyNum 인 글을 지운다?
@@ -31,10 +31,12 @@ public interface ReplyDao {
 	public void deleteReplyInfo(@Param("replyNum") int replyNum);
 		
 	// ReplyInfo 에 글 수정할때 replyNum 인 글에서 replyContents 를 수정한다
-	@Update("update boardInfo set replyContents = #{replyContents} where replyNum =#{replyNum}")
+	@Update("update replyInfo set replyContents = #{replyContents} where replyNum =#{replyNum}")
 	public void updateReplyInfo(@Param("replyContents") String replyContents, @Param("replyNum") int replyNum);
 	
-	
+	// 댓글 id로 작성자 찾는 함수
+	@Select("SELECT userNickname FROM replyInfo WHERE replyNum = #{replyNum}")
+	public String getuserByReplyNum(@Param("replyNum") int replyNum);
 	
 	
 	

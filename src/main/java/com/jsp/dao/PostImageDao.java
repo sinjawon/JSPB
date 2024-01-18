@@ -1,4 +1,4 @@
-  
+
 package com.jsp.dao;
 
 import java.io.*;
@@ -17,5 +17,6 @@ public interface PostImageDao {
 	@Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
 	void saveImage(PostImage postImage);
 	}
+
 
   

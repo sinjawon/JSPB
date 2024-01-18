@@ -6,8 +6,8 @@ List<User> allUser = new LinkedList<User>();
 int allboard= 0;
 try(DBConnector con = new DBConnector();){
 	UserDao map = con.OpenMap(request, UserDao.class);
-//	BoardDao map2 = con.OpenMap(request, BoardDao.class);
- //    allboard  = map2.getBoardInfoAllCnt();
+	BoardDao map2 = con.OpenMap(request, BoardDao.class);
+	allboard  = map2.getBoardInfoAllCnt();
 	 allUser = map.getAllUser();
 }catch(Exception e) { e.printStackTrace();}
 
@@ -50,9 +50,13 @@ var users = <%=array.toString()%>;
 
     <div class="manager-box">
       <h2 class="manager-title">관리자페이지 입니다.</h2>
-      <button id="btdate">일</button ><button id="btmonth">월</button> <button id="btyear">년</button>
+      
       <div class="manager-top">
+      
         <h3 class="manager-join">회원유동 그래프</h3>
+      <div class="chart-btn">
+      <button id="btdate">일</button ><button id="btmonth">월</button> <button id="btyear">년</button>
+      </div>
         <div class="manager">
         <canvas id="bar-chart"></canvas>
         

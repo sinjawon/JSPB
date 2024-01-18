@@ -208,3 +208,14 @@ summary::marker {
 
 .note-sender:focus {outline: none;} 
 
+.scroll{
+	
+  overflow:auto;
+  height:18rem;
+}
+
+#receiveAllform,
+#sendAllform{
+	margin-top:1rem;
+	
+}

@@ -33,6 +33,8 @@ pageEncoding="UTF-8"%>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 	<script defer src="/resources/boardlist.js"></script>
+		<script defer src="/resources/boardlist3.js"></script>
+	
     <script src="/resources/mainbanner.js" defer></script>
     <script src="/resources/modal.js" defer></script>
     <title>petpeople</title>
@@ -130,7 +132,7 @@ pageEncoding="UTF-8"%>
         <div class="main-container">
           <div class="free-flex">
             <a class="free-a" href="#home">
-		<div id="boards">
+		<div id="boards" class="boards">
 		<template>
 		<div class="board">
 			<div class="NumBox"><a href="/app/postview.jsp?id=0" class="boardListNum">0</a></div>
@@ -167,8 +169,32 @@ pageEncoding="UTF-8"%>
         <div class="main-container">
           <div class="free-flex">
             <a class="free-a" href="#home">
-              <div class="free-title">산책친목 제목</div>
-              <div class="free-nick">닉네임</div>
+              <div id="boards3" class="boards">
+				<template>
+					<div class="board">
+						<div class="NumBox"><a href="/app/postview3.jsp?id=0" class="boardListNum3 boardListNum">0</a></div> 
+						<div>
+							<div><a href="/app/postview3.jsp?id=0" class="title3 title">제목</a></div> 
+							<div class="board_contents"><a class="mainContents3 mainContents" style="display:none;">본문</a></div>
+						</div>
+						<div class="writer"><a class="userNickname3 userNickname">작성자</a></div>
+						<div><a class="hitCount3 hitCount" style="display:none;">조회수</a></div> 
+						<div class="date"><a class="regDate3 regDate" style="display:none;">등록일</a></div>
+					</div>
+				</template>
+			 </div>
+	
+				<form id="searchform3" class="searchform" action="/api/boardList3" method="post" style="display:none">
+					<select id="searches3" name="searchtype3" >
+						<option value="all3">== 선택 ==</option>
+						<option value="title3">제목</option>
+						<option value="userNickname3">작성자</option>
+					</select> 
+					<input type="text" id="search3" name="search3"> 
+					<input type="text" id="page3" name="page3" value="1" style="display: none;" />
+					<button type="button" onclick="submitSearch3()">검색</button>
+				</form>
+
             </a>
           </div>
         </div>

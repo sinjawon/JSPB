@@ -24,9 +24,9 @@
         onchange="moveurl(this.value)"
       >
         <option value="insert.jsp">자유게시판</option>
-        <option value="test.jsp">자랑게시판</option>
-        <option value="work">산책게시판</option>
-        <option value="boardlist.html">애완용품거래게시판</option>
+        <option value="insert2.jsp">자랑게시판</option>
+        <option value="insert3.jsp">산책게시판</option>
+        <option value="insert4.jsp">애완용품거래게시판</option>
       </select>
       
       

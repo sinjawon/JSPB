@@ -39,3 +39,5 @@ writeBtn.addEventListener("click", () => {
   firstView.style.display = "none";
   sendView.style.display = "none";
 });
+
+

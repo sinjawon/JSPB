@@ -71,10 +71,10 @@
   color: #fa5;
 }
 
-#searchform {
+.searchform {
   text-align: center;
 }
-#searchform > button {
+.searchform > button {
   border-radius: 10px;
   background-color: #fa5;
   border: none;
@@ -82,12 +82,12 @@
   cursor: pointer;
 }
 
-#refresh {
+.refresh {
   text-align: center;
   padding-top: 0.5rem;
 }
 
-#refresh > button {
+.refresh > button {
   border-radius: 10px;
   background-color: #fa5;
   border: none;

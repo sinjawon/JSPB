@@ -17,6 +17,7 @@
 	 		checks = "true";
 	 		results = "찾으시는 아이디는 : " + realID +" 입니다";
 	 	}else{
+	 		checks = "false";
 	 		results = "잘못된아이디";
 	 	}
 	}else if("findPassword".equals(types)){
@@ -24,17 +25,25 @@
 		String realpass2 = null ;
 		String userid = request.getParameter("userId");
 		String email = request.getParameter("email");
-	     realpass1 = map.getuserpw(userid).toStringPW();
-	     realpass2 = map.getuserNumAsEmail(email).toStringPW();
+		if(map.getuserpw(userid) != null){
+			 realpass1 = map.getuserpw(userid).toStringPW();
+		}
+	    if(map.getuserNumAsEmail(email) != null){
+	    	 realpass2 = map.getuserNumAsEmail(email).toStringPW();
+	    }else{
+	    	checks ="false";
+			results ="잘못된 아이디나 이메일입니다";
+	    }
+	    
 		if(realpass1.equals(realpass2)){
-			checks = "true";
-			results = "찾으시는 비밀번호는 : " + realpass1 +" 입니다";
-		}else if(realpass1 == null || realpass1 == null){
-			checks = "Falls";
+			checks ="true";
+			results ="찾으시는 비밀번호는 : " + realpass1 +" 입니다";
+		}else if(realpass1 == null || realpass2 == null){
+			checks = "false";
 			results = "잘못된 아이디나 이메일입니다";
 		}else{
-			checks = "Falls";
-			results = "잘못된 아이디나 이메일입니다";
+			checks ="false";
+			results ="잘못된 아이디나 이메일입니다";
 		}
 	}	
 
@@ -51,27 +60,46 @@
     <script src="/resources/findidpwd.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-  	let SweetValue = "<%=results%>";
-  	let SweetValueCheck = "<%=checks%>";
+  	let SweetValue ="<%=results%>";
+  	let SweetValueCheck ="<%=checks%>";
   	console.log(SweetValue);
+  	console.log(SweetValueCheck);
+  	
     document.addEventListener("DOMContentLoaded", function() {
         // 페이지가 로드될 때 SweetValue 값을 확인하고 SweetAlert을 표시
+        console.log(SweetValue);
+  	    console.log(SweetValueCheck);
          sweetValue = "<%=results%>";
-
+         
         if (sweetValue != null && SweetValueCheck =="true") {
+        	console.log(SweetValue);
+          	console.log(SweetValueCheck);
             Swal.fire({
-                title: 'Alert가 실행되었습니다.',
+                title: '찾았습니다.',
                 text: sweetValue,
                 icon: 'success',
+
+                confirmButtonText: "로그인 하러가기"
+            }).then((result) => {
+           	  if (result.isConfirmed) {
+           		  window.location.href="/app/login.jsp";
+           	  }
+
             });
-        }else if(sweetValue == null && SweetValueCheck =="Falls" ){
+            
+            SweetValue = null;
+        	SweetValueCheck = null;
+        }else if(sweetValue != null && SweetValueCheck =="false" ){
+        	console.log(SweetValue);
+          	console.log(SweetValueCheck);
         	Swal.fire({
-                title: 'Alert가 실행되었습니다.',
+                title: '찾지못했습니다.',
                 text: sweetValue,
-                icon: 'error',
+                icon: 'warning',
             });
+        	SweetValue = null;
+        	SweetValueCheck = null;
         }
     });
   </script>  

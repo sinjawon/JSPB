@@ -14,6 +14,8 @@ xhttp.open("GET", url, true);
 xhttp.send();
 };
 
+
+
 function submitPost(){
     console.log("전송되었습니다")
 
@@ -29,14 +31,12 @@ function cancelPost() {
     
     let titleInput = document.getElementById("titleInput") as HTMLInputElement;
     let postTextarea = document.getElementById("postTextarea") as HTMLTextAreaElement;
-
-    
+ 
     titleInput.value = "";
     postTextarea.value = "";
     dropzone.removeAllFiles();
 
 }
-
 
 //@ts-ignore
 Dropzone.autoDiscover=false;
@@ -70,3 +70,4 @@ var dropzone = new Dropzone("div.dropzone", {
         });
     }
 });
+
