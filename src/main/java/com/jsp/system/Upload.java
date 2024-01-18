@@ -43,7 +43,7 @@ public class Upload extends HttpServlet{
 			/* getServletContext().getRealPath("/") */
 	        //저장할 최상위 경로 img 전까지
 	        
-	        String uploadPath ="D:\\jge_jspclone\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img";
+	        String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img";
 	      /*  D:\\jge_jspclone\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img*/
 	     
 	        try {

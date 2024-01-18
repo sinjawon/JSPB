@@ -24,6 +24,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+function loadReply3() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let boardListNumInput3 = document.getElementById("boardListNumInput3");
+            let boardListNum3 = boardListNumInput3.value;
+            let formData = new FormData();
+            formData.append("boardListNum3", boardListNum3);
+            let response = yield fetch(`/api/replylist3?${new URLSearchParams(formData)}`, {
+                method: "GET",
+                headers: {
+                    "Cache-Control": "no-cache",
+                },
+            });
+            if (!response.ok) {
+                throw new Error("댓글 불러오기 실패");
+            }
+            let replyList3 = yield response.json();
+            displayReply3(replyList3);
+        }
+        catch (error) {
+            console.error(error);
+        }
+    });
+}
 function addReply3() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -47,13 +71,7 @@ function addReply3() {
         catch (error) {
             console.error("Fetch 오류:", error);
         }
-        let replyList3 = yield response.json();
-        displayReply3(replyList3);
     });
-}
-try { }
-catch (error) {
-    console.error(error);
 }
 // 댓글작성자
 let currentUser3 = sessionUser; // 실제 기본값으로 설정하세요

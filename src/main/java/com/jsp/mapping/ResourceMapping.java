@@ -24,7 +24,8 @@ import javax.servlet.annotation.WebServlet;
 				@WebInitParam(name="key",value="값")
 		})
 public class ResourceMapping extends HttpServlet {
-	   private String defaultPath = "D:\\donghyeok\\web\\JSPB\\src\\main\\webapp";
+	
+	   private String defaultPath = "C:\\eclip\\workspace\\JSPB\\src\\main\\webapp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,47 +56,24 @@ public class ResourceMapping extends HttpServlet {
 				out.write(in.readAllBytes());
 			}catch(Exception e) {}	
 		}
-		else if(token.equalsIgnoreCase("jpeg") || token.equalsIgnoreCase("jpg")) {
-			resp.setContentType("image/jpeg");
-			if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
-				try(OutputStream out = resp.getOutputStream();
-						InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
-					out.write(in.readAllBytes());		
-				}
-				catch(Exception e) {}
-			}
-			else {
-				try(OutputStream out = resp.getOutputStream();
-						InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-					out.write(in.readAllBytes());
-				}catch(Exception e) {}
-			}
-		}
-		else if(token.equalsIgnoreCase("png")) {
-			resp.setContentType("image/png");
-			if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
-				try(OutputStream out = resp.getOutputStream();
-						InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
-					out.write(in.readAllBytes());		
-				}
-				catch(Exception e) {}
-			}
-			else {
-				try(OutputStream out = resp.getOutputStream();
-						InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
-					out.write(in.readAllBytes());
-				}catch(Exception e) {}	
-			}
-		}
-		else if(token.equalsIgnoreCase("gif")) {
-			resp.setContentType("image/gif");
-			if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
-				try(OutputStream out = resp.getOutputStream();
-						InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
-					out.write(in.readAllBytes());		
-				}
-				catch(Exception e) {}
-			}
+		  else if(token.equalsIgnoreCase("jpeg") || token.equalsIgnoreCase("jpg")) {
+		         resp.setContentType("image/jpeg");
+		         try(OutputStream out = resp.getOutputStream();){
+		            Files.copy(Paths.get(defaultPath + "/WEB-INF/resources/img" + info), out);
+		         }catch(Exception e) {}   
+		      }
+		      else if(token.equalsIgnoreCase("png")) {
+		         resp.setContentType("image/png");
+		         try(OutputStream out = resp.getOutputStream();){
+		            Files.copy(Paths.get(defaultPath + "/WEB-INF/resources/img" + info), out);
+		         }catch(Exception e) {}   
+		      }
+		      else if(token.equalsIgnoreCase("gif")) {
+		         resp.setContentType("image/gif");
+		         try(OutputStream out = resp.getOutputStream();){
+		            Files.copy(Paths.get(defaultPath + "/WEB-INF/resources/img" + info), out);
+		         }catch(Exception e) {}   
+		      }
 			else {
 				try(OutputStream out = resp.getOutputStream();
 						InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resources/" + "img" + info);){
@@ -131,7 +109,7 @@ public class ResourceMapping extends HttpServlet {
 //		resp.getWriter().append("응답 내용4");
 		
 	}
-}
+
 
 
 

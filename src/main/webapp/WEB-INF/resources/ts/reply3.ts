@@ -61,6 +61,38 @@ async function loadReply3() {
   }
 }
 
+
+
+
+
+
+async function addReply3() {
+  try {
+      let formData = new FormData(document.querySelector('#replyForm3'));
+      let response = await fetch('/api/addReply3', 
+      {
+          method:'POST',
+          cache:'no-cache',
+          body:new URLSearchParams(formData).toString(), 
+          headers:{'Content-Type':'application/x-www-form-urlencoded'}
+      });
+
+      if (!response.ok) {
+          throw new Error("댓글 등록 실패");
+      }
+
+      let replyList3: { success: boolean } = await response.json();
+
+      if (replyList3.success) {
+          clearReplyInput3();
+          loadReply3();
+          location.href = '/app/postview3.jsp?id=' + formData.get("boardListNum3");
+      }
+  } catch (error) {
+      console.error("Fetch 오류:", error);
+  }
+}
+
 // 댓글작성자
 let currentUser3: String = sessionUser; // 실제 기본값으로 설정하세요
 
@@ -153,3 +185,4 @@ async function deleteReply3(replyNum3: number) {
     alert("댓글 삭제 중 오류 발생");
   }
 }
+
