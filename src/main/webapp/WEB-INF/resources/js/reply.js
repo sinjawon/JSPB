@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
 function loadReply() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let boardListNumInput = document.getElementById("boardListNumInput ");
+            let boardListNumInput = document.getElementById("boardListNumInput");
             let boardListNum = boardListNumInput.value;
             let formData = new FormData();
-            formData.append("boardListNum ", boardListNum);
-            let response = yield fetch(`/api/replylist ?${new URLSearchParams(formData)}`, {
+            formData.append("boardListNum", boardListNum);
+            let response = yield fetch(`/api/replylist?${new URLSearchParams(formData)}`, {
                 method: "GET",
                 headers: {
                     "Cache-Control": "no-cache",
@@ -45,31 +45,6 @@ function loadReply() {
         }
         catch (error) {
             console.error(error);
-        }
-    });
-}
-function addReply() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            let formData = new FormData(document.querySelector('#replyForm'));
-            let response = yield fetch('/api/addReply', {
-                method: 'POST',
-                cache: 'no-cache',
-                body: new URLSearchParams(formData).toString(),
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            });
-            if (!response.ok) {
-                throw new Error("댓글 등록 실패");
-            }
-            let replyList = yield response.json();
-            if (replyList.success) {
-                clearReplyInput();
-                loadReply();
-                location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
-            }
-        }
-        catch (error) {
-            console.error("Fetch 오류:", error);
         }
     });
 }
@@ -99,12 +74,12 @@ function displayReply(replies) {
 function addReply() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let formData = new FormData(document.querySelector("#replyForm"));
-            let response = yield fetch("/api/addReply", {
-                method: "POST",
-                cache: "no-cache",
+            let formData = new FormData(document.querySelector('#replyForm'));
+            let response = yield fetch('/api/addReply', {
+                method: 'POST',
+                cache: 'no-cache',
                 body: new URLSearchParams(formData).toString(),
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
             if (!response.ok) {
                 throw new Error("댓글 등록 실패");
@@ -113,7 +88,7 @@ function addReply() {
             if (replyList.success) {
                 clearReplyInput();
                 loadReply();
-                location.href = "/app/postview.jsp?id=" + formData.get("boardListNum");
+                location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
             }
         }
         catch (error) {

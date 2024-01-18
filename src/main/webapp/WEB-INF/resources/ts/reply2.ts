@@ -64,35 +64,6 @@ async function loadReply2() {
 
 
 
-
-
-async function addReply2() {
-  try {
-      let formData = new FormData(document.querySelector('#replyForm2'));
-      let response = await fetch('/api/addReply2', 
-      {
-          method:'POST',
-          cache:'no-cache',
-          body:new URLSearchParams(formData).toString(), 
-          headers:{'Content-Type':'application/x-www-form-urlencoded'}
-      });
-
-      if (!response.ok) {
-          throw new Error("댓글 등록 실패");
-      }
-
-      let replyList2: { success: boolean } = await response.json();
-
-      if (replyList2.success) {
-          clearReplyInput2();
-          loadReply2();
-          location.href = '/app/postview2.jsp?id=' + formData.get("boardListNum2");
-      }
-  } catch (error) {
-      console.error("Fetch 오류:", error);
-  }
-}
-
 // 댓글작성자
 let currentUser2: String = sessionUser; // 실제 기본값으로 설정하세요
 

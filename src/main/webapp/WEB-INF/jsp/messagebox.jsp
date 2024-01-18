@@ -166,8 +166,6 @@ try(DBConnector con = new DBConnector();){
                 </form>
               </div>
             </summary>
-           
-
             <p class="note-content-div"><%=SendNote.getNotecontent()%></p>
           </details>
           <%}%>
@@ -228,7 +226,7 @@ try(DBConnector con = new DBConnector();){
 
     
 
-    
+     
 
         
 </body>
