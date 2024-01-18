@@ -8,30 +8,7 @@
 <meta charset="UTF-8">
 
 <title>Board List</title>
-<style>
 
-<%-- 임시로 보기 좋으라고 --%>
-
-a {
-	display: inline-block;
-	text-align: center;
-	overflow: hidden;
-}
-
-a.boardListNum, a.usernickname, a.hitCount, a.regDate {
-	width: 150px;
-}
-
-a.title {
-	width: 200px;
-	background: gray;
-}
-
-a.mainContents {
-	width: 200px;
-	background: aqua;
-}
-</style>
 <script defer src="/resources/boardlist.js"></script>
 </head>
 <body>
