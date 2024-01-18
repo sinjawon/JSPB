@@ -63,7 +63,9 @@ function displayReply(replies) {
             clone.querySelector(".regDate").innerHTML = data.regDate;
             if (currentUser === data.userNickname) {
                 // 맞다면 삭제 버튼을 활성화
-                clone.querySelector(".deleteReply").setAttribute("data-replynum", data.replyNum.toString());
+                clone
+                    .querySelector(".deleteReply")
+                    .setAttribute("data-replynum", data.replyNum.toString());
             }
             console.log(currentUser, data.userNickname);
             replyContainer.appendChild(clone);
@@ -73,10 +75,12 @@ function displayReply(replies) {
 function addReply() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let formData = new FormData(document.getElementById("replyForm"));
+            let formData = new FormData(document.querySelector("#replyForm"));
             let response = yield fetch("/api/addReply", {
                 method: "POST",
-                body: formData,
+                cache: "no-cache",
+                body: new URLSearchParams(formData).toString(),
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
             });
             if (!response.ok) {
                 throw new Error("댓글 등록 실패");
@@ -85,7 +89,7 @@ function addReply() {
             if (replyList.success) {
                 clearReplyInput();
                 loadReply();
-                location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
+                location.href = "/app/postview.jsp?id=" + formData.get("boardListNum");
             }
         }
         catch (error) {
@@ -113,15 +117,17 @@ function deleteReply(replyNum) {
             if (replyList.success) {
                 console.log("댓글 삭제 성공");
                 loadReply();
-                location.href = '/app/postview.jsp?id=' + document.getElementById("boardListNumInput").value;
+                location.href =
+                    "/app/postview.jsp?id=" +
+                        document.getElementById("boardListNumInput").value;
             }
             else {
                 console.error("댓글 삭제 실패:", replyList.success);
             }
         }
         catch (error) {
-            console.error('댓글 삭제 중 오류 발생:', error);
-            alert('댓글 삭제 중 오류 발생');
+            console.error("댓글 삭제 중 오류 발생:", error);
+            alert("댓글 삭제 중 오류 발생");
         }
     });
 }

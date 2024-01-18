@@ -21,7 +21,7 @@
 <script src="/resources/postings4.js"></script>
 <script defer src="/resources/reply4.js"></script>
 
-
+    
 
 </head>
 <body>
@@ -31,9 +31,11 @@
 	<div class="detail_board">
 		<div id="userNickname4">작성자</div>
 		<div id="viewTitle4">글 제목</div>
+		<div>
+       	<div id="imageContainer4" class="imageContainer"></div>
 		<div id="viewTextarea4">글 내용</div>
+		</div>
 	</div>
-	<div> 이미지 공간 4개까지</div>
 	<% session.getAttribute("UserNickName"); %>
 
    
@@ -66,7 +68,7 @@
 
 
 	<form id="replyForm4" action="/api/addReply4" method="post">
-     
+         
 	<div class="writing_field">
 		<input type="text" id="boardListNumInput4" name="boardListNum4"
 			value="<%=request.getParameter("id")%>" readonly style="display:none;"> 
@@ -86,6 +88,7 @@
 	</div>
 	</div>
 		<%@include file="../jsp/footer.jsp"%>
+		    
 
 </body>
 </html>

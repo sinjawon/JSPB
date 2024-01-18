@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>글 수정 페이지</title>
     <link rel="stylesheet" type="text/css" href="/resources/editpost.css"> 
-    
+       
     <script>
     var valueId=<%=request.getParameter("id")%>;
     var sessionUser='<%=session.getAttribute("UserNickName")%>';

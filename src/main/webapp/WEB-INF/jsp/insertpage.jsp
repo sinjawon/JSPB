@@ -7,8 +7,9 @@
 
 <link rel="stylesheet" type="text/css" href="/resources/myreset.css"> 
 <link rel="stylesheet" type="text/css" href="/resources/insertpage.css"> 
+<script src="/resources/boardWrite3.js" defer></script>
 
-<script src="/resources/boardWrite.js" defer></script>
+
 
 <title>petpeople</title>
 </head>

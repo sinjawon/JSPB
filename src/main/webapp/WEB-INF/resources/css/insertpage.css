@@ -2,7 +2,7 @@
 
 .insertpage{
    margin:auto;
-   margin-top:15rem;
+   margin-top:12rem;
    margin-bottom:10rem;
 }
 
@@ -91,11 +91,17 @@
    margin-bottom: 3rem;
 }
 
+.insertpage{
+	position: relative;
+}
 .insertpagebox{
-	display:flex;
-	flex-direction:column;
-	margin-bottom: 5rem;
-	line-height: 2rem;
+   display:flex;
+   flex-direction:column;
+   margin-bottom: 8rem;
+   line-height: 2rem;
+   position: absolute;
+   top:0px;
+   left: 350px;
 }
 .insertpagebox > ul ul {
   display: none;
@@ -105,17 +111,22 @@
 }
 
 .insertpagebox > ul > li > ul > li {
-	height: 2rem;
-	border:1px solid black;
-	line-height: 2rem;
+   height: 2rem;
+   line-height: 2rem;
+   position: relative;
 }
 
 .insertbtn{
-	border: 1px solid black;
-	width:10rem;
+   width:10rem;
+}
+
+.insertbtn::before{
+	content: '▼';
+	position: absolute;
+	top: 0;
+	left: 90px;
+	font-size: 15px;
 }
 .insertbtn > li {
-	height:2rem;
+   height:2rem;
 }
-
-

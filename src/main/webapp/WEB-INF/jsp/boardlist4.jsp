@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/board.css">
 <script defer src="/resources/pagenumber.js"></script> 
 <script defer src="/resources/boardlist4.js"></script>
-</head>
+</head>   
 <body>
 	<%@include file="../jsp/nav.jsp"%>
 	
@@ -79,7 +79,7 @@
  <c:if test = "${sessionScope.UserNickName!=null }" >
 	<div style="position:fixed; bottom:4.7rem; right:3.5rem; ">
     	<div class="write-go" >
-		<a href="insertpage.jsp" >
+		<a href="insert.jsp" >
        		<i class="fa-solid fa-pen-to-square fa-2x"></i>
       	</a>
     </div>

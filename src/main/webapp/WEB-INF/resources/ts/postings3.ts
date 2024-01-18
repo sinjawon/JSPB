@@ -106,6 +106,40 @@ function editPost3() {
 }
 
 
+// 이미지 불러오기
+function getImagePaths3() {
+    fetch(`/api/getImagePaths3?boardListNum3=${clickedPostId3}`, {
+        method: "GET"
+    })
+    .then(response => response.json()
+    )
+    .then(data => {
+        // 이미지를 표시할 함수 호출
+        console.log(data.paths3);
+
+        displayImages3(data.paths3);
+    })
+    .catch(error => {
+        console.error('이미지 경로를 가져오지 못했습니다.', error);
+    });
+}
+
+// 이미지를 표시하는 함수
+function displayImages3(imagePaths3) {
+    let imageContainer3 = document.getElementById("imageContainer3");
+    console.log(imagePaths3);
+    // 이미지를 표시할 div에 이미지 경로 넣음
+    //imagePaths.paths.forEach(imagePath => {
+        imagePaths3.forEach(imagePath => {
+        let img = document.createElement("img");
+        img.src = `/resources/${imagePath}`; //경로 /*/*/가져온 이름
+
+        imageContainer3.appendChild(img);
+    });
+}
+
+
+getImagePaths3();
 
 
 

@@ -35,7 +35,7 @@
 		<div id="viewTextarea2">글</div>
 	</div>
 
-	<div> 이미지 공간 4개까지</div>
+       <div id="imageContainer2" class="imageContainer"></div>
 	<% session.getAttribute("UserNickName"); %>
 
 
@@ -66,7 +66,7 @@
 					<div class="replyContents2 replyContents">본문</div>
 		</template>
 	</div>   
-
+   
 	<form id="replyForm2" action="/api/addReply2" method="post">
      
 		 <div class="writing_field">
