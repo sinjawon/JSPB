@@ -48,31 +48,6 @@ function loadReply3() {
         }
     });
 }
-function addReply3() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            let formData = new FormData(document.querySelector('#replyForm3'));
-            let response = yield fetch('/api/addReply3', {
-                method: 'POST',
-                cache: 'no-cache',
-                body: new URLSearchParams(formData).toString(),
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            });
-            if (!response.ok) {
-                throw new Error("댓글 등록 실패");
-            }
-            let replyList3 = yield response.json();
-            if (replyList3.success) {
-                clearReplyInput3();
-                loadReply3();
-                location.href = '/app/postview3.jsp?id=' + formData.get("boardListNum3");
-            }
-        }
-        catch (error) {
-            console.error("Fetch 오류:", error);
-        }
-    });
-}
 // 댓글작성자
 let currentUser3 = sessionUser; // 실제 기본값으로 설정하세요
 function displayReply3(replies3) {
