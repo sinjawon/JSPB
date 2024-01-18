@@ -47,7 +47,13 @@ function addReply() {
         catch (error) {
             console.error("Fetch 오류:", error);
         }
+        let replyList = yield response.json();
+        displayReply(replyList);
     });
+}
+try { }
+catch (error) {
+    console.error(error);
 }
 // 댓글작성자
 let currentUser = sessionUser; // 실제 기본값으로 설정하세요
