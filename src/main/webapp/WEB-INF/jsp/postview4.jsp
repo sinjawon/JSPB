@@ -66,7 +66,7 @@
 
 
 	<form id="replyForm4" action="/api/addReply4" method="post">
-     
+         
 	<div class="writing_field">
 		<input type="text" id="boardListNumInput4" name="boardListNum4"
 			value="<%=request.getParameter("id")%>" readonly style="display:none;"> 
