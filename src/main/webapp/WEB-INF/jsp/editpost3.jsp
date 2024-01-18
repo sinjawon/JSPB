@@ -18,7 +18,7 @@
     
 </head>
 <body>
-
+   
     <%@include file="../jsp/nav.jsp"%>
     
         <div class="editContainer">

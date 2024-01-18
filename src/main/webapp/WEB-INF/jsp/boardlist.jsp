@@ -21,7 +21,7 @@
 <script defer src="/resources/pagenumber.js"></script> 
 </head>
 <body>
-
+  
 		
 	<%@include file="../jsp/nav.jsp"%>
 	

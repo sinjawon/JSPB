@@ -64,7 +64,7 @@
 						onclick="deleteReply(${data.replyNum})">삭제</button>
 <!-- 						<div id ="replyDeleteButtonContainer"></div>  
  -->				</div>
-			</div>
+			</div>   
 				<div class="replyContents">본문</div>
 		</template>
 	</div>

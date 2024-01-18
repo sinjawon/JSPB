@@ -30,7 +30,7 @@
         			UserDao map2 = con.OpenMap(request, UserDao.class);
         		 
         		 %>
-
+   
 <div class="main_board">
 	<h3>산책게시판</h3>
 	<div id="boards3">

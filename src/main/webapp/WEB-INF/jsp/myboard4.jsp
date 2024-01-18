@@ -38,7 +38,7 @@
 		<input type="text" id="page4" name="page4" value="1" style="display: none;" />
 		<button type="button" onclick="submitSearch4()">검색</button>
 	</form>
-
+   
 
 </body>
 </html>

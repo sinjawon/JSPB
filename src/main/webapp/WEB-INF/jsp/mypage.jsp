@@ -13,7 +13,7 @@ import="com.jsp.dao.*, com.jsp.dto.*, com.jsp.system.DBConnector"%>
       type="image/png"
       sizes="32x32"
       href="/resources/favicon-32x32.png"
-    />
+    />   
     <link
       rel="icon"
       type="image/png"
