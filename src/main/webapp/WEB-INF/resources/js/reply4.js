@@ -72,10 +72,12 @@ function displayReply4(replies4) {
 function addReply4() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let formData = new FormData(document.getElementById("replyForm4"));
-            let response = yield fetch("/api/addReply4", {
-                method: "POST",
-                body: formData,
+            let formData = new FormData(document.querySelector('#replyForm4'));
+            let response = yield fetch('/api/addReply4', {
+                method: 'POST',
+                cache: 'no-cache',
+                body: new URLSearchParams(formData).toString(),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
             if (!response.ok) {
                 throw new Error("댓글 등록 실패");
@@ -90,37 +92,37 @@ function addReply4() {
         catch (error) {
             console.error("Fetch 오류:", error);
         }
-    });
-}
-function clearReplyInput4() {
-    let replyContentsInput4 = document.getElementById("replyContents4");
-    if (replyContentsInput4) {
-        replyContentsInput4.value = "";
-    }
-}
-function deleteReply4(replyNum4) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            console.log(replyNum4);
-            let response4 = yield fetch(`/api/deleteReply4?replyNum4=${replyNum4}`, {
-                method: "POST",
-            });
-            if (!response4.ok) {
-                throw new Error("댓글 삭제 실패");
-            }
-            let replyList4 = yield response4.json();
-            if (replyList4.success) {
-                console.log("댓글 삭제 성공");
-                loadReply4();
-                location.href = '/app/postview4.jsp?id=' + document.getElementById("boardListNumInput4").value;
-            }
-            else {
-                console.error("댓글 삭제 실패:", replyList4.success);
+        function clearReplyInput4() {
+            let replyContentsInput4 = document.getElementById("replyContents4");
+            if (replyContentsInput4) {
+                replyContentsInput4.value = "";
             }
         }
-        catch (error) {
-            console.error('댓글 삭제 중 오류 발생:', error);
-            alert('댓글 삭제 중 오류 발생');
+        function deleteReply4(replyNum4) {
+            return __awaiter(this, void 0, void 0, function* () {
+                try {
+                    console.log(replyNum4);
+                    let response4 = yield fetch(`/api/deleteReply4?replyNum4=${replyNum4}`, {
+                        method: "POST",
+                    });
+                    if (!response4.ok) {
+                        throw new Error("댓글 삭제 실패");
+                    }
+                    let replyList4 = yield response4.json();
+                    if (replyList4.success) {
+                        console.log("댓글 삭제 성공");
+                        loadReply4();
+                        location.href = '/app/postview4.jsp?id=' + document.getElementById("boardListNumInput4").value;
+                    }
+                    else {
+                        console.error("댓글 삭제 실패:", replyList4.success);
+                    }
+                }
+                catch (error) {
+                    console.error('댓글 삭제 중 오류 발생:', error);
+                    alert('댓글 삭제 중 오류 발생');
+                }
+            });
         }
     });
 }

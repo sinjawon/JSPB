@@ -72,10 +72,12 @@ function displayReply3(replies3) {
 function addReply3() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let formData = new FormData(document.getElementById("replyForm3"));
-            let response = yield fetch("/api/addReply3", {
-                method: "POST",
-                body: formData,
+            let formData = new FormData(document.querySelector('#replyForm3'));
+            let response = yield fetch('/api/addReply3', {
+                method: 'POST',
+                cache: 'no-cache',
+                body: new URLSearchParams(formData).toString(),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
             if (!response.ok) {
                 throw new Error("댓글 등록 실패");

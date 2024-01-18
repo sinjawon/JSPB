@@ -32,10 +32,12 @@
 	<div class="detail_board">
 		<div id="userNickname2">작성자</div>
 		<div id="viewTitle2">글 제목</div>
-		<div id="viewTextarea2">글</div>
+		<div>
+	       	<div id="imageContainer2" class="imageContainer"></div>
+			<div id="viewTextarea2" class="viewTextarea">글 내용</div>
+		</div>
 	</div>
 
-       <div id="imageContainer2" class="imageContainer"></div>
 	<% session.getAttribute("UserNickName"); %>
 
 
@@ -78,7 +80,7 @@
     <c:if test = "${sessionScope.UserNickName==null }" >
      </c:if>
     <c:if test = "${sessionScope.UserNickName!=null}">
-		<textarea id="replyContents2" name="replyContents2" placeholder="댓글 내용"  class="text"></textarea>
+		<textarea id="replyContents2" name="replyContents2" placeholder="댓글 내용을 입력하세요"  class="text"></textarea>
 		<button type="button" id="addReplyBtn2" onclick="addReply()" class="writing_btn">등록</button>
 		 </c:if>
 		</div>

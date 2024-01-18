@@ -82,11 +82,13 @@ function displayReply2(replies2: { replyList2: Reply[] }) {
 
 async function addReply2() {
     try {
-        let formData = new FormData(document.getElementById("replyForm2") as HTMLFormElement);
-
-        let response = await fetch("/api/addReply2", {
-            method: "POST",
-            body: formData,
+        let formData = new FormData(document.querySelector('#replyForm2'));
+        let response = await fetch('/api/addReply2', 
+        {
+            method:'POST',
+            cache:'no-cache',
+            body:new URLSearchParams(formData).toString(), 
+            headers:{'Content-Type':'application/x-www-form-urlencoded'}
         });
 
         if (!response.ok) {

@@ -56,7 +56,7 @@
         <div class="trinfo-box">
           <div class="trainfo-nick">닉네임</div>
           <div class="trainfo-addr">주소</div>
-        </div>
+        <div class="trinfo-box">
       </div>
 
       <div class="trade-des">

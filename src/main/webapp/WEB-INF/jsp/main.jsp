@@ -90,11 +90,11 @@ pageEncoding="UTF-8"%>
               alt="정보"
           /></a>
           <div class="subTitle">
-            <h2>애완용품거래게시판</h2>
+            <h2>애완용품거래</h2>
           </div>
         </div>
         <div class="swiper-slide">
-          <a href="joinmembership.jsp"
+          <a href="joinmembership.jsp"	
             ><img
               class="image"
               src="/resources/mainbanner05_sub.jpg"
@@ -110,7 +110,7 @@ pageEncoding="UTF-8"%>
       <div class="swiper-pagination p1"></div>
     </div>
     <div class="mainshop">
-      <div class="main-title">애완용품거래 게시판</div>
+      <div class="main-title">애완용품거래</div>
       <div class="titleborder"></div>
       <div class="main-grid">
         <div class="mainshopbox">
@@ -164,7 +164,7 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="main-box">
-        <div class="main-title">산책친목게시판</div>
+        <div class="main-title">산책게시판</div>
         <div class="titleborder"></div>
         <div class="main-container">
           <div class="free-flex">
@@ -203,7 +203,7 @@ pageEncoding="UTF-8"%>
 
     <!-- 자랑게시판 미리보기 -->
     <div class="main-brag">
-      <div class="main-title">자랑 게시판</div>
+      <div class="main-title">자랑게시판</div>
       <div class="titleborder"></div>
       <div class="main-grid">
         <div class="main-img">

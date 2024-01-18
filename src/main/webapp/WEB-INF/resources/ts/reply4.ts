@@ -82,11 +82,13 @@ function displayReply4(replies4: { replyList4: Reply[] }) {
 
 async function addReply4() {
     try {
-        let formData = new FormData(document.getElementById("replyForm4") as HTMLFormElement);
-
-        let response = await fetch("/api/addReply4", {
-            method: "POST",
-            body: formData,
+        let formData = new FormData(document.querySelector('#replyForm4'));
+        let response = await fetch('/api/addReply4', 
+        {
+            method:'POST',
+            cache:'no-cache',
+            body:new URLSearchParams(formData).toString(), 
+            headers:{'Content-Type':'application/x-www-form-urlencoded'}
         });
 
         if (!response.ok) {
@@ -103,7 +105,6 @@ async function addReply4() {
     } catch (error) {
         console.error("Fetch 오류:", error);
     }
-}
 
 function clearReplyInput4() {
     let replyContentsInput4 = document.getElementById("replyContents4") as HTMLTextAreaElement;
