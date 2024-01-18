@@ -66,6 +66,9 @@ function displayReply3(replies3) {
                     .querySelector(".deleteReply3")
                     .setAttribute("data-replynum", data.replyNum3.toString());
             }
+            else {
+                clone.querySelector(".deleteReply3").style.display = "none";
+            }
             console.log(currentUser3, data.userNickname3);
             replyContainer3.appendChild(clone);
         }

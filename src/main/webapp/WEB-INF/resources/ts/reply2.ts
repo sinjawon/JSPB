@@ -86,6 +86,8 @@ function displayReply2(replies2: { replyList2: Reply[] }) {
         clone
           .querySelector(".deleteReply2")
           .setAttribute("data-replynum", data.replyNum2.toString());
+      }else{
+        clone.querySelector(".deleteReply2").style.display = "none";
       }
       console.log(currentUser2, data.userNickname2);
 

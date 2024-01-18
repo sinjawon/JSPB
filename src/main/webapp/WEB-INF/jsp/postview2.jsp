@@ -79,7 +79,7 @@
      </c:if>
     <c:if test = "${sessionScope.UserNickName!=null}">
 		<textarea id="replyContents2" name="replyContents2" placeholder="댓글 내용"  class="text"></textarea>
-		<button type="button" id="addReplyBtn2" onclick="addReply()" class="writing_btn">등록</button>
+		<button type="button" id="addReplyBtn2"  class="writing_btn">등록</button>
 		 </c:if>
 		</div>
 	</form>
