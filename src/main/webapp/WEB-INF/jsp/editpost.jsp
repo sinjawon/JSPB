@@ -30,13 +30,29 @@
     <button type="button" onclick="editPost()">수정 확인</button>
     
    
-       <form id="refresh" action="/api/boardList" method="post">
-   			<button type="button" onClick="location.href='/app/postview.jsp?id=<%= request.getParameter("id") %>'">돌아가기</button>
-   		</form>
-   		<%-- 수정했던 글로 가도록 변경함 --%>
-   
-</form>
+      <%@include file="../jsp/nav.jsp"%>
+       
     
+    <div class="editContainer">
+       <h2>글 수정하기</h2>
+      <form id="editForm" action="/api/editPost" method="post" class="editForm">
+          <input type="hidden" name="boardListNum" value="<%= request.getParameter("id") %>">
+          <textarea id="userNickname" name="userNickname" placeholder="작성자" class="userNickname"></textarea>
+          <br>
+          <textarea id="viewTitle" name="title" placeholder="글 제목" class="viewTitle"></textarea>
+          <br><br>
+          <textarea id="viewTextarea" name="mainContents" placeholder="글 내용" class="viewTextarea"></textarea>
+          <br><br><br>
+          
+          <div class="editbtnWrap">
+                <button type="button" onclick="editPost()">수정 확인</button>
+                 <form id="refresh" action="/api/boardList" method="post">
+                  <button type="button" onClick="location.href='/app/boardlist.jsp'">돌아가기</button>
+               </form>
+         </div>
+      </form>
+    
+    </div>
     
     
     

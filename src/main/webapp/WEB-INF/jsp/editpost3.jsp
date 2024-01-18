@@ -16,7 +16,8 @@
     
 </head>
 <body>
-    <h1>글 수정하기3</h1>
+   
+    <%@include file="../jsp/nav.jsp"%>
     
     
     <form id="editForm3" action="/api/editPost3" method="post">

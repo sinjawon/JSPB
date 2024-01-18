@@ -18,17 +18,25 @@
 <body>
     <h1>글 수정하기2</h1>
     
-    
-    <form id="editForm2" action="/api/editPost2" method="post">
-    <input type="hidden" name="boardListNum2" value="<%= request.getParameter("id") %>">
-    <textarea id="userNickname2" name="userNickname2" placeholder="작성자"></textarea>
-    <br>
-    <textarea id="viewTitle2" name="title2" placeholder="글 제목"></textarea>
-    <br><br>
-    <textarea id="viewTextarea2" name="mainContents2" placeholder="글 내용"></textarea>
-    <br><br><br>
-    <button type="button" onclick="editPost2()">수정 확인</button>
-    
+    <div class="editContainer">
+        
+       <h2>글 수정하기</h2>
+       <form id="editForm2" action="/api/editPost2" method="post" class="editForm">
+          <input type="hidden" name="boardListNum2" value="<%= request.getParameter("id") %>">
+          <textarea id="userNickname2" name="userNickname2" placeholder="작성자" class="userNickname"></textarea>
+          <br>
+          <textarea id="viewTitle2" name="title2" placeholder="글 제목" class="viewTitle" ></textarea>
+          <br><br>
+          <textarea id="viewTextarea2" name="mainContents2" placeholder="글 내용" class="viewTextarea"></textarea>
+          <br><br><br>
+          
+          <div class="editbtnWrap">
+          
+             <button type="button" onclick="editPost2()">수정 확인</button>
+                <form id="refresh2" action="/api/boardList2" method="post">
+                  <button type="button" onClick="location.href='/app/boardlist2.jsp'">돌아가기</button>
+               </form>
+             </div>
    
        <form id="refresh2" action="/api/boardList2" method="post">
    			<button type="button" onClick="location.href='/app/postview2.jsp?id=<%= request.getParameter("id") %>'">돌아가기</button>

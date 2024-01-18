@@ -33,6 +33,7 @@
    			<button type="button" onclick="location.href='/app/boardlist.jsp'">뒤로가기</button>
    		</form>  
     </form>
+       
 </body>
 </html>
 

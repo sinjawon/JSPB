@@ -60,6 +60,6 @@ a.mainContents {
 		<button type="button" onclick="submitSearch()">검색</button>
 	</form>
 
-
+   
 </body>
 </html>

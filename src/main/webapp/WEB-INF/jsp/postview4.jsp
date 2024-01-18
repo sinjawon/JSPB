@@ -36,7 +36,7 @@
 	<div> 이미지 공간 4개까지</div>
 	<% session.getAttribute("UserNickName"); %>
 
-
+   
 
 		<div class="detail_btn">
 			<form action="/app/boardlist4.jsp" method="post" class="btnform">

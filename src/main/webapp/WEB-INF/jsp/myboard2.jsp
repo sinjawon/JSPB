@@ -59,7 +59,7 @@ a.mainContents {
 		<input type="text" id="page2" name="page2" value="1" style="display: none;" />
 		<button type="button" onclick="submitSearch()2">검색</button>
 	</form>
-
+   
 
 </body>
 </html>

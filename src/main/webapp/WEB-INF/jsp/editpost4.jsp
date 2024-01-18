@@ -16,25 +16,30 @@
     
 </head>
 <body>
-    <h1>글 수정하기4</h1>
     
+   <%@include file="../jsp/nav.jsp"%>
+       
+    <div class="editContainer">
     
-    <form id="editForm4" action="/api/editPost4" method="post">
-    <input type="hidden" name="boardListNum4" value="<%= request.getParameter("id") %>">
-    <textarea id="userNickname4" name="userNickname4" placeholder="작성자"></textarea>
-    <br>
-    <textarea id="viewTitle4" name="title4" placeholder="글 제목"></textarea>
-    <br><br>
-    <textarea id="viewTextarea4" name="mainContents4" placeholder="글 내용"></textarea>
-    <br><br><br>
-    <button type="button" onclick="editPost4()">수정 확인</button>
+       <h2>글 수정하기</h2>
+       <form id="editForm4" action="/api/editPost4" method="post" class="editForm">
+          <input type="hidden" name="boardListNum4" value="<%= request.getParameter("id") %>">
+          <textarea id="userNickname4" name="userNickname4" placeholder="작성자" class="userNickname" ></textarea>
+          <br>
+          <textarea id="viewTitle4" name="title4" placeholder="글 제목" class="viewTitle"></textarea>
+          <br><br>
+          <textarea id="viewTextarea4" name="mainContents4" placeholder="글 내용" class="viewTextarea"></textarea>
+          <br><br><br>
+          
+          <div class="editbtnWrap">
+            <button type="button" onclick="editPost4()">수정 확인</button>
+             <form id="refresh4" action="/api/boardList4" method="post">
+                  <button type="button" onClick="location.href='/app/boardlist4.jsp'">돌아가기</button>
+               </form>
+          </div>
+      </form>
     
-   
-       <form id="refresh4" action="/api/boardList4" method="post">
-   			<button type="button" onClick="location.href='/app/postview4.jsp?id=<%= request.getParameter("id") %>'">돌아가기</button>
-   		</form>
-   
-</form>
+    </div>
     
     
 
