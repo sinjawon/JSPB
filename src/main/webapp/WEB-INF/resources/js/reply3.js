@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isNaN(replyNum3)) {
                 deleteReply3(replyNum3);
             }
-        }
+        }   
     });
 });
 function loadReply3() {

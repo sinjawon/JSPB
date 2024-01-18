@@ -78,7 +78,7 @@ function addReply() {
                 body: formData,
             });
             if (!response.ok) {
-                throw new Error("댓글 등록 실패");
+                throw new Error("댓글 등록 실패");  
             }
             let replyList = yield response.json();
             if (replyList.success) {
