@@ -25,7 +25,6 @@
 
 </head>
 <body>
-	<%@include file="../jsp/nav.jsp"%>
 	<div class="detail">
 	<h3>애완용품거래</h3>
 	<div class="detail_board">
@@ -87,7 +86,6 @@
 	</form>
 	</div>
 	</div>
-		<%@include file="../jsp/footer.jsp"%>
 		    
 
 </body>
