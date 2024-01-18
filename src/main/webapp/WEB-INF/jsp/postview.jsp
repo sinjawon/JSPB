@@ -63,6 +63,7 @@
 					
 					<button class="deleteReply" name="deleteReply"
 						onclick="deleteReply(${data.replyNum})">삭제</button>
+						
 <!-- 						<div id ="replyDeleteButtonContainer"></div>  
  -->				</div>
 			</div>     
