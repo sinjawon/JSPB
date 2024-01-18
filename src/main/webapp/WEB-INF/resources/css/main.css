@@ -49,6 +49,12 @@
   /* margin: auto; */
   margin-bottom: 10px;
 }
+.main-box2{
+  width: 100%;
+  height: 30vh;
+  /* margin: auto; */
+  margin-bottom: 10px;
+}
 .mainshopimg {
   width: 100%;
   height: 78%;
@@ -129,11 +135,11 @@
 }
 
 .main-grid {
-  width: 90%;
-  display: grid;
+  width: 100%;
+  /* display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-row-gap: 2vh;
-  margin: auto;
+  grid-row-gap: 2vh; */
+  /* margin: auto; */
   margin-top: 3vh;
 }
 
