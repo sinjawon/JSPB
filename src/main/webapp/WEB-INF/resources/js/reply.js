@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
 function loadReply() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let boardListNumInput = document.getElementById("boardListNumInput ");
+            let boardListNumInput = document.getElementById("boardListNumInput");
             let boardListNum = boardListNumInput.value;
             let formData = new FormData();
-            formData.append("boardListNum ", boardListNum);
-            let response = yield fetch(`/api/replylist ?${new URLSearchParams(formData)}`, {
+            formData.append("boardListNum", boardListNum);
+            let response = yield fetch(`/api/replylist?${new URLSearchParams(formData)}`, {
                 method: "GET",
                 headers: {
                     "Cache-Control": "no-cache",

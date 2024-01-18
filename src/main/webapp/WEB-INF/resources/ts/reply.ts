@@ -32,15 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
 async function loadReply () {
   try {
     let boardListNumInput  = document.getElementById(
-      "boardListNumInput "
+      "boardListNumInput"
     ) as HTMLInputElement;
     let boardListNum  = boardListNumInput.value;
 
     let formData = new FormData();
-    formData.append("boardListNum ", boardListNum );
+    formData.append("boardListNum", boardListNum );
 
     let response = await fetch(
-      `/api/replylist ?${new URLSearchParams(formData)}`,
+      `/api/replylist?${new URLSearchParams(formData)}`,
       {
         method: "GET",
         headers: {
