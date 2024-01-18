@@ -49,7 +49,7 @@
 				onclick="editReply(${data.replyNum})">수정</button> --%>
 				
 				
-			<div id ="replyButtonContainer"></div>	
+			<div class ="replyButtonContainer" onclick=""></div>	
 			<%-- <button class="deleteReply" name="deleteReply"
 				onclick="deleteReply(${data.replyNum})">삭제</button> --%>
 		</template>

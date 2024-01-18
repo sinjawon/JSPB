@@ -46,6 +46,7 @@ a.mainContents4 {
 			<a class="userNickname4">작성자</a> 
 			<a class="hitCount4">조회수</a> 
 			<a class="regDate4">등록일</a>
+			<div class="imgContainer"> 이미지 </div>
 		</template>
 	</div>
 	<div id="pages4">

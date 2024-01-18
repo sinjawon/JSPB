@@ -49,6 +49,7 @@ function submitSearch4() {
                     template.content.querySelector(".userNickname4").innerHTML = data.userNickname4;
                     template.content.querySelector(".hitCount4").innerHTML = data.hitCount4;
                     template.content.querySelector(".regDate4").innerHTML = data.regDate4;
+                    template.content.querySelector(".imgContainer").innerHTML = data.boardListNum4;
                     let a = document.createElement("div");
                     a.innerHTML = template.innerHTML;
                     if (boards4) {
@@ -72,6 +73,34 @@ function submitSearch4() {
         });
     }
 }
+// 이미지 불러오기
+function getImagePaths() {
+    fetch(`/api/getImagePaths?boardListNum=${boardListNum4}`, {
+        method: "GET"
+    })
+        .then(response => response.json())
+        .then(data => {
+        // 이미지를 표시할 함수 호출
+        console.log(data.paths);
+        displayImages(data.paths);
+    })
+        .catch(error => {
+        console.error('이미지 경로를 가져오지 못했습니다.', error);
+    });
+}
+// 이미지를 표시하는 함수
+function displayImages(imagePaths) {
+    let imageContainer = document.getElementById("imageContainer");
+    console.log(imagePaths);
+    // 이미지를 표시할 div에 이미지 경로 넣음
+    //imagePaths.paths.forEach(imagePath => {
+    imagePaths.forEach(imagePath => {
+        let img = document.createElement("img");
+        img.src = `/resources/${imagePath}`; //경로 /*/*/가져온 이름
+        imageContainer.appendChild(img);
+    });
+}
+getImagePaths();
 // 페이지 링크 동기화 안되었음 일단 클릭하면 이동은 가능함
 function pageChange4(page4) {
     document.querySelector("#searchform4 #page4").value = page4;

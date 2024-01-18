@@ -3,7 +3,6 @@ package com.jsp.system;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.jsp.dao.BoardDao;
 import com.jsp.dao.PostImageDao;
 
 @WebServlet(urlPatterns = { "/api/image/upload" })
@@ -98,10 +96,13 @@ public class ImageUploads extends HttpServlet {
 						String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day"))
 								+ "/" + imageName + token)));
 				//이미지 저장
+				//글 등록 될 때까지 대기
+				Thread.sleep(500);
 				
 				try (DBConnector con = new DBConnector();) {
 					// DB에 이미지 이름, 순서, 작성글 id 저장
 					PostImageDao map = con.OpenMap(req, PostImageDao.class);
+					
 					int boardListNum = map.getNewlyInsertedBoardId();
 
 					
