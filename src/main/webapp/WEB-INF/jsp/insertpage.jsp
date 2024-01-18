@@ -17,7 +17,7 @@
 	<%@include file="../jsp/nav.jsp"%>
 	<div class="insertpage">
 	<div class="insert-box">
-
+<!-- 
       <select
         class="insert-list"
         name="insert-list"
@@ -27,7 +27,20 @@
         <option value="insert2.jsp">자랑게시판</option>
         <option value="insert3.jsp">산책게시판</option>
         <option value="insert4.jsp">애완용품거래게시판</option>
-      </select>
+      </select> -->
+      <div class="insertpagebox">
+	      <ul  class="insertbtn">
+	        <li>
+	          <a href="insert.jsp">자유게시판</a>
+	          <ul class="insertul">
+	            <li><a href="insert2.jsp">자랑게시판</a></li>
+	            <li><a href="insert3.jsp">산책게시판</a></li>
+	            <li><a href="insert4.jsp">애완용품거래게시판</a></li>
+	          </ul>
+	        </li>
+	       </ul>
+       </div>
+
       
       
 <%-- 	<p class="insertpage-p"><%=session.getAttribute("UserNickName") %> 님</p> 

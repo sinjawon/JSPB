@@ -90,3 +90,32 @@
 .dropzone{
    margin-bottom: 3rem;
 }
+
+.insertpagebox{
+	display:flex;
+	flex-direction:column;
+	margin-bottom: 5rem;
+	line-height: 2rem;
+}
+.insertpagebox > ul ul {
+  display: none;
+}
+.insertpagebox > ul:hover > li > ul {
+  display: block;
+}
+
+.insertpagebox > ul > li > ul > li {
+	height: 2rem;
+	border:1px solid black;
+	line-height: 2rem;
+}
+
+.insertbtn{
+	border: 1px solid black;
+	width:10rem;
+}
+.insertbtn > li {
+	height:2rem;
+}
+
+

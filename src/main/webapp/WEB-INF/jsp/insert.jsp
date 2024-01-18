@@ -5,28 +5,55 @@
 <head>
     <meta charset="UTF-8">
     <title>글쓰기 페이지</title>
-    <script src="https://cdn.jsdelivr.net/npm/dropzone@6.0.0-beta.2/dist/dropzone-min.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/dropzone@6.0.0-beta.2/dist/dropzone-min.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropzone@6.0.0-beta.2/dist/dropzone.min.css">
+
     <script defer src="/resources/boardWrite.js"></script>
     
 </head>
 <body>
-    
-   
-    <form id="writeForm" action="/api/newPost" method="post">
-        <input type="text" id="userNickname" name="userNickname" class="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
-        <input type="text" id="titleInput" name="title" placeholder="제목을 입력해주세요" class="titleInput">
-        <textarea id="postTextarea" name="mainContents" placeholder="글 내용을 입력해주세요" class="postTextarea"></textarea>
-        <div class="dropzone"></div>
-          <div class="btns">
-           <button type="submit" id="submit" class="insertok">확인</button>
-           <button type="button" onclick="cancelPost()" class="cancelbtn">취소</button>
-           <form action="/app/boardlist" method="post">
-               <button type="button" onclick="location.href='/app/boardlist.jsp'" class="backbtn">게시판</button>
-           </form>  
-           </div>
-    </form>
-       
+
+    <h2>파일 업로드</h2>
+
+    <!-- 드롭존 영역 -->
+    <div id="myDropzone" class="dropzone">
+        <div class="fallback">
+            <input type="file" name="file" multiple />
+        </div>
+    </div>
+
+    <!-- 선택된 파일 정보 출력 -->
+    <div id="selectedFiles"></div>
+
+    <!-- 스크립트 -->
+    <script>
+        Dropzone.autoDiscover = false;
+        var myDropzone = new Dropzone("#myDropzone", {
+            url: "/upload",
+            paramName: "file",
+            maxFilesize: 4,
+            maxFiles: 4,
+            acceptedFiles: ".jpg, .jpeg, .png, .gif",
+            dictDefaultMessage: "여기에 파일을 끌어 놓거나 클릭하세요.",
+            addRemoveLinks: true
+        });
+
+        myDropzone.on("addedfile", function (file) {
+            // 파일이 추가될 때 호출되는 콜백
+            console.log("파일 추가:", file);
+        });
+
+        myDropzone.on("removedfile", function (file) {
+            // 파일이 제거될 때 호출되는 콜백
+            console.log("파일 제거:", file);
+        });
+
+        myDropzone.on("success", function (file, response) {
+            // 파일 업로드 성공 시 호출되는 콜백
+            console.log("파일 업로드 성공:", response);
+        });
+    </script>
+
 </body>
 </html>
 
