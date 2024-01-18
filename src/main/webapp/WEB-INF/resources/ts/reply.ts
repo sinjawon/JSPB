@@ -27,29 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-async function loadReply() {
+async function addReply() {
     try {
-        let boardListNumInput = document.getElementById("boardListNumInput") as HTMLInputElement;
-        let boardListNum = boardListNumInput.value;
-
-        let formData = new FormData();
-        formData.append("boardListNum", boardListNum);
-
-        let response = await fetch(`/api/replylist?${new URLSearchParams(formData)}`, {
-            method: "GET",
-            headers: {
-                "Cache-Control": "no-cache",
-            },
+        let formData = new FormData(document.querySelector('#replyForm'));
+        let response = await fetch('/api/addReply', 
+        {
+            method:'POST',
+            cache:'no-cache',
+            body:new URLSearchParams(formData).toString(), 
+            headers:{'Content-Type':'application/x-www-form-urlencoded'}
         });
 
         if (!response.ok) {
-            throw new Error("댓글 불러오기 실패");
+            throw new Error("댓글 등록 실패");
         }
 
-        let replyList: { replyList: Reply[] } = await response.json();
-        displayReply(replyList);
+        let replyList: { success: boolean } = await response.json();
+
+        if (replyList.success) {
+            clearReplyInput();
+            loadReply();
+            location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
+        }
     } catch (error) {
-        console.error(error);
+        console.error("Fetch 오류:", error);
     }
 }
 

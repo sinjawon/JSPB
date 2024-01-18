@@ -24,27 +24,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-function loadReply() {
+function addReply() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let boardListNumInput = document.getElementById("boardListNumInput");
-            let boardListNum = boardListNumInput.value;
-            let formData = new FormData();
-            formData.append("boardListNum", boardListNum);
-            let response = yield fetch(`/api/replylist?${new URLSearchParams(formData)}`, {
-                method: "GET",
-                headers: {
-                    "Cache-Control": "no-cache",
-                },
+            let formData = new FormData(document.querySelector('#replyForm'));
+            let response = yield fetch('/api/addReply', {
+                method: 'POST',
+                cache: 'no-cache',
+                body: new URLSearchParams(formData).toString(),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
             if (!response.ok) {
-                throw new Error("댓글 불러오기 실패");
+                throw new Error("댓글 등록 실패");
             }
             let replyList = yield response.json();
-            displayReply(replyList);
+            if (replyList.success) {
+                clearReplyInput();
+                loadReply();
+                location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
+            }
         }
         catch (error) {
-            console.error(error);
+            console.error("Fetch 오류:", error);
         }
     });
 }
