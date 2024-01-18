@@ -14,8 +14,8 @@
         
     <form id="writeForm2" action="/api/newPost2" method="post">
         <input type="text" id="userNickname2" name="userNickname2" class="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
-        <input type="text" id="titleInput2" name="title2" placeholder="글 제목" class="titleInput">
-        <textarea id="postTextarea2" name="mainContents2" placeholder="글 내용" class="postTextarea"></textarea>
+        <input type="text" id="titleInput2" name="title2" placeholder="제목을 입력해주세요" class="titleInput">
+        <textarea id="postTextarea2" name="mainContents2" placeholder="글 내용을 입력해주세요" class="postTextarea"></textarea>
         <div class="dropzone"></div>
            <div class="btns">
               <button type="submit" id="submit" class="insertok">확인</button>

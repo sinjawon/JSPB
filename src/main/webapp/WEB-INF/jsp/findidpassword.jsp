@@ -120,8 +120,8 @@
 
  
      <div class="btnbox">
-        <button class="idbtn">아이디 찾기</button>
-        <button class="pwdbtn">비밀번호 찾기</button>
+        <button class="idbtn" \>아이디 찾기</button>
+        <button class="pwdbtn"\>비밀번호 찾기</button>
       </div>
     
     <div class="findform-box">

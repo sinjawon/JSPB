@@ -95,6 +95,12 @@
   background-color: white;
 	z-index:1111;
   position: relative;
+  cursor:pointer;
+}
+
+
+.showmessage:hover{
+	background-color:#fa5;
 }
 .fa-solid:hover {
   color: red;
