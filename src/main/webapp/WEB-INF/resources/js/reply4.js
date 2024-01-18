@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 deleteReply4(replyNum4);
             }
         }
-    });   
+    });
 });
 function loadReply4() {
     return __awaiter(this, void 0, void 0, function* () {

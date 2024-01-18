@@ -2,7 +2,7 @@
 
 .insertpage{
    margin:auto;
-   margin-top:15rem;
+   margin-top:12rem;
    margin-bottom:10rem;
 }
 
@@ -89,4 +89,44 @@
 
 .dropzone{
    margin-bottom: 3rem;
+}
+
+.insertpage{
+	position: relative;
+}
+.insertpagebox{
+   display:flex;
+   flex-direction:column;
+   margin-bottom: 8rem;
+   line-height: 2rem;
+   position: absolute;
+   top:0px;
+   left: 350px;
+}
+.insertpagebox > ul ul {
+  display: none;
+}
+.insertpagebox > ul:hover > li > ul {
+  display: block;
+}
+
+.insertpagebox > ul > li > ul > li {
+   height: 2rem;
+   line-height: 2rem;
+   position: relative;
+}
+
+.insertbtn{
+   width:10rem;
+}
+
+.insertbtn::before{
+	content: '▼';
+	position: absolute;
+	top: 0;
+	left: 90px;
+	font-size: 15px;
+}
+.insertbtn > li {
+   height:2rem;
 }

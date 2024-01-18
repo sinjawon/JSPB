@@ -7,6 +7,11 @@ import com.jsp.dto.*;
 
 @Mapper
 public interface BoardDao2 {
+	
+	// 조회수 증가 
+	@Update("update boardInfo2 set hitCount2 = hitCount2+1 where boardListNum2 =#{boardListNum2}")
+	public int updateHitCount2(@Param("hitCount2") int hitCount2, @Param("boardListNum2") int boardListNum2);
+	
 	@Select("select x.boardListNum2, x.title2, x.userNickname2,x.hitCount2, x.regDate2 from (select ROWNUM as num, result.* from (select * from boardInfo2 order by boardlistNum2 desc) result) x where num <= #{limit2}")
 	public List<BoardInfo2> getBoardInfoLimit2(@Param("limit2") int limit2);
 	

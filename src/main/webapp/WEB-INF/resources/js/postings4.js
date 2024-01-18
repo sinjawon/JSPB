@@ -81,6 +81,34 @@ function editPost4() {
     form.submit();
     // location.href="/boardList.jsp";
 }
+// 이미지 불러오기
+function getImagePaths4() {
+    fetch(`/api/getImagePaths4?boardListNum4=${clickedPostId4}`, {
+        method: "GET"
+    })
+        .then(response => response.json())
+        .then(data => {
+        // 이미지를 표시할 함수 호출
+        console.log(data.paths4);
+        displayImages4(data.paths4);
+    })
+        .catch(error => {
+        console.error('이미지 경로를 가져오지 못했습니다.', error);
+    });
+}
+// 이미지를 표시하는 함수
+function displayImages4(imagePaths4) {
+    let imageContainer4 = document.getElementById("imageContainer4");
+    console.log(imagePaths4);
+    // 이미지를 표시할 div에 이미지 경로 넣음
+    //imagePaths.paths.forEach(imagePath => {
+    imagePaths4.forEach(imagePath => {
+        let img = document.createElement("img");
+        img.src = `/resources/${imagePath}`; //경로 /*/*/가져온 이름
+        imageContainer4.appendChild(img);
+    });
+}
+getImagePaths4();
 function deletePost4(boardListNum4) {
     fetch(`/api/deletePost4?boardListNum4=${boardListNum4}`, {
         method: "POST"

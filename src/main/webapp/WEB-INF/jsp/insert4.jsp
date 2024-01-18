@@ -8,10 +8,27 @@
     <script src="https://cdn.jsdelivr.net/npm/dropzone@6.0.0-beta.2/dist/dropzone-min.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dropzone@6.0.0-beta.2/dist/dropzone.min.css">
     <script defer src="/resources/boardWrite4.js"></script>
+        <link rel="stylesheet" type="text/css" href="/resources/insertpage.css"> 
+    
 </head>
 <body>
-
-        
+   	<%@include file="../jsp/nav.jsp"%>
+   	
+        <div class="insertpage">
+   	<div class="insert-box">
+   	<div class="insertpagebox">
+         <ul  class="insertbtn">
+           <li>
+           	<a href="insert4.jsp">애완용품거래</a>
+             
+             <ul class="insertul">
+               <li><a href="insert.jsp">자유게시판</a></li>
+               <li><a href="insert2.jsp">자랑게시판</a></li>
+               <li><a href="insert3.jsp">산책게시판</a></li>
+             </ul>
+           </li>
+          </ul>
+       </div>
     <form id="writeForm4" action="/api/newPost4" method="post">
         <input type="text" id="userNickname4" name="userNickname4" class="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
         <input type="text" id="titleInput4" name="title4" placeholder="제목을 입력해주세요" class="titleInput">
@@ -24,7 +41,13 @@
             <button type="button" onclick="location.href='/app/boardlist4.jsp'" class="backbtn">게시판</button>
          </form>  
         </div>
+           </div>
+
     </form>
+    </div>
+
+            <%@include file="../jsp/footer.jsp"%>
+ 
 </body>
 </html>
 

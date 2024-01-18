@@ -33,7 +33,9 @@
 	    <div id="viewTitle" class="detail_title">글 제목</div>
 	    <div id="viewTextarea" class="detail_contents">글</div>
     </div>
-    <div> 이미지 공간 4개까지</div>
+    
+       <div id="imageContainer" class="imageContainer"></div>
+    
 	<% session.getAttribute("UserNickName"); %>
 
 	
@@ -58,9 +60,8 @@
 					<div class="regDate">등록일</div>
 				</div>
 				<div class="modi_btnWrap">
-					<%-- <button class="editReply" name="editReply"
-						onclick="editReply(${data.replyNum})">수정</button> --%>
-					<button class="deleteReply display" name="deleteReply"
+					
+					<button class="deleteReply" name="deleteReply"
 						onclick="deleteReply(${data.replyNum})">삭제</button>
 <!-- 						<div id ="replyDeleteButtonContainer"></div>  
  -->				</div>

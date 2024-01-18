@@ -11,7 +11,7 @@
 
 <title>petpeople</title>
 </head>
-<body>
+<body>  
 	<%@include file="../jsp/nav.jsp"%>
 		<div class="main_board"> 
             <h3>자랑게시판</h3>

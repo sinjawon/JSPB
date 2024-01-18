@@ -17,7 +17,7 @@
 <script defer src="/resources/boardlist2.js"></script>
 </head>
 <body>
-	
+	   
 	<%@include file="../jsp/nav.jsp"%>
 		<%try(DBConnector con = new DBConnector();){
         		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
@@ -74,7 +74,7 @@
  <c:if test = "${sessionScope.UserNickName!=null }" >
 	<div style="position:fixed; bottom:4.7rem; right:3.5rem; ">
     	<div class="write-go" >
-		<a href="insertpage.jsp" >
+		<a href="insert.jsp" >
        		<i class="fa-solid fa-pen-to-square fa-2x"></i>
       	</a>
     </div>

@@ -13,7 +13,7 @@
     var valueId=<%=request.getParameter("id")%>;
     var sessionUser='<%=session.getAttribute("UserNickName")%>';
     </script>
-    
+       
     <script src="/resources/postings2.js"></script>
     
 </head>

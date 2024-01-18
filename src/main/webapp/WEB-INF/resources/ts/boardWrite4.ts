@@ -14,7 +14,7 @@ xhttp.open("GET", url, true);
 xhttp.send();
 };
 
-function submitPost(){
+function submitPost4(){
     console.log("전송되었습니다")
 
     let form: HTMLFormElement = document.getElementById("writeForm4") as HTMLFormElement;
@@ -38,11 +38,11 @@ function cancelPost4() {
 Dropzone.autoDiscover=false;
 //@ts-ignore
 var dropzone = new Dropzone("div.dropzone", { 
-    url: "/api/image/upload",
+    url: "/api/image/upload4",
     method: "POST",
     dictDefaultMessage:"여기에 사진을 드래그&드랍 하세요.",
     autoQueue: false, 
-    maxFiles: 10,
+    maxFiles: 1,
     maxFilesize: 100,
     paramName: 'boardImage',
     timeout: 1000 * 60 * 3,
@@ -53,7 +53,7 @@ var dropzone = new Dropzone("div.dropzone", {
         button.addEventListener("click",()=>{
             //@ts-ignore
             zone.enqueueFiles(zone.getFilesWithStatus(Dropzone.ADDED));
-            submitPost();
+            submitPost4();
         });
         //@ts-ignore
         this.on('sending',(file,xhr,data)=>{
@@ -65,4 +65,3 @@ var dropzone = new Dropzone("div.dropzone", {
         });
     }
 });
-
