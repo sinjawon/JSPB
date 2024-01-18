@@ -46,14 +46,14 @@ async function messgedeletAll(endpoint: String) {
 async function sendDelet(notenum:String){
 
   let summaryElement = document.querySelector(`#sendsum${notenum}`);
-    summaryElement.style.display = 'none';
+    summaryElement.parentNode.style.display = 'none';
     await messgedelet(notenum,"send");
 }
 
 async function recieveDelet(notenum:String){
  
   let summaryElement = document.querySelector(`#receivesum${notenum}`);
-    summaryElement.style.display = 'none';
+    summaryElement.parentNode.style.display = 'none';
     await messgedelet(notenum,"recieve");
 }
 
@@ -68,20 +68,20 @@ async function sendDeletAll(notenumString:String){
       // 작업 수행
       let summaryElement = document.querySelector(`#sendsum${currentNotenum}`);
       if (summaryElement) {
-          summaryElement.style.display = 'none';      
+          summaryElement.parentNode.style.display = 'none';      
       }
   }
     await messgedeletAll("sendAll");
 }
 
 async function recieveDeletAll(notenumString:String){ 
-  let notenumArray = JSON.parse(notenumString);
 
+  let notenumArray = JSON.parse(notenumString);
   for (let i = 0; i < notenumArray.length; i++) {
       let currentNotenum = notenumArray[i];
       let summaryElement = document.querySelector(`#receivesum${currentNotenum}`);
       if (summaryElement) {
-          summaryElement.style.display = 'none';      
+          summaryElement.parentNode.style.display = 'none';      
       }
   }
     await messgedeletAll("receiveAll");
@@ -105,8 +105,51 @@ async function writemessage(){
 
   setTimeout(() => {
     location.reload();
-  }, 100);
+  }, 200);
  
 }
 
+////////////////////////////////////////
+let intervalId;
 
+function startInterval() {
+    intervalId = setInterval(function() {
+       location.reload();
+    }, 10000); // 10초마다 실행
+}
+
+function stopInterval() {
+    clearInterval(intervalId);
+    
+}
+
+// 마우스가 특정 화면 위에 있을 때
+document.getElementById("modal").addEventListener('mouseover', function() {
+    stopInterval();
+});
+
+// 마우스가 특정 화면 위에서 벗어날 때
+document.getElementById("modal").addEventListener('mouseout', function() {
+    startInterval();
+   
+});
+
+// 채팅 입력 중일 때 
+document.getElementById("modal").addEventListener('input', function() {
+    stopInterval();
+    
+});
+
+// 채팅 입력이 끝났을 때 
+document.getElementById("modal").addEventListener('blur', function() {
+    startInterval();
+    
+});
+
+// 초기에 setInterval 시작
+startInterval();
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+  

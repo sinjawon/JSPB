@@ -62,6 +62,8 @@ async function loadReply2() {
 }
 
 
+
+
 // 댓글작성자
 let currentUser2: String = sessionUser; // 실제 기본값으로 설정하세요
 

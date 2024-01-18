@@ -61,50 +61,6 @@ async function loadReply () {
 }
 
 
-
-
-async function addReply() {
-  try {
-      let formData = new FormData(document.querySelector('#replyForm'));
-      let response = await fetch('/api/addReply', 
-      {
-          method:'POST',
-          cache:'no-cache',
-          body:new URLSearchParams(formData).toString(), 
-          headers:{'Content-Type':'application/x-www-form-urlencoded'}
-      });
-
-      if (!response.ok) {
-          throw new Error("댓글 등록 실패");
-      }
-
-      let replyList: { success: boolean } = await response.json();
-
-      if (replyList.success) {
-          clearReplyInput();
-          loadReply();
-          location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
-      }
-  } catch (error) {
-      console.error("Fetch 오류:", error);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 댓글작성자
 let currentUser: String = sessionUser; // 실제 기본값으로 설정하세요
 
@@ -137,27 +93,28 @@ function displayReply(replies: { replyList: Reply[] }) {
 
 async function addReply() {
   try {
-    let formData = new FormData(document.querySelector("#replyForm"));
-    let response = await fetch("/api/addReply", {
-      method: "POST",
-      cache: "no-cache",
-      body: new URLSearchParams(formData).toString(),
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    });
+      let formData = new FormData(document.querySelector('#replyForm'));
+      let response = await fetch('/api/addReply', 
+      {
+          method:'POST',
+          cache:'no-cache',
+          body:new URLSearchParams(formData).toString(), 
+          headers:{'Content-Type':'application/x-www-form-urlencoded'}
+      });
 
-    if (!response.ok) {
-      throw new Error("댓글 등록 실패");
-    }
+      if (!response.ok) {
+          throw new Error("댓글 등록 실패");
+      }
 
-    let replyList: { success: boolean } = await response.json();
+      let replyList: { success: boolean } = await response.json();
 
-    if (replyList.success) {
-      clearReplyInput();
-      loadReply();
-      location.href = "/app/postview.jsp?id=" + formData.get("boardListNum");
-    }
+      if (replyList.success) {
+          clearReplyInput();
+          loadReply();
+          location.href = '/app/postview.jsp?id=' + formData.get("boardListNum");
+      }
   } catch (error) {
-    console.error("Fetch 오류:", error);
+      console.error("Fetch 오류:", error);
   }
 }
 

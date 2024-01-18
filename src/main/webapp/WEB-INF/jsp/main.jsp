@@ -19,6 +19,7 @@ pageEncoding="UTF-8"%>
       sizes="32x32"
       href="/resources/favicon-32x32.png"
     />
+    
     <link
       rel="icon"
       type="image/png"
@@ -111,66 +112,7 @@ pageEncoding="UTF-8"%>
       <div class="swiper-button-prev prev1"></div>
       <div class="swiper-pagination p1"></div>
     </div>
-    <div class="mainshop">
-      <div class="main-title">애완용품거래 게시판</div>
-      <div class="titleborder"></div>
-      <div class="main-grid">
-     <!--    <div class="mainshopbox">
-          <a class="brag-a" href="#home">
-            <div class="mainshopimg">
-              <img src="/resources/dog1.jpg" class="main-img2" />
-            </div>
-            <div class="shoptitle">제목</div>
-            <div class="mainprice">가격</div>
-          </a>
-        </div> -->
-         <!-- <div class="main-box"> -->
-         <div class="main-box2">
-      <!-- <div class="main-title">애완용품 거래 게시판</div> -->
-        <!-- <div class="titleborder"></div> -->
-        <div class="main-container">
-          <div class="free-flex">
-            <a class="free-a" href="#home">
-              <div id="boards4" class="boards">
-				<template>
-					<div class="board">
-						<div class="NumBox"><a href="/app/postview4.jsp?id=0" class="boardListNum4 boardListNum">0</a></div> 
-						<div>
-							<div class="titleBox"><a href="/app/postview4.jsp?id=0" class="title4 title">제목</a></div> 
-							<div class="board_contents"><a class="mainContents4 mainContents" style="display:none;">본문</a></div>
-						</div>
-						<div class="writer"><a class="userNickname4 userNickname">작성자</a></div>
-						<div class="hitCountBox"><a class="hitCount4 hitCount" style="display:none;">조회수</a></div> 
-						<div class="date"><a class="regDate4 regDate" style="display:none;">등록일</a></div>
-					</div>
-				</template>
-			 </div>
-	
-				<form id="searchform4" class="searchform" action="/api/boardList4" method="post" style="display:none">
-					<select id="searches4" name="searchtype4" >
-						<option value="all4">== 선택 ==</option>
-						<option value="title4">제목</option>
-						<option value="userNickname4">작성자</option>
-					</select> 
-					<input type="text" id="search4" name="search4"> 
-					<input type="text" id="page4" name="page4" value="1" style="display: none;" />
-					<button type="button" onclick="submitSearch4()">검색</button>
-				</form>
-
-            </a>
-          </div>
-        </div>
-      </div>
-        
-        
-        
-        
-        
-        
-      </div>
-    </div>
-
-    <div class="mainpage">
+     <div class="mainpage">
       <div class="main-box">
         <div class="main-title">자유게시판</div>
         <div class="titleborder"></div>
@@ -209,6 +151,45 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="main-box">
+        <div class="main-title">자랑게시판</div>
+        <div class="titleborder"></div>
+        <div class="main-container">
+          <div class="free-flex">
+            <a class="free-a" href="#home">
+              <div id="boards2" class="boards">
+				<template>
+					<div class="board">
+						<div class="NumBox"><a href="/app/postview2.jsp?id=0" class="boardListNum2 boardListNum">0</a></div> 
+						<div>
+							<div class="titleBox"><a href="/app/postview2.jsp?id=0" class="title2 title">제목</a></div> 
+							<div class="board_contents"><a class="mainContents2 mainContents" style="display:none;">본문</a></div>
+						</div>
+						<div class="writer"><a class="userNickname2 userNickname">작성자</a></div>
+						<div class="hitCountBox"><a class="hitCount2 hitCount" style="display:none;">조회수</a></div> 
+						<div class="date"><a class="regDate2 regDate" style="display:none;">등록일</a></div>
+					</div>
+				</template>
+			 </div>
+	
+				<form id="searchform2" class="searchform" action="/api/boardList2" method="post" style="display:none">
+					<select id="searches2" name="searchtype2" >
+						<option value="all2">== 선택 ==</option>
+						<option value="title2">제목</option>
+						<option value="userNickname2">작성자</option>
+					</select> 
+					<input type="text" id="search2" name="search2"> 
+					<input type="text" id="page2" name="page2" value="1" style="display: none;" />
+					<button type="button" onclick="submitSearch2()">검색</button>
+				</form>
+
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mainpage">
+      <div class="main-box">
         <div class="main-title">산책친목게시판</div>
         <div class="titleborder"></div>
         <div class="main-container">
@@ -244,61 +225,46 @@ pageEncoding="UTF-8"%>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- 자랑게시판 미리보기 -->
-    <div class="main-brag">
-      <div class="main-title">자랑 게시판</div>
-      <div class="titleborder"></div>
-      <div class="main-grid">
-       <!--  <div class="main-img">
-          <a class="brag-a" href="#home">
-            <div class="brag-img">
-              <img src="/resources/dog1.jpg" class="main-img3" />
-            </div>
-            <div>제목</div>
-          </a>
-        </div> -->
-         <div class="free-flex">
+      <div class="main-box">
+        <div class="main-title">애완용품 거래게시판</div>
+        <div class="titleborder"></div>
+        <div class="main-container">
+           <div class="free-flex">
             <a class="free-a" href="#home">
-              <div id="boards2" class="boards">
+              <div id="boards4" class="boards">
 				<template>
 					<div class="board">
-						<div class="NumBox"><a href="/app/postview2.jsp?id=0" class="boardListNum2 boardListNum">0</a></div> 
+						<div class="NumBox"><a href="/app/postview4.jsp?id=0" class="boardListNum4 boardListNum">0</a></div> 
 						<div>
-							<div class="titleBox"><a href="/app/postview2.jsp?id=0" class="title2 title">제목</a></div> 
-							<div class="board_contents"><a class="mainContents2 mainContents" style="display:none;">본문</a></div>
+							<div class="titleBox"><a href="/app/postview4.jsp?id=0" class="title4 title">제목</a></div> 
+							<div class="board_contents"><a class="mainContents4 mainContents" style="display:none;">본문</a></div>
 						</div>
-						<div class="writer"><a class="userNickname2 userNickname">작성자</a></div>
-						<div class="hitCountBox"><a class="hitCount2 hitCount" style="display:none;">조회수</a></div> 
-						<div class="date"><a class="regDate2 regDate" style="display:none;">등록일</a></div>
+						<div class="writer"><a class="userNickname4 userNickname">작성자</a></div>
+						<div class="hitCountBox"><a class="hitCount4 hitCount" style="display:none;">조회수</a></div> 
+						<div class="date"><a class="regDate4 regDate" style="display:none;">등록일</a></div>
 					</div>
 				</template>
 			 </div>
 	
-				<form id="searchform2" class="searchform" action="/api/boardList2" method="post" style="display:none">
-					<select id="searches3" name="searchtype3" >
-						<option value="all2">== 선택 ==</option>
-						<option value="title2">제목</option>
-						<option value="userNickname2">작성자</option>
+				<form id="searchform4" class="searchform" action="/api/boardList4" method="post" style="display:none">
+					<select id="searches4" name="searchtype4" >
+						<option value="all4">== 선택 ==</option>
+						<option value="title4">제목</option>
+						<option value="userNickname4">작성자</option>
 					</select> 
-					<input type="text" id="search2" name="search2"> 
-					<input type="text" id="page2" name="page2" value="1" style="display: none;" />
-					<button type="button" onclick="submitSearch2()">검색</button>
+					<input type="text" id="search4" name="search4"> 
+					<input type="text" id="page4" name="page4" value="1" style="display: none;" />
+					<button type="button" onclick="submitSearch4()">검색</button>
 				</form>
 
             </a>
           </div>
-        
-        
-        
-        
-        
-        
-        
-        
+        </div>
       </div>
     </div>
+
+   
 
 
  <c:if test = "${sessionScope.UserNickName==null }" >
