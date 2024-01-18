@@ -61,7 +61,7 @@ pageEncoding="UTF-8"%>
           </div>
         </div>
         <div class="swiper-slide">
-          <a href="boastboard.jsp"
+          <a href="boardlist2.jsp"
             ><img
               class="image"
               src="/resources/mainbanner02.sub.jpg"
@@ -72,7 +72,7 @@ pageEncoding="UTF-8"%>
           </div>
         </div>
         <div class="swiper-slide">
-          <a href="walkboard.jsp"
+          <a href="boardlist3.jsp"
             ><img
               class="image"
               src="/resources/mainbanner06_sub.jpg"
@@ -83,7 +83,7 @@ pageEncoding="UTF-8"%>
           </div>
         </div>
         <div class="swiper-slide">
-          <a href="tradeboard.jsp"
+          <a href="boardlist4.jsp"
             ><img
               class="image"
               src="/resources/mainbanner07_sub.jpg"
@@ -137,15 +137,15 @@ pageEncoding="UTF-8"%>
 		<div class="board">
 			<div class="NumBox"><a href="/app/postview.jsp?id=0" class="boardListNum">0</a></div>
 			<div>
-				<div><a href="/app/postview.jsp?id=0" class="title">제목</a></div>
+				<div class="titleBox"><a href="/app/postview.jsp?id=0" class="title">제목</a></div>
 				<div class="board_contents"><a class="mainContents" style="opacity:0">본문</a></div>
 			</div>
 			<div class="writer"><a class="userNickname">작성자</a></div>
-			<div><a class="hitCount" style="display:none;">조회수</a></div>
+			<div class="hitCountBox"><a class="hitCount" style="display:none;">조회수</a></div>
 			<div class="date"><a class="regDate" style="display:none;">등록일</a></div>
 		</div>
 		</template>
-		<form id="searchform" action="/api/boardlist" method="post" >
+		<form id="searchform" action="/api/boardlist" method="post" style="disply:none" >
         	<select id="searches" name="searchtype">
         		<option value="all">== 선택 ==</option>
 				<option value="title">제목</option>
@@ -174,11 +174,11 @@ pageEncoding="UTF-8"%>
 					<div class="board">
 						<div class="NumBox"><a href="/app/postview3.jsp?id=0" class="boardListNum3 boardListNum">0</a></div> 
 						<div>
-							<div><a href="/app/postview3.jsp?id=0" class="title3 title">제목</a></div> 
+							<div class="titleBox"><a href="/app/postview3.jsp?id=0" class="title3 title">제목</a></div> 
 							<div class="board_contents"><a class="mainContents3 mainContents" style="display:none;">본문</a></div>
 						</div>
 						<div class="writer"><a class="userNickname3 userNickname">작성자</a></div>
-						<div><a class="hitCount3 hitCount" style="display:none;">조회수</a></div> 
+						<div class="hitCountBox"><a class="hitCount3 hitCount" style="display:none;">조회수</a></div> 
 						<div class="date"><a class="regDate3 regDate" style="display:none;">등록일</a></div>
 					</div>
 				</template>

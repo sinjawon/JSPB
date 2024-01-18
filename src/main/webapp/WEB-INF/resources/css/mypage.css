@@ -146,3 +146,7 @@
     font-weight: bold;
     padding-bottom: 0.5rem;
 }
+
+.fa-solid:hover {
+  color: #fa5;
+}

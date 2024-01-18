@@ -72,7 +72,6 @@ pageEncoding="UTF-8"%>
           <input type="submit" value="로그인" class="loginbtn" />
         </form>
         <!-- 로그인 실패 시 에러 메시지가 있으면 표시 -->
-
         <div class="gojoin">
           <a href="http://localhost:4885/app/findidpassword.jsp"
             >아이디/비밀번호 찾기</a
