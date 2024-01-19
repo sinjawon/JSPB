@@ -188,7 +188,7 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
 
-    <div class="mainpage">
+    <div class="mainpage mainpage2">
       <div class="main-box">
         <div class="main-title">산책친목게시판</div>
         <div class="titleborder"></div>

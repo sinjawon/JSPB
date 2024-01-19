@@ -46,7 +46,7 @@
             </div>
               
               
-              <c:if test = "${sessionScope.UserNickName=='가니'}" >
+              <c:if test = "${sessionScope.UserNickName=='관리자'}" >
               
               	<div class="myprofile">
 	            	<div class="myprofile_wrap" style="width:40px; height:40px;text-align: center;border-radius: 50%; overflow: hidden;	"><img style="width:100%; height:100%" class="myprofile_img" src=<%=map2.getuserProfile(usernum).toStringProfile()%> alt="유저프로필" />
@@ -66,7 +66,7 @@
 	              <div><a href="joinmembership.jsp">회원가입</a></div>
             	</div>
             </c:if>
-            <c:if test = "${sessionScope.UserNickName!=null && sessionScope.UserNickName != '가니'}" >
+            <c:if test = "${sessionScope.UserNickName!=null && sessionScope.UserNickName != '관리자'}" >
             <div class="myprofile">
 
             	
