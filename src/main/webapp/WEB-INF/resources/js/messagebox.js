@@ -139,7 +139,7 @@ function loginajax(url, option) {
 }
 function Nicknamecheck() {
     return __awaiter(this, void 0, void 0, function* () {
-        loginajax("192.168.2.19:4885/api/select/checkapi.jsp", {
+        loginajax("/api/select/checkapi.jsp", {
             method: "POST",
             body: form,
         }).then((json) => {

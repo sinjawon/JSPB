@@ -142,7 +142,7 @@ async function loginajax(url: string, option?: any) {
   } 
 
 async function Nicknamecheck(){
-  loginajax("192.168.2.19:4885/api/select/checkapi.jsp",{
+  loginajax("/api/select/checkapi.jsp",{
   method: "POST",
   body: form,
 }).then((json) => {   
