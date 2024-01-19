@@ -21,7 +21,7 @@ public interface UserDao {
 	        );
 
 	//모든 유저
-	@Select( "select * from Member3")
+	@Select( "select * from Member3  order by userNum asc")
 	public List<User> getAllUser();
 	
 	//아이디로 유저번호찾기
