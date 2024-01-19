@@ -129,4 +129,4 @@ function deletePost(boardListNum) {
     });
     location.href = "/app/boardlist.jsp";
 }
-;
+s;
