@@ -71,6 +71,12 @@
   background-color: #fa5;
   width: 100%;
 }
+.titleborder2{
+	height: 0.5vh;
+  background-color: #fa5;
+  width: 100%;
+	
+}
 .main-container {
   display: flex;
   flex-direction: column;

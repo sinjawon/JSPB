@@ -190,8 +190,8 @@ pageEncoding="UTF-8"%>
 
     <div class="mainpage mainpage2">
       <div class="main-box">
-        <div class="main-title">산책친목게시판</div>
-        <div class="titleborder"></div>
+        <div class="main-title">산책친목</div>
+        <div class="titleborder2"></div>
         <div class="main-container">
           <div class="free-flex">
             <a class="free-a" href="#home">
@@ -227,8 +227,8 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="main-box">
-        <div class="main-title">애완용품 거래게시판</div>
-        <div class="titleborder"></div>
+        <div class="main-title">애완용품거래</div>
+        <div class="titleborder2"></div>
         <div class="main-container">
            <div class="free-flex">
             <a class="free-a" href="#home">
