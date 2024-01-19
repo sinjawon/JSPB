@@ -95,23 +95,7 @@ function recieveDeletAll(notenumString) {
 }
 function writemessage() {
     return __awaiter(this, void 0, void 0, function* () {
-        let writeform = document.querySelector(`#writemessage`);
-        let writeformData = new FormData(writeform);
-        let writejsonData = {
-            sender: writeformData.get("sender"),
-            receiver: writeformData.get("receiver"),
-            content: writeformData.get("content")
-        };
-        messgeajax("/MessageServlet", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(writejsonData),
-        });
-        setTimeout(() => {
-            location.reload();
-        }, 200);
+        Nicknamecheck();
     });
 }
 ////////////////////////////////////////
@@ -122,24 +106,89 @@ function startInterval() {
     }, 10000); // 10초마다 실행
 }
 function stopInterval() {
-    clearInterval(intervalId);
+    clearInterval(intervalId); // 현재 타이머를 중지
 }
 // 마우스가 특정 화면 위에 있을 때
 document.getElementById("modal").addEventListener('mouseover', function () {
     stopInterval();
+    startInterval();
 });
 // 마우스가 특정 화면 위에서 벗어날 때
 document.getElementById("modal").addEventListener('mouseout', function () {
+    stopInterval();
     startInterval();
 });
 // 채팅 입력 중일 때 
 document.getElementById("modal").addEventListener('input', function () {
     stopInterval();
+    startInterval();
 });
 // 채팅 입력이 끝났을 때 
 document.getElementById("modal").addEventListener('blur', function () {
+    stopInterval();
     startInterval();
 });
 // 초기에 setInterval 시작
 startInterval();
 ////////////////////////////////////////////////////////////////////////////////
+let form = new FormData();
+function loginajax(url, option) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return fetch(url, option).then((res) => res.json());
+    });
+}
+function Nicknamecheck() {
+    return __awaiter(this, void 0, void 0, function* () {
+        loginajax("http://localhost:4885/api/select/checkapi.jsp", {
+            method: "POST",
+            body: form,
+        }).then((json) => {
+            let userNicknames = json.userNicknames.map(datas => datas.userNickname);
+            let inputForUserNickname = document.querySelector(".note-receiver").value;
+            let checkNmae = userNicknames.find(lang => lang === inputForUserNickname);
+            if (checkNmae == undefined) {
+                return Swal.fire({
+                    title: '',
+                    text: inputForUserNickname + "님은 존재하지 않습니다",
+                    icon: 'warning',
+                });
+            }
+            else {
+                let writeform = document.querySelector(`#writemessage`);
+                let writeformData = new FormData(writeform);
+                let writejsonData = {
+                    sender: writeformData.get("sender"),
+                    receiver: writeformData.get("receiver"),
+                    content: writeformData.get("content")
+                };
+                messgeajax("/MessageServlet", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(writejsonData),
+                });
+                setTimeout(() => {
+                    location.reload();
+                }, 200);
+            }
+        });
+    });
+}
+// let writeform: FormData = document.querySelector(`#writemessage`);
+// let writeformData = new FormData(writeform);
+// let writejsonData = {
+//   sender: writeformData.get("sender"),
+//   receiver: writeformData.get("receiver"),
+//   content: writeformData.get("content")
+// };
+//  messgeajax("/MessageServlet",{  
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json"
+//   },
+//   body: JSON.stringify(writejsonData),
+// });
+// setTimeout(() => {
+//   location.reload();
+// }, 200);
