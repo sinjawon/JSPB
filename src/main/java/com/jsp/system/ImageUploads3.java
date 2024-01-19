@@ -103,10 +103,13 @@ public class ImageUploads3 extends HttpServlet {
 				try (DBConnector con = new DBConnector();) {
 					// DB에 이미지 이름, 순서, 작성글 id 저장
 					PostImageDao3 map = con.OpenMap(req, PostImageDao3.class);
+					Thread.sleep(750);
 					int boardListNum3 = map.getNewlyInsertedBoardId3();
 
 					
 					System.out.println("이미지가 가져오는 게시글 넘버 : " + boardListNum3);
+					
+
 					System.out.println(imageName3);
 					
 					 map.saveImage3(String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day"),imageName3 +token), boardListNum3);

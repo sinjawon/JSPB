@@ -146,9 +146,17 @@ async function Nicknamecheck(){
   method: "POST",
   body: form,
 }).then((json) => {   
-  let userNicknames = json.userNicknames.map(datas => datas.userNickname); 
+  let userNicknames = json.userNicknames.map(datas => datas.userNickname);
+  let noteSender = document.querySelector(".note-sender").value; 
   let inputForUserNickname = document.querySelector(".note-receiver").value;
-  let checkNmae = userNicknames.find(lang=>lang === inputForUserNickname);    
+  let checkNmae = userNicknames.find(lang=>lang === inputForUserNickname);
+    if(noteSender == inputForUserNickname){
+      return  Swal.fire({
+        title: '',
+        text: "동일한 아이디는 안됩니다",
+        icon: 'warning',
+    });
+    }
      if(checkNmae == undefined){
      return  Swal.fire({
          title: '',
