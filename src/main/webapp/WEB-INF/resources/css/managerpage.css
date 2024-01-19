@@ -113,6 +113,9 @@ body {
   	line-height: 2rem;
 }
 
+.manager-tr td > button{
+	cursor: pointer;
+}
 
 .chart-btn{
 	display:flex;

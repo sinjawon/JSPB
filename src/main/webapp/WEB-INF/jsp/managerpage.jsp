@@ -49,7 +49,7 @@ var users = <%=array.toString()%>;
 
 
     <div class="manager-box">
-      <h2 class="manager-title">관리자페이지 입니다.</h2>
+      <h2 class="manager-title">관리자페이지</h2>
       
       <div class="manager-top">
       
