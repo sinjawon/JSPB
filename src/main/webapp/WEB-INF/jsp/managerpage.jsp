@@ -7,7 +7,13 @@ int allboard= 0;
 try(DBConnector con = new DBConnector();){
 	UserDao map = con.OpenMap(request, UserDao.class);
 	BoardDao map2 = con.OpenMap(request, BoardDao.class);
-	allboard  = map2.getBoardInfoAllCnt();
+	BoardDao2 map3 = con.OpenMap(request, BoardDao2.class);
+	BoardDao3 map4 = con.OpenMap(request, BoardDao3.class);
+	BoardDao4 map5 = con.OpenMap(request, BoardDao4.class);
+	allboard  = map2.getBoardInfoAllCnt() + 
+			map3.getBoardInfoAllCnt()+
+	map4.getBoardInfoAllCnt()+
+	map5.getBoardInfoAllCnt();
 	 allUser = map.getAllUser();
 }catch(Exception e) { e.printStackTrace();}
 

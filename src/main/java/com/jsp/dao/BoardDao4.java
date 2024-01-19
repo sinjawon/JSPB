@@ -23,6 +23,8 @@ public interface BoardDao4 {
 	public List<BoardInfo4> searchByUserNicknamePaged4(@Param("userNickname4") String userNickname4,
 			@Param("limit4") int limit4, @Param("page4") int page4);
 
+	@Select("select count(*) from boardInfo4 order by boardListNum4 desc")
+	public int getBoardInfoAllCnt();
 	// 페이징 board 에서 title 으로 검색
 	@Select("select x.boardListNum4, x.title4, x.mainContents4, x.userNickname4, x.hitCount4, x.regDate4 from (select ROWNUM as num, result.* from (select * from boardInfo4 where title4 like #{title4}  order by boardListNum4 desc) result) x where x.num between #{limit4} * (#{page4} - 1) + 1 AND #{limit4} * #{page4}")
 	public List<BoardInfo4> searchByTitlePaged4(@Param("title4") String title4, @Param("limit4") int limit4,
