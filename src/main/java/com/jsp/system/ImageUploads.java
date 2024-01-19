@@ -53,24 +53,7 @@ public class ImageUploads extends HttpServlet {
    }
    
 
-//   private String[] imageOrder = new String[4];   //배열 미리 만들어놓기
-//   
-//   protected String[] nameContainer() {
-//       // 이미 배열 있으면 새로만들기 x
-//       if (imageOrder[0] == null) {
-//           for (int i = 0; i < 4; i++) {
-//               imageOrder[i] = RandomStringGenerator.generateRandomString(10);
-//           }
-//           Arrays.sort(imageOrder);
-//       }
-//
-//       // 이미지 순서 배열 출력
-//       for (int i = 0; i < 4; i++) {
-//           System.out.println(i + "번째 이미지 이름 : " + imageOrder[i]);
-//       }
-//
-//       return imageOrder;
-//   }
+
 
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -82,26 +65,33 @@ public class ImageUploads extends HttpServlet {
       String token = getSignature(part);
 
       
-      if (!Files.exists(Paths.get(getServletContext().getRealPath(
-            String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day"))))))
-         Files.createDirectories(Paths.get(getServletContext().getRealPath(
-               String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day")))));
-      System.out.println(Paths.get(getServletContext().getRealPath(
-            String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day")))));
+       String uploadPath ="D:\\donghyeok\\web\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img\\";
+       System.out.println("경로" + Paths.get(getServletContext().getContextPath()) + "경로");
+      
+      if (!Files.exists(Paths.get(uploadPath+
+            String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day")))))
+         Files.createDirectories(Paths.get(uploadPath +
+               String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day"))));
+      
+      System.out.println(Paths.get(uploadPath +
+            String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day"))));
 
 
       while (true)
          try {
             String imageName = RandomStringGenerator.generateRandomString(10);
             
-            Files.copy(part.getInputStream(), Paths.get(getServletContext().getRealPath(
+            Files.copy(part.getInputStream(), Paths.get(uploadPath +
                   String.join("/", req.getParameter("year"), req.getParameter("month"), req.getParameter("day"))
-                        + "/" + imageName + token)));
+                        + "/" + imageName + token));
             //이미지 저장
             
             try (DBConnector con = new DBConnector();) {
                // DB에 이미지 이름, 순서, 작성글 id 저장
                PostImageDao map = con.OpenMap(req, PostImageDao.class);
+               
+               Thread.sleep(750);
+               
                int boardListNum = map.getNewlyInsertedBoardId();
 
                
@@ -125,3 +115,6 @@ public class ImageUploads extends HttpServlet {
          }
    }
 }
+
+
+
