@@ -26,6 +26,7 @@
 	<%@include file="../jsp/nav.jsp"%>
 	
 	
+	
         		 
         		 
 <div class="main_board"> 
