@@ -26,7 +26,7 @@
              <ul class="insertul">
                <li><a href="insert2.jsp">자랑게시판</a></li>
                <li><a href="insert3.jsp">산책게시판</a></li>
-               <li><a href="insert4.jsp">애완용품거래게시판</a></li>
+               <li><a href="insert4.jsp">애완용품거래</a></li>
              </ul>
            </li>
           </ul>

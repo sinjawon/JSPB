@@ -29,10 +29,10 @@
 	<div class="detail">
 	<h3>애완용품거래</h3>
 	<div class="detail_board">
+       	<div id="imageContainer4" class="imageContainer"></div>
 		<div id="userNickname4">작성자</div>
 		<div id="viewTitle4">글 제목</div>
-		<div>
-       	<div id="imageContainer4" class="imageContainer"></div>
+		<div class="box">
 		<div id="viewTextarea4">글 내용</div>
 		</div>
 	</div>

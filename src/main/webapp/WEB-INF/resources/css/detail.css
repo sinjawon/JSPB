@@ -171,6 +171,7 @@
 	width: 80%;
 	height: 100%;
 	margin:auto;
+	margin-bottom: 3rem;
 }
 
 .imageContainer > img{
@@ -178,4 +179,28 @@
 	height: 100%;
 
 }
+.detail_board > #imageContainer4{
+		border-bottom:none;
+		margin:auto;
+		width: 100%;
+		border-radius:15px ;
+		overflow: hidden;
+}
 
+.detail_board > #userNickname4{
+		border-bottom: 3px solid #fa5;
+	
+}
+
+
+.detail_board > #viewTitle4{
+		border-bottom:none;
+		font-size: 1.5rem;
+		font-weight: bold;
+
+}
+
+.detail_board > div.box{
+		border-bottom: 3px solid #fa5;
+	
+}
