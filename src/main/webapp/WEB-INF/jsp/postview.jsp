@@ -31,10 +31,12 @@
     <div class="detail_board">
 	    <div id="userNickname" class="detail_writer" >작성자</div>
 	    <div id="viewTitle" class="detail_title">글 제목</div>
-	    <div id="viewTextarea" class="detail_contents">글</div>
+	    <div>
+       		<div id="imageContainer" class="imageContainer"></div>
+	    	<div id="viewTextarea" class="detail_contents">글</div>
+	    </div>
     </div>
     
-       <div id="imageContainer" class="imageContainer"></div>
     
 	<% session.getAttribute("UserNickName"); %>
 

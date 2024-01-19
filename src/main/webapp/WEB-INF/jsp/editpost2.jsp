@@ -35,9 +35,10 @@
           <div class="editbtnWrap">
           
              <button type="button" onclick="editPost2()">수정 확인</button>
-                <form id="refresh2" action="/api/boardList2" method="post">
-                  <button type="button" onClick="location.href='/app/boardlist2.jsp'">돌아가기</button>
-               </form>
+                <form id="refresh" action="/api/boardList2" method="post">
+            <button type="button" onClick="location.href='/app/postview2.jsp?id=<%= request.getParameter("id") %>'">돌아가기</button>
+         </form>
+         <%-- 수정했던 글로 가도록 변경함 --%>
              </div>
    
       </form>

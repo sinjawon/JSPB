@@ -33,8 +33,10 @@
         <input type="text" id="userNickname4" name="userNickname4" class="userNickname" value='<%=session.getAttribute("UserNickName")%>' readonly>
         <input type="text" id="titleInput4" name="title4" placeholder="제목을 입력해주세요" class="titleInput">
         <textarea id="postTextarea4" name="mainContents4" placeholder="글 내용을 입력해주세요" class="postTextarea"></textarea>
+        
         <div class="dropzone"></div>
-        <div class="btns">
+        
+        
            <button type="submit" id="submit" class="insertok">확인</button>
            <button type="button" onclick="cancelPost4()" class="cancelbtn">취소</button>
         <form action="/app/boardlist4" method="post">

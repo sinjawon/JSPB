@@ -14,7 +14,7 @@ async function loginajax(url: string, option?: any) {
 //아이디 중복확인
 
 async function logincheckID() {
-  loginajax("http://localhost:4885/api/select/checkapi.jsp", {
+  loginajax("192.168.2.19:4885/api/select/checkapi.jsp", {
     method: "POST",
     body: form,
   }).then((json) => {
@@ -48,7 +48,7 @@ async function logincheckID() {
 }
 //닉네임중복 확인
 async function logincheckName() {
-  loginajax("http://localhost:4885/api/select/checkapi.jsp", {
+  loginajax("192.168.2.19:4885/api/select/checkapi.jsp", {
     method: "POST",
     body: form,
   }).then((json) => {

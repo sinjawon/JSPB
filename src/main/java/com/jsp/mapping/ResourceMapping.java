@@ -24,6 +24,9 @@ import javax.servlet.annotation.WebServlet;
             @WebInitParam(name="key",value="값")
       })
 public class ResourceMapping extends HttpServlet {
+   
+      private String defaultPath = "D:\\donghyeok\\web\\JSPB\\src\\main\\webapp";
+      
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       doPost(req,resp);
@@ -57,7 +60,7 @@ public class ResourceMapping extends HttpServlet {
          resp.setContentType("image/jpeg");
          if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
             try(OutputStream out = resp.getOutputStream();
-                  InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
+                  InputStream in = Files.newInputStream(Paths.get(defaultPath + "/WEB-INF/resources/img" + info));){
                out.write(in.readAllBytes());      
             }
             catch(Exception e) {}
@@ -73,7 +76,7 @@ public class ResourceMapping extends HttpServlet {
          resp.setContentType("image/png");
          if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
             try(OutputStream out = resp.getOutputStream();
-                  InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
+                  InputStream in = Files.newInputStream(Paths.get(defaultPath + "/WEB-INF/resources/img" + info));){
                out.write(in.readAllBytes());      
             }
             catch(Exception e) {}
@@ -89,7 +92,7 @@ public class ResourceMapping extends HttpServlet {
          resp.setContentType("image/gif");
          if(info.matches("\\/\\d*\\/\\d*/\\d*/.*")) {
             try(OutputStream out = resp.getOutputStream();
-                  InputStream in = Files.newInputStream(Paths.get(getServletContext().getRealPath(info)));){
+                  InputStream in = Files.newInputStream(Paths.get(defaultPath + "/WEB-INF/resources/img" + info));){
                out.write(in.readAllBytes());      
             }
             catch(Exception e) {}
@@ -101,4 +104,7 @@ public class ResourceMapping extends HttpServlet {
             }catch(Exception e) {}
          }
       }
-   }}
+      
+
+   }
+}
