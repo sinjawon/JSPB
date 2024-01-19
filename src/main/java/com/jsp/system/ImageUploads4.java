@@ -66,7 +66,7 @@ public class ImageUploads4 extends HttpServlet {
       String token = getSignature(part);
 
       
-       String uploadPath ="D:D:\\donghyeok\\web\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img\\";
+       String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img";
        System.out.println("경로" + Paths.get(getServletContext().getContextPath()) + "경로");
       
       if (!Files.exists(Paths.get(uploadPath+
