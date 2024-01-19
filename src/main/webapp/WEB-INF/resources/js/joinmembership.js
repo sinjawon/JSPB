@@ -27,31 +27,31 @@ function logincheckID() {
             method: "POST",
             body: form,
         }).then((json) => {
-            let userIds = json.userids.map(data => data.userId);
+            let userIds = json.userids.map((data) => data.userId);
             let inputForUserId = document.querySelector("input[name='userid']").value;
-            let checkID = userIds.find(lang => lang === inputForUserId);
-            if (inputForUserId.length <= 5) {
+            let checkID = userIds.find((lang) => lang === inputForUserId);
+            if (inputForUserId.length <= 4) {
                 idcheck = false;
                 return Swal.fire({
-                    title: '',
+                    title: "",
                     text: "5자 이상 적어주세요",
-                    icon: 'warning',
+                    icon: "warning",
                 });
             }
             if (checkID !== undefined) {
                 idcheck = false;
                 Swal.fire({
-                    title: '',
+                    title: "",
                     text: "동일한 아이디가 있습니다",
-                    icon: 'warning',
+                    icon: "warning",
                 });
             }
             else {
                 idcheck = true;
                 Swal.fire({
-                    title: '',
+                    title: "",
                     text: "사용가능한 아이디 입니다",
-                    icon: 'success',
+                    icon: "success",
                 });
             }
         });
@@ -64,31 +64,31 @@ function logincheckName() {
             method: "POST",
             body: form,
         }).then((json) => {
-            let userNicknames = json.userNicknames.map(datas => datas.userNickname);
+            let userNicknames = json.userNicknames.map((datas) => datas.userNickname);
             let inputForUserNickname = document.querySelector("input[name='nickname']").value;
-            let checkNmae = userNicknames.find(lang => lang === inputForUserNickname);
+            let checkNmae = userNicknames.find((lang) => lang === inputForUserNickname);
             if (inputForUserNickname.length <= 1) {
                 idcheck = false;
                 return Swal.fire({
-                    title: '',
+                    title: "",
                     text: "2자 이상 적어주세요",
-                    icon: 'warning',
+                    icon: "warning",
                 });
             }
             if (checkNmae !== undefined) {
                 namecheck = false;
                 Swal.fire({
-                    title: '',
+                    title: "",
                     text: "동일한 닉네임이 있습니다",
-                    icon: 'warning',
+                    icon: "warning",
                 });
             }
             else {
                 namecheck = true;
                 Swal.fire({
-                    title: '',
+                    title: "",
                     text: "사용가능한 닉네임 입니다",
-                    icon: 'success',
+                    icon: "success",
                 });
             }
         });
@@ -97,71 +97,81 @@ function logincheckName() {
 // 비밀번호 일치 여부 확인
 function checkPasswordMatch() {
     return __awaiter(this, void 0, void 0, function* () {
-        let password = document.getElementById('password').value;
-        let confirmPassword = document.getElementById('passwordcheck').value;
-        let passwordMatchStatus = document.getElementById('passwordMatchStatus');
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("passwordcheck").value;
+        let passwordMatchStatus = document.getElementById("passwordMatchStatus");
         if (password && confirmPassword) {
             if (password === confirmPassword) {
-                passwordMatchStatus.innerText = '비밀번호 일치';
-                passwordMatchStatus.style.color = 'green';
+                passwordMatchStatus.innerText = "비밀번호 일치";
+                passwordMatchStatus.style.color = "green";
                 pwcheck = true;
             }
             else {
-                passwordMatchStatus.innerText = '비밀번호 불일치';
-                passwordMatchStatus.style.color = 'red';
+                passwordMatchStatus.innerText = "비밀번호 불일치";
+                passwordMatchStatus.style.color = "red";
                 pwcheck = false;
             }
         }
         else {
-            passwordMatchStatus.innerText = '';
+            passwordMatchStatus.innerText = "";
             pwcheck = false;
         }
     });
 }
-//닉네임 
+//닉네임
 function checkAndDisableButton() {
-    let name = document.getElementById('name').value;
-    let nickname = document.getElementById('nickname').value;
+    let name = document.getElementById("name").value;
+    let nickname = document.getElementById("nickname").value;
     if (name && nickname && (idcheck && namecheck) === true) {
-        document.getElementById('signupButton').disabled = true;
+        document.getElementById("signupButton").disabled = true;
     }
     else {
-        document.getElementById('signupButton').disabled = false;
+        document.getElementById("signupButton").disabled = false;
     }
 }
 //올채크
-document.getElementById('signupForm').addEventListener('submit', function (event) {
+document
+    .getElementById("signupForm")
+    .addEventListener("submit", function (event) {
     event.preventDefault();
-    let name = document.getElementById('name').value;
-    let nickname = document.getElementById('nickname').value;
+    let name = document.getElementById("name").value;
+    let nickname = document.getElementById("nickname").value;
     if (name && nickname && namecheck && idcheck && pwcheck) {
         this.submit();
     }
     else {
         let errorMessage = "";
         if (!name) {
-            errorMessage += '이름이 올바르지 않습니다.\n';
+            errorMessage += "이름이 올바르지 않습니다.\n";
         }
         if (!nickname) {
-            errorMessage += '닉네임이 올바르지 않습니다.\n';
+            errorMessage += "닉네임이 올바르지 않습니다.\n";
         }
         if (!namecheck) {
-            errorMessage += '닉네임 중복 체크 해주세요.\n';
+            errorMessage += "닉네임 중복 체크 해주세요.\n";
         }
         if (!idcheck) {
-            errorMessage += '아이디 중복 체크 해주세요.\n';
+            errorMessage += "아이디 중복 체크 해주세요.\n";
         }
         if (!pwcheck) {
-            errorMessage += '비밀번호 체크가 실패했습니다.\n';
+            errorMessage += "비밀번호 체크가 실패했습니다.\n";
         }
         Swal.fire({
-            title: '',
+            title: "",
             text: errorMessage,
-            icon: 'warning',
+            icon: "warning",
         });
     }
 });
-document.getElementById('nickname').addEventListener('input', () => { namecheck = false; });
-document.getElementById('userid').addEventListener('input', () => { idcheck = false; });
-document.getElementById('password').addEventListener('input', checkPasswordMatch);
-document.getElementById('passwordcheck').addEventListener('input', checkPasswordMatch);
+document.getElementById("nickname").addEventListener("input", () => {
+    namecheck = false;
+});
+document.getElementById("userid").addEventListener("input", () => {
+    idcheck = false;
+});
+document
+    .getElementById("password")
+    .addEventListener("input", checkPasswordMatch);
+document
+    .getElementById("passwordcheck")
+    .addEventListener("input", checkPasswordMatch);

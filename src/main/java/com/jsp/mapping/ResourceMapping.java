@@ -25,7 +25,7 @@ import javax.servlet.annotation.WebServlet;
 		})
 public class ResourceMapping extends HttpServlet {
 	
-	   private String defaultPath = "C:\\eclip\\workspace\\JSPB\\src\\main\\webapp";
+	   private String defaultPath = "D:\\jge_jspclone\\JSPB\\src\\main\\webapp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class ResourceMapping extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+ 
 		resp.setCharacterEncoding("utf-8");
 		// text/javascript -> 옛날거
 		// application/javascript -> 최신거
