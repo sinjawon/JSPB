@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link
-      rel="icon"
+      rel="icon"  
       type="image/png"
       sizes="32x32"
       href="/resources/favicon-32x32.png"
