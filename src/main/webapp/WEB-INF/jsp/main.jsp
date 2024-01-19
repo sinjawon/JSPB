@@ -93,7 +93,7 @@ pageEncoding="UTF-8"%>
               alt="정보"
           /></a>
           <div class="subTitle">
-            <h2>애완용품거래게시판</h2>
+            <h2>애완용품거래</h2>
           </div>
         </div>
         <div class="swiper-slide">
@@ -190,7 +190,7 @@ pageEncoding="UTF-8"%>
 
     <div class="mainpage mainpage2">
       <div class="main-box">
-        <div class="main-title">산책친목게시판</div>
+        <div class="main-title">산책게시판</div>
         <div class="titleborder"></div>
         <div class="main-container">
           <div class="free-flex">
@@ -227,7 +227,7 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="main-box">
-        <div class="main-title">애완용품 거래게시판</div>
+        <div class="main-title">애완용품거래</div>
         <div class="titleborder"></div>
         <div class="main-container">
            <div class="free-flex">
