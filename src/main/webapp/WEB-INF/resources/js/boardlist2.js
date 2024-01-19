@@ -19,12 +19,13 @@ window.onload = submitSearch2();
 // 검색 폼 제출 시 호출되는 함수
 function submitSearch2() {
     console.log("전송되었습니다");
-    let form = document.getElementById("searchform2");
-    if (form) {
-        let formData = new FormData(form);
+    try {
+        let formData = new FormData(document.querySelector("#searchform2"));
         ajax2("/api/boardList2", {
             method: "POST",
-            body: formData,
+            cache: "no-cache",
+            body: new URLSearchParams(formData).toString(),
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
         }).then((json) => {
             var _a, _b;
             console.log(json);
@@ -41,13 +42,19 @@ function submitSearch2() {
                     return;
                 }
                 for (let data of json.data) {
-                    template.content.querySelector(".boardListNum2").innerHTML = data.boardListNum2;
-                    (_a = template.content.querySelector(".boardListNum2")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/app/postview2.jsp?id=${data.boardListNum2}`);
+                    template.content.querySelector(".boardListNum2").innerHTML =
+                        data.boardListNum2;
+                    (_a = template.content
+                        .querySelector(".boardListNum2")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/app/postview2.jsp?id=${data.boardListNum2}`);
                     template.content.querySelector(".title2").innerHTML = data.title2;
-                    (_b = template.content.querySelector(".title2")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/app/postview2.jsp?id=${data.boardListNum2}`);
-                    template.content.querySelector(".mainContents2").innerHTML = data.mainContents2;
-                    template.content.querySelector(".userNickname2").innerHTML = data.userNickname2;
-                    template.content.querySelector(".hitCount2").innerHTML = data.hitCount2;
+                    (_b = template.content
+                        .querySelector(".title2")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/app/postview2.jsp?id=${data.boardListNum2}`);
+                    template.content.querySelector(".mainContents2").innerHTML =
+                        data.mainContents2;
+                    template.content.querySelector(".userNickname2").innerHTML =
+                        data.userNickname2;
+                    template.content.querySelector(".hitCount2").innerHTML =
+                        data.hitCount2;
                     template.content.querySelector(".regDate2").innerHTML = data.regDate2;
                     let a = document.createElement("div");
                     a.innerHTML = template.innerHTML;
@@ -70,6 +77,9 @@ function submitSearch2() {
                 }
             }
         });
+    }
+    catch (error) {
+        console.error("Fetch 오류:", error);
     }
 }
 // 페이지 링크 동기화 안되었음 일단 클릭하면 이동은 가능함

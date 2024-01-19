@@ -19,12 +19,13 @@ window.onload = submitSearch();
 // 검색 폼 제출 시 호출되는 함수
 function submitSearch() {
     console.log("전송되었습니다");
-    let form = document.getElementById("searchform");
-    if (form) {
-        let formData = new FormData(form);
+    try {
+        let formData = new FormData(document.querySelector("#searchform"));
         ajax("/api/boardList", {
             method: "POST",
-            body: formData,
+            cache: "no-cache",
+            body: new URLSearchParams(formData).toString(),
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
         }).then((json) => {
             var _a, _b;
             console.log(json);
@@ -41,12 +42,17 @@ function submitSearch() {
                     return;
                 }
                 for (let data of json.data) {
-                    template.content.querySelector(".boardListNum").innerHTML = data.boardListNum;
-                    (_a = template.content.querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
+                    template.content.querySelector(".boardListNum").innerHTML =
+                        data.boardListNum;
+                    (_a = template.content
+                        .querySelector(".boardListNum")) === null || _a === void 0 ? void 0 : _a.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
                     template.content.querySelector(".title").innerHTML = data.title;
-                    (_b = template.content.querySelector(".title")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
-                    template.content.querySelector(".mainContents").innerHTML = data.mainContents;
-                    template.content.querySelector(".userNickname").innerHTML = data.userNickname;
+                    (_b = template.content
+                        .querySelector(".title")) === null || _b === void 0 ? void 0 : _b.setAttribute("href", `/app/postview.jsp?id=${data.boardListNum}`);
+                    template.content.querySelector(".mainContents").innerHTML =
+                        data.mainContents;
+                    template.content.querySelector(".userNickname").innerHTML =
+                        data.userNickname;
                     template.content.querySelector(".hitCount").innerHTML = data.hitCount;
                     template.content.querySelector(".regDate").innerHTML = data.regDate;
                     let a = document.createElement("div");
@@ -62,14 +68,19 @@ function submitSearch() {
                 for (let i = 1; i <= json.totalPages; i += 1) {
                     let span = document.createElement("span");
                     span.innerText = i;
+                    console.log("??" + i);
                     span.onclick = function () {
                         pageChange(i);
+                        console.log("???" + i);
                     };
                     pagesContainer.appendChild(pageTemplate);
                     pagesContainer.appendChild(span);
                 }
             }
         });
+    }
+    catch (error) {
+        console.error("Fetch 오류:", error);
     }
 }
 // 페이지 링크 동기화 안되었음 일단 클릭하면 이동은 가능함

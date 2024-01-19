@@ -25,12 +25,7 @@
 		
 	<%@include file="../jsp/nav.jsp"%>
 	
-	  <%try(DBConnector con = new DBConnector();){
-        		UserAnimalDao map = con.OpenMap(request, UserAnimalDao.class);
-        		 String usernum = (String)session.getAttribute("UserNum"); 
-        			UserDao map2 = con.OpenMap(request, UserDao.class);
-        		 
-        		 %>
+	
         		 
         		 
 <div class="main_board"> 
@@ -50,12 +45,13 @@
 		</div>
 		</template>
 	</div>
-	
-	<div id="pages" class="pages">
+		<div id="pages" class="pages">
 		<template> 
 			<span onclick="pageChange(this.innerText)">1</span>
 		</template>
-	</div>
+	</div> 
+	
+	
         
 	
   		<form id="searchform" class="searchform" action="/api/boardlist" method="post" >
@@ -94,11 +90,6 @@
  </c:if>
 	
 	
-      <%
-        	}
-        	catch(Exception e) {
-        		e.printStackTrace();
-        	} %>
 	<%@include file="../jsp/footer.jsp"%>
 	
 <!-- <h1>Board List</h1>
