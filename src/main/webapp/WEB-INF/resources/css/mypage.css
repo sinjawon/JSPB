@@ -87,6 +87,7 @@
   	background-color: #fa5;    
   	font-weight: bold;
     border: none;
+    cursor: pointer;
 }
 
 .info_menu > form > .logoutbtn{
