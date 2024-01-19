@@ -8,6 +8,11 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <title>petpeople</title>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css"
+    />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <script src="/resources/joinmembership.js" defer></script>
 <link rel="stylesheet" type="text/css" href="/resources/joinmembership.css"> 
 </head>
@@ -20,7 +25,7 @@
       
       <div class="join-title">회원가입</div>
       <div class="join-labelbox">
-        <input type="text" name="name" class="ipbox" id="name" placeholder="이름" required/>
+        <input type="text" name="name" class="ipbox" id="name" placeholder="이름" minlength="2" required/>
         <div class="nick-box">
           <input
             type="text"
@@ -28,6 +33,7 @@
             id="nickname"
             placeholder="닉네임"
             class="ipbox"
+            minlength="2"
             required
           />
           <button class="ckbox" type="button"  onclick="logincheckName()">중복체크</button>
@@ -46,6 +52,7 @@
           id="password" name="password"
           class="ipbox"
           placeholder="비밀번호"
+          minlength="3"
           required
         />
         <input 
@@ -53,6 +60,8 @@
           placeholder="비밀번호 확인"
           id="passwordcheck" 
           name="passwordcheck"
+          minlength="4"
+          required
           class="ipbox" required/>
         <div id="passwordMatchStatus"></div>
         <input type="submit" value="회원가입" class="submitbtn" id="signupButton" />

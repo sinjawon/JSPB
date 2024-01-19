@@ -62,7 +62,12 @@ function displayReply(replies) {
             clone.querySelector(".regDate").innerHTML = data.regDate;
             if (currentUser === data.userNickname) {
                 // 맞다면 삭제 버튼을 활성화
-                clone.querySelector(".deleteReply").setAttribute("data-replynum", data.replyNum.toString());
+                clone
+                    .querySelector(".deleteReply")
+                    .setAttribute("data-replynum", data.replyNum.toString());
+            }
+            else {
+                clone.querySelector(".deleteReply").style.display = "none";
             }
             console.log(currentUser, data.userNickname);
             replyContainer.appendChild(clone);
@@ -114,15 +119,17 @@ function deleteReply(replyNum) {
             if (replyList.success) {
                 console.log("댓글 삭제 성공");
                 loadReply();
-                location.href = '/app/postview.jsp?id=' + document.getElementById("boardListNumInput").value;
+                location.href =
+                    "/app/postview.jsp?id=" +
+                        document.getElementById("boardListNumInput").value;
             }
             else {
                 console.error("댓글 삭제 실패:", replyList.success);
             }
         }
         catch (error) {
-            console.error('댓글 삭제 중 오류 발생:', error);
-            alert('댓글 삭제 중 오류 발생');
+            console.error("댓글 삭제 중 오류 발생:", error);
+            alert("댓글 삭제 중 오류 발생");
         }
     });
 }

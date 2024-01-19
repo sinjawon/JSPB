@@ -62,7 +62,12 @@ function displayReply2(replies2) {
             clone.querySelector(".regDate2").innerHTML = data.regDate2;
             if (currentUser2 === data.userNickname2) {
                 // 맞다면 삭제 버튼을 활성화
-                clone.querySelector(".deleteReply2").setAttribute("data-replynum", data.replyNum2.toString());
+                clone
+                    .querySelector(".deleteReply2")
+                    .setAttribute("data-replynum", data.replyNum2.toString());
+            }
+            else {
+                clone.querySelector(".deleteReply2").style.display = "none";
             }
             console.log(currentUser2, data.userNickname2);
             replyContainer2.appendChild(clone);
@@ -72,12 +77,12 @@ function displayReply2(replies2) {
 function addReply2() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let formData = new FormData(document.querySelector('#replyForm2'));
-            let response = yield fetch('/api/addReply2', {
-                method: 'POST',
-                cache: 'no-cache',
+            let formData = new FormData(document.querySelector("#replyForm2"));
+            let response = yield fetch("/api/addReply2", {
+                method: "POST",
+                cache: "no-cache",
                 body: new URLSearchParams(formData).toString(),
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
             });
             if (!response.ok) {
                 throw new Error("댓글 등록 실패");
@@ -86,7 +91,7 @@ function addReply2() {
             if (replyList2.success) {
                 clearReplyInput2();
                 loadReply2();
-                location.href = '/app/postview2.jsp?id=' + formData.get("boardListNum2");
+                location.href = "/app/postview2.jsp?id=" + formData.get("boardListNum2");
             }
         }
         catch (error) {
@@ -114,15 +119,17 @@ function deleteReply2(replyNum2) {
             if (replyList2.success) {
                 console.log("댓글 삭제 성공");
                 loadReply2();
-                location.href = '/app/postview2.jsp?id=' + document.getElementById("boardListNumInput2").value;
+                location.href =
+                    "/app/postview2.jsp?id=" +
+                        document.getElementById("boardListNumInput2").value;
             }
             else {
                 console.error("댓글 삭제 실패:", replyList2.success);
             }
         }
         catch (error) {
-            console.error('댓글 삭제 중 오류 발생:', error);
-            alert('댓글 삭제 중 오류 발생');
+            console.error("댓글 삭제 중 오류 발생:", error);
+            alert("댓글 삭제 중 오류 발생");
         }
     });
 }

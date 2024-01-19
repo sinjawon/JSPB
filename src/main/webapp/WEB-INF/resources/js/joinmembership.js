@@ -30,13 +30,29 @@ function logincheckID() {
             let userIds = json.userids.map(data => data.userId);
             let inputForUserId = document.querySelector("input[name='userid']").value;
             let checkID = userIds.find(lang => lang === inputForUserId);
+            if (inputForUserId.length <= 5) {
+                idcheck = false;
+                return Swal.fire({
+                    title: '',
+                    text: "5자 이상 적어주세요",
+                    icon: 'warning',
+                });
+            }
             if (checkID !== undefined) {
                 idcheck = false;
-                alert("동일한 아이디가 있습니다");
+                Swal.fire({
+                    title: '',
+                    text: "동일한 아이디가 있습니다",
+                    icon: 'warning',
+                });
             }
             else {
                 idcheck = true;
-                alert("사용가능한 이이디입니다");
+                Swal.fire({
+                    title: '',
+                    text: "사용가능한 아이디 입니다",
+                    icon: 'success',
+                });
             }
         });
     });
@@ -51,13 +67,29 @@ function logincheckName() {
             let userNicknames = json.userNicknames.map(datas => datas.userNickname);
             let inputForUserNickname = document.querySelector("input[name='nickname']").value;
             let checkNmae = userNicknames.find(lang => lang === inputForUserNickname);
+            if (inputForUserNickname.length <= 1) {
+                idcheck = false;
+                return Swal.fire({
+                    title: '',
+                    text: "2자 이상 적어주세요",
+                    icon: 'warning',
+                });
+            }
             if (checkNmae !== undefined) {
                 namecheck = false;
-                alert("동일한 닉네임이  있습니다");
+                Swal.fire({
+                    title: '',
+                    text: "동일한 닉네임이 있습니다",
+                    icon: 'warning',
+                });
             }
             else {
                 namecheck = true;
-                alert("사용가능한 닉네임입니다");
+                Swal.fire({
+                    title: '',
+                    text: "사용가능한 닉네임 입니다",
+                    icon: 'success',
+                });
             }
         });
     });
@@ -122,7 +154,11 @@ document.getElementById('signupForm').addEventListener('submit', function (event
         if (!pwcheck) {
             errorMessage += '비밀번호 체크가 실패했습니다.\n';
         }
-        alert(errorMessage);
+        Swal.fire({
+            title: '',
+            text: errorMessage,
+            icon: 'warning',
+        });
     }
 });
 document.getElementById('nickname').addEventListener('input', () => { namecheck = false; });
