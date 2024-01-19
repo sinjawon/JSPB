@@ -43,7 +43,7 @@ public class Upload extends HttpServlet{
 			/* getServletContext().getRealPath("/") */
 	        //저장할 최상위 경로 img 전까지
 	        
-	        String uploadPath ="C:\\eclip\\workspace\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img";
+	        String uploadPath ="C:\\javaweb\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img";
 	      /*  D:\\jge_jspclone\\JSPB\\src\\main\\webapp\\WEB-INF\\resources\\img*/
 	     
 	        try {
@@ -84,6 +84,8 @@ public class Upload extends HttpServlet{
 		                        
 		                        response.getWriter().println("이미지 업로드 성공<br>");
 			                    response.getWriter().println("파일 경로: " + filePath);
+			                    
+			                   
 			                    response.sendRedirect("/app/mypage.jsp");
 		                    }catch (Exception e) {
 		                    	response.getWriter().println("이미지 업로드 실패: " +filePath + e.getMessage());

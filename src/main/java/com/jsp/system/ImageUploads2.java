@@ -102,8 +102,7 @@ public class ImageUploads2 extends HttpServlet {
 				
 				try (DBConnector con = new DBConnector();) {
 					// DB에 이미지 이름, 순서, 작성글 id 저장
-					PostImageDao2 map = con.OpenMap(req, PostImageDao2.class);
-					
+					PostImageDao2 map = con.OpenMap(req, PostImageDao2.class);					
 		            Thread.sleep(750);
 					int boardListNum2 = map.getNewlyInsertedBoardId2();
 
