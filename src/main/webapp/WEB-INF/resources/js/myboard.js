@@ -24,7 +24,9 @@ function submitSearch() {
         let formData = new FormData(form);
         ajax("/api/boardList", {
             method: "POST",
-            body: formData,
+            body: new URLSearchParams(formData).toString(),
+            cache: 'no-cache',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then((json) => {
             var _a, _b;
             console.log(json);

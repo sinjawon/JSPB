@@ -18,7 +18,9 @@ async function ajax3(url: string, option?: any) {
   
         ajax3("/api/boardList3", {
             method: "POST",
-            body: formData,
+            cache:'no-cache',
+            body:new URLSearchParams(formData).toString(), 
+            headers:{'Content-Type':'application/x-www-form-urlencoded'}
         }).then((json) => {
             console.log(json);
   

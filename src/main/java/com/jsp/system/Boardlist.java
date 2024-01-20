@@ -49,6 +49,7 @@ import com.jsp.dto.*;
 //              if(request.getParameter("searchtype").equalsIgnoreCase("all"))
 //                 exec = map.getBoardInfoPage(limit, page);
               else if(request.getParameter("searchtype").equalsIgnoreCase("userNickname")) {
+            	  System.out.println("개시발어딘데 이따구여");
                  System.out.println("userNickname in");
                  exec = map.searchByUserNicknamePaged("%"+request.getParameter("search")+"%", limit, page);
                  System.out.println(exec);

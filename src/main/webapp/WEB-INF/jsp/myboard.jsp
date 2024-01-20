@@ -28,11 +28,11 @@
 	</div>
 	
 	
-  		<form id="searchform" class="searchform" action="/api/boardlist" method="post" style="display: none;">
+  		<form id="searchform" class="searchform" action="/api/boardlist" method="post" style="display:none;">
         	<select id="searches" name="searchtype">
 				<option value="userNickname">작성자</option>
 			</select> 
-        		<input type="text" id="search" name="search" value='<%=session.getAttribute("UserNickName")%>'>
+        		<input type="text" id="search" name="search" value="<%=session.getAttribute("UserNickName")%>">
         		<input type="text" id="page" name="page" value="1" style="display:none;"/>
         		<button type="button" onclick="submitSearch()" class="searchBtn">검색</button>
    		</form> 
